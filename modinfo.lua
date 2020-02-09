@@ -1,5 +1,5 @@
 name = "Izayoi Sakuya III"
-version = "3.0-RC4 Update 1007"
+version = "3.0-RC4 Update 1008"
 description = [[
 Izayoi Sakuya(十六夜咲夜) 3.0-RC4
 ※本MOD为东方Project二次创作内容
@@ -44,7 +44,7 @@ Izayoi Sakuya(十六夜咲夜) 3.0-RC4
 *1 如果和Storeroom MOD一同使用必须同时启用Perishable MOD: https://steamcommunity.com/sharedfiles/filedetails/?id=442294018
 *2 如果要对玩家进行敌我识别则需启用队旗MOD: https://steamcommunity.com/sharedfiles/filedetails/?id=1426166583
 ]]
-author = "donmor; 大猪猪(猪哥)"
+author = "donmor"
 forumthread = ""
 api_version_dst = 10
 dst_compatible = true
@@ -58,17 +58,6 @@ server_filter_tags = {
 }
 configuration_options =
 {
---~ 	{
---~ 		name = "unique",
---~ 		label = "角色重复/Repick",
---~ 		options =
---~ 		{
---~ 			{description = "Allowed", data = false, hover = "允许/Allow multiple player with Sakuya"},
---~ 			{description = "Forbidden", data = true, hover = "不允许/The second player who choose Sakuya will despawn"},
---~ 		},
---~ 		default = false,
---~ 	},
-	
 	{
 		name = "recipes",
 		label = "制作配方/Recipes",
