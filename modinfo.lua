@@ -58,16 +58,16 @@ server_filter_tags = {
 }
 configuration_options =
 {
-	{
-		name = "unique",
-		label = "角色重复/Repick",
-		options =
-		{
-			{description = "Allowed", data = false, hover = "允许/Allow multiple player with Sakuya"},
-			{description = "Forbidden", data = true, hover = "不允许/The second player who choose Sakuya will despawn"},
-		},
-		default = false,
-	},
+--~ 	{
+--~ 		name = "unique",
+--~ 		label = "角色重复/Repick",
+--~ 		options =
+--~ 		{
+--~ 			{description = "Allowed", data = false, hover = "允许/Allow multiple player with Sakuya"},
+--~ 			{description = "Forbidden", data = true, hover = "不允许/The second player who choose Sakuya will despawn"},
+--~ 		},
+--~ 		default = false,
+--~ 	},
 	
 	{
 		name = "recipes",

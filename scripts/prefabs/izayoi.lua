@@ -18,9 +18,7 @@ local function isinbasement(vinst)	-- <地窖MOD兼容
 	local x, y, z = vinst.Transform:GetWorldPosition()
 	local ents = TheSim:FindEntities(x, y, z, 20, { "basement_part", "alt_tile" })
 	for k, v in pairs(ents) do
-print(v.prefab)
 		if v and v.prefab == "basement" then
-print("x")
 			return true
 		end
 	end
