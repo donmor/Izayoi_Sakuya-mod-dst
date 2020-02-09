@@ -9,7 +9,6 @@ local function SYS_INITGLOBAL()
 end
 SYS_INITGLOBAL()
 
---~ TUNING.IZAYOI_UNIQUE = GetModConfigData("unique")
 TUNING.IZAYOI_SE = GetModConfigData("izayoi_se")	-- <读取配置
 TUNING.IZAYOI_VOICE = GetModConfigData("izayoi_voice")
 TUNING.IZAYOI_WATCH_NIGHT_VISION = GetModConfigData("watch_night_vision")
@@ -1534,77 +1533,6 @@ local function onhitother(inst, data)
 	end
 end
 
---~ AddComponentPostInit("worldstate", function(self)
---~ 	if TheWorld.ismastershard then 
---~ 		if not self.characterHistory then self.characterHistory = {} end
---~ 		if not TheWorld.despawnTask then
---~ 			TheWorld.despawnTask = TheWorld:ListenForEvent("ms_playerdespawnanddelete", function(inst, player)
---~ 				self:clearHistoryOfPlayer(player)
---~ 			end)
---~ 		end
---~ 	end
-	
---~ 	local pOnSave = self.OnSave
---~ 	self.OnSave = function(self)
---~ 		local args = pOnSave(self)
---~ 		if TheWorld.ismastershard and self.characterHistory ~= nil then args.characterHistory = self.characterHistory end
---~ 		return args
---~ 	end
-	
---~ 	local pOnLoad = self.OnLoad
---~ 	self.OnLoad = function(self, data)
---~ 		pOnLoad(self, data)
---~ 		if TheWorld.ismastershard and data.characterHistory ~= nil then self.characterHistory = data.characterHistory end
---~ 	end
-	
---~ 	self.pushCharacterHistory = function(self, player)
---~ 		if TheWorld.ismastershard and self.characterHistory ~= nil then table.insert(self.characterHistory, { userid = player.userid, prefab = player.prefab }) end
---~ 	end
-	
---~ 	self.clearHistoryOfPlayer = function(self, player)
---~ 		if TheWorld.ismastershard and self.characterHistory ~= nil then
---~ 			local exist			
---~ 			repeat
---~ 				exist = false
---~ 				for k, v in ipairs(self.characterHistory) do
---~ 					if v.userid == player.userid or v.userid == nil or v.userid == "" then
---~ 						table.remove(self.characterHistory, k)
---~ 						break
---~ 					end
---~ 				end
---~ 				for k, v in ipairs(self.characterHistory) do
---~ 					if v.userid == player.userid then
---~ 						exist = true
---~ 						break 
---~ 					end
---~ 				end
---~ 			until(not exist)
---~ 		end
---~ 	end
-	
---~ 	self.solveDuplication = function(self, player)
---~ 		if TheWorld.ismastershard and self.characterHistory then 
---~ 			local count = 0
---~ 			for k, v in pairs(self.characterHistory) do
---~ 				if v.prefab == player.prefab then
---~ 					count = count + 1
---~ 				end
---~ 			end
---~ 			if count > 1 then
---~ 				local task = player:DoPeriodicTask(0.65,function(player)
---~ 					if not player:IsValid() then
---~ 						task:Cancel()
---~ 						return
---~ 					end
---~ 					if TheWorld ~= nil and TheWorld.ismastersim then
---~ 						TheWorld:PushEvent("ms_playerdespawnanddelete", player)
---~ 					end
---~ 				end)
---~ 			end
---~ 		end
---~ 	end
---~ end)
-
 AddPlayerPostInit(function(inst)
 	if inst.prefab == characterName then
 		inst.Transform:SetScale(1.25,1.25,1.25)
@@ -1657,13 +1585,6 @@ AddPlayerPostInit(function(inst)
 		end
 	end
 	if TheWorld.ismastersim then
---~ 		if not inst.historyRegister then
---~ 			inst.historyRegister = inst:ListenForEvent("setowner", function(inst)
---~ 				TheWorld.components.worldstate:clearHistoryOfPlayer(inst)
---~ 				TheWorld.components.worldstate:pushCharacterHistory(inst)
---~ 				if inst.prefab == characterName and TUNING.IZAYOI_UNIQUE then TheWorld.components.worldstate:solveDuplication(inst) end
---~ 			end)
---~ 		end
 		if not inst.unloadFieldOnDeath then
 			inst.unloadFieldOnDeath = inst:ListenForEvent("makeplayerghost", function(inst, data)
 				if inst.forcefieldfx then
