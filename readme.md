@@ -22,9 +22,7 @@
 - 大量东方梗及东方角色联动
 
 ### 强度与参数对应表
-
 带+的数值会自动回复
-
 <table><col/><col/><col/><col/><col/><col/><col/><col/>
 <tr><th colspan="2">参数</th><th>Easy</th><th>Normal</th><th>Hard</th><th>Lunatic</th><th>※OP</th></tr>
 <tr><td rowspan="4">四围</td>
@@ -46,9 +44,7 @@
 </table>
 
 ### 不同难度下的专属制作配方
-
 带*的为可选开启项
-
 <table><col/><col/><col/><col/><col/><col/><col/><col/>
 <tr><th rowspan="5">红茶</th><td rowspan="5">回复品, +60生命/30精神/10饥饿/40魔力</td></tr>
 <tr><td>Easy</td><td>蜘蛛腺体*2</td><td>花瓣*2</td><td></td><td rowspan="4">⇢</td><td>红茶*2</td></tr>
@@ -65,9 +61,9 @@
 <tr><td>Normal</td><td>橙宝石*3</td><td>噩梦燃料*12</td><td>齿轮*4</td><td>月时计</td></tr>
 <tr><td>Hard</td><td>橙宝石*4</td><td>噩梦燃料*12</td><td>齿轮*6</td><td>月时计</td></tr>
 <tr><td>Lunatic</td><td>橙宝石*6</td><td>噩梦燃料*12</td><td>齿轮*8</td><td>月时计</td></tr>
+</table>
 
 ### 技能详解
-
 <table><col/><col/><col/><col/>
 <tr><th>按键</th><th>消耗魔力</th><th>需要月时计</th><th>描述</th></tr>
 <tr><td>Z</td><td>15</td><td>否</td><td>钟表的残骸<br/> 咲夜对鼠标瞄准的生物投射1把银刃, 并施展魔术瞬移到自己相对该生物的相反位置, 如果落点在地图外则距离减小, 直到落点落在可以进入的区域; 控制好距离的话也可以用来跨越沟壑; 需要身上携带至少一把银刃才能发动; 不能攻击队友*<br/> 迷幻的杰克<br/> 咲夜对鼠标瞄准的生物一次投射出最多5把银刃, 需要身上携带至少一把银刃才能发动; 不能攻击队友*</td>
