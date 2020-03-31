@@ -90,6 +90,8 @@ local function fn()
 	inst:AddTag("thrown")
 	inst:AddTag("izayoi_sword")
 
+	RemovePhysicsColliders(inst)
+
 	inst.entity:SetPristine()
 
 	if not TheWorld.ismastersim then
@@ -102,6 +104,7 @@ local function fn()
 	
 	inst:AddComponent("projectile")
 	inst.components.projectile:SetSpeed(sword_speed)
+	inst.components.projectile:SetRange(200)
 	inst.components.projectile:SetHoming(false)
 	inst.components.projectile:SetCanCatch(true)
 	inst.components.projectile:SetOnThrownFn(OnThrown)
@@ -109,22 +112,21 @@ local function fn()
 	inst.components.projectile:SetOnMissFn(OnMiss)
 	inst.components.projectile:SetOnCaughtFn(OnCaught)
 	inst.components.projectile:SetOnTheworldTriggeredFn(ontheworldtriggered)
-	
-	inst:AddComponent("stackable")
-	inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
 
 	inst:AddComponent("inspectable")
 
 	inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.atlasname = "images/izayoi_sword.xml"
 	inst.components.inventoryitem.imagename = "izayoi_sword"
+	inst:AddComponent("stackable")
+	inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
 
 	inst:AddComponent("equippable")
 	inst.components.equippable:SetOnEquip(onequip)
 	inst.components.equippable:SetOnUnequip(onunequip)
 	inst.components.equippable.equipstack = true
-	
-	inst:AddComponent("selfstacker")
+
+	MakeHauntableLaunch(inst)
 
 	return inst
 end

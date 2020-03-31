@@ -39,7 +39,8 @@ local function fn()
 	inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.atlasname = "images/izayoi_redtea.xml"
 	inst.components.inventoryitem.imagename = "izayoi_redtea"
-
+	inst:AddComponent("stackable")
+	inst.components.stackable.maxsize = TUNING.STACK_SIZE_MEDITEM
 	
 	inst:AddComponent("edible")
 	inst.components.edible.healthvalue = 60
@@ -48,9 +49,6 @@ local function fn()
 	inst.components.edible.foodtype = FOODTYPE.VEGGIE
 	inst.components.edible:SetOnEatenFn(oneaten)
 	inst.components.edible:AddExternalFoodType(FOODTYPE.BLOOD)
-		
-	inst:AddComponent("stackable")
-	inst.components.stackable.maxsize = TUNING.STACK_SIZE_MEDITEM
 	
 	inst:AddComponent("perishable")
 	inst.components.perishable:SetPerishTime( 10 * TUNING.TOTAL_DAY_TIME)

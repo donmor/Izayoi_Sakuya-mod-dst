@@ -1,5 +1,5 @@
 name = "Izayoi Sakuya III"
-version = "3.0-RC4 Update 1008"
+version = "3.0-RC4 Update 1009"
 description = [[
 Izayoi Sakuya(十六夜咲夜) 3.0-RC4
 ※本MOD为东方Project二次创作内容
@@ -18,7 +18,6 @@ Izayoi Sakuya(十六夜咲夜) 3.0-RC4
 以下参数为默认配置
 生命150; 饥饿100; 精神250; 魔力160<i>
 攻击系数1.0(白天)或1.25(夜晚) <i>
-可以配置为不可重复选择此角色 <i>
 1.完美而潇洒的女仆长:
 动作迅捷: 采集和制作动作时间减半, 移动速度1.15倍; 冷静果断: 面对怪物不降低精神; 节俭持家: 饥饿速度只有其他角色80%;
 2.夜雾杀人鬼:
@@ -39,6 +38,7 @@ Izayoi Sakuya(十六夜咲夜) 3.0-RC4
 幻世「The World」: 将屏幕中区域时间停止9s, 消耗50魔力; 需要装备月时计;
 10.b技能[CD 60s<i>]:
 时符「完美空间」: 给自己及队友增加“完美空间”buff：抵抗75%伤害, 伤害倍数+0.75, 持续25秒<i>, 消耗60魔力; 需要装备月时计; 装备月时计者将暂时无视时停;
+*必须在游戏设定中开启延迟补偿，否则所有技能将失效！
 
 <i>可以在设置中调整的项目
 *1 如果和Storeroom MOD一同使用必须同时启用Perishable MOD: https://steamcommunity.com/sharedfiles/filedetails/?id=442294018

@@ -1257,7 +1257,6 @@ local skills = {
 					end
 				end
 				inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻在「钟表的残骸」" or "Illusion Existence \"Clock Corpse\"", 2, true)
-				inst.components.wiliya_mana:DoDelta(-15)
 				inst.AnimState:PlayAnimation("staff_pre")
 				inst.AnimState:PushAnimation("idle")
 			else
@@ -1273,9 +1272,9 @@ local skills = {
 					end)
 				end
 				inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻幽「迷幻的杰克」" or "Illusion Phantom \"Jack the Ludo Bile\"", 2, true)
-				inst.components.wiliya_mana:DoDelta(-15)
 				inst.AnimState:PlayAnimation("throw")
 			end
+			inst.components.wiliya_mana:DoDelta(-15)
 		end
 	end,
 	
@@ -1320,9 +1319,9 @@ local skills = {
 		if TUNING.IZAYOI_VOICE then
 			inst.SoundEmitter:PlaySound("izayoi/voice/execute")
 		end
-		inst.components.wiliya_mana:DoDelta(-25)
 		inst.AnimState:PlayAnimation("staff_pre", false)
 		inst.AnimState:PushAnimation("idle")
+		inst.components.wiliya_mana:DoDelta(-25)
 	end,
 	
 	c = function(inst, vtarget)
