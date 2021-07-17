@@ -125,6 +125,7 @@ local function fn()
 	inst.components.equippable:SetOnEquip(onequip)
 	inst.components.equippable:SetOnUnequip(onunequip)
 	inst.components.equippable.equipstack = true
+	inst:AddComponent("waterproofer")
 
 	MakeHauntableLaunch(inst)
 

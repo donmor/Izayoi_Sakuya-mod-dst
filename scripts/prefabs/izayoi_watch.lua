@@ -93,7 +93,8 @@ local function fn()
 	
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("izayoi_watch")
-	inst.crsCustomPerishMult = TUNING.IZAYOI_WATCH_FOOD_SPOILAGE
+	inst:AddComponent("preserver")
+	inst.components.preserver:SetPerishRateMultiplier(TUNING.IZAYOI_WATCH_FOOD_SPOILAGE)
 	
 	return inst
 end
