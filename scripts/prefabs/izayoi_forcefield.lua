@@ -14,6 +14,7 @@ local function fn()
 	
 	inst:AddTag("NOCLICK")
 	inst:AddTag("FX")
+	inst:AddTag("canmoveintime")
 	
 	inst.entity:SetPristine()
 
@@ -26,8 +27,9 @@ local function fn()
 	inst:AddComponent("timer")
 	
 	local function resume(inst)
-		print("r")
-		inst:AddTag("inforcefield")
+		if inst.prefab ~= "izayoi" then
+			inst:AddTag("canmoveintime")
+		end
 		if inst.AnimState then
 			inst.AnimState:Resume()
 		end
@@ -64,8 +66,8 @@ local function fn()
 						if getparent(inst) and getparent(inst).components.combat then
 							getparent(inst).components.health:SetAbsorptionAmount(0)
 						end
-						if getparent(inst) and getparent(inst):HasTag("inforcefield") then
-							getparent(inst):RemoveTag("inforcefield")
+						if getparent(inst) and getparent(inst):HasTag("canmoveintime") and not (getparent(inst).components.timestopper and getparent(inst).components.timestopper:IsStoppingTime()) then
+							getparent(inst):RemoveTag("canmoveintime")
 						end
 						getparent(inst).forcefieldfx = nil
 						inst:Remove()
@@ -73,15 +75,16 @@ local function fn()
 				end
 			end)
 
-			inst:ListenForEvent("equip", function(inst, data)
-				if data.item.prefab == "izayoi_watch" then
-					resume(inst)
-				end
-			end, getparent(inst))
+			-- inst:ListenForEvent("equip", function(inst, data)
+			-- 	if data.item.prefab == "izayoi_watch" then
+			-- 		resume(inst)
+			-- 	end
+			-- end, getparent(inst))
 			
 			inst:ListenForEvent("unequip", function(inst, data)
-				if data.item.prefab == "izayoi_watch" and inst:HasTag("inforcefield") then
-					inst:RemoveTag("inforcefield")
+				if data.item.prefab == "izayoi_watch" then
+					inst:Terminate()
+					inst:Remove()
 				end
 			end, getparent(inst))
 		else

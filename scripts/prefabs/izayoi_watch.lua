@@ -22,9 +22,6 @@ local function onequip(inst, owner)
 		inst.components.container:Open(owner)
 	end
 	owner:AddTag("watch_equipped")
-	if owner.prefab == "izayoi" then
-		owner:AddTag("jikantsukai")
-	end
 	if owner.components.wiliya_mana then
 		inst.tick = inst:DoPeriodicTask(3, function()
 			owner.components.wiliya_mana:DoDelta(1)
@@ -42,9 +39,6 @@ local function onunequip(inst, owner)
 		inst.components.container:Close(owner)
 	end
 	owner:RemoveTag("watch_equipped")
-	if owner.prefab == "izayoi" and owner:HasTag("jikantsukai") then
-		owner:RemoveTag("jikantsukai")
-	end
 	if inst.tick ~= nil then
 		inst.tick:Cancel()
 		inst.tick = nil

@@ -29,13 +29,13 @@ return MakePlayerCharacter("izayoi", {}, {},
 function(inst) 
 	inst.MiniMapEntity:SetIcon( "izayoi.tex" )
 	inst:AddTag("izayoi_skiller")
-	if TUNING.IZAYOI_VOICE then	-- <语音
+	if TUNING.IZAYOI_VOICE > 0 then	-- <语音
 		inst.hurtsoundoverride = "izayoi/voice/hurt"
 		inst.deathsoundoverride = "izayoi/voice/death_voice"
 		
 	end
 	inst:DoPeriodicTask(2, function()	-- <夜视
-		if inst:HasTag("jikantsukai") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or TheWorld.state.isnight or isinbasement(inst)) then
+		if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or TheWorld.state.isnight or isinbasement(inst)) then
 			inst.components.playervision:ForceNightVision(true)
 			inst.components.playervision:SetCustomCCTable("images/colour_cubes/beaver_vision_cc.tex")
 		else
@@ -69,20 +69,57 @@ function(inst)
 	inst:WatchWorldState("phase", updatestatus)
 	updatestatus(inst, TheWorld.state.phase)
 	inst.components.locomotor:SetExternalSpeedMultiplier(inst, "izayoi", 1.15)
+	inst:AddComponent("timestopper")
+	inst.components.timestopper:SetOnTimeStoppedFn(function(silent)
+		if not silent then
+			local x0, y0, z0 = inst.Transform:GetWorldPosition()
+			local fx = SpawnPrefab("groundpoundring_fx")
+			if fx then
+				fx:AddTag("canmoveintime")
+				fx.Transform:SetPosition(x0, y0, z0)
+				fx.Transform:SetScale(2, 2, 2)
+				fx:DoTaskInTime(2 * FRAMES, function()
+					local fx = SpawnPrefab("groundpoundring_fx")
+					if fx then
+						fx:AddTag("canmoveintime")
+						fx.Transform:SetPosition(x0, y0, z0)
+						fx.Transform:SetScale(1.5, 1.5, 1.5)
+					end
+				end)
+			end
+			if TUNING.IZAYOI_SE > 0 then
+				inst.SoundEmitter:PlaySound("izayoi/se/the_world", nil, TUNING.IZAYOI_SE)
+			end
+			if TUNING.IZAYOI_VOICE > 0 then
+				inst.SoundEmitter:PlaySound("izayoi/voice/the_world", nil, TUNING.IZAYOI_VOICE)
+			end
+			inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻世「The World」" or "Illusion World \"The World\"", 2, true)
+			if not inst.components.rider:IsRiding() then 
+				inst.AnimState:PlayAnimation("staff_pre")
+				inst.AnimState:PushAnimation("idle")
+			end
+
+		end
+	end)
+	inst.components.timestopper:SetOnResumingFn(2, function()
+		if TUNING.IZAYOI_SE > 0 then
+			inst.SoundEmitter:PlaySound("izayoi/se/clock", nil, TUNING.IZAYOI_SE)
+		end
+	end)
 	inst:ListenForEvent("death", function(inst)	-- <音效语音
-		if TUNING.IZAYOI_SE then
-			inst.SoundEmitter:PlaySound("izayoi/se/miss")
+		if TUNING.IZAYOI_SE > 0 then
+			inst.SoundEmitter:PlaySound("izayoi/se/miss", nil, TUNING.IZAYOI_SE)
 		end
 	end)
 	inst:ListenForEvent("startattack", function(inst)
-		if TUNING.IZAYOI_VOICE and not (inst.components.combat:GetWeapon() and inst.components.combat:GetWeapon():HasTag("mgun")) then
-			inst.SoundEmitter:PlaySound("izayoi/voice/attack")
+		if TUNING.IZAYOI_VOICE > 0 and not (inst.components.combat:GetWeapon() and inst.components.combat:GetWeapon():HasTag("mgun")) then
+			inst.SoundEmitter:PlaySound("izayoi/voice/attack", nil, TUNING.IZAYOI_VOICE)
 		end
 	end)
 	inst:ListenForEvent("oninspect", function(inst, data)
-			if TUNING.IZAYOI_VOICE then
+			if TUNING.IZAYOI_VOICE > 0 then
 				if data.tgt and data.tgt:HasTag("player") then
-					inst.SoundEmitter:PlaySound("izayoi/voice/characters/"..data.tgt.prefab)
+					inst.SoundEmitter:PlaySound("izayoi/voice/characters/"..data.tgt.prefab, nil, TUNING.IZAYOI_VOICE)
 				end
 			end
 	end)	-- >

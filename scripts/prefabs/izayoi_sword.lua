@@ -12,8 +12,8 @@ local sword_speed = 30
 local function ontheworldtriggered(inst, sw, origspeed)	-- <音效+倍速
 	if not sw and inst.components.projectile:IsThrown() then
 		inst.components.projectile.origspeed = sword_speed * 2
-		if TUNING.IZAYOI_SE then
-			inst.SoundEmitter:PlaySound("izayoi/se/kira")
+		if TUNING.IZAYOI_SE > 0 then
+			inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
 		end
 	end
 end	-- >

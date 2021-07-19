@@ -9,6 +9,10 @@ local function SYS_INITGLOBAL()
 end
 SYS_INITGLOBAL()
 
+function LIMBO(tbl)
+	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
+end
+
 TUNING.IZAYOI_SE = GetModConfigData("izayoi_se")	-- <读取配置
 TUNING.IZAYOI_VOICE = GetModConfigData("izayoi_voice")
 TUNING.IZAYOI_WATCH_NIGHT_VISION = GetModConfigData("watch_night_vision")
@@ -20,7 +24,7 @@ TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
 TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
 TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")
 
-TUNING.IZAYOI_LANGUAGE = LanguageTranslator.defaultlang
+TUNING.IZAYOI_LANGUAGE = GetModConfigData("language")
 if TUNING.IZAYOI_STRENGTH == "op" then	-- <设定强度
 	TUNING.IZAYOI_MAX_HUNGER = 300
 	TUNING.IZAYOI_MAX_SANITY = 300
@@ -194,7 +198,7 @@ izayoitab = AddRecipeTab(TUNING.IZAYOI_LANGUAGE == "zh" and "完美潇洒的制�
 if TUNING.IZAYOI_RECIPES == "easy" then
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("petals", 2)}, 
-	izayoitab, TECH.SCIENCE_ONE,
+	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, 2, "izayoi_skiller",
 	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
@@ -212,7 +216,7 @@ if TUNING.IZAYOI_RECIPES == "easy" then
 elseif TUNING.IZAYOI_RECIPES == "normal" then
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
-	izayoitab, TECH.SCIENCE_ONE,
+	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, 2, "izayoi_skiller",
 	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
@@ -223,14 +227,14 @@ elseif TUNING.IZAYOI_RECIPES == "normal" then
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
-		izayoitab, TECH.MAGIC_TWO,
+		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
 		"images/izayoi_watch.xml", "izayoi_watch.tex")
 	end
 elseif TUNING.IZAYOI_RECIPES == "hard" then
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
-	izayoitab, TECH.SCIENCE_ONE,
+	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, 2, "izayoi_skiller",
 	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
@@ -241,14 +245,14 @@ elseif TUNING.IZAYOI_RECIPES == "hard" then
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)}, 
-		izayoitab, TECH.MAGIC_TWO,
+		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
 		"images/izayoi_watch.xml", "izayoi_watch.tex")
 	end
 elseif TUNING.IZAYOI_RECIPES == "lunatic" then
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
-	izayoitab, TECH.SCIENCE_ONE,
+	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, nil, "izayoi_skiller",
 	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
@@ -259,14 +263,14 @@ elseif TUNING.IZAYOI_RECIPES == "lunatic" then
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)}, 
-		izayoitab, TECH.MAGIC_TWO,
+		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
 		"images/izayoi_watch.xml", "izayoi_watch.tex")
 	end
 else
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
-	izayoitab, TECH.SCIENCE_ONE,
+	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, 2, "izayoi_skiller",
 	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
@@ -277,7 +281,7 @@ else
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
-		izayoitab, TECH.MAGIC_TWO,
+		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
 		"images/izayoi_watch.xml", "izayoi_watch.tex")
 	end
@@ -465,45 +469,6 @@ AddStategraphPostInit("wilson_client", function(sg)
 	end))
 end)	-- >
 
-AddStategraphPostInit("wilson", function(sg)	-- <改写死亡语音API
-	sg.states["death"].onenter = function(inst)
-		assert(inst.deathcause ~= nil, "Entered death state without cause.")
-		ClearStatusAilments(inst)
-		ForceStopHeavyLifting(inst)
-		inst.components.locomotor:Stop()
-		inst.components.locomotor:Clear()
-		inst:ClearBufferedAction()
-		if inst.components.rider:IsRiding() then
-			DoMountSound(inst, inst.components.rider:GetMount(), "yell")
-			inst.AnimState:PlayAnimation("fall_off")
-			inst.sg:AddStateTag("dismounting")
-		else
-			inst.SoundEmitter:PlaySound("dontstarve/wilson/death")
-			if inst.deathsoundoverride ~= nil then
-				inst.SoundEmitter:PlaySound(inst.deathsoundoverride)
-			elseif not inst:HasTag("mime") then
-				inst.SoundEmitter:PlaySound((inst.talker_path_override or "dontstarve/characters/")..(inst.soundsname or inst.prefab).."/death_voice")
-			end
-			if HUMAN_MEAT_ENABLED then
-				inst.components.inventory:GiveItem(SpawnPrefab("humanmeat"))
-			end
-			if inst.components.revivablecorpse ~= nil then
-				inst.AnimState:PlayAnimation("death2")
-			else
-				inst.components.inventory:DropEverything(true)
-				inst.AnimState:PlayAnimation("death")
-			end
-			inst.AnimState:Hide("swap_arm_carry")
-		end
-		inst.components.burnable:Extinguish()
-		if inst.components.playercontroller ~= nil then
-			inst.components.playercontroller:RemotePausePrediction()
-			inst.components.playercontroller:Enable(false)
-		end
-		inst.sg:ClearBufferedEvents()
-	end
-end)	-- >
-
 local event_whisper = EventHandler("onwhisper", function(inst, data)	-- <添加whisper函数到talker和sg中
 	if inst.sg:HasStateTag("idle") and not inst.sg:HasStateTag("notalking") then
 		if not inst:HasTag("mime") then
@@ -667,178 +632,178 @@ AddComponentPostInit("inventory", function(self)	-- <函数增补
 	end
 end)	-- >
 
-AddComponentPostInit("projectile", function(self)	-- <改写投射物等API以达到时停效果
-	self.theworldstate = nil
-	self.origspeed = nil
-	local pSetSpeed = self.SetSpeed
-	self.SetSpeed = function(self, speed)
-		self.origspeed = speed
-		return pSetSpeed(self, speed)
-	end
-	self.SetOnTheworldTriggeredFn = function(self, fn)
-		self.ontheworldtriggeredfn = fn
-	end
-	self.OnTheworldTriggered = function(self, sw)
-		if self.ontheworldtriggeredfn ~= nil then
-			self.ontheworldtriggeredfn(self.inst, sw, self.origspeed)
-		end
-		if sw then
-			if self.speed >= self.origspeed then
-				self.speed = self.origspeed / 4
-				self.inst.Physics:SetMotorVel(self.origspeed / 4, 0, 0)
-				self.inst:DoTaskInTime((120 + 30 * math.random()) * FRAMES / self.origspeed, function()
-					if TheWorld:HasTag("the_world") and self:IsThrown() then
-						self.speed = 0.1
-						self.inst.Physics:SetMotorVel(self.speed, 0, 0)
-					end
-				end)
-			end
-		else
-			if self.speed <= self.origspeed / 4 then
-				self.speed = self.origspeed / 4 + 1
-				self.inst.Physics:SetMotorVel(self.origspeed / 4 + 1, 0, 0)
-				self.inst:DoTaskInTime((120 + 30 * math.random()) * FRAMES / self.origspeed, function()
-					if self:IsThrown() then
-						self.speed = self.origspeed
-						self.inst.Physics:SetMotorVel(self.speed, 0, 0)
-					end
-				end)
-			end
-		end
-	end
-	local pStop = self.Stop
-	self.Stop = function(self)
-		local ret = pStop(self)
-		self.speed = self.origspeed
-		self.theworldstate = nil
-		return ret
-	end
-	local pOnUpdate = self.OnUpdate
-	self.OnUpdate = function(self, dt)
-		if self.target ~= nil then
-			if TheWorld:HasTag("the_world") then
-				self:OnTheworldTriggered(true)
-			elseif self.theworldstate and not TheWorld:HasTag("the_world") then
-				self:OnTheworldTriggered(false)
-			end
-			self.theworldstate = TheWorld:HasTag("the_world")
-		end
-		return pOnUpdate(self, dt)
-	end
-end)
+-- AddComponentPostInit("projectile", function(self)	-- <改写投射物等API以达到时停效果
+-- 	self.theworldstate = nil
+-- 	self.origspeed = nil
+-- 	local pSetSpeed = self.SetSpeed
+-- 	self.SetSpeed = function(self, speed)
+-- 		self.origspeed = speed
+-- 		return pSetSpeed(self, speed)
+-- 	end
+-- 	self.SetOnTheworldTriggeredFn = function(self, fn)
+-- 		self.ontheworldtriggeredfn = fn
+-- 	end
+-- 	self.OnTheworldTriggered = function(self, sw)
+-- 		if self.ontheworldtriggeredfn ~= nil then
+-- 			self.ontheworldtriggeredfn(self.inst, sw, self.origspeed)
+-- 		end
+-- 		if sw then
+-- 			if self.speed >= self.origspeed then
+-- 				self.speed = self.origspeed / 4
+-- 				self.inst.Physics:SetMotorVel(self.origspeed / 4, 0, 0)
+-- 				self.inst:DoTaskInTime((120 + 30 * math.random()) * FRAMES / self.origspeed, function()
+-- 					if TheWorld:HasTag("the_world") and self:IsThrown() then
+-- 						self.speed = 0.1
+-- 						self.inst.Physics:SetMotorVel(self.speed, 0, 0)
+-- 					end
+-- 				end)
+-- 			end
+-- 		else
+-- 			if self.speed <= self.origspeed / 4 then
+-- 				self.speed = self.origspeed / 4 + 1
+-- 				self.inst.Physics:SetMotorVel(self.origspeed / 4 + 1, 0, 0)
+-- 				self.inst:DoTaskInTime((120 + 30 * math.random()) * FRAMES / self.origspeed, function()
+-- 					if self:IsThrown() then
+-- 						self.speed = self.origspeed
+-- 						self.inst.Physics:SetMotorVel(self.speed, 0, 0)
+-- 					end
+-- 				end)
+-- 			end
+-- 		end
+-- 	end
+-- 	local pStop = self.Stop
+-- 	self.Stop = function(self)
+-- 		local ret = pStop(self)
+-- 		self.speed = self.origspeed
+-- 		self.theworldstate = nil
+-- 		return ret
+-- 	end
+-- 	local pOnUpdate = self.OnUpdate
+-- 	self.OnUpdate = function(self, dt)
+-- 		if self.target ~= nil then
+-- 			if TheWorld:HasTag("the_world") then
+-- 				self:OnTheworldTriggered(true)
+-- 			elseif self.theworldstate and not TheWorld:HasTag("the_world") then
+-- 				self:OnTheworldTriggered(false)
+-- 			end
+-- 			self.theworldstate = TheWorld:HasTag("the_world")
+-- 		end
+-- 		return pOnUpdate(self, dt)
+-- 	end
+-- end)
 
-AddComponentPostInit("burnable", function(self)	-- <改写燃烧API
-	self.countdown = nil
-	local function DoneBurning(inst, self)
-		inst:PushEvent("onburnt")
-		if self.onburnt ~= nil then
-			self.onburnt(inst)
-		end
-		if inst.components.explosive ~= nil then
-			--explosive explode
-			inst.components.explosive:OnBurnt()
-		end
-		if self.extinguishimmediately then
-			self:Extinguish()
-		end
-	end
-	local function vtick(inst, self)
-		if inst.components.explosive ~= nil and self.countdown > 0.1 or not inst:HasTag("time_stopped") then
-			self.countdown = self.countdown - 0.1
-			if self.countdown <= 0 then
-				self.task:Cancel()
-				self.task = nil
-				self.countdown = nil
-				DoneBurning(inst, self)
-			end
-		end
-	end
-	self.ExtendBurning = function(self)
-		if self.task ~= nil then
-			self.task:Cancel()
-		end
-		self.countdown = self.burntime
-		self.task = self.burntime ~= nil and self.inst:DoPeriodicTask(0.1, vtick, nil, self) or nil
-	end
-end)
+-- AddComponentPostInit("burnable", function(self)	-- <改写燃烧API
+-- 	self.countdown = nil
+-- 	local function DoneBurning(inst, self)
+-- 		inst:PushEvent("onburnt")
+-- 		if self.onburnt ~= nil then
+-- 			self.onburnt(inst)
+-- 		end
+-- 		if inst.components.explosive ~= nil then
+-- 			--explosive explode
+-- 			inst.components.explosive:OnBurnt()
+-- 		end
+-- 		if self.extinguishimmediately then
+-- 			self:Extinguish()
+-- 		end
+-- 	end
+-- 	local function vtick(inst, self)
+-- 		if inst.components.explosive ~= nil and self.countdown > 0.1 or not inst:HasTag("time_stopped") then
+-- 			self.countdown = self.countdown - 0.1
+-- 			if self.countdown <= 0 then
+-- 				self.task:Cancel()
+-- 				self.task = nil
+-- 				self.countdown = nil
+-- 				DoneBurning(inst, self)
+-- 			end
+-- 		end
+-- 	end
+-- 	self.ExtendBurning = function(self)
+-- 		if self.task ~= nil then
+-- 			self.task:Cancel()
+-- 		end
+-- 		self.countdown = self.burntime
+-- 		self.task = self.burntime ~= nil and self.inst:DoPeriodicTask(0.1, vtick, nil, self) or nil
+-- 	end
+-- end)
 
-AddComponentPostInit("childspawner", function(self)	-- <改写巢穴类API
-	local pCanSpawn = self.CanSpawn
-	self.CanSpawn = function(self)
-		return pCanSpawn(self) and not self.inst:HasTag("time_stopped")
-	end
-	local pCanEmergencySpawn = self.CanEmergencySpawn
-	self.CanEmergencySpawn = function(self)
-		return pCanEmergencySpawn(self) and not self.inst:HasTag("time_stopped")
-	end
-end)	-- >
+-- AddComponentPostInit("childspawner", function(self)	-- <改写巢穴类API
+-- 	local pCanSpawn = self.CanSpawn
+-- 	self.CanSpawn = function(self)
+-- 		return pCanSpawn(self) and not self.inst:HasTag("time_stopped")
+-- 	end
+-- 	local pCanEmergencySpawn = self.CanEmergencySpawn
+-- 	self.CanEmergencySpawn = function(self)
+-- 		return pCanEmergencySpawn(self) and not self.inst:HasTag("time_stopped")
+-- 	end
+-- end)	-- >
 AddComponentPostInit("combat", function(self)	-- <改写攻击API
-	local pOnUpdate = self.OnUpdate
-	self.OnUpdate = function(self, dt)
-		if not self.inst:HasTag("time_stopped") then
-			return pOnUpdate(self, dt)
-		end
-	end
-	local pStartAttack = self.StartAttack
-	self.StartAttack = function(self)
-		if not self.inst:HasTag("time_stopped") then
-			local ret = pStartAttack(self)
-			self.inst:PushEvent("startattack")
-			return ret
-		end
-	end
+	-- local pOnUpdate = self.OnUpdate
+	-- self.OnUpdate = function(self, dt)
+	-- 	if not self.inst:HasTag("time_stopped") then
+	-- 		return pOnUpdate(self, dt)
+	-- 	end
+	-- end
+	-- local pStartAttack = self.StartAttack
+	-- self.StartAttack = function(self)
+	-- 	if not self.inst:HasTag("time_stopped") then
+	-- 		local ret = pStartAttack(self)
+	-- 		self.inst:PushEvent("startattack")
+	-- 		return ret
+	-- 	end
+	-- end
 	local pCalcDamage = self.CalcDamage
 	self.CalcDamage = function(self, target, weapon, multiplier)
 		return pCalcDamage(self, target, weapon, multiplier and multiplier * (self.extradamagemultiplier or 1) or self.extradamagemultiplier)
 	end
 end)	-- >
-AddComponentPostInit("health", function(self)	-- <改写生命API
-	self.twtask = nil
-	local function vtick(inst, data)
-		if not data.self.inst:HasTag("time_stopped") then
-			data.self.twtask:Cancel()
-			data.self.twtask = nil
-			TheWorld:PushEvent("entity_death", { inst = data.self.inst, cause = data.cause, afflicter = data.afflicter })
-			data.self.inst:PushEvent("death", { cause = data.cause, afflicter = data.afflicter })
-			if not data.self.nofadeout then
-				data.self.inst:AddTag("NOCLICK")
-				data.self.inst.persists = false
-				data.self.inst:DoTaskInTime(data.self.destroytime or 2, ErodeAway)
-			end
-		end
-	end
-	self.SetVal = function(self, val, cause, afflicter)
-		local old_health = self.currenthealth
-		local max_health = self:GetMaxWithPenalty()
-		local min_health = math.min(self.minhealth or 0, max_health)
-		if val > max_health then
-			val = max_health
-		end
-		if val <= min_health then
-		self.currenthealth = min_health
-			self.inst:PushEvent("minhealth", { cause = cause, afflicter = afflicter })
-		else
-			self.currenthealth = val
-		end
-		if old_health > 0 and self.currenthealth <= 0 then
-			if self.inst:HasTag("time_stopped") then
-				self.twtask = self.inst:DoPeriodicTask(0.5, vtick, nil, { self = self, cause = cause, afflicter = afflicter })
-			else
-				TheWorld:PushEvent("entity_death", { inst = self.inst, cause = cause, afflicter = afflicter })
-				self.inst:PushEvent("death", { cause = cause, afflicter = afflicter })
-				if not self.nofadeout then
-					self.inst:AddTag("NOCLICK")
-					self.inst.persists = false
-					self.inst:DoTaskInTime(self.destroytime or 2, ErodeAway)
-				end
-			end
-		end
-		if old_health <= 0 and self.currenthealth > 0 and self.twtask ~= nil then
-			self.twtask:Cancel()
-			self.twtask = nil
-		end
-	end
-end)	-- >
+-- AddComponentPostInit("health", function(self)	-- <改写生命API
+-- 	self.twtask = nil
+-- 	local function vtick(inst, data)
+-- 		if not data.self.inst:HasTag("time_stopped") then
+-- 			data.self.twtask:Cancel()
+-- 			data.self.twtask = nil
+-- 			TheWorld:PushEvent("entity_death", { inst = data.self.inst, cause = data.cause, afflicter = data.afflicter })
+-- 			data.self.inst:PushEvent("death", { cause = data.cause, afflicter = data.afflicter })
+-- 			if not data.self.nofadeout then
+-- 				data.self.inst:AddTag("NOCLICK")
+-- 				data.self.inst.persists = false
+-- 				data.self.inst:DoTaskInTime(data.self.destroytime or 2, ErodeAway)
+-- 			end
+-- 		end
+-- 	end
+-- 	self.SetVal = function(self, val, cause, afflicter)
+-- 		local old_health = self.currenthealth
+-- 		local max_health = self:GetMaxWithPenalty()
+-- 		local min_health = math.min(self.minhealth or 0, max_health)
+-- 		if val > max_health then
+-- 			val = max_health
+-- 		end
+-- 		if val <= min_health then
+-- 		self.currenthealth = min_health
+-- 			self.inst:PushEvent("minhealth", { cause = cause, afflicter = afflicter })
+-- 		else
+-- 			self.currenthealth = val
+-- 		end
+-- 		if old_health > 0 and self.currenthealth <= 0 then
+-- 			if self.inst:HasTag("time_stopped") then
+-- 				self.twtask = self.inst:DoPeriodicTask(0.5, vtick, nil, { self = self, cause = cause, afflicter = afflicter })
+-- 			else
+-- 				TheWorld:PushEvent("entity_death", { inst = self.inst, cause = cause, afflicter = afflicter })
+-- 				self.inst:PushEvent("death", { cause = cause, afflicter = afflicter })
+-- 				if not self.nofadeout then
+-- 					self.inst:AddTag("NOCLICK")
+-- 					self.inst.persists = false
+-- 					self.inst:DoTaskInTime(self.destroytime or 2, ErodeAway)
+-- 				end
+-- 			end
+-- 		end
+-- 		if old_health <= 0 and self.currenthealth > 0 and self.twtask ~= nil then
+-- 			self.twtask:Cancel()
+-- 			self.twtask = nil
+-- 		end
+-- 	end
+-- end)	-- >
 AddComponentPostInit("edible", function(self)	-- <改写食品API
 	self.externalfoodtypes = {}
 	self.AddExternalFoodType = function(self, extfoodtype)
@@ -927,17 +892,17 @@ local skill_valid = {
 	end, cd = TUNING.IZAYOI_X_CD},
 	c = {validfn = function(inst)
 		if inst.sg and not inst.sg:HasStateTag("busy") and not ThePlayer:HasTag("playerghost") then
-			return inst["c_skill"] and not inst:HasTag("time_stopped") and inst:HasTag("jikantsukai") and inst.wiliya_mana_current:value() >= 5 and true
+			return inst["c_skill"] and not inst:HasTag("time_stopped") and inst:HasTag("watch_equipped") and inst.wiliya_mana_current:value() >= 5 and true
 		end
 	end, cd = TUNING.IZAYOI_C_CD},
 	v = {validfn = function(inst)
 		if inst.sg and not inst.sg:HasStateTag("busy") and not ThePlayer:HasTag("playerghost") then
-			return inst["v_skill"] and inst:HasTag("jikantsukai") and inst.wiliya_mana_current:value() >= 50 and true
+			return inst["v_skill"] and inst:HasTag("watch_equipped") and inst.wiliya_mana_current:value() >= 50 and true
 		end
 	end, cd = TUNING.IZAYOI_V_CD},
 	b = {validfn = function(inst)
 		if inst.sg and not inst.sg:HasStateTag("busy") and not ThePlayer:HasTag("playerghost") then
-			return inst["b_skill"] and not inst:HasTag("time_stopped") and inst:HasTag("jikantsukai") and inst.wiliya_mana_current:value() >= 60 and true
+			return inst["b_skill"] and not inst:HasTag("time_stopped") and inst:HasTag("watch_equipped") and inst.wiliya_mana_current:value() >= 60 and true
 		end
 	end, cd = TUNING.IZAYOI_B_CD},
 }
@@ -1009,7 +974,7 @@ local skill_valid2 = {
 	c = {validfn = function(inst, vtarget)
 		local timenotstopped = not inst:HasTag("time_stopped")
 		local enoughmana = inst.wiliya_mana_current:value() >= 5 
-		local havewatch = inst:HasTag("jikantsukai")
+		local havewatch = inst:HasTag("watch_equipped")
 		local validknife = FindEntity(inst, 1000, nil, {"izayoi_sword"})
 		if not timenotstopped then
 			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "动不了……" or "I can't move...")
@@ -1025,7 +990,7 @@ local skill_valid2 = {
 	
 	v = {validfn = function(inst, vtarget)
 		local enoughmana = inst.wiliya_mana_current:value() >= 50
-		local havewatch = inst:HasTag("jikantsukai")
+		local havewatch = inst:HasTag("watch_equipped")
 		if not havewatch then
 			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "时间……无法掌握呢。" or "I can't manipulate the time...")
 		elseif not enoughmana then
@@ -1037,7 +1002,7 @@ local skill_valid2 = {
 	b = {validfn = function(inst, vtarget)
 		local timenotstopped = not inst:HasTag("time_stopped")
 		local enoughmana = inst.wiliya_mana_current:value() >= 60 
-		local havewatch = inst:HasTag("jikantsukai")
+		local havewatch = inst:HasTag("watch_equipped")
 		if not timenotstopped then
 			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "动不了……" or "I can't move...")
 		elseif not havewatch then
@@ -1049,74 +1014,74 @@ local skill_valid2 = {
 	end},
 }
 --技能RPC, 服务端
-local function twperiod()
-	x0, y0, z0 = TheWorld.twhost.Transform:GetWorldPosition()
-	for k, v in pairs(TheSim:FindEntities(x0, y0, z0, 50, nil, {"wall", "INLIMBO", "FX"})) do
-		if not IsInTable(v, TheWorld.twents) then
-			table.insert(TheWorld.twents, v)
-		end
-	end
-	for k, v in pairs(TheWorld.twents) do
-		if v and v:IsValid() and not v:HasTag("canmoveintime") and not (v:HasTag("inforcefield") and v:HasTag("watch_equipped")) then
-			if v.AnimState then
-				v.AnimState:Pause()
-			end
-			v:StopBrain()
-			if v.components.combat then
-				v.components.combat:SetTarget(nil)
-			end
-			if v.components.locomotor then
-				v.components.locomotor:Stop()
-				v.components.locomotor:StopUpdatingInternal()
-			end
-			if v.components.playercontroller then
-				v.components.playercontroller:Enable(false)
-			end
-			if not v:HasTag("time_stopped") then
-				v:AddTag("time_stopped")
-				v:PushEvent("time_stopped")
-			end
-		end
-	end
-end
-local function twresume()
-	for k, v in pairs(TheWorld.twents) do
-		if v:HasTag("time_stopped") then
-			v:RestartBrain()
-			if v.AnimState then
-				v.AnimState:Resume()
-			end
-			if v.components.locomotor then
-				v.components.locomotor:StartUpdatingInternal()
-			end
-			if v.components.playercontroller then
-				v.components.playercontroller:Enable(true)
-			end
-			v:RemoveTag("time_stopped")
-			v:PushEvent("time_resumed")
-		end
-	end
-	TheWorld.twents = {}
-end
-local function twtimedone(inst, data)
-	if data.name == "the_world" then
-		if TheWorld.twtask ~= nil then
-			TheWorld.twtask:Cancel()
-			TheWorld.twtask = nil
-		end
-		twresume()
-		TheWorld:DoTaskInTime(0.1, function()
-			if TheWorld:HasTag("the_world") then
-				TheWorld:RemoveTag("the_world")
-			end
-		end)
-	end
-	if data.name == "twreleasesound" then
-		if TheWorld.twhost and TheWorld.twhost.SoundEmitter then
-			TheWorld.twhost.SoundEmitter:PlaySound(TheWorld.twreleasese)
-		end
-	end
-end
+-- local function twperiod()
+-- 	x0, y0, z0 = TheWorld.twhost.Transform:GetWorldPosition()
+-- 	for k, v in pairs(TheSim:FindEntities(x0, y0, z0, 50, nil, {"wall", "INLIMBO", "FX"})) do
+-- 		if not IsInTable(v, TheWorld.twents) then
+-- 			table.insert(TheWorld.twents, v)
+-- 		end
+-- 	end
+-- 	for k, v in pairs(TheWorld.twents) do
+-- 		if v and v:IsValid() and not v:HasTag("canmoveintime") and not (v:HasTag("inforcefield") and v:HasTag("watch_equipped")) then
+-- 			if v.AnimState then
+-- 				v.AnimState:Pause()
+-- 			end
+-- 			v:StopBrain()
+-- 			if v.components.combat then
+-- 				v.components.combat:SetTarget(nil)
+-- 			end
+-- 			if v.components.locomotor then
+-- 				v.components.locomotor:Stop()
+-- 				v.components.locomotor:StopUpdatingInternal()
+-- 			end
+-- 			if v.components.playercontroller then
+-- 				v.components.playercontroller:Enable(false)
+-- 			end
+-- 			if not v:HasTag("time_stopped") then
+-- 				v:AddTag("time_stopped")
+-- 				v:PushEvent("time_stopped")
+-- 			end
+-- 		end
+-- 	end
+-- end
+-- local function twresume()
+-- 	for k, v in pairs(TheWorld.twents) do
+-- 		if v:HasTag("time_stopped") then
+-- 			v:RestartBrain()
+-- 			if v.AnimState then
+-- 				v.AnimState:Resume()
+-- 			end
+-- 			if v.components.locomotor then
+-- 				v.components.locomotor:StartUpdatingInternal()
+-- 			end
+-- 			if v.components.playercontroller then
+-- 				v.components.playercontroller:Enable(true)
+-- 			end
+-- 			v:RemoveTag("time_stopped")
+-- 			v:PushEvent("time_resumed")
+-- 		end
+-- 	end
+-- 	TheWorld.twents = {}
+-- end
+-- local function twtimedone(inst, data)
+-- 	if data.name == "the_world" then
+-- 		if TheWorld.twtask ~= nil then
+-- 			TheWorld.twtask:Cancel()
+-- 			TheWorld.twtask = nil
+-- 		end
+-- 		twresume()
+-- 		TheWorld:DoTaskInTime(0.1, function()
+-- 			if TheWorld:HasTag("the_world") then
+-- 				TheWorld:RemoveTag("the_world")
+-- 			end
+-- 		end)
+-- 	end
+-- 	if data.name == "twreleasesound" then
+-- 		if TheWorld.twhost and TheWorld.twhost.SoundEmitter then
+-- 			TheWorld.twhost.SoundEmitter:PlaySound(TheWorld.twreleasese)
+-- 		end
+-- 	end
+-- end
 local skills = {
 	z = function(inst, vtarget)
 		if vtarget and vtarget:IsValid() and not vtarget:HasTag("INLIMBO") and vtarget ~= inst then
@@ -1157,13 +1122,15 @@ local skills = {
 				until(tp)
 				if tp then
 					inst.Physics:Teleport(x2, y2, z2)
-					if TUNING.IZAYOI_SE then
-						inst.SoundEmitter:PlaySound("izayoi/se/teleport")
+					if TUNING.IZAYOI_SE > 0 then
+						inst.SoundEmitter:PlaySound("izayoi/se/teleport", nil, TUNING.IZAYOI_SE)
 					end
 				end
 				inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻在「钟表的残骸」" or "Illusion Existence \"Clock Corpse\"", 2, true)
-				inst.AnimState:PlayAnimation("staff_pre")
-				inst.AnimState:PushAnimation("idle")
+				if not inst.components.rider:IsRiding() then 
+					inst.AnimState:PlayAnimation("staff_pre")
+					inst.AnimState:PushAnimation("idle")
+				end
 			else
 				for i = 1, 5 do
 					inst:DoTaskInTime( i * FRAMES * 2, function()
@@ -1177,7 +1144,9 @@ local skills = {
 					end)
 				end
 				inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻幽「迷幻的杰克」" or "Illusion Phantom \"Jack the Ludo Bile\"", 2, true)
-				inst.AnimState:PlayAnimation("throw")
+				if not inst.components.rider:IsRiding() then 
+					inst.AnimState:PlayAnimation("throw")
+				end
 			end
 			inst.components.wiliya_mana:DoDelta(-15)
 		end
@@ -1221,11 +1190,13 @@ local skills = {
 		else
 			inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻符「无差别伤害」" or "Illusion Sign \"Indiscriminate\"", 2, true)
 		end
-		if TUNING.IZAYOI_VOICE then
-			inst.SoundEmitter:PlaySound("izayoi/voice/execute")
+		if TUNING.IZAYOI_VOICE > 0 then
+			inst.SoundEmitter:PlaySound("izayoi/voice/execute", nil, TUNING.IZAYOI_VOICE)
 		end
-		inst.AnimState:PlayAnimation("staff_pre", false)
-		inst.AnimState:PushAnimation("idle")
+		if not inst.components.rider:IsRiding() then 
+			inst.AnimState:PlayAnimation("staff_pre", false)
+			inst.AnimState:PushAnimation("idle")
+		end
 		inst.components.wiliya_mana:DoDelta(-25)
 	end,
 	
@@ -1245,100 +1216,103 @@ local skills = {
 			end
 		end
 		inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻术「吾刃回归」" or "Illusion \"My Knife's Recursions\"", 2, true)
-		inst.AnimState:PlayAnimation("staff")
-		inst.AnimState:PushAnimation("idle")
+		if not inst.components.rider:IsRiding() then 
+			inst.AnimState:PlayAnimation("staff")
+			inst.AnimState:PushAnimation("idle")
+		end
 		inst.components.wiliya_mana:DoDelta(-5)
 	end,
 	
 	v = function(inst, vtarget)
-		if not TheWorld.components.timer then
-			TheWorld:AddComponent("timer")
-		end
-		if not TheWorld.twlistener then
-			TheWorld:ListenForEvent("timerdone", twtimedone)
-			TheWorld.twlistener = true
-		end
-		if not TheWorld:HasTag("the_world") then
-			local x0, y0, z0 = inst.Transform:GetWorldPosition()
-			local fx = SpawnPrefab("groundpoundring_fx")
-			if fx then
-				fx.Transform:SetPosition(x0, y0, z0)
-				fx.Transform:SetScale(2, 2, 2)
-				fx:DoTaskInTime(2 * FRAMES, function()
-					local fx = SpawnPrefab("groundpoundring_fx")
-					if fx then
-						fx.Transform:SetPosition(x0, y0, z0)
-						fx.Transform:SetScale(1.5, 1.5, 1.5)
-					end
-				end)
-			end
-			if TheWorld.twents == nil then
-				TheWorld.twents = {}
-			end
-			TheWorld.twhost = inst
-			inst:AddTag("canmoveintime")
-			if not inst.components.timer:TimerExists("canmoveintime") then
-				inst.components.timer:StartTimer("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
-			else
-				inst.components.timer:SetTimeLeft("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
-			end
-			TheWorld.twtask = TheWorld:DoPeriodicTask(0.1, twperiod)
-			TheWorld:PushEvent("the_world")
-			if not TheWorld.components.timer:TimerExists("the_world") then
-				TheWorld.components.timer:StartTimer("the_world", TUNING.IZAYOI_V_LENGTH)
-			else
-				TheWorld.components.timer:SetTimeLeft("the_world", TUNING.IZAYOI_V_LENGTH)
-			end
-			TheWorld:AddTag("the_world")
-			if TUNING.IZAYOI_SE then
-				TheWorld.twreleasese = "izayoi/se/clock"
-				if not TheWorld.components.timer:TimerExists("twreleasesound") then
-					TheWorld.components.timer:StartTimer("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
-				end
-				inst.SoundEmitter:PlaySound("izayoi/se/the_world")
-			end
-			if TUNING.IZAYOI_VOICE then
-				inst.SoundEmitter:PlaySound("izayoi/voice/the_world")
-			end
-			inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻世「The World」" or "Illusion World \"The World\"", 2, true)
-			inst.AnimState:PlayAnimation("staff_pre")
-			inst.AnimState:PushAnimation("idle")
-		else
-			if TheWorld.components.timer:GetTimeLeft("the_world") < TUNING.IZAYOI_V_LENGTH then
-				TheWorld.twhost = inst
-				if TheWorld.components.timer:TimerExists("the_world") then
-					TheWorld.components.timer:SetTimeLeft("the_world", TUNING.IZAYOI_V_LENGTH)
-				else
-					TheWorld.components.timer:StartTimer("the_world", TUNING.IZAYOI_V_LENGTH)
-				end
-				if TUNING.IZAYOI_SE then
-					TheWorld.twreleasese = "izayoi/se/clock"
-					if not TheWorld.components.timer:TimerExists("twreleasesound") then
-						TheWorld.components.timer:StartTimer("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
-					else
-						TheWorld.components.timer:SetTimeLeft("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
-					end
-				end
-			end
-			inst:AddTag("canmoveintime")
-			if not inst.components.timer:TimerExists("canmoveintime") then
-				inst.components.timer:StartTimer("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
-			else
-				inst.components.timer:SetTimeLeft("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
-			end
-			if inst.AnimState then
-				inst.AnimState:Resume()
-			end
-			if inst.components.locomotor then
-				inst.components.locomotor:StartUpdatingInternal()
-			end
-			if inst.components.playercontroller then
-				inst.components.playercontroller:Enable(true)
-			end
-			if inst:HasTag("time_stopped") then
-				inst:RemoveTag("time_stopped")
-			end
-		end
+		-- if not TheWorld.components.timer then
+		-- 	TheWorld:AddComponent("timer")
+		-- end
+		-- if not TheWorld.twlistener then
+		-- 	TheWorld:ListenForEvent("timerdone", twtimedone)
+		-- 	TheWorld.twlistener = true
+		-- end
+		-- if not TheWorld:HasTag("the_world") then
+			-- local x0, y0, z0 = inst.Transform:GetWorldPosition()
+			-- local fx = SpawnPrefab("groundpoundring_fx")
+			-- if fx then
+			-- 	fx.Transform:SetPosition(x0, y0, z0)
+			-- 	fx.Transform:SetScale(2, 2, 2)
+			-- 	fx:DoTaskInTime(2 * FRAMES, function()
+			-- 		local fx = SpawnPrefab("groundpoundring_fx")
+			-- 		if fx then
+			-- 			fx.Transform:SetPosition(x0, y0, z0)
+			-- 			fx.Transform:SetScale(1.5, 1.5, 1.5)
+			-- 		end
+			-- 	end)
+			-- end
+			-- if TheWorld.twents == nil then
+			-- 	TheWorld.twents = {}
+			-- end
+			-- TheWorld.twhost = inst
+			-- inst:AddTag("canmoveintime")
+			-- if not inst.components.timer:TimerExists("canmoveintime") then
+			-- 	inst.components.timer:StartTimer("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
+			-- else
+			-- 	inst.components.timer:SetTimeLeft("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
+			-- end
+			-- TheWorld.twtask = TheWorld:DoPeriodicTask(0.1, twperiod)
+			-- TheWorld:PushEvent("the_world")
+			-- if not TheWorld.components.timer:TimerExists("the_world") then
+			-- 	TheWorld.components.timer:StartTimer("the_world", TUNING.IZAYOI_V_LENGTH)
+			-- else
+			-- 	TheWorld.components.timer:SetTimeLeft("the_world", TUNING.IZAYOI_V_LENGTH)
+			-- end
+			-- TheWorld:AddTag("the_world")
+			-- if TUNING.IZAYOI_SE then
+			-- 	TheWorld.twreleasese = "izayoi/se/clock"
+			-- 	if not TheWorld.components.timer:TimerExists("twreleasesound") then
+			-- 		TheWorld.components.timer:StartTimer("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
+			-- 	end
+			-- 	inst.SoundEmitter:PlaySound("izayoi/se/the_world")
+			-- end
+			-- if TUNING.IZAYOI_VOICE then
+			-- 	inst.SoundEmitter:PlaySound("izayoi/voice/the_world")
+			-- end
+			-- inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻世「The World」" or "Illusion World \"The World\"", 2, true)
+			-- inst.AnimState:PlayAnimation("staff_pre")
+			-- inst.AnimState:PushAnimation("idle")
+		-- else
+			-- if TheWorld.components.timer:GetTimeLeft("the_world") < TUNING.IZAYOI_V_LENGTH then
+			-- 	TheWorld.twhost = inst
+			-- 	if TheWorld.components.timer:TimerExists("the_world") then
+			-- 		TheWorld.components.timer:SetTimeLeft("the_world", TUNING.IZAYOI_V_LENGTH)
+			-- 	else
+			-- 		TheWorld.components.timer:StartTimer("the_world", TUNING.IZAYOI_V_LENGTH)
+			-- 	end
+			-- 	if TUNING.IZAYOI_SE then
+			-- 		TheWorld.twreleasese = "izayoi/se/clock"
+			-- 		if not TheWorld.components.timer:TimerExists("twreleasesound") then
+			-- 			TheWorld.components.timer:StartTimer("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
+			-- 		else
+			-- 			TheWorld.components.timer:SetTimeLeft("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
+			-- 		end
+			-- 	end
+			-- end
+			-- inst:AddTag("canmoveintime")
+			-- if not inst.components.timer:TimerExists("canmoveintime") then
+			-- 	inst.components.timer:StartTimer("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
+			-- else
+			-- 	inst.components.timer:SetTimeLeft("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
+			-- end
+			-- if inst.AnimState then
+			-- 	inst.AnimState:Resume()
+			-- end
+			-- if inst.components.locomotor then
+			-- 	inst.components.locomotor:StartUpdatingInternal()
+			-- end
+			-- if inst.components.playercontroller then
+			-- 	inst.components.playercontroller:Enable(true)
+			-- end
+			-- if inst:HasTag("time_stopped") then
+			-- 	inst:RemoveTag("time_stopped")
+			-- end
+		-- end
+		inst.components.timestopper:DoTimeStop(TUNING.IZAYOI_V_LENGTH)
 		inst.components.wiliya_mana:DoDelta(-50)
 	end,
 		
@@ -1368,12 +1342,14 @@ local skills = {
 				end
 			end
 		end
-		if TUNING.IZAYOI_SE then
-			inst.SoundEmitter:PlaySound("izayoi/se/border")
+		if TUNING.IZAYOI_SE > 0 then
+			inst.SoundEmitter:PlaySound("izayoi/se/border", nil, TUNING.IZAYOI_SE)
 		end
 		inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "时符「完美空间」" or "Time Sign \"Private Square\"", 2, true)
-		inst.AnimState:PlayAnimation("staff_pre")
-		inst.AnimState:PushAnimation("idle")
+		if not inst.components.rider:IsRiding() then 
+			inst.AnimState:PlayAnimation("staff_pre")
+			inst.AnimState:PushAnimation("idle")
+		end
 		inst.components.wiliya_mana:DoDelta(-60)
 	end,
 }
@@ -1439,18 +1415,18 @@ end
 
 AddPlayerPostInit(function(inst)
 	if inst.prefab == characterName then
-		inst.Transform:SetScale(1.25,1.25,1.25)
-		inst:AddComponent("timer")
+		-- inst.Transform:SetScale(1.25,1.25,1.25)
+		-- inst:AddComponent("timer")
 		inst:DoTaskInTime(0, function()
 			inst:ListenForEvent("timerdone", function(inst, data)
 				if data.name == "z_skill" or data.name == "x_skill" or data.name == "c_skill" or data.name == "v_skill" or data.name == "b_skill" then
 					inst[data.name] = true 
 				end
-				if data.name == "canmoveintime" then
-					if inst:HasTag("canmoveintime") then
-						inst:RemoveTag("canmoveintime")
-					end
-				end
+				-- if data.name == "canmoveintime" then
+				-- 	if inst:HasTag("canmoveintime") then
+				-- 		inst:RemoveTag("canmoveintime")
+				-- 	end
+				-- end
 			end)
 			for key, v in pairs(skill_valid) do
 				inst[key.."_skill"] = true		-- 刚载入游戏是否允许使用技能 

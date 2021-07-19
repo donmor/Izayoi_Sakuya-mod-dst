@@ -8,7 +8,9 @@ local assets =
 local function oneaten(inst, eater)	-- <回蓝
 	if eater.components.wiliya_mana then
 		eater.components.wiliya_mana:DoDelta(40)
-		eater.SoundEmitter:PlaySound("izayoi/se/powerup")
+		if TUNING.IZAYOI_SE > 0 then
+			eater.SoundEmitter:PlaySound("izayoi/se/powerup", nil, TUNING.IZAYOI_SE)
+		end
 	end
 end	-- >
 

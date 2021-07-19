@@ -31,8 +31,24 @@ bugtracker_config = {
 	upload_client_log = true,
 	upload_server_log = true,
 }
+mod_dependencies = {
+	{
+		["libTimeStopper"] = true
+	}
+}
 configuration_options =
 {
+	{
+		name = "language",
+		label = "语言/Language",
+		options =
+		{
+			{description = "中文", data = "zh"},
+			{description = "English", data = "en"},
+		},
+		default = "zh",
+	},
+
 	{
 		name = "recipes",
 		label = "制作配方/Recipes",
@@ -134,10 +150,12 @@ configuration_options =
 		label = "专属音效/SE",
 		options =
 		{
-			{description = "启用", data = true, hover = "启用音效/On"},
-			{description = "禁用", data = false, hover = "禁用音效/Off"},
+			{description = "关", data = 0, hover = "禁用音效/Off"},
+			{description = "低", data = 0.4, hover = "启用音效/On"},
+			{description = "中", data = 0.7, hover = "启用音效/On"},
+			{description = "高", data = 1, hover = "禁用音效/Off"},
 		},
-		default = true,
+		default = .6,
 	},
 		
 	{
@@ -145,9 +163,11 @@ configuration_options =
 		label = "专属语音/Voice",
 		options =
 		{
-			{description = "启用", data = true, hover = "启用语音/On"},
-			{description = "禁用", data = false, hover = "禁用语音/Off"},
+			{description = "关", data = 0, hover = "禁用语音/Off"},
+			{description = "低", data = 0.4, hover = "启用语音/On"},
+			{description = "中", data = 0.7, hover = "启用语音/On"},
+			{description = "高", data = 1, hover = "禁用语音/Off"},
 		},
-		default = true,
+		default = 0.7,
 	}
 }
