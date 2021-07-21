@@ -1468,7 +1468,7 @@ AddPlayerPostInit(function(inst)
 		if not inst.unloadFieldOnDeath then
 			inst.unloadFieldOnDeath = inst:ListenForEvent("makeplayerghost", function(inst, data)
 				if inst.forcefieldfx then
-					inst.forcefieldfx:Terminate()
+					inst.forcefieldfx:Terminate(inst)
 				end
 			end)
 		end
