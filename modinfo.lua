@@ -32,9 +32,12 @@ bugtracker_config = {
 	upload_server_log = true,
 }
 mod_dependencies = {
-	{
-		["libTimeStopper"] = true,
-	},
+    {
+        -- workshop = "workshop-1378549454",
+        ["libTimeStopper-mod-dst"] = false,
+        ["libTimeStopper"] = true,
+    },
+    
 }
 configuration_options =
 {
@@ -67,7 +70,7 @@ configuration_options =
 		label = "能力强度/Strength",
 		options =
 		{
-			{description = "Op", data = "op", hover = "极强的体质和攻击力，自动回复，极短技能CD，仅供测试/Powerful, HP recovery"},
+			{description = "Invincible", data = "op", hover = "极强的体质和攻击力，自动回复，极短技能CD，仅供测试/Powerful, HP recovery, for test only"},
 			{description = "Easy", data = "easy", hover = "较强的体质和攻击力，较短的技能CD/Strong"},
 			{description = "Normal", data = "normal", hover = "一般的体质，攻击力，技能CD/Normal"},
 			{description = "Hard", data = "hard", hover = "较弱的体质和攻击力，较长的技能CD/Weak"},
@@ -92,7 +95,7 @@ configuration_options =
 		label = "X技能模式/X Skill mode",
 		options =
 		{
-			{description = "幻符「杀人玩偶」", data = true, hover = "攻击30米范围内的一切敌人/Attack all creatures"},
+			{description = "幻符「杀人玩偶」", data = true, hover = "攻击30米范围内的敌人/Attack all creatures"},
 			{description = "幻符「无差别伤害」", data = false, hover = "攻击30米范围内的一切非己方的生物/Attack hostile only"},
 		},
 		default = true,
@@ -114,7 +117,7 @@ configuration_options =
 		label = "怀表格子防腐/Watch Food Spoilage",
 		options =
 		{
-			{description = "Op", data = 0, hover = "时间完全停止/Time Stopped"},
+			{description = "Invincible", data = 0, hover = "时间完全停止/Time Stopped"},
 			{description = "Easy", data = 0.5, hover = "时间流逝速度减半/Time Goes Slower"},
 			{description = "Normal", data = 0.75, hover = "时间流逝较慢/Time Goes Slow"},
 			{description = "Hard", data = 0.9, hover = "时间流逝稍慢/Time Goes a little Slow"},

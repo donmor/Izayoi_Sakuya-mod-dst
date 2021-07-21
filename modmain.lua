@@ -26,9 +26,9 @@ TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")
 
 TUNING.IZAYOI_LANGUAGE = GetModConfigData("language")
 if TUNING.IZAYOI_STRENGTH == "op" then	-- <设定强度
-	TUNING.IZAYOI_MAX_HUNGER = 300
-	TUNING.IZAYOI_MAX_SANITY = 300
-	TUNING.IZAYOI_MAX_HEALTH = 300
+	TUNING.IZAYOI_HUNGER = 300
+	TUNING.IZAYOI_SANITY = 300
+	TUNING.IZAYOI_HEALTH = 300
 	TUNING.IZAYOI_MAX_MANA = 300
 	TUNING.IZAYOI_DAMAGE = 2
 	TUNING.IZAYOI_Z_CD = 1
@@ -39,10 +39,11 @@ if TUNING.IZAYOI_STRENGTH == "op" then	-- <设定强度
 	TUNING.IZAYOI_V_LENGTH = 15
 	TUNING.IZAYOI_B_DURATION = 30
 	TUNING.IZAYOI_B_DAMAGEMULT = 1
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "蓬莱人" or "Invincible"
 elseif TUNING.IZAYOI_STRENGTH == "easy" then
-	TUNING.IZAYOI_MAX_HUNGER = 120
-	TUNING.IZAYOI_MAX_SANITY = 300
-	TUNING.IZAYOI_MAX_HEALTH = 200
+	TUNING.IZAYOI_HUNGER = 120
+	TUNING.IZAYOI_SANITY = 300
+	TUNING.IZAYOI_HEALTH = 200
 	TUNING.IZAYOI_MAX_MANA = 200
 	TUNING.IZAYOI_DAMAGE = 1.2
 	TUNING.IZAYOI_Z_CD = 3
@@ -53,10 +54,11 @@ elseif TUNING.IZAYOI_STRENGTH == "easy" then
 	TUNING.IZAYOI_V_LENGTH = 11
 	TUNING.IZAYOI_B_DURATION = 30
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.9
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "初月" or "Easy"
 elseif TUNING.IZAYOI_STRENGTH == "normal" then
-	TUNING.IZAYOI_MAX_HUNGER = 100
-	TUNING.IZAYOI_MAX_SANITY = 250
-	TUNING.IZAYOI_MAX_HEALTH = 150
+	TUNING.IZAYOI_HUNGER = 100
+	TUNING.IZAYOI_SANITY = 250
+	TUNING.IZAYOI_HEALTH = 150
 	TUNING.IZAYOI_MAX_MANA = 160
 	TUNING.IZAYOI_DAMAGE = 1
 	TUNING.IZAYOI_Z_CD = 5
@@ -67,10 +69,11 @@ elseif TUNING.IZAYOI_STRENGTH == "normal" then
 	TUNING.IZAYOI_V_LENGTH = 9
 	TUNING.IZAYOI_B_DURATION = 25
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.75
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "三日月" or "Normal"
 elseif TUNING.IZAYOI_STRENGTH == "hard" then
-	TUNING.IZAYOI_MAX_HUNGER = 90
-	TUNING.IZAYOI_MAX_SANITY = 200
-	TUNING.IZAYOI_MAX_HEALTH = 120
+	TUNING.IZAYOI_HUNGER = 90
+	TUNING.IZAYOI_SANITY = 200
+	TUNING.IZAYOI_HEALTH = 120
 	TUNING.IZAYOI_MAX_MANA = 120
 	TUNING.IZAYOI_DAMAGE = 0.9
 	TUNING.IZAYOI_Z_CD = 10
@@ -81,10 +84,11 @@ elseif TUNING.IZAYOI_STRENGTH == "hard" then
 	TUNING.IZAYOI_V_LENGTH = 5
 	TUNING.IZAYOI_B_DURATION = 20
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.6
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "上弦月" or "Hard"
 elseif TUNING.IZAYOI_STRENGTH == "lunatic" then
-	TUNING.IZAYOI_MAX_HUNGER = 80
-	TUNING.IZAYOI_MAX_SANITY = 150
-	TUNING.IZAYOI_MAX_HEALTH = 100
+	TUNING.IZAYOI_HUNGER = 80
+	TUNING.IZAYOI_SANITY = 150
+	TUNING.IZAYOI_HEALTH = 100
 	TUNING.IZAYOI_MAX_MANA = 90
 	TUNING.IZAYOI_DAMAGE = 0.75
 	TUNING.IZAYOI_Z_CD = 15
@@ -95,10 +99,11 @@ elseif TUNING.IZAYOI_STRENGTH == "lunatic" then
 	TUNING.IZAYOI_V_LENGTH = 3
 	TUNING.IZAYOI_B_DURATION = 15
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.5
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "待宵" or "Lunatic"
 else
-	TUNING.IZAYOI_MAX_HUNGER = 100
-	TUNING.IZAYOI_MAX_SANITY = 250
-	TUNING.IZAYOI_MAX_HEALTH = 150
+	TUNING.IZAYOI_HUNGER = 100
+	TUNING.IZAYOI_SANITY = 250
+	TUNING.IZAYOI_HEALTH = 150
 	TUNING.IZAYOI_MAX_MANA = 160
 	TUNING.IZAYOI_DAMAGE = 1
 	TUNING.IZAYOI_Z_CD = 5
@@ -109,10 +114,12 @@ else
 	TUNING.IZAYOI_V_LENGTH = 9
 	TUNING.IZAYOI_B_DURATION = 25
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.75
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "三日月" or "Normal"
 end	-- >
 
 PrefabFiles = {
 	"izayoi",
+	"izayoi_none",
 	"izayoi_redtea",
 	"izayoi_sword",
 	"izayoi_watch",
@@ -130,9 +137,6 @@ Assets = {
 	
 	Asset( "IMAGE", "bigportraits/izayoi.tex" ),
 	Asset( "ATLAS", "bigportraits/izayoi.xml" ),
-	
-	Asset( "IMAGE", "bigportraits/izayoi_none.tex" ),
-	Asset( "ATLAS", "bigportraits/izayoi_none.xml" ),
 	
 	Asset( "IMAGE", "images/map_icons/izayoi.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi.xml" ),
@@ -172,27 +176,45 @@ Assets = {
 	Asset( "SOUND", "sound/izayoi.fsb" ),
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
 }
+TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_sword = {
+	atlas = "images/izayoi_sword.xml",
+	image = "izayoi_sword.tex",
+}
+TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_watch = {
+	atlas = "images/izayoi_watch.xml",
+	image = "izayoi_watch.tex",
+}
+STRINGS.NAMES.IZAYOI = TUNING.IZAYOI_LANGUAGE == "zh" and "十六夜咲夜" or "Sakuya"
 STRINGS.CHARACTER_TITLES.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "绯红恶魔的女仆" or "Maid of the Scarlet Devil"
-STRINGS.CHARACTER_NAMES.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "十六夜咲夜" or "Sakuya Izayoi"
+STRINGS.CHARACTER_NAMES.izayoi = STRINGS.NAMES.IZAYOI
 STRINGS.CHARACTER_DESCRIPTIONS.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "*完美潇洒的从者\n*夜雾幻影杀人鬼\n*月时计" or "*Perfect and Elegant Servant\n*Phantomic Killer in Night Mist\n*Luna Clock"
 STRINGS.CHARACTER_QUOTES.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "\"我一生都是会死的人类哦。\n只要活着就会一直陪着大小姐。\"" or "\"We'll be together as long as I'm alive, Milady.\""
-STRINGS.NAMES.IZAYOI = TUNING.IZAYOI_LANGUAGE == "zh" and "咲夜" or "Sakuya"
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI = 
+STRINGS.SKIN_NAMES.izayoi_none = STRINGS.NAMES.IZAYOI
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.izayoi = 
 {
 	GENERIC = TUNING.IZAYOI_LANGUAGE == "zh" and "女仆？为什么在这里……" or "Why does this maid here?",
-	ATTACKER = TUNING.IZAYOI_LANGUAGE == "zh" and "这个女仆……好重的杀气……" or "Was her ordered to do so?",
-	MURDERER = TUNING.IZAYOI_LANGUAGE == "zh" and "那个女仆……到底是什么……" or "Was her ordered to do so?",
-	REVIVER = TUNING.IZAYOI_LANGUAGE == "zh" and "是她倒转了时间吗？应该不是吧……" or "Did her changed the time?",
+	ATTACKER = TUNING.IZAYOI_LANGUAGE == "zh" and "……什么时候！" or "How did her ...?!",
+	MURDERER = TUNING.IZAYOI_LANGUAGE == "zh" and "她为什么要这样做……" or "Was her ordered to do so?",
+	REVIVER = TUNING.IZAYOI_LANGUAGE == "zh" and "时间……被倒转了？" or "Did the time been changed?",
 	GHOST = TUNING.IZAYOI_LANGUAGE == "zh" and "似乎已经没法再作为女仆生存下去。" or "Can no longer be a maid.",
 }
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "她一定是从某个大家族那里来的。" or "She came from a big family."
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "她身上有种说不清楚的力量。" or "She has the power of mysterious. I'm not sure."
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我感觉她很不喜欢我。" or "Oh, she's not so friendly to me."
-STRINGS.CHARACTERS.WENDY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "既是女仆，又是死亡之地的住人。" or "Maid who come from the lair of death."
+STRINGS.CHARACTERS.WENDY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "既是女仆，又是恶魔之地的住人。" or "Maid who come from the lair of death."
 STRINGS.CHARACTERS.WX78.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "女仆" or "Maid"
 STRINGS.CHARACTERS.IZAYOI = require "speech"
 AddMinimapAtlas("images/map_icons/izayoi.xml")
-AddModCharacter("izayoi", "FEMALE")
+local skin_modes = {
+    { 
+        type = "ghost_skin",
+        anim_bank = "ghost",
+        idle_anim = "idle", 
+        scale = 0.75, 
+        offset = { 0, -25 } 
+    },
+}
+AddModCharacter("izayoi", "FEMALE", skin_modes)
 GLOBAL.FOODTYPE.BLOOD = "BLOOD"
 izayoitab = AddRecipeTab(TUNING.IZAYOI_LANGUAGE == "zh" and "完美潇洒的制作配方" or "Perfect and Elegant Recipes", 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
 if TUNING.IZAYOI_RECIPES == "easy" then

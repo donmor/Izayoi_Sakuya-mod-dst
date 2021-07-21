@@ -4,6 +4,13 @@ local assets =
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
 }
 
+TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI = {
+	"izayoi_sword",
+	"izayoi_sword",
+	"izayoi_sword",
+	"izayoi_watch", 
+}
+
 local function updatestatus(inst, phase)	-- <状态变化
 	if phase == "day" then
 		inst.components.combat.damagemultiplier = TUNING.IZAYOI_DAMAGE
@@ -61,9 +68,9 @@ function(inst)
 		"ran",
 	}	-- >
 	
-	inst.components.health:SetMaxHealth(TUNING.IZAYOI_MAX_HEALTH)	-- <三围
-	inst.components.hunger:SetMax(TUNING.IZAYOI_MAX_HUNGER)
-	inst.components.sanity:SetMax(TUNING.IZAYOI_MAX_SANITY)	-- >
+	inst.components.health:SetMaxHealth(TUNING.IZAYOI_HEALTH)	-- <三围
+	inst.components.hunger:SetMax(TUNING.IZAYOI_HUNGER)
+	inst.components.sanity:SetMax(TUNING.IZAYOI_SANITY)	-- >
 	inst.components.hunger.hungerrate = 0.8 * TUNING.WILSON_HUNGER_RATE
 	inst.components.sanity.neg_aura_mult = 0
 	inst:WatchWorldState("phase", updatestatus)
@@ -140,7 +147,4 @@ function(inst)
 			end
 		end
 	end)	-- >
-end, 
-{
-	"izayoi_sword", "izayoi_sword", "izayoi_sword", "izayoi_watch", 
-})
+end, TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI)
