@@ -221,9 +221,58 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.izayoi =
 STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "她一定是从某个大家族那里来的。" or "She came from a big family."
 STRINGS.CHARACTERS.WAXWELL.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "她身上有种说不清楚的力量。" or "She has the power of mysterious. I'm not sure."
 STRINGS.CHARACTERS.WILLOW.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我感觉她很不喜欢我。" or "Oh, she's not so friendly to me."
-STRINGS.CHARACTERS.WENDY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "既是女仆，又是恶魔之地的住人。" or "Maid who come from the lair of death."
+STRINGS.CHARACTERS.WENDY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "既是女仆，又是恶魔之地的住人。" or "Maid who come from the lair of devil."
 STRINGS.CHARACTERS.WX78.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "女仆" or "Maid"
-STRINGS.CHARACTERS.IZAYOI = require "speech"
+if STRINGS.CHARACTERS.REIMU then STRINGS.CHARACTERS.REIMU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.MARISA then STRINGS.CHARACTERS.MARISA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "等……等等！我不是来借书的，咲夜！" or "W...Wait! I'm not here to borrow books, Sakuya!" end
+if STRINGS.CHARACTERS.YOUMU then STRINGS.CHARACTERS.YOUMU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.SANAE then STRINGS.CHARACTERS.SANAE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.REISEN then STRINGS.CHARACTERS.REISEN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.YUUKA then STRINGS.CHARACTERS.YUUKA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.YUYUKO then STRINGS.CHARACTERS.YUYUKO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.YUKARI then STRINGS.CHARACTERS.YUKARI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.REMILIA then STRINGS.CHARACTERS.REMILIA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我也会珍惜在一起的每一秒哦，咲夜。" or "I'd also cherish every second together, Sakuya." end
+if STRINGS.CHARACTERS.FRAN then STRINGS.CHARACTERS.FRAN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "一起玩吧，咲夜！" or "Let's play together, Sakuya!" end
+if STRINGS.CHARACTERS.MEIRIN then STRINGS.CHARACTERS.MEIRIN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "是……是！我很精神！" or "Y...Yes! I feel fresh today!" end
+if STRINGS.CHARACTERS.PATCHOULI then STRINGS.CHARACTERS.PATCHOULI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "早安，咲夜。" or "Morning, Sakuya." end
+if STRINGS.CHARACTERS.FUTO then STRINGS.CHARACTERS.FUTO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "不不……我有特定的目标的，所以能别盯我了吗？" or "...I have had a specific target, so could you please stop staring at me?" end
+if STRINGS.CHARACTERS.SUIKA then STRINGS.CHARACTERS.SUIKA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "女仆长，下次宴会还在红魔馆吗？" or "When will the next feast in the Scarlet Devil Mansion, Sakuya?" end
+if STRINGS.CHARACTERS.KASEN then STRINGS.CHARACTERS.KASEN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.MOMIJI then STRINGS.CHARACTERS.MOMIJI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.QINGWA then STRINGS.CHARACTERS.QINGWA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.KEINE then STRINGS.CHARACTERS.KEINE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.MOKOU then STRINGS.CHARACTERS.MOKOU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.CIRNO then STRINGS.CHARACTERS.CIRNO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "芙兰在吗？我要找她一起出去玩！" or "Is Fran here? I want her out to play together!" end
+if STRINGS.CHARACTERS.DAIYOUSEI then STRINGS.CHARACTERS.DAIYOUSEI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "不好意思，我朋友给您添麻烦了！" or "I'm so sorry for the trouble my friends gave to you!" end
+if STRINGS.CHARACTERS.CHEN then STRINGS.CHARACTERS.CHEN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "早安，咲夜！" or "Morning, Sakuya!" end
+if STRINGS.CHARACTERS.YAKUMORAN then STRINGS.CHARACTERS.YAKUMORAN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.LYRICA then STRINGS.CHARACTERS.LYRICA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.KAGEROU then STRINGS.CHARACTERS.KAGEROU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.MIKO then STRINGS.CHARACTERS.MIKO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.YOHIME then STRINGS.CHARACTERS.YOHIME.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.NUE then STRINGS.CHARACTERS.NUE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.TENSHI then STRINGS.CHARACTERS.TENSHI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.IKU then STRINGS.CHARACTERS.IKU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.RENKO then STRINGS.CHARACTERS.RENKO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "她好像是梅莉上次梦见的……" or "She seems to be Merry dreamed of last time." end
+if STRINGS.CHARACTERS.MERRY then STRINGS.CHARACTERS.MERRY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我上次梦见过她，她是……" or "Last time I dreamt about her." end
+if STRINGS.CHARACTERS.RIN then STRINGS.CHARACTERS.RIN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.PARSEE then STRINGS.CHARACTERS.PARSEE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "真好啊，主仆一对……" or "I'm so jealous of that maid and her master." end
+if STRINGS.CHARACTERS.TEWI then STRINGS.CHARACTERS.TEWI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "你好啊，红魔馆的女仆长！" or "Hello, maid of the Scarlet Devil Mansion!" end
+if STRINGS.CHARACTERS.CLOWNPIECE then STRINGS.CHARACTERS.CLOWNPIECE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.AYA then STRINGS.CHARACTERS.AYA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.UTSUHO then STRINGS.CHARACTERS.UTSUHO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.SATSUKI then STRINGS.CHARACTERS.SATSUKI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我们从未谋面……这就是我的命运。" or "We'd never met. That's my destiny." end
+if STRINGS.CHARACTERS.SATORI then STRINGS.CHARACTERS.SATORI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.KOISHI then STRINGS.CHARACTERS.KOISHI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "你好！我在这里哟！" or "Hello! I'm here!" end
+if STRINGS.CHARACTERS.SHIKIEIKI then STRINGS.CHARACTERS.SHIKIEIKI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.ALICE_TH then STRINGS.CHARACTERS.ALICE_TH.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
+if STRINGS.CHARACTERS.SUNNY then STRINGS.CHARACTERS.SUNNY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "是红魔馆的女仆长哎！" or "It's Sakuya in the mansion!" end
+if STRINGS.CHARACTERS.STARSAPPHIRE then STRINGS.CHARACTERS.STARSAPPHIRE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "是红魔馆的女仆长哎！" or "It's Sakuya in the mansion!" end
+local speeches = {
+	["zh"] = function() return require "speech_zh" end,
+}
+local spf = speeches[TUNING.IZAYOI_LANGUAGE]
+STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"
 
 AddMinimapAtlas("images/map_icons/izayoi.xml")
 AddMinimapAtlas("images/map_icons/izayoi_redtea.xml")

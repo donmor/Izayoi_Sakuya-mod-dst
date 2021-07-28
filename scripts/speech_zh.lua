@@ -2432,37 +2432,33 @@ return {
 		},
 		SCULPTINGTABLE=
 		{
-		 EMPTY = "We can make stone sculptures with this.",
-		 BLOCK = "Ready for sculpting.",
-		 SCULPTURE = "A masterpiece!",
-		 BURNT = "Burnt right down.",
+		 EMPTY = "制作一些装饰性的石块。",
+		 BLOCK = "材料准备好了。",
+		 SCULPTURE = "不错的作品。",
+		 BURNT = "全烧光了。",
 		},
-		SCULPTURE_KNIGHTHEAD = "Where's the rest of it?",
+		SCULPTURE_KNIGHTHEAD = "所以剩下的部分呢？",
 		SCULPTURE_KNIGHTBODY =
 		{
-			COVERED = "It's an odd marble statue.",
-			UNCOVERED = "I guess he cracked under the pressure.",
-			FINISHED = "At least it's back in one piece now.",
-			READY = "Something's moving inside.",
 		},
-		SCULPTURE_BISHOPHEAD = "Is that a head?",
+		SCULPTURE_BISHOPHEAD = "只剩下一个头了。",
 		SCULPTURE_BISHOPBODY =
 		{
-			COVERED = "It looks old, but it feels new.",
-			UNCOVERED = "There's a big piece missing.",
-			FINISHED = "Now what?",
-			READY = "Something's moving inside.",
+			COVERED = "奇怪的大理石雕塑。",
+			UNCOVERED = "少了一块。",
+			FINISHED = "现在它完整了。",
+			READY = "有某种力量在涌动。",
 		},
-        SCULPTURE_ROOKNOSE = "Where did this come from?",
+        SCULPTURE_ROOKNOSE = "这是从哪里来的？",
 		SCULPTURE_ROOKBODY =
 		{
-			COVERED = "It's some sort of marble statue.",
-			UNCOVERED = "It's not in the best shape.",
-			FINISHED = "All patched up.",
-			READY = "Something's moving inside.",
+			COVERED = "奇怪的大理石雕塑。",
+			UNCOVERED = "少了一块。",
+			FINISHED = "现在它完整了。",
+			READY = "有某种力量在涌动。",
 		},
-        GARGOYLE_HOUND = "I don't like how it's looking at me.",
-        GARGOYLE_WEREPIG = "It looks very lifelike.",
+        GARGOYLE_HOUND = "真是的，我居然被一座雕塑盯得心里发毛。",
+        GARGOYLE_WEREPIG = "栩栩如生。",
 	 	SEEDS = "蕴含了无限的可能性。",
 		SEEDS_COOKED = "不到万不得已我不会这么做的。",
 		SEWING_KIT = "作为女仆，这种技能当然是十分熟练的。",
@@ -2477,14 +2473,14 @@ return {
 			GENERIC = "对于一只鸟来说并不算太小。",
 			HUNGRY = "它看起来很饿。",
 			STARVING = "它快要饿死了。",
-			SLEEPING = "It's barely making a peep.",
+			SLEEPING = "它似乎睡着了。",
 		},
 		SMALLMEAT = "猎物身上的一小块。",
 		SMALLMEAT_DRIED = "一小块肉干。",
 		SPAT = "真是个恶心的家伙。",
 		SPEAR = "普通的长矛。",
-		SPEAR_WATHGRITHR = "It feels very stabby.",
-		WATHGRITHRHAT = "Pretty fancy hat, that.",
+		SPEAR_WATHGRITHR = "结实的长矛",
+		WATHGRITHRHAT = "华丽的头部防具。",
 		SPIDER =
 		{
 			DEAD = "终归是虫子一类的呢。",
@@ -2505,15 +2501,15 @@ return {
 		SPOILED_FOOD = "这让我想起妹妹大人心血来潮的作品……真是微妙的回忆呢。",
         STAGEHAND =
         {
-			AWAKE = "Just keep your hand to yourself, alright?",
-			HIDING = "Something's odd here, but I can't put my finger on it.",
+			AWAKE = "似乎也就这点能耐了。",
+			HIDING = "某种诡异的东西藏在附近。",
         },
         STATUE_MARBLE =
         {
-            GENERIC = "It's a fancy marble statue.",
-            TYPE1 = "Don't lose your head now!",
-            TYPE2 = "Statuesque.",
-            TYPE3 = "I wonder who the artist is.", --bird bath type statue
+            GENERIC = "华丽的大理石雕塑。",
+            TYPE1 = "多半会变成这副样子呢。",
+            TYPE2 = "面具后面已经空空如也。",
+            TYPE3 = "红魔馆要不要也弄一个呢？", --bird bath type statue
         },
 		STATUEHARP = "它的头怎么了？",
 		STATUEMAXWELL = "把自己的雕塑摆的到处是的人，一定是个自恋的家伙。",
@@ -2546,7 +2542,7 @@ return {
 			GENERIC = "它的野性越来越强了。",
 			HUNGRY = "它好像饿了。",
 			STARVING = "它已经盯着我好久了，不是把我当食物了吧？",
-			SLEEPING = "It's getting some shut-eye",
+			SLEEPING = "还在睡梦中。",
 		},
 		TELEPORTATO_BASE =
 		{
@@ -2591,8 +2587,8 @@ return {
 		TREASURECHEST_TRAP = "真是便利……",
 		SACRED_CHEST =
 		{
-			GENERIC = "I hear whispers. It wants something.",
-			LOCKED = "It's passing its judgment.",
+			GENERIC = "某处传来索求什么的低语。",
+			LOCKED = "它有自己的判断力。",
 		},
 		TREECLUMP = "看起来像是有人想阻止我过去……",
 
@@ -2609,51 +2605,51 @@ return {
 		TRINKET_11 = "只是一个玩具……带回去给妹妹大人吧。", --Lying Robot
 		TRINKET_12 = "和上次见过的完全不是一种东西。", --Dessicated Tentacle
 		TRINKET_13 = "某种玩偶……带回去给妹妹大人吧。", --Gnome (female)
-		TRINKET_14 = "Now if I only had some tea...", --Leaky Teacup
-		TRINKET_15 = "...Maxwell left his stuff out again.", --Pawn
-		TRINKET_16 = "...Maxwell left his stuff out again.", --Pawn
-		TRINKET_17 = "A horrifying utensil fusion. Maybe science *can* go too far.", --Bent Spork
-		TRINKET_18 = "I wonder what it's hiding?", --Trojan Horse
-		TRINKET_19 = "It doesn't spin very well.", --Unbalanced Top
-		TRINKET_20 = "Wigfrid keeps jumping out and hitting me with it?!", --Backscratcher
-		TRINKET_21 = "This egg beater is all bent out of shape.", --Egg Beater
-		TRINKET_22 = "I have a few theories about this string.", --Frayed Yarn
-		TRINKET_23 = "I can put my shoes on without help, thanks.", --Shoehorn
-		TRINKET_24 = "I think Wickerbottom had a cat.", --Lucky Cat Jar
-		TRINKET_25 = "It smells kind of stale.", --Air Unfreshener
-		TRINKET_26 = "Food and a cup! The ultimate survival container.", --Potato Cup
-		TRINKET_27 = "If you unwound it you could poke someone from really far away.", --Coat Hanger
-		TRINKET_28 = "How Machiavellian.", --Rook
-        TRINKET_29 = "How Machiavellian.", --Rook
-        TRINKET_30 = "Honestly, he just leaves them out wherever.", --Knight
-        TRINKET_31 = "Honestly, he just leaves them out wherever.", --Knight
-        TRINKET_32 = "I know someone who'd have a ball with this!", --Cubic Zirconia Ball
-        TRINKET_33 = "I hope this doesn't attract spiders.", --Spider Ring
-        TRINKET_34 = "Let's make a wish. For science.", --Monkey Paw
-        TRINKET_35 = "Hard to find a good flask around here.", --Empty Elixir
-        TRINKET_36 = "I might need these after all that candy.", --Faux fangs
-        TRINKET_37 = "I don't believe in the supernatural.", --Broken Stake
-        TRINKET_38 = "I think it came from another world. One with grifts.", -- Binoculars Griftlands trinket
-        TRINKET_39 = "I wonder where the other one is?", -- Lone Glove Griftlands trinket
-        TRINKET_40 = "Holding it makes me feel like bartering.", -- Snail Scale Griftlands trinket
-        TRINKET_41 = "It's a little warm to the touch.", -- Goop Canister Hot Lava trinket
-        TRINKET_42 = "It's full of someone's childhood memories.", -- Toy Cobra Hot Lava trinket
-        TRINKET_43= "It's not very good at jumping.", -- Crocodile Toy Hot Lava trinket
-        TRINKET_44 = "It's some sort of plant specimen.", -- Broken Terrarium ONI trinket
-        TRINKET_45 = "It's picking up frequencies from another world.", -- Odd Radio ONI trinket
-        TRINKET_46 = "Maybe a tool for testing aerodynamics?", -- Hairdryer ONI trinket
+		TRINKET_14 = "它的主人生前一定也是像大小姐这样优雅的人。", --Leaky Teacup
+		TRINKET_15 = "只有这一个根本玩不起来。", --Pawn
+		TRINKET_16 = "只有这一个根本玩不起来。", --Pawn
+		TRINKET_17 = "上次那个外界人在人里表演过瞪眼折弯这个。", --Bent Spork
+		TRINKET_18 = "只是一个玩具……带回去给妹妹大人吧。", --Trojan Horse
+		TRINKET_19 = "这玩具似乎有设计缺陷。", --Unbalanced Top
+		TRINKET_20 = "为什么有人会把这个一起下葬？", --Backscratcher
+		TRINKET_21 = "为什么有人会把这个一起下葬？", --Egg Beater
+		TRINKET_22 = "这个人一定很喜欢猫。", --Frayed Yarn
+		TRINKET_23 = "为什么有人会把这个一起下葬？", --Shoehorn
+		TRINKET_24 = "有点像幻想乡某处的某人的化身。", --Lucky Cat Jar
+		TRINKET_25 = "已经完全失去作用。", --Air Unfreshener
+		TRINKET_26 = "求个丰收的好兆头。", --Potato Cup
+		TRINKET_27 = "为什么有人会把这个一起下葬？", --Coat Hanger
+		TRINKET_28 = "只有这一个根本玩不起来。", --Rook
+        TRINKET_29 = "只有这一个根本玩不起来。", --Rook
+        TRINKET_30 = "只有这一个根本玩不起来。", --Knight
+        TRINKET_31 = "只有这一个根本玩不起来。", --Knight
+        TRINKET_32 = "光彩夺目。", --Cubic Zirconia Ball
+        TRINKET_33 = "希望不会把蜘蛛招来。", --Spider Ring
+        TRINKET_34 = "我自己就能实现大小姐的愿望。", --Monkey Paw
+        TRINKET_35 = "想起了很久以前的事情。", --Empty Elixir
+        TRINKET_36 = "完全比不上大小姐的。", --Faux fangs
+        TRINKET_37 = "想起了很久以前的事情。", --Broken Stake
+        TRINKET_38 = "似乎来自另一个世界。", -- Binoculars Griftlands trinket
+        TRINKET_39 = "另一只去哪儿了？", -- Lone Glove Griftlands trinket
+        TRINKET_40 = "奇形怪状的工具？", -- Snail Scale Griftlands trinket
+        TRINKET_41 = "似乎曾收容过某种危险物。", -- Goop Canister Hot Lava trinket
+        TRINKET_42 = "只是一个玩具……带回去给妹妹大人吧。", -- Toy Cobra Hot Lava trinket
+        TRINKET_43= "只是一个玩具……带回去给妹妹大人吧。", -- Crocodile Toy Hot Lava trinket
+        TRINKET_44 = "已经坏掉了。", -- Broken Terrarium ONI trinket
+        TRINKET_45 = "似乎能收到另一个世界的讯息。", -- Odd Radio ONI trinket
+        TRINKET_46 = "已经坏掉了。", -- Hairdryer ONI trinket
 
         -- The numbers align with the trinket numbers above.
-        LOST_TOY_1  = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_2  = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_7  = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_10 = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_11 = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_14 = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_18 = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_19 = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_42 = "I'm sure there's a perfectly scientific explanation for that.",
-        LOST_TOY_43 = "I'm sure there's a perfectly scientific explanation for that.",
+        LOST_TOY_1  = "看得出它主人生前的爱惜。",
+        LOST_TOY_2  = "看得出它主人生前的爱惜。",
+        LOST_TOY_7  = "看得出它主人生前的爱惜。",
+        LOST_TOY_10 = "看得出它主人生前的爱惜。",
+        LOST_TOY_11 = "看得出它主人生前的爱惜。",
+        LOST_TOY_14 = "看得出它主人生前的爱惜。",
+        LOST_TOY_18 = "看得出它主人生前的爱惜。",
+        LOST_TOY_19 = "看得出它主人生前的爱惜。",
+        LOST_TOY_42 = "看得出它主人生前的爱惜。",
+        LOST_TOY_43 = "看得出它主人生前的爱惜。",
 
         HALLOWEENCANDY_1 = "The cavities are probably worth it, right?",
         HALLOWEENCANDY_2 = "What corruption of science grew these?",
