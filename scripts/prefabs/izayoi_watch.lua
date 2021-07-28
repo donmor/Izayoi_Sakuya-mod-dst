@@ -1,8 +1,8 @@
 local assets = 
 {
 	Asset("ANIM", "anim/izayoi_watch.zip"),
-	Asset("IMAGE", "images/izayoi_watch.tex"),
-	Asset("ATLAS", "images/izayoi_watch.xml" ),
+	Asset("IMAGE", "images/inventoryimages/izayoi_watch.tex"),
+	Asset("ATLAS", "images/inventoryimages/izayoi_watch.xml" ),
 }
 
 local function onequip(inst, owner)
@@ -51,19 +51,24 @@ local function fn()
 	
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
-	inst.entity:AddMiniMapEntity()
 	inst.entity:AddNetwork()
+	inst.entity:AddMiniMapEntity()
 
 	MakeInventoryPhysics(inst)
 
 	inst.AnimState:SetBank("izayoi_watch")
 	inst.AnimState:SetBuild("izayoi_watch")
 	inst.AnimState:PlayAnimation("idle")
+
+	inst.MiniMapEntity:SetIcon("izayoi_watch.tex")
+
 	inst:AddTag("backpack")
 	inst:AddTag("waterproofer")
-	inst:AddTag("crsCustomPerishMult")
-	inst.MiniMapEntity:SetIcon("izayoi_watch.png")
 	
+	if TUNING.IZAYOI_ITEMS_FLOATABLE then
+		MakeInventoryFloatable(inst, "small", 0.3)
+	end
+
 	inst.entity:SetPristine()
 	
 	if not TheWorld.ismastersim then
@@ -74,7 +79,10 @@ local function fn()
 		
 	inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.imagename = "izayoi_watch"
-	inst.components.inventoryitem.atlasname = "images/izayoi_watch.xml"
+    if not TUNING.IZAYOI_ITEMS_FLOATABLE then 
+		inst.components.inventoryitem:SetSinks(true)
+	end
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/izayoi_watch.xml"
 
 	inst:AddComponent("equippable")
 	inst.components.equippable.equipslot = EQUIPSLOTS.BACK or EQUIPSLOTS.BODY
@@ -90,6 +98,8 @@ local function fn()
 	inst:AddComponent("preserver")
 	inst.components.preserver:SetPerishRateMultiplier(TUNING.IZAYOI_WATCH_FOOD_SPOILAGE)
 	
+	MakeHauntableLaunch(inst)
+
 	return inst
 end
 

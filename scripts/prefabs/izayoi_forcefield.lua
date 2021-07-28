@@ -1,4 +1,3 @@
-
 local function fn()
 	local inst = CreateEntity()
 

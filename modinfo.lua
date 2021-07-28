@@ -149,6 +149,17 @@ configuration_options =
 	},
 	
 	{
+		name = "items_floatable",
+		label = "专属物品浮力/Unique Items Floatable ",
+		options =
+		{
+			{description = "启用", data = true, hover = "专属物品浮在水面/Items float on water"},
+			{description = "禁用", data = false, hover = "专属物品沉入水中/Items sink into water"},
+		},
+		default = false,
+	},
+	
+	{
 		name = "izayoi_se",
 		label = "专属音效/SE",
 		options =

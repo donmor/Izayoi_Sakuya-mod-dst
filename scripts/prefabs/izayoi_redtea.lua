@@ -1,8 +1,8 @@
 local assets = 
 {
 	Asset( "ANIM", "anim/izayoi_redtea.zip" ),
-	Asset( "IMAGE", "images/izayoi_redtea.tex" ),
-	Asset( "ATLAS", "images/izayoi_redtea.xml" ),
+	Asset( "IMAGE", "images/inventoryimages/izayoi_redtea.tex" ),
+	Asset( "ATLAS", "images/inventoryimages/izayoi_redtea.xml" ),
 }
 
 local function oneaten(inst, eater)	-- <回蓝
@@ -18,18 +18,23 @@ local function fn()
 	local inst = CreateEntity()
 
 	inst.entity:AddTransform()
-	
 	inst.entity:AddAnimState()
 	inst.entity:AddNetwork()
+	inst.entity:AddMiniMapEntity()
 
 	MakeInventoryPhysics(inst)
 
 	inst.AnimState:SetBank("izayoi_redtea")
 	inst.AnimState:SetBuild("izayoi_redtea")
 	inst.AnimState:PlayAnimation("idle")
-	
-	inst.AnimState:SetScale(2, 2, 2)
-	
+	inst.AnimState:SetScale(1.5, 1.5, 1.5)
+
+	inst.MiniMapEntity:SetIcon("izayoi_redtea.tex")
+
+	if TUNING.IZAYOI_ITEMS_FLOATABLE then
+		MakeInventoryFloatable(inst, "small", 0.1, {0.75, 0.5, 0.75})
+	end
+
 	inst.entity:SetPristine()
 
 	if not TheWorld.ismastersim then
@@ -39,8 +44,11 @@ local function fn()
 	inst:AddComponent("inspectable")
 
 	inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname = "images/izayoi_redtea.xml"
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/izayoi_redtea.xml"
 	inst.components.inventoryitem.imagename = "izayoi_redtea"
+    if not TUNING.IZAYOI_ITEMS_FLOATABLE then 
+		inst.components.inventoryitem:SetSinks(true)
+	end
 	inst:AddComponent("stackable")
 	inst.components.stackable.maxsize = TUNING.STACK_SIZE_MEDITEM
 	

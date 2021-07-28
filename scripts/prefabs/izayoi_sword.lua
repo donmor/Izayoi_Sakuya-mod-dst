@@ -2,8 +2,8 @@ local assets =
 {
 	Asset("ANIM", "anim/izayoi_sword.zip"),
 	Asset("ANIM", "anim/izayoi_sword_swap.zip"),
-	Asset( "IMAGE", "images/izayoi_sword.tex" ),
-	Asset( "ATLAS", "images/izayoi_sword.xml" ),
+	Asset( "IMAGE", "images/inventoryimages/izayoi_sword.tex" ),
+	Asset( "ATLAS", "images/inventoryimages/izayoi_sword.xml" ),
 	Asset( "SOUND", "sound/izayoi.fsb" ),
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
 }
@@ -76,6 +76,7 @@ local function fn()
 	inst.entity:AddAnimState()
 	inst.entity:AddNetwork()
 	inst.entity:AddSoundEmitter()
+	inst.entity:AddMiniMapEntity()
 	
 	MakeInventoryPhysics(inst)
 
@@ -83,20 +84,44 @@ local function fn()
 	inst.AnimState:SetBuild("izayoi_sword")
 	inst.AnimState:PlayAnimation("idle")
 
+	inst.MiniMapEntity:SetIcon("izayoi_sword.tex")
+
 	inst:AddTag("sharp")
 	inst:AddTag("pointy")
-	
+	inst:AddTag("waterproofer")	
 	inst:AddTag("projectile")
 	inst:AddTag("thrown")
 	inst:AddTag("izayoi_sword")
 
 	RemovePhysicsColliders(inst)
 
+	if TUNING.IZAYOI_ITEMS_FLOATABLE then
+		MakeInventoryFloatable(inst, "med", 0.1, {0.75, 0.5, 0.75}, true, -16, {sym_build = "izayoi_sword_swap"})
+	end
+
 	inst.entity:SetPristine()
 
 	if not TheWorld.ismastersim then
 		return inst
 	end
+
+	inst:AddComponent("inspectable")
+
+	inst:AddComponent("inventoryitem")
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/izayoi_sword.xml"
+	inst.components.inventoryitem.imagename = "izayoi_sword"
+    if not TUNING.IZAYOI_ITEMS_FLOATABLE then 
+		inst.components.inventoryitem:SetSinks(true)
+	end
+	inst:AddComponent("stackable")
+	inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
+
+	inst:AddComponent("equippable")
+	inst.components.equippable:SetOnEquip(onequip)
+	inst.components.equippable:SetOnUnequip(onunequip)
+	inst.components.equippable.equipstack = true
+
+	inst:AddComponent("waterproofer")
 
 	inst:AddComponent("weapon")
 	inst.components.weapon:SetDamage(50)
@@ -112,20 +137,6 @@ local function fn()
 	inst.components.projectile:SetOnMissFn(OnMiss)
 	inst.components.projectile:SetOnCaughtFn(OnCaught)
 	inst.components.projectile:SetOnTheworldTriggeredFn(ontheworldtriggered)
-
-	inst:AddComponent("inspectable")
-
-	inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname = "images/izayoi_sword.xml"
-	inst.components.inventoryitem.imagename = "izayoi_sword"
-	inst:AddComponent("stackable")
-	inst.components.stackable.maxsize = TUNING.STACK_SIZE_LARGEITEM
-
-	inst:AddComponent("equippable")
-	inst.components.equippable:SetOnEquip(onequip)
-	inst.components.equippable:SetOnUnequip(onunequip)
-	inst.components.equippable.equipstack = true
-	inst:AddComponent("waterproofer")
 
 	MakeHauntableLaunch(inst)
 

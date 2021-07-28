@@ -19,6 +19,7 @@ TUNING.IZAYOI_WATCH_NIGHT_VISION = GetModConfigData("watch_night_vision")
 TUNING.IZAYOI_WATCH_FOOD_SPOILAGE = GetModConfigData("watch_food_spoilage")
 TUNING.IZAYOI_WATCH_CRAFTABLE = GetModConfigData("watch_craftable")
 TUNING.IZAYOI_WATCH_PLAYERS_EQUIPPABLE = GetModConfigData("watch_players_equippable")
+TUNING.IZAYOI_ITEMS_FLOATABLE = GetModConfigData("items_floatable")
 TUNING.IZAYOI_Z_ESCAPE = GetModConfigData("z_escape")
 TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
 TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
@@ -124,6 +125,7 @@ PrefabFiles = {
 	"izayoi_sword",
 	"izayoi_watch",
 	"izayoi_forcefield",
+	"twsplash_fx",
 }
 Assets = {
 	Asset( "IMAGE", "images/saveslot_portraits/izayoi.tex" ),
@@ -138,14 +140,29 @@ Assets = {
 	Asset( "IMAGE", "bigportraits/izayoi.tex" ),
 	Asset( "ATLAS", "bigportraits/izayoi.xml" ),
 	
+	Asset( "IMAGE", "bigportraits/izayoi_none.tex" ),
+	Asset( "ATLAS", "bigportraits/izayoi_none.xml" ),
+	
 	Asset( "IMAGE", "images/map_icons/izayoi.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi.xml" ),
+	
+	Asset( "IMAGE", "images/map_icons/izayoi_redtea.tex" ),
+	Asset( "ATLAS", "images/map_icons/izayoi_redtea.xml" ),
+	
+	Asset( "IMAGE", "images/map_icons/izayoi_sword.tex" ),
+	Asset( "ATLAS", "images/map_icons/izayoi_sword.xml" ),
+	
+	Asset( "IMAGE", "images/map_icons/izayoi_watch.tex" ),
+	Asset( "ATLAS", "images/map_icons/izayoi_watch.xml" ),
 	
 	Asset( "IMAGE", "images/avatars/avatar_izayoi.tex" ),
 	Asset( "ATLAS", "images/avatars/avatar_izayoi.xml" ),
 	
 	Asset( "IMAGE", "images/avatars/avatar_ghost_izayoi.tex" ),
 	Asset( "ATLAS", "images/avatars/avatar_ghost_izayoi.xml" ),
+	
+	Asset( "IMAGE", "images/avatars/self_inspect_izayoi.tex" ),
+	Asset( "ATLAS", "images/avatars/self_inspect_izayoi.xml" ),
 	
 	Asset( "IMAGE", "images/izayoitab.tex" ),
 	Asset( "ATLAS", "images/izayoitab.xml" ),
@@ -168,6 +185,9 @@ Assets = {
 	Asset( "IMAGE", "images/names_izayoi.tex" ),
 	Asset( "ATLAS", "images/names_izayoi.xml" ),
 	
+	Asset( "IMAGE", "images/names_gold_izayoi.tex" ),
+	Asset( "ATLAS", "images/names_gold_izayoi.xml" ),
+	
 	Asset( "ANIM", "anim/izayoi.zip" ),
 	Asset( "ANIM", "anim/ghost_izayoi_build.zip" ),
 	Asset( "ANIM", "anim/wiliya_mana.zip" ),
@@ -177,17 +197,17 @@ Assets = {
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
 }
 TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_sword = {
-	atlas = "images/izayoi_sword.xml",
+	atlas = "images/inventoryimages/izayoi_sword.xml",
 	image = "izayoi_sword.tex",
 }
 TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_watch = {
-	atlas = "images/izayoi_watch.xml",
+	atlas = "images/inventoryimages/izayoi_watch.xml",
 	image = "izayoi_watch.tex",
 }
 STRINGS.NAMES.IZAYOI = TUNING.IZAYOI_LANGUAGE == "zh" and "十六夜咲夜" or "Sakuya"
 STRINGS.CHARACTER_TITLES.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "绯红恶魔的女仆" or "Maid of the Scarlet Devil"
 STRINGS.CHARACTER_NAMES.izayoi = STRINGS.NAMES.IZAYOI
-STRINGS.CHARACTER_DESCRIPTIONS.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "*完美潇洒的从者\n*夜雾幻影杀人鬼\n*月时计" or "*Perfect and Elegant Servant\n*Phantomic Killer in Night Mist\n*Luna Clock"
+STRINGS.CHARACTER_DESCRIPTIONS.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "*完美潇洒的从者\n*只是个会死的人类\n*掌控时间的流动" or "*Perfect and Elegant Servant\n*Just a Mortal Human \n*Master of Time"
 STRINGS.CHARACTER_QUOTES.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "\"我一生都是会死的人类哦。\n只要活着就会一直陪着大小姐。\"" or "\"We'll be together as long as I'm alive, Milady.\""
 STRINGS.SKIN_NAMES.izayoi_none = STRINGS.NAMES.IZAYOI
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.izayoi = 
@@ -204,7 +224,12 @@ STRINGS.CHARACTERS.WILLOW.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "
 STRINGS.CHARACTERS.WENDY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "既是女仆，又是恶魔之地的住人。" or "Maid who come from the lair of death."
 STRINGS.CHARACTERS.WX78.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "女仆" or "Maid"
 STRINGS.CHARACTERS.IZAYOI = require "speech"
+
 AddMinimapAtlas("images/map_icons/izayoi.xml")
+AddMinimapAtlas("images/map_icons/izayoi_redtea.xml")
+AddMinimapAtlas("images/map_icons/izayoi_sword.xml")
+AddMinimapAtlas("images/map_icons/izayoi_watch.xml")
+
 local skin_modes = {
     { 
         type = "ghost_skin",
@@ -215,6 +240,7 @@ local skin_modes = {
     },
 }
 AddModCharacter("izayoi", "FEMALE", skin_modes)
+
 GLOBAL.FOODTYPE.BLOOD = "BLOOD"
 izayoitab = AddRecipeTab(TUNING.IZAYOI_LANGUAGE == "zh" and "完美潇洒的制作配方" or "Perfect and Elegant Recipes", 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
 if TUNING.IZAYOI_RECIPES == "easy" then
@@ -222,90 +248,90 @@ if TUNING.IZAYOI_RECIPES == "easy" then
 	{Ingredient("spidergland", 2), Ingredient("petals", 2)}, 
 	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, 2, "izayoi_skiller",
-	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
+	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
 	{Ingredient("log", 3), Ingredient("goldnugget", 3)}, 
 	izayoitab, TECH.SCIENCE_TWO,
 	nil, nil, nil, 3, "izayoi_skiller",
-	"images/izayoi_sword.xml", "izayoi_sword.tex")
+	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
 		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
-		"images/izayoi_watch.xml", "izayoi_watch.tex")
+		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
 	end
 elseif TUNING.IZAYOI_RECIPES == "normal" then
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
 	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, 2, "izayoi_skiller",
-	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
+	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
 	{Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
 	izayoitab, TECH.SCIENCE_TWO,
 	nil, nil, nil, 3, "izayoi_skiller",
-	"images/izayoi_sword.xml", "izayoi_sword.tex")
+	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
 		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
-		"images/izayoi_watch.xml", "izayoi_watch.tex")
+		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
 	end
 elseif TUNING.IZAYOI_RECIPES == "hard" then
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
 	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, 2, "izayoi_skiller",
-	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
+	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
 	{Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
 	izayoitab, TECH.SCIENCE_TWO,
 	nil, nil, nil, 3, "izayoi_skiller",
-	"images/izayoi_sword.xml", "izayoi_sword.tex")
+	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)}, 
 		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
-		"images/izayoi_watch.xml", "izayoi_watch.tex")
+		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
 	end
 elseif TUNING.IZAYOI_RECIPES == "lunatic" then
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
 	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, nil, "izayoi_skiller",
-	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
+	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
 	{Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
 	izayoitab, TECH.SCIENCE_TWO,
 	nil, nil, nil, nil, "izayoi_skiller",
-	"images/izayoi_sword.xml", "izayoi_sword.tex")
+	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)}, 
 		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
-		"images/izayoi_watch.xml", "izayoi_watch.tex")
+		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
 	end
 else
 	local izayoi_redtea = AddRecipe("izayoi_redtea",
 	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
 	izayoitab, TECH.MAGIC_TWO,
 	nil, nil, nil, 2, "izayoi_skiller",
-	"images/izayoi_redtea.xml", "izayoi_redtea.tex")
+	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
 	local izayoi_sword = AddRecipe("izayoi_sword",
 	{Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
 	izayoitab, TECH.SCIENCE_TWO,
 	nil, nil, nil, 3, "izayoi_skiller",
-	"images/izayoi_sword.xml", "izayoi_sword.tex")
+	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
 		local izayoi_watch = AddRecipe("izayoi_watch",
 		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
 		izayoitab, TECH.MAGIC_THREE,
 		nil, nil, nil, nil, "izayoi_skiller",
-		"images/izayoi_watch.xml", "izayoi_watch.tex")
+		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
 	end
 end
 if TUNING.IZAYOI_LANGUAGE == "zh" then

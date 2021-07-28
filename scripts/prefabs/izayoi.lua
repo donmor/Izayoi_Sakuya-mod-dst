@@ -54,18 +54,52 @@ end,
 function(inst)
 	inst.soundsname = "wilson"
 	inst.examineoverride = {
-		"meirin",
-		"remilia",
-		"patchouli",
+		"reimu",
 		"marisa",
-		"fran",
+		"youmu",
+		"sanae",
+		"reisen",
+		"yuuka",
 		"yuyuko",
 		"yukari",
-		"alice_th",
+		"remilia",
+		"fran",
+		"meirin",
+		"patchouli",
+		"futo",
+		"suika",
+		"kasen",
+		"momiji",
+		"qingwa",
+		"keine",
+		"mokou",
+		"cirno",
+		"daiyousei",
 		"chen",
-		"youmu",
-		"reimu",
-		"ran",
+		"yakumoran",
+		"lyrica",
+		"kagerou",
+		"miko",
+		"yohime",
+		"nue",
+		"tenshi",
+		"iku",
+		"renko",
+		"merry",
+		"rin",
+		"parsee",
+		"tewi",
+		"clownpiece",
+		"aya",
+		"utsuho",
+		"izayoi",
+		"satsuki",
+		"satori",
+		"koishi",
+		"shikieiki",
+		"alice_th",
+		"sunny",
+		"starsapphire",
 	}	-- >
 	
 	inst.components.health:SetMaxHealth(TUNING.IZAYOI_HEALTH)	-- <三围
@@ -80,13 +114,13 @@ function(inst)
 	inst.components.timestopper:SetOnTimeStoppedFn(function(silent)
 		if not silent then
 			local x0, y0, z0 = inst.Transform:GetWorldPosition()
-			local fx = SpawnPrefab("groundpoundring_fx")
+			local fx = SpawnPrefab("twsplash_fx")
 			if fx then
 				fx:AddTag("canmoveintime")
 				fx.Transform:SetPosition(x0, y0, z0)
 				fx.Transform:SetScale(2, 2, 2)
 				fx:DoTaskInTime(2 * FRAMES, function()
-					local fx = SpawnPrefab("groundpoundring_fx")
+					local fx = SpawnPrefab("twsplash_fx")
 					if fx then
 						fx:AddTag("canmoveintime")
 						fx.Transform:SetPosition(x0, y0, z0)
