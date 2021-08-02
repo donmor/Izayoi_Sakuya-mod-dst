@@ -25,7 +25,7 @@ TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
 TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
 TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")
 
-TUNING.IZAYOI_LANGUAGE = GetModConfigData("language")
+TUNING.IZAYOI_LANGUAGE = LOC.GetLocaleCode()
 if TUNING.IZAYOI_STRENGTH == "op" then	-- <设定强度
 	TUNING.IZAYOI_HUNGER = 300
 	TUNING.IZAYOI_SANITY = 300
@@ -270,6 +270,7 @@ if STRINGS.CHARACTERS.SUNNY then STRINGS.CHARACTERS.SUNNY.DESCRIBE.izayoi = TUNI
 if STRINGS.CHARACTERS.STARSAPPHIRE then STRINGS.CHARACTERS.STARSAPPHIRE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "是红魔馆的女仆长哎！" or "It's Sakuya in the mansion!" end
 local speeches = {
 	["zh"] = function() return require "speech_zh" end,
+	["zhr"] = function() return require "speech_zh" end,
 }
 local spf = speeches[TUNING.IZAYOI_LANGUAGE]
 STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"
@@ -1022,6 +1023,7 @@ local skill_valid2 = {
 		local validtgt = vtarget and vtarget:IsValid() and not vtarget:HasTag("INLIMBO") and vtarget ~= inst and 
 			(TheNet:GetPVPEnabled() and not (inst.replica.teamworker and inst.replica.teamworker:Identify(vtarget)) or not vtarget:HasTag("player")) and 
 			not vtarget:HasTag("companion") and not vtarget:HasTag("playerghost") and 
+			not (vtarget:HasTag("shadow") and not inst:HasTag("crazy")) and
 			not vtarget:HasTag("wall") and 
 			vtarget.replica.combat and vtarget.replica.health and not vtarget:HasTag("invisible")
 		if not timenotstopped then
@@ -1050,7 +1052,8 @@ local skill_valid2 = {
 		local function istgt(ent, inst)
 			return ent and ent:IsValid() and 
 				(TheNet:GetPVPEnabled() and not (inst.replica.teamworker and inst.replica.teamworker:Identify(ent)) or not ent:HasTag("player")) and 
-				not(TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(ent)) and ent.replica.combat and ent.replica.health and not ent.replica.health:IsDead()
+				not(TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(ent)) and ent.replica.combat and ent.replica.health and not ent.replica.health:IsDead() and
+				not (ent:HasTag("shadow") and not inst:HasTag("crazy"))
 		end
 		local timenotstopped = not inst:HasTag("time_stopped")
 		local enoughdao = num >= 1
@@ -1250,16 +1253,27 @@ local skills = {
 	end,
 	
 	x = function(inst, vtarget)
-		local num_sword = 0
-		local task
-		local function period()
+		-- local num_sword = 0
+		-- local task
+		-- local function period()
+		-- end
+		inst.x_task = inst:DoPeriodicTask(FRAMES * 2, function()
 			local x0, y0, z0 = inst.Transform:GetWorldPosition()
 			local ents = TheSim:FindEntities(x0, y0, z0, 30, nil, { "companion", "wall", "INLIMBO", "FX", "playerghost", "invisible" })
 			local x_break = true
+			-- local function validtgt(v)
+			-- 	return v and v:IsValid() and v ~= inst and
+			-- 		(TheNet:GetPVPEnabled() and not (inst.components.teamworker and inst.components.teamworker:Identify(v)) or not v:HasTag("player")) and 
+			-- 		not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(v)) and 
+			-- 		not (v:HasTag("shadow") and not inst:HasTag("crazy")) and
+			-- 		v.components.combat and v.components.health and not v.components.health:IsDead() or false
+			-- end
 			for k, v in pairs(ents) do
+				-- if validtgt(v) then
 				if v and v:IsValid() and v ~= inst and
 					(TheNet:GetPVPEnabled() and not (inst.components.teamworker and inst.components.teamworker:Identify(v)) or not v:HasTag("player")) and 
 					not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(v)) and 
+					not (v:HasTag("shadow") and not inst:HasTag("crazy")) and
 					v.components.combat and v.components.health and not v.components.health:IsDead()
 				then
 					x_break = false
@@ -1269,7 +1283,10 @@ local skills = {
 						if fsword and fsword:IsValid() and v and v:IsValid() then
 							fsword.components.projectile:Throw(inst, v, inst)
 						end
-						num_sword = num_sword + 1
+						if TUNING.IZAYOI_X_HOSTILE_ONLY then
+							break
+						end
+						-- num_sword = num_sword + 1
 					else
 						x_break = true
 						break
@@ -1277,11 +1294,10 @@ local skills = {
 				end
 			end
 			if x_break then
-				task:Cancel()
-				task = nil
+				inst.x_task:Cancel()
+				inst.x_task = nil
 			end
-		end
-		task = inst:DoPeriodicTask(FRAMES, period)
+		end)
 		if TUNING.IZAYOI_X_HOSTILE_ONLY then
 			inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻符「杀人玩偶」" or "Illusion Sign \"Killer Doll\"", 2, true)
 		else

@@ -32,7 +32,7 @@ local function fn()
 	inst.MiniMapEntity:SetIcon("izayoi_redtea.tex")
 
 	if TUNING.IZAYOI_ITEMS_FLOATABLE then
-		MakeInventoryFloatable(inst, "small", 0.25, {0.75, 0.5, 0.75})
+		MakeInventoryFloatable(inst, "small", 0.15, {0.75, 0.5, 0.75})
 	end
 
 	inst.entity:SetPristine()

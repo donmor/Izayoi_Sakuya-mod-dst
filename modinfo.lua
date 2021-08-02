@@ -42,17 +42,6 @@ mod_dependencies = {
 configuration_options =
 {
 	{
-		name = "language",
-		label = "语言/Language",
-		options =
-		{
-			{description = "中文", data = "zh"},
-			{description = "English", data = "en"},
-		},
-		default = "zh",
-	},
-
-	{
 		name = "recipes",
 		label = "制作配方/Recipes",
 		options =
