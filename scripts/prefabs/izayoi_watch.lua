@@ -88,7 +88,9 @@ local function fn()
 	inst.components.equippable.equipslot = EQUIPSLOTS.BACK or EQUIPSLOTS.BODY
 	inst.components.equippable:SetOnEquip(onequip)
 	inst.components.equippable:SetOnUnequip(onunequip)
-	inst.components.equippable.dapperness = 6.8 / 60
+	inst.components.equippable.dapperfn = function(inst, owner)
+		return TUNING.IZAYOI_ITEMS_AURA_ADVANCED and owner.components.sanity:IsLunacyMode() and -TUNING.IZAYOI_WATCH_DAPPERNESS or TUNING.IZAYOI_WATCH_DAPPERNESS
+	end
 	
 	inst:AddComponent("waterproofer")
 	inst.components.waterproofer:SetEffectiveness(0)
@@ -99,6 +101,10 @@ local function fn()
 	inst.components.preserver:SetPerishRateMultiplier(TUNING.IZAYOI_WATCH_FOOD_SPOILAGE)
 	
 	MakeHauntableLaunch(inst)
+
+	inst.inspectionblockfn = function(item)
+		return not inst.components.container:IsOpen()
+	end
 
 	return inst
 end

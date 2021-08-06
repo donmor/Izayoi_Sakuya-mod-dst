@@ -41,7 +41,7 @@ function(inst)
 		inst.deathsoundoverride = "izayoi/voice/death_voice"
 		
 	end
-	inst:DoPeriodicTask(2, function()	-- <夜视
+	inst:DoPeriodicTask(0.5, function()	-- <夜视
 		if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or TheWorld.state.isnight or isinbasement(inst)) then
 			inst.components.playervision:ForceNightVision(true)
 			inst.components.playervision:SetCustomCCTable("images/colour_cubes/beaver_vision_cc.tex")

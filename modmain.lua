@@ -9,12 +9,22 @@ local function SYS_INITGLOBAL()
 end
 SYS_INITGLOBAL()
 
-function LIMBO(tbl)
+local function LIMBO(tbl)
 	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
+end
+
+local function IsInTable(tbl, value)
+	for k, v in ipairs(tbl) do
+		if v == value then
+			return true;
+		end
+	end
+	return false;
 end
 
 TUNING.IZAYOI_SE = GetModConfigData("izayoi_se")	-- <读取配置
 TUNING.IZAYOI_VOICE = GetModConfigData("izayoi_voice")
+TUNING.IZAYOI_ITEMS_AURA_ADVANCED = GetModConfigData("items_aura_advanced")
 TUNING.IZAYOI_WATCH_NIGHT_VISION = GetModConfigData("watch_night_vision")
 TUNING.IZAYOI_WATCH_FOOD_SPOILAGE = GetModConfigData("watch_food_spoilage")
 TUNING.IZAYOI_WATCH_CRAFTABLE = GetModConfigData("watch_craftable")
@@ -204,6 +214,7 @@ TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_watch = {
 	atlas = "images/inventoryimages/izayoi_watch.xml",
 	image = "izayoi_watch.tex",
 }
+TUNING.IZAYOI_WATCH_DAPPERNESS = 6.8 / 60
 STRINGS.NAMES.IZAYOI = TUNING.IZAYOI_LANGUAGE == "zh" and "十六夜咲夜" or "Sakuya"
 STRINGS.CHARACTER_TITLES.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "绯红恶魔的女仆" or "Maid of the Scarlet Devil"
 STRINGS.CHARACTER_NAMES.izayoi = STRINGS.NAMES.IZAYOI
@@ -293,106 +304,265 @@ AddModCharacter("izayoi", "FEMALE", skin_modes)
 
 GLOBAL.FOODTYPE.BLOOD = "BLOOD"
 izayoitab = AddRecipeTab(TUNING.IZAYOI_LANGUAGE == "zh" and "完美潇洒的制作配方" or "Perfect and Elegant Recipes", 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
-if TUNING.IZAYOI_RECIPES == "easy" then
-	local izayoi_redtea = AddRecipe("izayoi_redtea",
-	{Ingredient("spidergland", 2), Ingredient("petals", 2)}, 
-	izayoitab, TECH.MAGIC_TWO,
-	nil, nil, nil, 2, "izayoi_skiller",
-	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
-	local izayoi_sword = AddRecipe("izayoi_sword",
-	{Ingredient("log", 3), Ingredient("goldnugget", 3)}, 
-	izayoitab, TECH.SCIENCE_TWO,
-	nil, nil, nil, 3, "izayoi_skiller",
-	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
-	if TUNING.IZAYOI_WATCH_CRAFTABLE then
-		local izayoi_watch = AddRecipe("izayoi_watch",
-		{Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
-		izayoitab, TECH.MAGIC_THREE,
-		nil, nil, nil, nil, "izayoi_skiller",
-		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
-	end
-elseif TUNING.IZAYOI_RECIPES == "normal" then
-	local izayoi_redtea = AddRecipe("izayoi_redtea",
-	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
-	izayoitab, TECH.MAGIC_TWO,
-	nil, nil, nil, 2, "izayoi_skiller",
-	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
-	local izayoi_sword = AddRecipe("izayoi_sword",
-	{Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
-	izayoitab, TECH.SCIENCE_TWO,
-	nil, nil, nil, 3, "izayoi_skiller",
-	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
-	if TUNING.IZAYOI_WATCH_CRAFTABLE then
-		local izayoi_watch = AddRecipe("izayoi_watch",
-		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
-		izayoitab, TECH.MAGIC_THREE,
-		nil, nil, nil, nil, "izayoi_skiller",
-		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
-	end
-elseif TUNING.IZAYOI_RECIPES == "hard" then
-	local izayoi_redtea = AddRecipe("izayoi_redtea",
-	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
-	izayoitab, TECH.MAGIC_TWO,
-	nil, nil, nil, 2, "izayoi_skiller",
-	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
-	local izayoi_sword = AddRecipe("izayoi_sword",
-	{Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
-	izayoitab, TECH.SCIENCE_TWO,
-	nil, nil, nil, 3, "izayoi_skiller",
-	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
-	if TUNING.IZAYOI_WATCH_CRAFTABLE then
-		local izayoi_watch = AddRecipe("izayoi_watch",
-		{Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)}, 
-		izayoitab, TECH.MAGIC_THREE,
-		nil, nil, nil, nil, "izayoi_skiller",
-		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
-	end
-elseif TUNING.IZAYOI_RECIPES == "lunatic" then
-	local izayoi_redtea = AddRecipe("izayoi_redtea",
-	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
-	izayoitab, TECH.MAGIC_TWO,
-	nil, nil, nil, nil, "izayoi_skiller",
-	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
-	local izayoi_sword = AddRecipe("izayoi_sword",
-	{Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
-	izayoitab, TECH.SCIENCE_TWO,
-	nil, nil, nil, nil, "izayoi_skiller",
-	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
-	if TUNING.IZAYOI_WATCH_CRAFTABLE then
-		local izayoi_watch = AddRecipe("izayoi_watch",
-		{Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)}, 
-		izayoitab, TECH.MAGIC_THREE,
-		nil, nil, nil, nil, "izayoi_skiller",
-		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
-	end
-else
-	local izayoi_redtea = AddRecipe("izayoi_redtea",
-	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
-	izayoitab, TECH.MAGIC_TWO,
-	nil, nil, nil, 2, "izayoi_skiller",
-	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
-	local izayoi_sword = AddRecipe("izayoi_sword",
-	{Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
-	izayoitab, TECH.SCIENCE_TWO,
-	nil, nil, nil, 3, "izayoi_skiller",
-	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
-	if TUNING.IZAYOI_WATCH_CRAFTABLE then
-		local izayoi_watch = AddRecipe("izayoi_watch",
-		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
-		izayoitab, TECH.MAGIC_THREE,
-		nil, nil, nil, nil, "izayoi_skiller",
-		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
-	end
+local recipemap = {
+	["easy"] = {
+		izayoi_redtea = {
+			recipe = {Ingredient("spidergland", 2), Ingredient("petals", 2)},
+			amount = 2,
+		},
+		izayoi_sword = {
+			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3)},
+			amount = 3,
+		},
+		izayoi_swordpurple = {
+			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 1)},
+			amount = 3,
+		},
+		izayoi_swordred = {
+			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 1)},
+			amount = 3,
+		},
+		izayoi_watch = {
+			recipe = {Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)},
+			amount = nil,
+		},
+	},
+	["normal"] = {
+		izayoi_redtea = {
+			recipe = {Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("charcoal", 2)},
+			amount = 2,
+		},
+		izayoi_sword = {
+			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)},
+			amount = 3,
+		},
+		izayoi_swordpurple = {
+			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)},
+			amount = 3,
+		},
+		izayoi_swordred = {
+			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)},
+			amount = 3,
+		},
+		izayoi_watch = {
+			recipe = {Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)},
+			amount = nil,
+		},
+	},
+	["hard"] = {
+		izayoi_redtea = {
+			recipe = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("charcoal", 2)},
+			amount = 2,
+		},
+		izayoi_sword = {
+			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)},
+			amount = 3,
+		},
+		izayoi_swordpurple = {
+			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)},
+			amount = 3,
+		},
+		izayoi_swordred = {
+			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)},
+			amount = 3,
+		},
+		izayoi_watch = {
+			recipe = {Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)},
+			amount = nil,
+		},
+	},
+	["lunatic"] = {
+		izayoi_redtea = {
+			recipe = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("charcoal", 2)},
+			amount = nil,
+		},
+		izayoi_sword = {
+			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)},
+			amount = nil,
+		},
+		izayoi_swordpurple = {
+			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)},
+			amount = nil,
+		},
+		izayoi_swordred = {
+			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)},
+			amount = nil,
+		},
+		izayoi_watch = {
+			recipe = {Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)},
+			amount = nil,
+		},
+	},
+}
+-- local recipemap_izayoi_redtea = {
+-- 	["easy"] = {Ingredient("spidergland", 2), Ingredient("petals", 2)},
+-- 	["normal"] = {Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)},
+-- 	["hard"] = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)},
+-- 	["lunatic"] = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)},
+-- }
+-- local recipemap_izayoi_sword = {
+-- 	["easy"] = {Ingredient("log", 3), Ingredient("goldnugget", 3)},
+-- 	["normal"] = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)},
+-- 	["hard"] = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)},
+-- 	["lunatic"] = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)},
+-- }
+-- local recipemap_izayoi_watch = {
+-- 	["easy"] = {Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)},
+-- 	["normal"] = {Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)},
+-- 	["hard"] = {Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)},
+-- 	["lunatic"] = {Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)},
+-- }
+-- local recipeamountmap_izayoi_redtea = {
+-- 	["easy"] = 2,
+-- 	["normal"] = 2,
+-- 	["hard"] = 2,
+-- 	["lunatic"] = nil,
+-- }
+-- local recipeamountmap_izayoi_sword = {
+-- 	["easy"] = 3,
+-- 	["normal"] = 3,
+-- 	["hard"] = 3,
+-- 	["lunatic"] = nil,
+-- }
+-- local recipelevel = IsInTable({"easy", "normal", "hard", "lunatic"}, TUNING.IZAYOI_RECIPES) and TUNING.IZAYOI_RECIPES or "normal"
+local myrecipemap = recipemap[IsInTable({"easy", "normal", "hard", "lunatic"}, TUNING.IZAYOI_RECIPES) and TUNING.IZAYOI_RECIPES or "normal"]
+AddRecipe("izayoi_redtea",
+myrecipemap.izayoi_redtea.recipe, izayoitab, TECH.MAGIC_TWO,
+nil, nil, nil, myrecipemap.izayoi_redtea.amount, "izayoi_skiller",
+"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
+
+AddRecipe("izayoi_sword",
+myrecipemap.izayoi_sword.recipe, izayoitab, TECH.SCIENCE_TWO,
+nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
+"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+
+AddRecipe("izayoi_swordpurple",
+myrecipemap.izayoi_sword.recipe, izayoitab, TECH.SCIENCE_TWO,
+nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
+"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+
+AddRecipe("izayoi_swordred",
+myrecipemap.izayoi_sword.recipe, izayoitab, TECH.SCIENCE_TWO,
+nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
+"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+
+if TUNING.IZAYOI_WATCH_CRAFTABLE then
+	AddRecipe("izayoi_watch",
+	myrecipemap.izayoi_watch.recipe, izayoitab, TECH.MAGIC_THREE,
+	nil, nil, nil, myrecipemap.izayoi_watch..amount, "izayoi_skiller",
+	"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
 end
+
+-- if TUNING.IZAYOI_RECIPES == "easy" then
+-- 	AddRecipe("izayoi_redtea",
+-- 	recipemap_izayoi_redtea[TUNING.IZAYOI_RECIPES], 
+-- 	izayoitab, TECH.MAGIC_TWO,
+-- 	nil, nil, nil, recipeamountmap_izayoi_redtea[TUNING.IZAYOI_RECIPES], "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
+
+-- 	AddRecipe("izayoi_sword",
+-- 	{Ingredient("log", 3), Ingredient("goldnugget", 3)}, 
+-- 	izayoitab, TECH.SCIENCE_TWO,
+-- 	nil, nil, nil, 3, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+
+-- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
+-- 		AddRecipe("izayoi_watch",
+-- 		{Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
+-- 		izayoitab, TECH.MAGIC_THREE,
+-- 		nil, nil, nil, nil, "izayoi_skiller",
+-- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
+-- 	end
+-- elseif TUNING.IZAYOI_RECIPES == "normal" then
+-- 	local izayoi_redtea = AddRecipe("izayoi_redtea",
+-- 	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
+-- 	izayoitab, TECH.MAGIC_TWO,
+-- 	nil, nil, nil, 2, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
+-- 	local izayoi_sword = AddRecipe("izayoi_sword",
+-- 	{Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
+-- 	izayoitab, TECH.SCIENCE_TWO,
+-- 	nil, nil, nil, 3, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+-- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
+-- 		local izayoi_watch = AddRecipe("izayoi_watch",
+-- 		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
+-- 		izayoitab, TECH.MAGIC_THREE,
+-- 		nil, nil, nil, nil, "izayoi_skiller",
+-- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
+-- 	end
+-- elseif TUNING.IZAYOI_RECIPES == "hard" then
+-- 	local izayoi_redtea = AddRecipe("izayoi_redtea",
+-- 	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
+-- 	izayoitab, TECH.MAGIC_TWO,
+-- 	nil, nil, nil, 2, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
+-- 	local izayoi_sword = AddRecipe("izayoi_sword",
+-- 	{Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
+-- 	izayoitab, TECH.SCIENCE_TWO,
+-- 	nil, nil, nil, 3, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+-- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
+-- 		local izayoi_watch = AddRecipe("izayoi_watch",
+-- 		{Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)}, 
+-- 		izayoitab, TECH.MAGIC_THREE,
+-- 		nil, nil, nil, nil, "izayoi_skiller",
+-- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
+-- 	end
+-- elseif TUNING.IZAYOI_RECIPES == "lunatic" then
+-- 	local izayoi_redtea = AddRecipe("izayoi_redtea",
+-- 	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
+-- 	izayoitab, TECH.MAGIC_TWO,
+-- 	nil, nil, nil, nil, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
+-- 	local izayoi_sword = AddRecipe("izayoi_sword",
+-- 	{Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
+-- 	izayoitab, TECH.SCIENCE_TWO,
+-- 	nil, nil, nil, nil, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+-- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
+-- 		local izayoi_watch = AddRecipe("izayoi_watch",
+-- 		{Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)}, 
+-- 		izayoitab, TECH.MAGIC_THREE,
+-- 		nil, nil, nil, nil, "izayoi_skiller",
+-- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
+-- 	end
+-- else
+-- 	local izayoi_redtea = AddRecipe("izayoi_redtea",
+-- 	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
+-- 	izayoitab, TECH.MAGIC_TWO,
+-- 	nil, nil, nil, 2, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
+-- 	local izayoi_sword = AddRecipe("izayoi_sword",
+-- 	{Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
+-- 	izayoitab, TECH.SCIENCE_TWO,
+-- 	nil, nil, nil, 3, "izayoi_skiller",
+-- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+-- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
+-- 		local izayoi_watch = AddRecipe("izayoi_watch",
+-- 		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
+-- 		izayoitab, TECH.MAGIC_THREE,
+-- 		nil, nil, nil, nil, "izayoi_skiller",
+-- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
+-- 	end
+-- end
 if TUNING.IZAYOI_LANGUAGE == "zh" then
-	STRINGS.NAMES.IZAYOI_REDTEA = "红茶"
+	STRINGS.NAMES.IZAYOI_REDTEA = "洋馆红茶"
 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = "红魔馆的餐后甜点。"
 	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = "+60HP/30San/10饥饿"
 
 
-	STRINGS.NAMES.IZAYOI_SWORD = "银刃"
+	STRINGS.NAMES.IZAYOI_SWORD = "银质飞刀"
 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "美丽且致命。"
-	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "威力 50"
+	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "蓝色 威力 50 可由技能发射"
+
+	STRINGS.NAMES.IZAYOI_SWORDPURPLE = "银质飞刀"
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "美丽且致命。"
+	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "紫色 威力 50 可以变化成三把"
+
+	STRINGS.NAMES.IZAYOI_SWORDRED = "银质飞刀"
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "美丽且致命。"
+	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "红色 威力 100"
 
 
 	STRINGS.NAMES.IZAYOI_WATCH = "月时计"
@@ -495,15 +665,6 @@ local function getDistance(p1, p2)
 	end
 	local dist = math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2 + (z2 - z1) ^ 2)
 	return dist or nil
-end
-
-local function IsInTable(tbl, value)
-	for k, v in ipairs(tbl) do
-		if v == value then
-			return true;
-		end
-	end
-	return false;
 end
 
 local function GetTableRemovedValues(tbl, value)
@@ -730,7 +891,7 @@ AddComponentPostInit("inventory", function(self)	-- <函数增补
 	end
 end)	-- >
 
--- AddComponentPostInit("projectile", function(self)	-- <改写投射物等API以达到时停效果
+AddComponentPostInit("projectile", function(self)	-- <改写投射物
 -- 	self.theworldstate = nil
 -- 	self.origspeed = nil
 -- 	local pSetSpeed = self.SetSpeed
@@ -776,8 +937,8 @@ end)	-- >
 -- 		self.theworldstate = nil
 -- 		return ret
 -- 	end
--- 	local pOnUpdate = self.OnUpdate
--- 	self.OnUpdate = function(self, dt)
+	local pOnUpdate = self.OnUpdate
+	self.OnUpdate = function(self, dt)
 -- 		if self.target ~= nil then
 -- 			if TheWorld:HasTag("the_world") then
 -- 				self:OnTheworldTriggered(true)
@@ -786,9 +947,39 @@ end)	-- >
 -- 			end
 -- 			self.theworldstate = TheWorld:HasTag("the_world")
 -- 		end
--- 		return pOnUpdate(self, dt)
--- 	end
--- end)
+		if self.onupdatefn then
+			self.onupdatefn(self)
+		end
+		return not self.inst:HasTag("time_stopped") and pOnUpdate(self, dt)
+	end
+
+	self.ThrowAt = function(self, owner, target, start, dest, attacker)
+		self.owner = owner
+		self.target = target
+		self.start = start
+		self.dest = dest
+		self.inst.Physics:ClearCollidesWith(COLLISION.LIMITS)
+
+		if attacker ~= nil and self.launchoffset ~= nil then
+			local x, y, z = self.inst.Transform:GetWorldPosition()
+			local facing_angle = attacker.Transform:GetRotation() * DEGREES
+			self.inst.Transform:SetPosition(x + self.launchoffset.x * math.cos(facing_angle), y + self.launchoffset.y, z - self.launchoffset.x * math.sin(facing_angle))
+		end
+
+		self:RotateToTarget(self.dest)
+		self.inst.Physics:SetMotorVel(self.speed, 0, 0)
+		self.inst:StartUpdatingComponent(self)
+		self.inst:PushEvent("onthrown", { thrower = owner, target = target })
+		target:PushEvent("hostileprojectile", { thrower = owner, attacker = attacker, target = target })
+		if self.onthrown ~= nil then
+			self.onthrown(self.inst, owner, target, attacker)
+		end
+		if self.cancatch and target.components.catcher ~= nil then
+			target.components.catcher:StartWatching(self.inst)
+		end
+	end
+
+end)
 
 -- AddComponentPostInit("burnable", function(self)	-- <改写燃烧API
 -- 	self.countdown = nil
@@ -941,6 +1132,28 @@ AddComponentPostInit("container", function(self)	-- <改写容器API，附加查
 			end
 		end
 	end
+
+	local pFindItem = self.FindItem
+	self.FindItem = function(self, fn)
+		local function vfn(item)
+			if self.inst.inspectionblockfn ~= nil then
+				return not self.inst.inspectionblockfn(item) and fn(item)
+			end
+			return fn(item)
+		end
+		return pFindItem(self, vfn)
+	end
+
+	local pFindItems = self.FindItems
+	self.FindItems = function(self, fn)
+		local function vfn(item)
+			if self.inst.inspectionblockfn ~= nil then
+				return not self.inst.inspectionblockfn(item) and fn(item)
+			end
+			return fn(item)
+		end
+		return pFindItems(self, vfn)
+	end
 end)	-- >
 ---- >
 
@@ -1029,7 +1242,7 @@ local skill_valid2 = {
 		if not timenotstopped then
 			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "动不了……" or "I can't move...")
 		elseif not enoughdao then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我没有刀了。" or "I have no knife now.")
+			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我没有能用的刀了。" or "I have no knife now.")
 		elseif not enoughmana then
 			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我缺乏力量。" or "I need power.")
 		elseif not validtgt then
@@ -1062,7 +1275,7 @@ local skill_valid2 = {
 		if not timenotstopped then
 			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "动不了……" or "I can't move...")
 		elseif not enoughdao then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我没有刀了。" or "I have no knife now.")
+			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我没有能用的刀了。" or "I have no knife now.")
 		elseif not enoughmana then
 			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我缺乏力量。" or "I need power.")
 		elseif not validtgt then
@@ -1318,10 +1531,10 @@ local skills = {
 		local x0, y0, z0 = inst.Transform:GetWorldPosition()	
 		local ents = TheSim:FindEntities(x0, y0, z0, 1000, {"izayoi_sword"})
 		for k, v in pairs(ents) do
-			if v and v:IsValid() and v:HasTag("izayoi_sword") and v.components.inventoryitem and v.components.inventoryitem.owner == nil then
+			if v and v:IsValid() and v.components.inventoryitem and v.components.inventoryitem.owner == nil then
 				num = num + 1
 				inst:DoTaskInTime( num * FRAMES, function()
-					if v and v:IsValid() and v:HasTag("izayoi_sword") and v.components.inventoryitem and v.components.inventoryitem.owner == nil then
+					if v and v:IsValid() and v.components.inventoryitem and v.components.inventoryitem.owner == nil then
 						SpawnPrefab("sparks").Transform:SetPosition(v:GetPosition():Get())
 						inst.components.inventory:GiveItem(v, nil, v:GetPosition())
 					end
@@ -1513,7 +1726,7 @@ end
 
 local function onhitother(inst, data)
 	local victim = data.target
-	if inst:IsValid() and IsValidVictim(victim) then
+	if inst:IsValid() and IsValidVictim(victim) and not victim == inst then
 		local scale = (victim:HasTag("smallcreature") and smallScale) or (victim:HasTag("largecreature") and largeScale) or medScale
 		local damage = data.damage
 		local dist = inst:GetPosition():Dist(victim:GetPosition()) 

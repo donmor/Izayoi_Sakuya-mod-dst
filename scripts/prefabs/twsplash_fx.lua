@@ -4,13 +4,10 @@ local function fn()
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
 	inst.entity:AddNetwork()
-
-    print("===========")
 	
 	inst:AddTag("NOCLICK")
 	inst:AddTag("FX")
 	inst:AddTag("canmoveintime")
-    print("+++++++++++")
     
     inst.AnimState:SetBank("bearger_ring_fx")
 	inst.AnimState:SetBuild("bearger_ring_fx")
@@ -22,10 +19,8 @@ local function fn()
     inst.AnimState:SetOrientation( ANIM_ORIENTATION.OnGround )
     inst.AnimState:SetLayer( LAYER_BACKGROUND )
     inst.AnimState:SetSortOrder( 3 )
-    print("11111111")
 	
 	inst.entity:SetPristine()
-    print("22222222")
 
 	if not TheWorld.ismastersim then
 		return inst
@@ -33,7 +28,6 @@ local function fn()
 		
 	inst.persists = false
     inst:ListenForEvent("animover", inst.Remove)
-    print("------------")
     return inst
 end
 

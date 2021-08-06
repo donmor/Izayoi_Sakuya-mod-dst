@@ -47,11 +47,10 @@ local function fn()
 	end
 	
 	inst.TimerSet = function(inst, duration)
-		local duration = duration > 1 and duration or TUNING.IZAYOI_B_DURATION
 		if inst.components.timer:TimerExists("izayoi_forcefield") then
-			inst.components.timer:SetTimeLeft("izayoi_forcefield", duration - FRAMES * 7)
+			inst.components.timer:SetTimeLeft("izayoi_forcefield", duration)
 		else
-			inst.components.timer:StartTimer("izayoi_forcefield", duration - FRAMES * 7)
+			inst.components.timer:StartTimer("izayoi_forcefield", duration)
 		end
 	end
 	

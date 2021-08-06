@@ -102,6 +102,17 @@ configuration_options =
 	},
 	
 	{
+		name = "items_aura_advanced",
+		label = "道具理智增益模式/Items sanity control mode",
+		options =
+		{
+			{description = "镇定", data = true, hover = "增加理智但降低启蒙/Increase sanity but lower enlightenment"},
+			{description = "增辐", data = false, hover = "一直增加理智及启蒙/Increase either sanity or enlightenment"},
+		},
+		default = false,
+	},
+	
+	{
 		name = "watch_food_spoilage",
 		label = "怀表格子防腐/Watch Food Spoilage",
 		options =
