@@ -2,10 +2,10 @@ local assets =
 {
 	Asset("ANIM", "anim/izayoi_sword.zip"),
 	Asset("ANIM", "anim/izayoi_sword_swap.zip"),
-	Asset("ANIM", "anim/izayoi_swordpurple.zip"),
-	Asset("ANIM", "anim/izayoi_swordpurple_swap.zip"),
 	Asset("ANIM", "anim/izayoi_swordred.zip"),
 	Asset("ANIM", "anim/izayoi_swordred_swap.zip"),
+	Asset("ANIM", "anim/izayoi_swordpurple.zip"),
+	Asset("ANIM", "anim/izayoi_swordpurple_swap.zip"),
 	Asset( "IMAGE", "images/inventoryimages/izayoi_sword.tex" ),
 	Asset( "ATLAS", "images/inventoryimages/izayoi_sword.xml" ),
 	Asset( "SOUND", "sound/izayoi.fsb" ),
@@ -13,6 +13,7 @@ local assets =
 }
 
 local sword_speed = 30
+local sword_split_angle = 20
 -- local function ontheworldtriggered(inst, sw, origspeed)	-- <音效+倍速
 -- 	if not sw and inst.components.projectile:IsThrown() then
 -- 		inst.components.projectile.origspeed = sword_speed * 2
@@ -24,13 +25,14 @@ local sword_speed = 30
 
 local function OnDropped(inst)
 	inst.AnimState:PlayAnimation("idle")
+	inst:RemoveTag("sword_split")
 	inst.AnimState:SetOrientation(ANIM_ORIENTATION.Default)
 	inst.components.projectile:SetSpeed(sword_speed)
 end
 
 local function OnThrown(inst, owner, target)
 	if target ~= owner then
-		inst.SoundEmitter:PlaySound("izayoi/se/sword")
+		inst.SoundEmitter:PlaySound(inst:HasTag("sword_split") and "izayoi/se/kira" or "izayoi/se/sword")
 	end
 	inst.AnimState:PlayAnimation("spin_loop", true)
 	inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
@@ -143,6 +145,9 @@ local function commonfn(v)
 	-- inst.components.projectile:SetOnCaughtFn(OnCaught)
 	-- inst.components.projectile:SetOnTheworldTriggeredFn(ontheworldtriggered)
 	inst.components.projectile.onupdatefn = function(self)
+		-- if self.inst.updatefn then
+		-- 	self.inst.updatefn(self.inst)
+		-- end
 		if self and self:IsThrown() then
 			local function validtgt(vtarget, inst)
 				return vtarget and vtarget:IsValid() and vtarget ~= self.owner and
@@ -154,6 +159,12 @@ local function commonfn(v)
 			end
 		end
 	end
+	-- inst.extra_damage = 0
+	-- inst.components.projectile.onprehit = function(inst, attacker, target)
+	-- 	if target and target:IsValid() and target:HasTag("monster") and target.components.health then
+	-- 		target.components.health:DoDelta(target.components.health.currenthealth <= inst.extra_damage and 1 - target.components.health.currenthealth or -inst.extra_damage)
+	-- 	end
+	-- end
 
 	MakeHauntableLaunch(inst)
 
@@ -176,12 +187,15 @@ local function purple_split(inst)
 		return math.sqrt((x1 - x2) ^ 2 + (z1 - z2) ^ 2)
 	end
 	local dist = getdist(inst, tgt)
-	-- inst:Remove()
+	-- if TUNING.IZAYOI_SE > 0 then
+	-- 	inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
+	-- end
+	inst:Remove()
 	local csw = SpawnPrefab("izayoi_swordred")-- <中间
 	csw.Transform:SetPosition(x, y, z)
 	csw.Transform:SetRotation(d)
-												csw.AnimState:PlayAnimation("spin_loop", true)
-												csw.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
+												-- csw.AnimState:PlayAnimation("spin_loop", true)
+												-- csw.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
 	local r0 = 0.1
 	local vdl = (d - 120) * DEGREES
 	local xl = x + r0 * math.cos(vdl)
@@ -203,10 +217,10 @@ local function purple_split(inst)
 	-- local dist = math.sqrt((x - xt) ^ 2 + (z - zt) ^ 2)
 	local vx = x + math.cos(d * DEGREES) * dist
 	local vz = z - math.sin(d * DEGREES) * dist
-	local vxl = x + math.cos((d - 15) * DEGREES) * dist
-	local vzl = z - math.sin((d - 15) * DEGREES) * dist
-	local vxr = x + math.cos((d + 15) * DEGREES) * dist
-	local vzr = z - math.sin((d + 15) * DEGREES) * dist
+	local vxl = x + math.cos((d - sword_split_angle) * DEGREES) * dist
+	local vzl = z - math.sin((d - sword_split_angle) * DEGREES) * dist
+	local vxr = x + math.cos((d + sword_split_angle) * DEGREES) * dist
+	local vzr = z - math.sin((d + sword_split_angle) * DEGREES) * dist
 	-- print(x, z)
 	-- print(vx, vz)
 												-- SpawnPrefab("sparks").Transform:SetPosition(vx, y, vz)
@@ -233,6 +247,7 @@ local function purple_split(inst)
 				v.projspeedtask = nil
 			end
 		end)
+		v:AddTag("sword_split")
 	end
 	-- csw.components.projectile:SetSpeed(0)
 	-- lsw.components.projectile:SetSpeed(0)
@@ -270,9 +285,38 @@ local function purple_split(inst)
 end
 
 local function fn()
-	local inst =  commonfn("izayoi_sword")
+	local inst = commonfn("izayoi_sword")
+	if not TheWorld.ismastersim then
+		return inst
+	end
 	inst:ListenForEvent("time_stopped", function()	-- <倍速
+		if inst.components.projectile:IsThrown() and inst.components.projectile.origspeed == sword_speed then
+			inst.components.projectile.origspeed = sword_speed * 2
+		end
+	end)
+	inst:ListenForEvent("time_resumed", function()	-- <音效
 		if inst.components.projectile:IsThrown() then
+			if TUNING.IZAYOI_SE > 0 then
+				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
+			end
+		end
+	end)
+	return inst
+end
+
+local function redfn()
+	local inst = commonfn("izayoi_swordred")
+	-- inst.extra_damage = 50
+	if not TheWorld.ismastersim then
+		return inst
+	end
+	inst.components.projectile.onprehit = function(inst, attacker, target)
+		if target and target:IsValid() and target:HasTag("monster") and target.components.health then
+			target.components.health:DoDelta(target.components.health.currenthealth <= 50 and 1 - target.components.health.currenthealth or -50)
+		end
+	end
+	inst:ListenForEvent("time_stopped", function()	-- <倍速
+		if inst.components.projectile:IsThrown() and inst.components.projectile.origspeed == sword_speed then
 			inst.components.projectile.origspeed = sword_speed * 2
 		end
 	end)
@@ -287,44 +331,41 @@ local function fn()
 end
 
 local function purplefn()
-	local inst =  commonfn("izayoi_swordpurple")
+	local inst = commonfn("izayoi_swordpurple")
+	if not TheWorld.ismastersim then
+		return inst
+	end
 	inst:ListenForEvent("time_stopped", function()	-- <倍速
-		if inst.components.projectile:IsThrown() then
+		if inst.components.projectile:IsThrown() and inst.components.projectile.origspeed == sword_speed then
 			inst.components.projectile.origspeed = sword_speed * 2
 		end
 	end)
 	inst:ListenForEvent("time_resumed", function()	-- <音效
 		if inst.components.projectile:IsThrown() then
-			if TUNING.IZAYOI_SE > 0 then
-				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
-			end
+			-- if TUNING.IZAYOI_SE > 0 then
+			-- 	inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
+			-- end
 			purple_split(inst)
 		end
 	end)
+	-- local ponupdatefn = inst.components.projectile.onupdatefn
+	-- inst.updatefn = function(inst)
 	local ponupdatefn = inst.components.projectile.onupdatefn
-	inst.components.projectile.onupdatefn = function()
-		-- TODO: Split
-
-		ponupdatefn()
+	inst.components.projectile.onupdatefn = function(self)
+		local angle = inst:GetAngleToPoint(self.target.Transform:GetWorldPosition())
+		print(angle, inst.Transform:GetRotation())
+		local da = math.abs(angle - inst.Transform:GetRotation())
+		while da > 180 do
+			da = math.abs(da - 360)
+		end
+		if da >= sword_split_angle then
+			-- if TUNING.IZAYOI_SE > 0 then
+			-- 	inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
+			-- end
+			purple_split(inst)
+		end
+		ponupdatefn(self)
 	end
-	return inst
-end
-
-local function redfn()
-	local inst =  commonfn("izayoi_swordred")
-	inst.components.weapon:SetDamage(50)
-	inst:ListenForEvent("time_stopped", function()	-- <倍速
-		if inst.components.projectile:IsThrown() then
-			inst.components.projectile.origspeed = sword_speed * 2
-		end
-	end)
-	inst:ListenForEvent("time_resumed", function()	-- <音效
-		if inst.components.projectile:IsThrown() then
-			if TUNING.IZAYOI_SE > 0 then
-				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
-			end
-		end
-	end)
 	return inst
 end
 

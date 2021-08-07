@@ -1,3 +1,7 @@
+local function LIMBO(tbl)
+	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
+end
+
 local assets = 
 {
 	Asset("ANIM", "anim/izayoi_watch.zip"),
@@ -9,7 +13,7 @@ local function onequip(inst, owner)
 	if not TUNING.IZAYOI_WATCH_PLAYERS_EQUIPPABLE and owner.components.inventory and owner.prefab ~= "izayoi" then
 		inst:DoTaskInTime(0.1, function()
 			owner.components.inventory:DropItem(inst, true)
-			owner.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我被拒绝了。" or "It refused me.")
+			owner.components.talker:Say(LIMBO({"It refused me.", ["zh"] = "我被拒绝了。"}))
 		end)
 		return
 	end
@@ -22,6 +26,7 @@ local function onequip(inst, owner)
 		inst.components.container:Open(owner)
 	end
 	owner:AddTag("watch_equipped")
+	owner:PushEvent("watch_swapped")
 	if owner.components.wiliya_mana then
 		inst.tick = inst:DoPeriodicTask(3, function()
 			owner.components.wiliya_mana:DoDelta(1)
@@ -39,6 +44,7 @@ local function onunequip(inst, owner)
 		inst.components.container:Close(owner)
 	end
 	owner:RemoveTag("watch_equipped")
+	owner:PushEvent("watch_swapped")
 	if inst.tick ~= nil then
 		inst.tick:Cancel()
 		inst.tick = nil

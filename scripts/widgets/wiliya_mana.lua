@@ -2,6 +2,10 @@ local UIAnim = require "widgets/uianim"
 local Widget = require "widgets/widget"
 local Text = require "widgets/text"
 
+local function LIMBO(tbl)
+	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
+end
+
 local wiliya_mana = Class(Widget, function(self, owner)
 	Widget._ctor(self, "wiliya_mana")
 	self.owner = owner
@@ -70,7 +74,7 @@ end
 function wiliya_mana:OnUpdate(dt)
 	self.anim:GetAnimState():SetPercent("anim", self.percent * .99)
 	local str = string.format("%3d", self.num.current)
-	self.num:SetString((TUNING.IZAYOI_LANGUAGE == "zh" and "魔力:" or "Mana: ")..str)
+	self.num:SetString((LIMBO({"Mana: ", ["zh"] = "魔力:"}))..str)
 end
 
 return wiliya_mana

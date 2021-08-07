@@ -1,3 +1,7 @@
+local function LIMBO(tbl)
+	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
+end
+
 local assets = 
 {
 	Asset( "SOUND", "sound/izayoi.fsb" ),
@@ -11,16 +15,16 @@ TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI = {
 	"izayoi_watch", 
 }
 
-local function updatestatus(inst, phase)	-- <状态变化
-	if phase == "day" then
-		inst.components.combat.damagemultiplier = TUNING.IZAYOI_DAMAGE
-		inst.components.locomotor:SetExternalSpeedMultiplier(inst, "izayoi", 1.15)
-	else
-		inst.components.combat.damagemultiplier = TUNING.IZAYOI_DAMAGE * 1.25
-		inst.components.locomotor:SetExternalSpeedMultiplier(inst, "izayoi", 1.3)
-	end
-end	-- >
-
+local function enablenv(inst)
+			inst.components.playervision:ForceNightVision(true)
+			inst.components.playervision:SetCustomCCTable("images/colour_cubes/beaver_vision_cc.tex")
+end
+local function disablenv(inst)
+			inst:DoTaskInTime(0.5, function()
+				inst.components.playervision:ForceNightVision(false)
+				inst.components.playervision:SetCustomCCTable(nil)
+			end)
+end
 local function isinbasement(vinst)	-- <地窖MOD兼容
 	local x, y, z = vinst.Transform:GetWorldPosition()
 	local ents = TheSim:FindEntities(x, y, z, 20, { "basement_part", "alt_tile" })
@@ -30,6 +34,32 @@ local function isinbasement(vinst)	-- <地窖MOD兼容
 		end
 	end
 end	-- >
+local function checknv(inst)
+	if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or isinbasement(inst) or TheWorld.state.isnight) then
+		enablenv(inst)
+	else
+		disablenv(inst)
+	end
+end
+local function updatestatus(inst, phase)	-- <状态变化
+	print("phase", phase)
+	print("phase", phase)
+	print("phase", phase)
+	if phase == "day" then
+		inst.components.combat.damagemultiplier = TUNING.IZAYOI_DAMAGE
+		inst.components.locomotor:SetExternalSpeedMultiplier(inst, "izayoi", 1.15)
+	else
+		inst.components.combat.damagemultiplier = TUNING.IZAYOI_DAMAGE * 1.25
+		inst.components.locomotor:SetExternalSpeedMultiplier(inst, "izayoi", 1.3)
+	end
+	checknv(inst)
+	-- if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (phase == "night" or TheWorld:HasTag("cave") or isinbasement(inst)) then
+	-- 	enablenv(inst)
+	-- else
+	-- 	disablenv(inst)
+	-- end
+end	-- >
+
 
 local MakePlayerCharacter = require "prefabs/player_common"
 return MakePlayerCharacter("izayoi", {}, {}, 
@@ -41,15 +71,13 @@ function(inst)
 		inst.deathsoundoverride = "izayoi/voice/death_voice"
 		
 	end
-	inst:DoPeriodicTask(0.5, function()	-- <夜视
-		if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or TheWorld.state.isnight or isinbasement(inst)) then
-			inst.components.playervision:ForceNightVision(true)
-			inst.components.playervision:SetCustomCCTable("images/colour_cubes/beaver_vision_cc.tex")
-		else
-			inst.components.playervision:ForceNightVision(false)
-			inst.components.playervision:SetCustomCCTable(nil)
-		end	-- >
-	end)
+	-- inst:DoPeriodicTask(0.5, function()	-- <夜视
+	-- 	if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or TheWorld.state.isnight or isinbasement(inst)) then
+	-- 		enablenv(inst)
+	-- 	else
+	-- 		disablenv(inst)
+	-- 	end	-- >
+	-- end)
 end, 
 function(inst)
 	inst.soundsname = "wilson"
@@ -134,7 +162,7 @@ function(inst)
 			if TUNING.IZAYOI_VOICE > 0 then
 				inst.SoundEmitter:PlaySound("izayoi/voice/the_world", nil, TUNING.IZAYOI_VOICE)
 			end
-			inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻世「The World」" or "Illusion World \"The World\"", 2, true)
+			inst.components.talker:Whisper(LIMBO({"Illusion World \"The World\"", ["zh"] = "幻世「The World」"}), 2, true)
 			if not inst.components.rider:IsRiding() then 
 				inst.AnimState:PlayAnimation("staff_pre")
 				inst.AnimState:PushAnimation("idle")
@@ -148,6 +176,15 @@ function(inst)
 			inst.SoundEmitter:PlaySound("izayoi/se/clock", nil, TUNING.IZAYOI_SE)
 		end
 	end)
+	inst:ListenForEvent("watch_swapped", checknv)
+	inst:DoTaskInTime(0.1, checknv)
+	-- inst:ListenForEvent("watch_swapped", function(inst)	-- <夜视
+		-- if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or TheWorld.state.isnight or isinbasement(inst))  then
+		-- 	enablenv(inst)
+		-- else
+		-- 	disablenv(inst)
+		-- end
+	-- end)
 	inst:ListenForEvent("death", function(inst)	-- <音效语音
 		if TUNING.IZAYOI_SE > 0 then
 			inst.SoundEmitter:PlaySound("izayoi/se/miss", nil, TUNING.IZAYOI_SE)
@@ -165,9 +202,9 @@ function(inst)
 				end
 			end
 	end)	-- >
-	inst:DoPeriodicTask(1, function()	-- <OP模式
-		if inst.components.health and not inst.components.health:IsDead() and not inst:HasTag("playerghost") then
-			if TUNING.IZAYOI_STRENGTH == "op" then
+	if TUNING.IZAYOI_STRENGTH == "op" then	-- <OP模式
+		inst:DoPeriodicTask(1, function()
+			if inst.components.health and not inst.components.health:IsDead() and not inst:HasTag("playerghost") then
 				if inst.components.health and inst.components.health:GetPercent() < 1 then
 					inst.components.health:DoDelta(10)
 				end
@@ -179,6 +216,6 @@ function(inst)
 					inst.components.wiliya_mana:DoDelta(10)
 				end
 			end
-		end
-	end)	-- >
+		end)	-- >
+	end
 end, TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI)

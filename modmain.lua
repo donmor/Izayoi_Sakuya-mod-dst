@@ -50,7 +50,7 @@ if TUNING.IZAYOI_STRENGTH == "op" then	-- <设定强度
 	TUNING.IZAYOI_V_LENGTH = 15
 	TUNING.IZAYOI_B_DURATION = 30
 	TUNING.IZAYOI_B_DAMAGEMULT = 1
-	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "蓬莱人" or "Invincible"
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = LIMBO({"Invincible", ["zh"] = "蓬莱人"})
 elseif TUNING.IZAYOI_STRENGTH == "easy" then
 	TUNING.IZAYOI_HUNGER = 120
 	TUNING.IZAYOI_SANITY = 300
@@ -65,22 +65,7 @@ elseif TUNING.IZAYOI_STRENGTH == "easy" then
 	TUNING.IZAYOI_V_LENGTH = 11
 	TUNING.IZAYOI_B_DURATION = 30
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.9
-	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "初月" or "Easy"
-elseif TUNING.IZAYOI_STRENGTH == "normal" then
-	TUNING.IZAYOI_HUNGER = 100
-	TUNING.IZAYOI_SANITY = 250
-	TUNING.IZAYOI_HEALTH = 150
-	TUNING.IZAYOI_MAX_MANA = 160
-	TUNING.IZAYOI_DAMAGE = 1
-	TUNING.IZAYOI_Z_CD = 5
-	TUNING.IZAYOI_X_CD = 10
-	TUNING.IZAYOI_C_CD = 5
-	TUNING.IZAYOI_V_CD = 40
-	TUNING.IZAYOI_B_CD = 60
-	TUNING.IZAYOI_V_LENGTH = 9
-	TUNING.IZAYOI_B_DURATION = 25
-	TUNING.IZAYOI_B_DAMAGEMULT = 0.75
-	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "三日月" or "Normal"
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = LIMBO({"Easy", ["zh"] = "初月"})
 elseif TUNING.IZAYOI_STRENGTH == "hard" then
 	TUNING.IZAYOI_HUNGER = 90
 	TUNING.IZAYOI_SANITY = 200
@@ -95,7 +80,7 @@ elseif TUNING.IZAYOI_STRENGTH == "hard" then
 	TUNING.IZAYOI_V_LENGTH = 5
 	TUNING.IZAYOI_B_DURATION = 20
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.6
-	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "上弦月" or "Hard"
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = LIMBO({"Hard", ["zh"] = "上弦月"})
 elseif TUNING.IZAYOI_STRENGTH == "lunatic" then
 	TUNING.IZAYOI_HUNGER = 80
 	TUNING.IZAYOI_SANITY = 150
@@ -110,7 +95,7 @@ elseif TUNING.IZAYOI_STRENGTH == "lunatic" then
 	TUNING.IZAYOI_V_LENGTH = 3
 	TUNING.IZAYOI_B_DURATION = 15
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.5
-	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "待宵" or "Lunatic"
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = LIMBO({"Lunatic", ["zh"] = "待宵"})
 else
 	TUNING.IZAYOI_HUNGER = 100
 	TUNING.IZAYOI_SANITY = 250
@@ -125,7 +110,7 @@ else
 	TUNING.IZAYOI_V_LENGTH = 9
 	TUNING.IZAYOI_B_DURATION = 25
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.75
-	STRINGS.CHARACTER_SURVIVABILITY.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "三日月" or "Normal"
+	STRINGS.CHARACTER_SURVIVABILITY.izayoi = LIMBO({"Normal", ["zh"] = "三日月"})
 end	-- >
 
 PrefabFiles = {
@@ -215,73 +200,72 @@ TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_watch = {
 	image = "izayoi_watch.tex",
 }
 TUNING.IZAYOI_WATCH_DAPPERNESS = 6.8 / 60
-STRINGS.NAMES.IZAYOI = TUNING.IZAYOI_LANGUAGE == "zh" and "十六夜咲夜" or "Sakuya"
-STRINGS.CHARACTER_TITLES.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "绯红恶魔的女仆" or "Maid of the Scarlet Devil"
+STRINGS.NAMES.IZAYOI = LIMBO({"Sakuya", ["zh"] = "十六夜咲夜"})
+STRINGS.CHARACTER_TITLES.izayoi = LIMBO({"Maid of the Scarlet Devil", ["zh"] = "绯红恶魔的女仆"})
 STRINGS.CHARACTER_NAMES.izayoi = STRINGS.NAMES.IZAYOI
-STRINGS.CHARACTER_DESCRIPTIONS.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "*完美潇洒的从者\n*只是个会死的人类\n*掌控时间的流动" or "*Perfect and Elegant Servant\n*Just a Mortal Human \n*Master of Time"
-STRINGS.CHARACTER_QUOTES.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "\"我一生都是会死的人类哦。\n只要活着就会一直陪着大小姐。\"" or "\"We'll be together as long as I'm alive, Milady.\""
+STRINGS.CHARACTER_DESCRIPTIONS.izayoi = LIMBO({"*Perfect and Elegant Servant\n*Just a Mortal Human \n*Master of Time", ["zh"] = "*完美潇洒的从者\n*只是个会死的人类\n*掌控时间的流动"})
+STRINGS.CHARACTER_QUOTES.izayoi = LIMBO({"\"We'll be together as long as I'm alive, Milady.\"", ["zh"] = "\"我一生都是会死的人类哦。\n只要活着就会一直陪着大小姐。\""})
 STRINGS.SKIN_NAMES.izayoi_none = STRINGS.NAMES.IZAYOI
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.izayoi = 
 {
-	GENERIC = TUNING.IZAYOI_LANGUAGE == "zh" and "女仆？为什么在这里……" or "Why does this maid here?",
-	ATTACKER = TUNING.IZAYOI_LANGUAGE == "zh" and "……什么时候！" or "How did her ...?!",
-	MURDERER = TUNING.IZAYOI_LANGUAGE == "zh" and "她为什么要这样做……" or "Was her ordered to do so?",
-	REVIVER = TUNING.IZAYOI_LANGUAGE == "zh" and "时间……被倒转了？" or "Did the time been changed?",
-	GHOST = TUNING.IZAYOI_LANGUAGE == "zh" and "似乎已经没法再作为女仆生存下去。" or "Can no longer be a maid.",
+	GENERIC = LIMBO({"Why does a maid here?", ["zh"] = "女仆？为什么在这里……"}),
+	ATTACKER = LIMBO({"How did her ...?!", ["zh"] = "……什么时候！"}),
+	MURDERER = LIMBO({"Was her ordered to do so?", ["zh"] = "她为什么要这样做……"}),
+	REVIVER = LIMBO({"Did the time been changed?", ["zh"] = "时间……被倒转了？"}),
+	GHOST = LIMBO({"Can no longer survive as a maid.", ["zh"] = "似乎已经没法再作为女仆生存下去。"}),
 }
-STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "她一定是从某个大家族那里来的。" or "She came from a big family."
-STRINGS.CHARACTERS.WAXWELL.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "她身上有种说不清楚的力量。" or "She has the power of mysterious. I'm not sure."
-STRINGS.CHARACTERS.WILLOW.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我感觉她很不喜欢我。" or "Oh, she's not so friendly to me."
-STRINGS.CHARACTERS.WENDY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "既是女仆，又是恶魔之地的住人。" or "Maid who come from the lair of devil."
-STRINGS.CHARACTERS.WX78.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "女仆" or "Maid"
-if STRINGS.CHARACTERS.REIMU then STRINGS.CHARACTERS.REIMU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.MARISA then STRINGS.CHARACTERS.MARISA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "等……等等！我不是来借书的，咲夜！" or "W...Wait! I'm not here to borrow books, Sakuya!" end
-if STRINGS.CHARACTERS.YOUMU then STRINGS.CHARACTERS.YOUMU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.SANAE then STRINGS.CHARACTERS.SANAE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.REISEN then STRINGS.CHARACTERS.REISEN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.YUUKA then STRINGS.CHARACTERS.YUUKA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.YUYUKO then STRINGS.CHARACTERS.YUYUKO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.YUKARI then STRINGS.CHARACTERS.YUKARI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.REMILIA then STRINGS.CHARACTERS.REMILIA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我也会珍惜在一起的每一秒哦，咲夜。" or "I'd also cherish every second together, Sakuya." end
-if STRINGS.CHARACTERS.FRAN then STRINGS.CHARACTERS.FRAN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "一起玩吧，咲夜！" or "Let's play together, Sakuya!" end
-if STRINGS.CHARACTERS.MEIRIN then STRINGS.CHARACTERS.MEIRIN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "是……是！我很精神！" or "Y...Yes! I feel fresh today!" end
-if STRINGS.CHARACTERS.PATCHOULI then STRINGS.CHARACTERS.PATCHOULI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "早安，咲夜。" or "Morning, Sakuya." end
-if STRINGS.CHARACTERS.FUTO then STRINGS.CHARACTERS.FUTO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "不不……我有特定的目标的，所以能别盯我了吗？" or "...I have had a specific target, so could you please stop staring at me?" end
-if STRINGS.CHARACTERS.SUIKA then STRINGS.CHARACTERS.SUIKA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "女仆长，下次宴会还在红魔馆吗？" or "When will the next feast in the Scarlet Devil Mansion, Sakuya?" end
-if STRINGS.CHARACTERS.KASEN then STRINGS.CHARACTERS.KASEN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.MOMIJI then STRINGS.CHARACTERS.MOMIJI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.QINGWA then STRINGS.CHARACTERS.QINGWA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.KEINE then STRINGS.CHARACTERS.KEINE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.MOKOU then STRINGS.CHARACTERS.MOKOU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.CIRNO then STRINGS.CHARACTERS.CIRNO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "芙兰在吗？我要找她一起出去玩！" or "Is Fran here? I want her out to play together!" end
-if STRINGS.CHARACTERS.DAIYOUSEI then STRINGS.CHARACTERS.DAIYOUSEI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "不好意思，我朋友给您添麻烦了！" or "I'm so sorry for the trouble my friends gave to you!" end
-if STRINGS.CHARACTERS.CHEN then STRINGS.CHARACTERS.CHEN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "早安，咲夜！" or "Morning, Sakuya!" end
-if STRINGS.CHARACTERS.YAKUMORAN then STRINGS.CHARACTERS.YAKUMORAN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.LYRICA then STRINGS.CHARACTERS.LYRICA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.KAGEROU then STRINGS.CHARACTERS.KAGEROU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.MIKO then STRINGS.CHARACTERS.MIKO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.YOHIME then STRINGS.CHARACTERS.YOHIME.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.NUE then STRINGS.CHARACTERS.NUE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.TENSHI then STRINGS.CHARACTERS.TENSHI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.IKU then STRINGS.CHARACTERS.IKU.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.RENKO then STRINGS.CHARACTERS.RENKO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "她好像是梅莉上次梦见的……" or "She seems to be Merry dreamed of last time." end
-if STRINGS.CHARACTERS.MERRY then STRINGS.CHARACTERS.MERRY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我上次梦见过她，她是……" or "Last time I dreamt about her." end
-if STRINGS.CHARACTERS.RIN then STRINGS.CHARACTERS.RIN.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.PARSEE then STRINGS.CHARACTERS.PARSEE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "真好啊，主仆一对……" or "I'm so jealous of that maid and her master." end
-if STRINGS.CHARACTERS.TEWI then STRINGS.CHARACTERS.TEWI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "你好啊，红魔馆的女仆长！" or "Hello, maid of the Scarlet Devil Mansion!" end
-if STRINGS.CHARACTERS.CLOWNPIECE then STRINGS.CHARACTERS.CLOWNPIECE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.AYA then STRINGS.CHARACTERS.AYA.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.UTSUHO then STRINGS.CHARACTERS.UTSUHO.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.SATSUKI then STRINGS.CHARACTERS.SATSUKI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "我们从未谋面……这就是我的命运。" or "We'd never met. That's my destiny." end
-if STRINGS.CHARACTERS.SATORI then STRINGS.CHARACTERS.SATORI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.KOISHI then STRINGS.CHARACTERS.KOISHI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "你好！我在这里哟！" or "Hello! I'm here!" end
-if STRINGS.CHARACTERS.SHIKIEIKI then STRINGS.CHARACTERS.SHIKIEIKI.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.ALICE_TH then STRINGS.CHARACTERS.ALICE_TH.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "又见面了，红魔馆的女仆长。" or "It's a nice day, Sakuya." end
-if STRINGS.CHARACTERS.SUNNY then STRINGS.CHARACTERS.SUNNY.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "是红魔馆的女仆长哎！" or "It's Sakuya in the mansion!" end
-if STRINGS.CHARACTERS.STARSAPPHIRE then STRINGS.CHARACTERS.STARSAPPHIRE.DESCRIBE.izayoi = TUNING.IZAYOI_LANGUAGE == "zh" and "是红魔馆的女仆长哎！" or "It's Sakuya in the mansion!" end
+STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.izayoi = LIMBO({"She must came from a big family.", ["zh"] = "她一定是从某个大家族那里来的。"})
+STRINGS.CHARACTERS.WAXWELL.DESCRIBE.izayoi = LIMBO({"She has some kind of power.", ["zh"] = "她身上有种说不清楚的力量。"})
+STRINGS.CHARACTERS.WILLOW.DESCRIBE.izayoi = LIMBO({"Oh, she's not so friendly to me.", ["zh"] = "我感觉她很不喜欢我。"})
+STRINGS.CHARACTERS.WENDY.DESCRIBE.izayoi = LIMBO({"Maid who come from the lair of devil.", ["zh"] = "既是女仆，又是恶魔之地的住人。"})
+STRINGS.CHARACTERS.WX78.DESCRIBE.izayoi = LIMBO({"Maid", ["zh"] = "女仆"})
+if STRINGS.CHARACTERS.REIMU then STRINGS.CHARACTERS.REIMU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.MARISA then STRINGS.CHARACTERS.MARISA.DESCRIBE.izayoi = LIMBO({"W...Wait! I'm not here to borrow books, Sakuya!", ["zh"] = "等……等等！我不是来借书的，咲夜！"}) end
+if STRINGS.CHARACTERS.YOUMU then STRINGS.CHARACTERS.YOUMU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.SANAE then STRINGS.CHARACTERS.SANAE.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.REISEN then STRINGS.CHARACTERS.REISEN.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.YUUKA then STRINGS.CHARACTERS.YUUKA.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.YUYUKO then STRINGS.CHARACTERS.YUYUKO.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.YUKARI then STRINGS.CHARACTERS.YUKARI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.REMILIA then STRINGS.CHARACTERS.REMILIA.DESCRIBE.izayoi = LIMBO({"I'd also cherish every second together, Sakuya.", ["zh"] = "我也会珍惜在一起的每一秒哦，咲夜。"}) end
+if STRINGS.CHARACTERS.FRAN then STRINGS.CHARACTERS.FRAN.DESCRIBE.izayoi = LIMBO({"Let's play together, Sakuya!", ["zh"] = "一起玩吧，咲夜！"}) end
+if STRINGS.CHARACTERS.MEIRIN then STRINGS.CHARACTERS.MEIRIN.DESCRIBE.izayoi = LIMBO({"Y...Yes! I feel fresh today!", ["zh"] = "是……是！我很精神！"}) end
+if STRINGS.CHARACTERS.PATCHOULI then STRINGS.CHARACTERS.PATCHOULI.DESCRIBE.izayoi = LIMBO({"As relyable as she used to be.", ["zh"] = "咲夜还是一如既往地可靠啊。"}) end
+if STRINGS.CHARACTERS.FUTO then STRINGS.CHARACTERS.FUTO.DESCRIBE.izayoi = LIMBO({"...I have had a specific target, so could you please stop staring at me?", ["zh"] = "不不……我有特定的目标的，所以能别盯我了吗？"}) end
+if STRINGS.CHARACTERS.SUIKA then STRINGS.CHARACTERS.SUIKA.DESCRIBE.izayoi = LIMBO({"When will the next feast in the mansion, Sakuya?", ["zh"] = "女仆长，下次宴会还在红魔馆吗？"}) end
+if STRINGS.CHARACTERS.KASEN then STRINGS.CHARACTERS.KASEN.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.MOMIJI then STRINGS.CHARACTERS.MOMIJI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.QINGWA then STRINGS.CHARACTERS.QINGWA.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.KEINE then STRINGS.CHARACTERS.KEINE.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.MOKOU then STRINGS.CHARACTERS.MOKOU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.CIRNO then STRINGS.CHARACTERS.CIRNO.DESCRIBE.izayoi = LIMBO({"Is Fran here? I want her out to play together!", ["zh"] = "芙兰在吗？我要找她一起出去玩！"}) end
+if STRINGS.CHARACTERS.DAIYOUSEI then STRINGS.CHARACTERS.DAIYOUSEI.DESCRIBE.izayoi = LIMBO({"I'm so sorry for the trouble my friends gave to you!", ["zh"] = "不好意思，我朋友给您添麻烦了！"}) end
+if STRINGS.CHARACTERS.CHEN then STRINGS.CHARACTERS.CHEN.DESCRIBE.izayoi = LIMBO({"Morning, Sakuya!", ["zh"] = "早安，咲夜！"}) end
+if STRINGS.CHARACTERS.YAKUMORAN then STRINGS.CHARACTERS.YAKUMORAN.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.LYRICA then STRINGS.CHARACTERS.LYRICA.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.KAGEROU then STRINGS.CHARACTERS.KAGEROU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.MIKO then STRINGS.CHARACTERS.MIKO.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.YOHIME then STRINGS.CHARACTERS.YOHIME.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.NUE then STRINGS.CHARACTERS.NUE.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.TENSHI then STRINGS.CHARACTERS.TENSHI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.IKU then STRINGS.CHARACTERS.IKU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.RENKO then STRINGS.CHARACTERS.RENKO.DESCRIBE.izayoi = LIMBO({"She seems to be Merry dreamed of last time.", ["zh"] = "她好像是梅莉上次梦见的……"}) end
+if STRINGS.CHARACTERS.MERRY then STRINGS.CHARACTERS.MERRY.DESCRIBE.izayoi = LIMBO({"Last time I dreamt about her.", ["zh"] = "我上次梦见过她，她是……"}) end
+if STRINGS.CHARACTERS.RIN then STRINGS.CHARACTERS.RIN.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.PARSEE then STRINGS.CHARACTERS.PARSEE.DESCRIBE.izayoi = LIMBO({"I'm so jealous of that maid and her master.", ["zh"] = "真好啊，主仆一对……"}) end
+if STRINGS.CHARACTERS.TEWI then STRINGS.CHARACTERS.TEWI.DESCRIBE.izayoi = LIMBO({"Hello, maid of the mansion!", ["zh"] = "你好啊，红魔馆的女仆长！"}) end
+if STRINGS.CHARACTERS.CLOWNPIECE then STRINGS.CHARACTERS.CLOWNPIECE.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.AYA then STRINGS.CHARACTERS.AYA.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.UTSUHO then STRINGS.CHARACTERS.UTSUHO.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.SATSUKI then STRINGS.CHARACTERS.SATSUKI.DESCRIBE.izayoi = LIMBO({"We'd never met. That's my destiny.", ["zh"] = "我们从未谋面……这就是我的命运。"}) end
+if STRINGS.CHARACTERS.SATORI then STRINGS.CHARACTERS.SATORI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.KOISHI then STRINGS.CHARACTERS.KOISHI.DESCRIBE.izayoi = LIMBO({"Hello! I'm here!", ["zh"] = "你好！我在这里哟！"}) end
+if STRINGS.CHARACTERS.SHIKIEIKI then STRINGS.CHARACTERS.SHIKIEIKI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.ALICE_TH then STRINGS.CHARACTERS.ALICE_TH.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
+if STRINGS.CHARACTERS.SUNNY then STRINGS.CHARACTERS.SUNNY.DESCRIBE.izayoi = LIMBO({"It's Sakuya in the mansion!", ["zh"] = "是红魔馆的女仆长哎！"}) end
+if STRINGS.CHARACTERS.STARSAPPHIRE then STRINGS.CHARACTERS.STARSAPPHIRE.DESCRIBE.izayoi = LIMBO({"It's Sakuya in the mansion!", ["zh"] = "是红魔馆的女仆长哎！"}) end
 local speeches = {
 	["zh"] = function() return require "speech_zh" end,
-	["zhr"] = function() return require "speech_zh" end,
 }
 local spf = speeches[TUNING.IZAYOI_LANGUAGE]
 STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"
@@ -303,95 +287,35 @@ local skin_modes = {
 AddModCharacter("izayoi", "FEMALE", skin_modes)
 
 GLOBAL.FOODTYPE.BLOOD = "BLOOD"
-izayoitab = AddRecipeTab(TUNING.IZAYOI_LANGUAGE == "zh" and "完美潇洒的制作配方" or "Perfect and Elegant Recipes", 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
+izayoitab = AddRecipeTab(LIMBO({"Perfect and Elegant Recipes", ["zh"] = "完美潇洒的制作配方"}), 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
 local recipemap = {
 	["easy"] = {
-		izayoi_redtea = {
-			recipe = {Ingredient("spidergland", 2), Ingredient("petals", 2)},
-			amount = 2,
-		},
-		izayoi_sword = {
-			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3)},
-			amount = 3,
-		},
-		izayoi_swordpurple = {
-			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 1)},
-			amount = 3,
-		},
-		izayoi_swordred = {
-			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 1)},
-			amount = 3,
-		},
-		izayoi_watch = {
-			recipe = {Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)},
-			amount = nil,
-		},
+		izayoi_redtea = {recipe = {Ingredient("spidergland", 2), Ingredient("petals", 2)}, amount = 2},
+		izayoi_sword = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3)}, amount = 3},
+		izayoi_swordred = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 1)}, amount = 3},
+		izayoi_swordpurple = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 1)}, amount = 3},
+		izayoi_watch = {recipe = {Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, amount = nil},
 	},
 	["normal"] = {
-		izayoi_redtea = {
-			recipe = {Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("charcoal", 2)},
-			amount = 2,
-		},
-		izayoi_sword = {
-			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)},
-			amount = 3,
-		},
-		izayoi_swordpurple = {
-			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)},
-			amount = 3,
-		},
-		izayoi_swordred = {
-			recipe =  {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)},
-			amount = 3,
-		},
-		izayoi_watch = {
-			recipe = {Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)},
-			amount = nil,
-		},
+		izayoi_redtea = {recipe = {Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("charcoal", 2)}, amount = 2},
+		izayoi_sword = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)}, amount = 3},
+		izayoi_swordred = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)}, amount = 3},
+		izayoi_swordpurple = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)}, amount = 3},
+		izayoi_watch = {recipe = {Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, amount = nil},
 	},
 	["hard"] = {
-		izayoi_redtea = {
-			recipe = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("charcoal", 2)},
-			amount = 2,
-		},
-		izayoi_sword = {
-			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)},
-			amount = 3,
-		},
-		izayoi_swordpurple = {
-			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)},
-			amount = 3,
-		},
-		izayoi_swordred = {
-			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)},
-			amount = 3,
-		},
-		izayoi_watch = {
-			recipe = {Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)},
-			amount = nil,
-		},
+		izayoi_redtea = {recipe = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("charcoal", 2)}, amount = 2},
+		izayoi_sword = {recipe = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)}, amount = 3},
+		izayoi_swordred = {recipe = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)}, amount = 3},
+		izayoi_swordpurple = {recipe = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)}, amount = 3},
+		izayoi_watch = {recipe = {Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)}, amount = nil},
 	},
 	["lunatic"] = {
-		izayoi_redtea = {
-			recipe = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("charcoal", 2)},
-			amount = nil,
-		},
-		izayoi_sword = {
-			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)},
-			amount = nil,
-		},
-		izayoi_swordpurple = {
-			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)},
-			amount = nil,
-		},
-		izayoi_swordred = {
-			recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)},
-			amount = nil,
-		},
-		izayoi_watch = {
-			recipe = {Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)},
-			amount = nil,
-		},
+		izayoi_redtea = {recipe = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("charcoal", 2)}, amount = nil},
+		izayoi_sword = {recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("bluegem", 1)}, amount = nil},
+		izayoi_swordred = {recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)}, amount = nil},
+		izayoi_swordpurple = {recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)}, amount = nil},
+		izayoi_watch = {recipe = {Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)}, amount = nil},
 	},
 }
 -- local recipemap_izayoi_redtea = {
@@ -436,20 +360,20 @@ myrecipemap.izayoi_sword.recipe, izayoitab, TECH.SCIENCE_TWO,
 nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
 "images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
 
-AddRecipe("izayoi_swordpurple",
-myrecipemap.izayoi_sword.recipe, izayoitab, TECH.SCIENCE_TWO,
-nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
+AddRecipe("izayoi_swordred",
+myrecipemap.izayoi_swordred.recipe, izayoitab, TECH.SCIENCE_TWO,
+nil, nil, nil, myrecipemap.izayoi_swordred.amount, "izayoi_skiller",
 "images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
 
-AddRecipe("izayoi_swordred",
-myrecipemap.izayoi_sword.recipe, izayoitab, TECH.SCIENCE_TWO,
-nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
+AddRecipe("izayoi_swordpurple",
+myrecipemap.izayoi_swordpurple.recipe, izayoitab, TECH.SCIENCE_TWO,
+nil, nil, nil, myrecipemap.izayoi_swordpurple.amount, "izayoi_skiller",
 "images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
 
 if TUNING.IZAYOI_WATCH_CRAFTABLE then
 	AddRecipe("izayoi_watch",
 	myrecipemap.izayoi_watch.recipe, izayoitab, TECH.MAGIC_THREE,
-	nil, nil, nil, myrecipemap.izayoi_watch..amount, "izayoi_skiller",
+	nil, nil, nil, myrecipemap.izayoi_watch.amount, "izayoi_skiller",
 	"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
 end
 
@@ -546,43 +470,42 @@ end
 -- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
 -- 	end
 -- end
-if TUNING.IZAYOI_LANGUAGE == "zh" then
-	STRINGS.NAMES.IZAYOI_REDTEA = "洋馆红茶"
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = "红魔馆的餐后甜点。"
-	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = "+60HP/30San/10饥饿"
+-- if TUNING.IZAYOI_LANGUAGE == "zh" then
+	STRINGS.NAMES.IZAYOI_REDTEA = LIMBO({"Red Tea", ["zh"] = "洋馆红茶"})
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = LIMBO({"Dessert in manshion", ["zh"] = "洋馆的餐后甜点。"})
+	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = LIMBO({"+60HP/30San/10Hunger", ["zh"] = "+60HP/30San/10饥饿"})
+
+	STRINGS.NAMES.IZAYOI_SWORD = LIMBO({"Silver Knife", ["zh"] = "银质飞刀",})
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = LIMBO({"", ["zh"] = "美丽且致命。"})
+	STRINGS.RECIPE_DESC.IZAYOI_SWORD = LIMBO({"Damage 50, can be shot by skills", ["zh"] = "威力 50 可由技能发射"})
+
+	STRINGS.NAMES.IZAYOI_SWORDRED = LIMBO({"Exorcist's Knife", ["zh"] = "破魔飞刀"})
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDRED = STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD
+	STRINGS.RECIPE_DESC.IZAYOI_SWORDRED = LIMBO({"Damage 50, but 100 to monsters", ["zh"] = "威力 50 对怪物伤害加倍"})
+
+	STRINGS.NAMES.IZAYOI_SWORDPURPLE = LIMBO({"Mirage Knife", ["zh"] = "幻影飞刀"})
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDPURPLE = STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD
+	STRINGS.RECIPE_DESC.IZAYOI_SWORDPURPLE = LIMBO({"Damage 50, can turn into three knives", ["zh"] = "威力 50 可以变化成三把"})
 
 
-	STRINGS.NAMES.IZAYOI_SWORD = "银质飞刀"
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "美丽且致命。"
-	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "蓝色 威力 50 可由技能发射"
-
-	STRINGS.NAMES.IZAYOI_SWORDPURPLE = "银质飞刀"
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "美丽且致命。"
-	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "紫色 威力 50 可以变化成三把"
-
-	STRINGS.NAMES.IZAYOI_SWORDRED = "银质飞刀"
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "美丽且致命。"
-	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "红色 威力 100"
+	STRINGS.NAMES.IZAYOI_WATCH = LIMBO({"Lunar Clock", ["zh"] = "月时计"})
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = LIMBO({"", ["zh"] = "能看到时间的运作原理。"})
+	STRINGS.RECIPE_DESC.IZAYOI_WATCH = LIMBO({"Manipulating time", ["zh"] = "掌控时间"})	-- >
+-- else
+-- 	STRINGS.NAMES.IZAYOI_REDTEA = "Red Tea"
+-- 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = "Dessert in manshion."
+-- 	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = "+60HP/30San/10Hunger"
 
 
-	STRINGS.NAMES.IZAYOI_WATCH = "月时计"
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = "能看到时间的运作原理。"
-	STRINGS.RECIPE_DESC.IZAYOI_WATCH = "掌控时间"
-else
-	STRINGS.NAMES.IZAYOI_REDTEA = "Red Tea"
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = "Dessert of Scarlet Devil"
-	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = "+60HP/30San/10Hunger"
+-- 	STRINGS.NAMES.IZAYOI_SWORD = "Silver Knife"
+-- 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "Beautiful and deadly."
+-- 	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "Damage 50"
 
 
-	STRINGS.NAMES.IZAYOI_SWORD = "Silver Knife"
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "Beautiful and deadly"
-	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "Damage 50"
-
-
-	STRINGS.NAMES.IZAYOI_WATCH = "Lunar Clock"
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = "Time goes through the gears"
-	STRINGS.RECIPE_DESC.IZAYOI_WATCH = "Manipulating time"
-end	-- >
+-- 	STRINGS.NAMES.IZAYOI_WATCH = "Lunar Clock"
+-- 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = "Time goes through the gears."
+-- 	STRINGS.RECIPE_DESC.IZAYOI_WATCH = "Manipulating time"
+-- end
 local params = {}	-- <怀表储物栏
 params.izayoi_watch = 
 {
@@ -1240,13 +1163,13 @@ local skill_valid2 = {
 			not vtarget:HasTag("wall") and 
 			vtarget.replica.combat and vtarget.replica.health and not vtarget:HasTag("invisible")
 		if not timenotstopped then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "动不了……" or "I can't move...")
+			inst.components.talker:Say(LIMBO({"I can't move...", ["zh"] = "动不了……"}))
 		elseif not enoughdao then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我没有能用的刀了。" or "I have no knife now.")
+			inst.components.talker:Say(LIMBO({"I have no handy knife now.", ["zh"] = "我没有能用的刀了。"}))
 		elseif not enoughmana then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我缺乏力量。" or "I need power.")
+			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
 		elseif not validtgt then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我不需要这么做。" or "It makes no sense.")
+			inst.components.talker:Say(LIMBO({"It makes no sense.", ["zh"] = "我不需要这么做。"}))
 		end
 		return timenotstopped and enoughdao and enoughmana and validtgt and skill_valid.z.validfn(inst)
 	end},
@@ -1273,13 +1196,13 @@ local skill_valid2 = {
 		local validtgt = FindEntity(inst, 30, istgt, nil, { "companion", "wall", "INLIMBO", "FX", "playerghost", "invisible" })
 		local enoughmana = inst.wiliya_mana_current:value() >= 25
 		if not timenotstopped then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "动不了……" or "I can't move...")
+			inst.components.talker:Say(LIMBO({"I can't move...", ["zh"] = "动不了……"}))
 		elseif not enoughdao then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我没有能用的刀了。" or "I have no knife now.")
+			inst.components.talker:Say(LIMBO({"I have no handy knife now.", ["zh"] = "我没有能用的刀了。"}))
 		elseif not enoughmana then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我缺乏力量。" or "I need power.")
+			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
 		elseif not validtgt then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我不需要这么做。" or "It makes no sense.")
+			inst.components.talker:Say(LIMBO({"It makes no sense.", ["zh"] = "我不需要这么做。"}))
 		end
 		return timenotstopped and enoughdao and enoughmana and validtgt and skill_valid.x.validfn(inst)
 	end},
@@ -1290,13 +1213,13 @@ local skill_valid2 = {
 		local havewatch = inst:HasTag("watch_equipped")
 		local validknife = FindEntity(inst, 1000, nil, {"izayoi_sword"})
 		if not timenotstopped then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "动不了……" or "I can't move...")
+			inst.components.talker:Say(LIMBO({"I can't move...", ["zh"] = "动不了……"}))
 		elseif not havewatch then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "时间……无法掌握呢。" or "I can't manipulate the time...")
+			inst.components.talker:Say(LIMBO({"I can't manipulate the time...", ["zh"] = "时间……无法掌握呢。"}))
 		elseif not enoughmana then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我缺乏力量。" or "I need power.")
+			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
 		elseif not validknife then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "没有可以回收的刀了。" or "There's no knife to recycle.")
+			inst.components.talker:Say(LIMBO({"There's no knife to collect.", ["zh"] = "没有可以回收的刀了。"}))
 		end
 		return timenotstopped and enoughmana and havewatch and validknife and skill_valid.c.validfn(inst)
 	end},
@@ -1305,9 +1228,9 @@ local skill_valid2 = {
 		local enoughmana = inst.wiliya_mana_current:value() >= 50
 		local havewatch = inst:HasTag("watch_equipped")
 		if not havewatch then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "时间……无法掌握呢。" or "I can't manipulate the time...")
+			inst.components.talker:Say(LIMBO({"I can't manipulate the time...", ["zh"] = "时间……无法掌握呢。"}))
 		elseif not enoughmana then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我缺乏力量。" or "I need power.")
+			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
 		end
 		return enoughmana and havewatch and skill_valid.v.validfn(inst)
 	end},
@@ -1317,11 +1240,11 @@ local skill_valid2 = {
 		local enoughmana = inst.wiliya_mana_current:value() >= 60 
 		local havewatch = inst:HasTag("watch_equipped")
 		if not timenotstopped then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "动不了……" or "I can't move...")
+			inst.components.talker:Say(LIMBO({"I can't move...", ["zh"] = "动不了……"}))
 		elseif not havewatch then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "时间……无法掌握呢。" or "I can't manipulate the time...")
+			inst.components.talker:Say(LIMBO({"I can't manipulate the time...", ["zh"] = "时间……无法掌握呢。"}))
 		elseif not enoughmana then
-			inst.components.talker:Say(TUNING.IZAYOI_LANGUAGE == "zh" and "我缺乏力量。" or "I need power.")
+			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
 		end
 		return timenotstopped and enoughmana and havewatch and skill_valid.b.validfn(inst)
 	end},
@@ -1439,7 +1362,7 @@ local skills = {
 						inst.SoundEmitter:PlaySound("izayoi/se/teleport", nil, TUNING.IZAYOI_SE)
 					end
 				end
-				inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻在「钟表的残骸」" or "Illusion Existence \"Clock Corpse\"", 2, true)
+				inst.components.talker:Whisper(LIMBO({"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}), 2, true)
 				if not inst.components.rider:IsRiding() then 
 					inst.AnimState:PlayAnimation("staff_pre")
 					inst.AnimState:PushAnimation("idle")
@@ -1456,7 +1379,7 @@ local skills = {
 						end
 					end)
 				end
-				inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻幽「迷幻的杰克」" or "Illusion Phantom \"Jack the Ludo Bile\"", 2, true)
+				inst.components.talker:Whisper(LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}), 2, true)
 				if not inst.components.rider:IsRiding() then 
 					inst.AnimState:PlayAnimation("throw")
 				end
@@ -1512,9 +1435,9 @@ local skills = {
 			end
 		end)
 		if TUNING.IZAYOI_X_HOSTILE_ONLY then
-			inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻符「杀人玩偶」" or "Illusion Sign \"Killer Doll\"", 2, true)
+			inst.components.talker:Whisper(LIMBO({"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"}), 2, true)
 		else
-			inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻符「无差别伤害」" or "Illusion Sign \"Indiscriminate\"", 2, true)
+			inst.components.talker:Whisper(LIMBO({"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}), 2, true)
 		end
 		if TUNING.IZAYOI_VOICE > 0 then
 			inst.SoundEmitter:PlaySound("izayoi/voice/execute", nil, TUNING.IZAYOI_VOICE)
@@ -1536,12 +1459,13 @@ local skills = {
 				inst:DoTaskInTime( num * FRAMES, function()
 					if v and v:IsValid() and v.components.inventoryitem and v.components.inventoryitem.owner == nil then
 						SpawnPrefab("sparks").Transform:SetPosition(v:GetPosition():Get())
+						v.components.projectile:Stop()
 						inst.components.inventory:GiveItem(v, nil, v:GetPosition())
 					end
 				end)
 			end
 		end
-		inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻术「吾刃回归」" or "Illusion \"My Knife's Recursions\"", 2, true)
+		inst.components.talker:Whisper(LIMBO({"Illusion \"My Knife's Recursions\"", ["zh"] = "幻术「吾刃回归」"}), 2, true)
 		if not inst.components.rider:IsRiding() then 
 			inst.AnimState:PlayAnimation("staff")
 			inst.AnimState:PushAnimation("idle")
@@ -1671,7 +1595,7 @@ local skills = {
 		if TUNING.IZAYOI_SE > 0 then
 			inst.SoundEmitter:PlaySound("izayoi/se/border", nil, TUNING.IZAYOI_SE)
 		end
-		inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "时符「完美空间」" or "Time Sign \"Private Square\"", 2, true)
+		inst.components.talker:Whisper(LIMBO({"Time Sign \"Private Square\"", ["zh"] = "时符「完美空间」"}), 2, true)
 		if not inst.components.rider:IsRiding() then 
 			inst.AnimState:PlayAnimation("staff_pre")
 			inst.AnimState:PushAnimation("idle")
@@ -1824,19 +1748,19 @@ local base_x = -750
 local delta_x = 175
 local function AddSkillButton(self) 
 	if self.owner and self.owner:HasTag(characterName.."_skiller") then	
-		if TUNING.IZAYOI_Z_ESCAPE then
-			self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, TUNING.IZAYOI_LANGUAGE == "zh" and "钟表的残骸" or "Clock Corpse", "MP: 15") )
-		else
-			self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, TUNING.IZAYOI_LANGUAGE == "zh" and "迷幻的杰克" or "Jack the Ludo Bile", "MP: 15") )
-		end	
-		if TUNING.IZAYOI_X_HOSTILE_ONLY then
-			self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, TUNING.IZAYOI_LANGUAGE == "zh" and "杀人玩偶" or "Killer Doll", "MP: 25") )
-		else
-			self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, TUNING.IZAYOI_LANGUAGE == "zh" and "无差别伤害" or "Indiscriminate", "MP: 25") )
-		end
-		self.skillbutton_c = self:AddChild( skillsbutton("images/izayoi_skill_c.xml", "izayoi_skill_c.tex", base_x + delta_x * 2, nil, nil, TUNING.IZAYOI_LANGUAGE == "zh" and "吾刃回归" or "My Knife's Recursions", "MP: 5") )
+		-- if TUNING.IZAYOI_Z_ESCAPE then
+		self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Clock Corpse", ["zh"] = "钟表的残骸"}) or LIMBO({"Jack the Ludo Bile", ["zh"] = "迷幻的杰克"}), "MP: 15") )
+		-- else
+			-- self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, LIMBO({"", ["zh"] = "迷幻的杰克"}), "MP: 15") )
+		-- end	
+		-- if TUNING.IZAYOI_X_HOSTILE_ONLY then
+		self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, LIMBO(TUNING.IZAYOI_X_HOSTILE_ONLY and {"Killer Doll", ["zh"] = "杀人玩偶"} or {"Indiscriminate", ["zh"] = "无差别伤害"}), "MP: 25") )
+		-- else
+			-- self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, LIMBO({"Indiscriminate", ["zh"] = "无差别伤害"}), "MP: 25") )
+		-- end
+		self.skillbutton_c = self:AddChild( skillsbutton("images/izayoi_skill_c.xml", "izayoi_skill_c.tex", base_x + delta_x * 2, nil, nil, LIMBO({"My Knife's Recursions", ["zh"] = "吾刃回归"}), "MP: 5") )
 		self.skillbutton_v = self:AddChild( skillsbutton("images/izayoi_skill_v.xml", "izayoi_skill_v.tex", base_x + delta_x * 3, nil, nil, "The World", "MP: 50") )	
-		self.skillbutton_b = self:AddChild( skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, TUNING.IZAYOI_LANGUAGE == "zh" and "完美空间" or "Perfect Square", "MP: 60") )	
+		self.skillbutton_b = self:AddChild( skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, LIMBO({"Perfect Square", ["zh"] = "完美空间"}), "MP: 60") )	
 		local pOnUpdate = self.OnUpdate
 		self.OnUpdate = function(self, dt)
 			local ret = pOnUpdate(self, dt)
