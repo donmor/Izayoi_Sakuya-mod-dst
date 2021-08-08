@@ -16,14 +16,14 @@ TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI = {
 }
 
 local function enablenv(inst)
-			inst.components.playervision:ForceNightVision(true)
-			inst.components.playervision:SetCustomCCTable("images/colour_cubes/beaver_vision_cc.tex")
+	-- print("enable")
+	inst.components.playervision:ForceNightVision(true)
+	inst.components.playervision:SetCustomCCTable("images/colour_cubes/beaver_vision_cc.tex")
 end
 local function disablenv(inst)
-			inst:DoTaskInTime(0.5, function()
-				inst.components.playervision:ForceNightVision(false)
-				inst.components.playervision:SetCustomCCTable(nil)
-			end)
+	-- print("disable")
+	inst.components.playervision:ForceNightVision(false)
+	inst.components.playervision:SetCustomCCTable(nil)
 end
 local function isinbasement(vinst)	-- <地窖MOD兼容
 	local x, y, z = vinst.Transform:GetWorldPosition()
@@ -34,17 +34,43 @@ local function isinbasement(vinst)	-- <地窖MOD兼容
 		end
 	end
 end	-- >
-local function checknv(inst)
-	if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or isinbasement(inst) or TheWorld.state.isnight) then
-		enablenv(inst)
+local function checknv(inst, phase)	-- <夜视
+	-- print("check")
+	-- print(TheWorld.state.phase, TheWorld.state.phase == "night")
+	-- print(phase, phase == "night")
+	-- local isnight = TheWorld.state.isnight
+	-- if phase then
+	-- 	isnight = phase == "night"
+	-- end
+	-- if inst.izayoi_watch_equipped and inst.izayoi_watch_equipped:value() and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or isinbasement(inst) or TheWorld.state.phase == "night") then
+	if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or isinbasement(inst) or TheWorld.state.phase == "night") then
+		inst:DoTaskInTime(phase and 0.6 or FRAMES, function()
+			enablenv(inst)
+		end)
 	else
-		disablenv(inst)
+		inst:DoTaskInTime(phase and 0.6 or FRAMES, function()
+			disablenv(inst)
+		end)
 	end
 end
+local function updatenv(inst)
+	-- print("phase", phase)
+	-- print("phase", phase)
+	-- print("phase", phase)
+	-- inst:DoTaskInTime(0.5, function()
+	checknv(inst, true)
+	-- end)
+end
 local function updatestatus(inst, phase)	-- <状态变化
-	print("phase", phase)
-	print("phase", phase)
-	print("phase", phase)
+	-- print("phase", phase)
+	-- print("phase", phase)
+	-- print("phase", phase)
+	-- inst:DoTaskInTime(0.5, function()
+	-- 	checknv(inst, true)
+	-- end)
+	-- if not TheWorld.ismastersim then
+	-- 	return
+	-- end
 	if phase == "day" then
 		inst.components.combat.damagemultiplier = TUNING.IZAYOI_DAMAGE
 		inst.components.locomotor:SetExternalSpeedMultiplier(inst, "izayoi", 1.15)
@@ -52,12 +78,15 @@ local function updatestatus(inst, phase)	-- <状态变化
 		inst.components.combat.damagemultiplier = TUNING.IZAYOI_DAMAGE * 1.25
 		inst.components.locomotor:SetExternalSpeedMultiplier(inst, "izayoi", 1.3)
 	end
-	checknv(inst)
+	-- inst:DoTaskInTime(0.5, function()
+	-- 	inst:PushEvent("watch_swapped")
+	-- end)
 	-- if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (phase == "night" or TheWorld:HasTag("cave") or isinbasement(inst)) then
 	-- 	enablenv(inst)
 	-- else
 	-- 	disablenv(inst)
 	-- end
+
 end	-- >
 
 
@@ -71,13 +100,48 @@ function(inst)
 		inst.deathsoundoverride = "izayoi/voice/death_voice"
 		
 	end
-	-- inst:DoPeriodicTask(0.5, function()	-- <夜视
+	-- inst:DoPeriodicTask(0.5, function()
 	-- 	if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or TheWorld.state.isnight or isinbasement(inst)) then
 	-- 		enablenv(inst)
 	-- 	else
 	-- 		disablenv(inst)
 	-- 	end	-- >
 	-- end)
+	inst:ListenForEvent("watch_swapped", checknv)
+	inst:WatchWorldState("phase", updatenv)
+	updatenv(inst)
+	-- inst:ListenForEvent("watch_swapped", function() print("swap") checknv(inst) end)
+	-- inst:DoTaskInTime(0.1, checknv)
+	if TUNING.IZAYOI_BASEMENT_COMPATIBLE then
+		inst:DoPeriodicTask(1, function()
+			-- print("BASEMENT")
+			checknv(inst)
+		end)	-- >
+	end
+	-- if TUNING.IZAYOI_STRENGTH == "op" or TUNING.IZAYOI_BASEMENT_COMPATIBLE then
+	-- 	inst:DoPeriodicTask(1, function()
+	-- 		if TUNING.IZAYOI_BASEMENT_COMPATIBLE then
+	-- 			checknv(inst)
+	-- 		end
+	-- 		if not TheWorld.ismastersim then
+	-- 			return
+	-- 		end
+	-- 		if TUNING.IZAYOI_STRENGTH == "op" then	-- <OP模式
+	-- 			if inst.components.health and not inst.components.health:IsDead() and not inst:HasTag("playerghost") then
+	-- 				if inst.components.health and inst.components.health:GetPercent() < 1 then
+	-- 					inst.components.health:DoDelta(10)
+	-- 				end
+	-- 				if inst.components.hunger and inst.components.hunger:GetPercent() < 1 then
+	-- 					inst.components.hunger:DoDelta(10)
+	-- 					inst.components.hunger:Pause(true)
+	-- 				end
+	-- 				if inst.components.wiliya_mana and inst.components.wiliya_mana:GetPercent() < 1 then
+	-- 					inst.components.wiliya_mana:DoDelta(10)
+	-- 				end
+	-- 			end
+	-- 		end
+	-- 	end)	-- >
+	-- end
 end, 
 function(inst)
 	inst.soundsname = "wilson"
@@ -129,7 +193,7 @@ function(inst)
 		"sunny",
 		"starsapphire",
 	}	-- >
-	
+
 	inst.components.health:SetMaxHealth(TUNING.IZAYOI_HEALTH)	-- <三围
 	inst.components.hunger:SetMax(TUNING.IZAYOI_HUNGER)
 	inst.components.sanity:SetMax(TUNING.IZAYOI_SANITY)	-- >
@@ -176,8 +240,8 @@ function(inst)
 			inst.SoundEmitter:PlaySound("izayoi/se/clock", nil, TUNING.IZAYOI_SE)
 		end
 	end)
-	inst:ListenForEvent("watch_swapped", checknv)
-	inst:DoTaskInTime(0.1, checknv)
+	-- inst:ListenForEvent("watch_swapped", checknv)
+	-- inst:DoTaskInTime(0.1, checknv)
 	-- inst:ListenForEvent("watch_swapped", function(inst)	-- <夜视
 		-- if inst:HasTag("watch_equipped") and TUNING.IZAYOI_WATCH_NIGHT_VISION and (TheWorld:HasTag("cave") or TheWorld.state.isnight or isinbasement(inst))  then
 		-- 	enablenv(inst)
@@ -218,4 +282,25 @@ function(inst)
 			end
 		end)	-- >
 	end
+	-- if TUNING.IZAYOI_STRENGTH == "op" or TUNING.IZAYOI_BASEMENT_COMPATIBLE then	-- <OP模式
+	-- 	inst:DoPeriodicTask(1, function()
+	-- 		if TUNING.IZAYOI_STRENGTH == "op" then
+	-- 			if inst.components.health and not inst.components.health:IsDead() and not inst:HasTag("playerghost") then
+	-- 				if inst.components.health and inst.components.health:GetPercent() < 1 then
+	-- 					inst.components.health:DoDelta(10)
+	-- 				end
+	-- 				if inst.components.hunger and inst.components.hunger:GetPercent() < 1 then
+	-- 					inst.components.hunger:DoDelta(10)
+	-- 					inst.components.hunger:Pause(true)
+	-- 				end
+	-- 				if inst.components.wiliya_mana and inst.components.wiliya_mana:GetPercent() < 1 then
+	-- 					inst.components.wiliya_mana:DoDelta(10)
+	-- 				end
+	-- 			end
+	-- 		end
+	-- 		if TUNING.IZAYOI_BASEMENT_COMPATIBLE then
+	-- 			checknv(inst)
+	-- 		end
+	-- 	end)	-- >
+	-- end
 end, TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI)

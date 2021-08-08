@@ -324,7 +324,7 @@ return {
 	{
 		GENERIC = "味道不错呢。",
 		PAINFUL = "噫……",
-		SPOILED = "大小姐不会喜欢这个的。",
+		SPOILED = "呕……",
 		STALE = "不好吃了。",
 		INVALID = "这个不能吃。",
 		YUCKY = "不该有人吃这个的。",

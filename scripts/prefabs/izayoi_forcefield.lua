@@ -25,68 +25,96 @@ local function fn()
 	
 	inst:AddComponent("timer")
 	
-	local function resume(inst)
-		if inst.prefab ~= "izayoi" then
-			inst:AddTag("canmoveintime")
-		end
-		if inst.AnimState then
-			inst.AnimState:Resume()
-		end
-		if inst.components.locomotor then
-			inst.components.locomotor:StartUpdatingInternal()
-		end
-		if inst.components.playercontroller then
-			inst.components.playercontroller:Enable(true)
-		end
-		if inst:HasTag("time_stopped") then
-			inst:RemoveTag("time_stopped")
-		end
-	end
-	local function getparent(inst)
-		return inst.entity:GetParent()
-	end
+	-- local function resume(inst)
+	-- 	if inst.prefab ~= "izayoi" then
+	-- 		inst:AddTag("canmoveintime")
+	-- 	end
+	-- 	if inst.AnimState then
+	-- 		inst.AnimState:Resume()
+	-- 	end
+	-- 	if inst.components.locomotor then
+	-- 		inst.components.locomotor:StartUpdatingInternal()
+	-- 	end
+	-- 	if inst.components.playercontroller then
+	-- 		inst.components.playercontroller:Enable(true)
+	-- 	end
+	-- 	if inst:HasTag("time_stopped") then
+	-- 		inst:RemoveTag("time_stopped")
+	-- 	end
+	-- end
+	local duration = TUNING.IZAYOI_B_DURATION
 	
-	inst.TimerSet = function(inst, duration)
+	inst.Init = function(inst)
+		local parent = inst.entity:GetParent()
 		if inst.components.timer:TimerExists("izayoi_forcefield") then
 			inst.components.timer:SetTimeLeft("izayoi_forcefield", duration)
 		else
 			inst.components.timer:StartTimer("izayoi_forcefield", duration)
 		end
+		if parent:HasTag("watch_equipped") then
+			TheWorld.components.timestopper_world:ResumeEntity(parent, duration)
+		end
 	end
 	
 	inst.Terminate = function(inst)
-		if inst.components.timer:TimerExists("izayoi_forcefield") and inst.components.timer:GetTimeLeft("izayoi_forcefield") > FRAMES * 3 then
-			inst.components.timer:SetTimeLeft("izayoi_forcefield", FRAMES * 3)
-		else
-			inst.components.timer:StartTimer("izayoi_forcefield", FRAMES * 3)
-		end
+		local parent = inst.entity:GetParent()
+		-- if inst.components.timer:TimerExists("izayoi_forcefield") and inst.components.timer:GetTimeLeft("izayoi_forcefield") > FRAMES * 3 then
+		-- 	inst.components.timer:SetTimeLeft("izayoi_forcefield", FRAMES * 3)
+		-- else
+		-- 	inst.components.timer:StartTimer("izayoi_forcefield", FRAMES * 3)
+		-- end
+		inst.AnimState:PlayAnimation("close")
+		inst:DoTaskInTime(FRAMES * 6, function()
+			if parent and parent.components.combat then
+				parent.components.health:SetAbsorptionAmount(0)
+			end
+			if parent and parent:HasTag("canmoveintime") and not (parent.components.timestopper and parent.components.timestopper:IsStoppingTime()) then
+				parent:RemoveTag("canmoveintime")
+			end
+			parent.forcefieldfx = nil
+			inst:Remove()
+		end)
 	end
 
 	inst:DoTaskInTime(FRAMES, function()
-		if getparent(inst) and getparent(inst).components.combat and getparent(inst).components.health then
-			getparent(inst).components.combat.externaldamagemultipliers:SetModifier(inst, TUNING.IZAYOI_B_DAMAGEMULT + 1, "izayoi_forcefield")
-			getparent(inst).components.health:SetAbsorptionAmount(TUNING.IZAYOI_B_DAMAGEMULT)
-			if getparent(inst).components.inventory then
-				for k, v in pairs(getparent(inst).components.inventory.equipslots) do
-					if v.prefab == "izayoi_watch" then
-						resume(getparent(inst))
-						break
-					end
-				end
-			end
+		local parent = inst.entity:GetParent()
+		if parent and parent.components.combat and parent.components.health then
+			parent.components.combat.externaldamagemultipliers:SetModifier(inst, TUNING.IZAYOI_B_DAMAGEMULT + 1, "izayoi_forcefield")
+			parent.components.health:SetAbsorptionAmount(TUNING.IZAYOI_B_DAMAGEMULT)
+			-- if inst.components.timer:TimerExists("izayoi_forcefield") then
+			-- 	inst.components.timer:SetTimeLeft("izayoi_forcefield", duration)
+			-- else
+			-- 	inst.components.timer:StartTimer("izayoi_forcefield", duration)
+			-- end
+			-- if parent:HasTag("watch_equipped") then
+			-- 	TheWorld.components.timestopper_world:ResumeEntity(parent, duration)
+			-- end
+			inst:Init()
+			-- if parent:HasTag("watch_equipped") then
+			-- 	TheWorld.components.timestopper_world:ResumeEntity(, )
+			-- end
+			-- if parent.components.inventory then
+			-- 	for k, v in pairs(parent.components.inventory.equipslots) do
+			-- 		if v.prefab == "izayoi_watch" then
+			-- 			resume(parent)
+			-- 			break
+			-- 		end
+			-- 	end
+			-- end
 			inst:ListenForEvent("timerdone", function(inst, data)
 				if data.name == "izayoi_forcefield" then
-					inst.AnimState:PlayAnimation("close")
-					inst:DoTaskInTime(FRAMES * 6, function()
-						if getparent(inst) and getparent(inst).components.combat then
-							getparent(inst).components.health:SetAbsorptionAmount(0)
-						end
-						if getparent(inst) and getparent(inst):HasTag("canmoveintime") and not (getparent(inst).components.timestopper and getparent(inst).components.timestopper:IsStoppingTime()) then
-							getparent(inst):RemoveTag("canmoveintime")
-						end
-						getparent(inst).forcefieldfx = nil
-						inst:Remove()
-					end)
+					inst:Terminate()
+					-- inst.AnimState:PlayAnimation("close")
+					-- inst:DoTaskInTime(FRAMES * 6, function()
+						-- if parent and parent.components.combat then
+						-- 	parent.components.health:SetAbsorptionAmount(0)
+						-- end
+						-- if parent and parent:HasTag("canmoveintime") and not (parent.components.timestopper and parent.components.timestopper:IsStoppingTime()) then
+						-- 	parent:RemoveTag("canmoveintime")
+						-- end
+						-- parent.forcefieldfx = nil
+						-- inst:Remove()
+					-- end)
 				end
 			end)
 
@@ -94,14 +122,14 @@ local function fn()
 			-- 	if data.item.prefab == "izayoi_watch" then
 			-- 		resume(inst)
 			-- 	end
-			-- end, getparent(inst))
+			-- end, parent)
 			
 			inst:ListenForEvent("unequip", function(inst, data)
 				if data.item.prefab == "izayoi_watch" then
-					inst:Terminate(inst)
-					inst:Remove()
+					inst:Terminate()
+					-- inst:Remove()
 				end
-			end, getparent(inst))
+			end, parent)
 		else
 			inst:Remove()
 		end

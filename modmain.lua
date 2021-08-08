@@ -22,6 +22,14 @@ local function IsInTable(tbl, value)
 	return false;
 end
 
+local function isModEnabled(mod)
+	local list = ModManager and ModManager.enabledmods
+	if not list then
+		return false
+	end
+	return IsInTable(list, mod)
+end
+
 TUNING.IZAYOI_SE = GetModConfigData("izayoi_se")	-- <读取配置
 TUNING.IZAYOI_VOICE = GetModConfigData("izayoi_voice")
 TUNING.IZAYOI_ITEMS_AURA_ADVANCED = GetModConfigData("items_aura_advanced")
@@ -35,6 +43,7 @@ TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
 TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
 TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")
 
+TUNING.IZAYOI_BASEMENT_COMPATIBLE = isModEnabled("workshop-1349799880")
 TUNING.IZAYOI_LANGUAGE = LOC.GetLocaleCode()
 if TUNING.IZAYOI_STRENGTH == "op" then	-- <设定强度
 	TUNING.IZAYOI_HUNGER = 300
@@ -1572,8 +1581,10 @@ local skills = {
 			inst.forcefieldfx.entity:SetParent(inst.entity)
 			inst.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
 			inst.forcefieldfx.Transform:SetScale(.75, .75, .75)
+		else
+			inst.forcefieldfx:Init()
 		end
-		inst.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
+		-- inst.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
 
 		for k, v in pairs(AllPlayers) do
 			if v and v:IsValid() and v:HasTag("player") and not v:HasTag("playerghost") and v ~= inst and 
@@ -1587,8 +1598,10 @@ local skills = {
 						v.forcefieldfx.entity:SetParent(v.entity)
 						v.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
 						v.forcefieldfx.Transform:SetScale(.75, .75, .75)
+					else
+						v.forcefieldfx:Init()
 					end
-					v.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
+					-- v.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
 				end
 			end
 		end
@@ -1714,6 +1727,7 @@ AddPlayerPostInit(function(inst)
 			inst:ListenForEvent("onhitother", onhitother)
 		end
 	end
+	inst.izayoi_watch_equipped = net_bool(inst.GUID, "izayoi_watch_equipped","watch_swapped")
 	if TheWorld.ismastersim then
 		if not inst.unloadFieldOnDeath then
 			inst.unloadFieldOnDeath = inst:ListenForEvent("makeplayerghost", function(inst, data)
