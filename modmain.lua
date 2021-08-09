@@ -156,6 +156,12 @@ Assets = {
 	Asset( "IMAGE", "images/map_icons/izayoi_sword.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_sword.xml" ),
 	
+	Asset( "IMAGE", "images/map_icons/izayoi_swordred.tex" ),
+	Asset( "ATLAS", "images/map_icons/izayoi_swordred.xml" ),
+	
+	Asset( "IMAGE", "images/map_icons/izayoi_swordpurple.tex" ),
+	Asset( "ATLAS", "images/map_icons/izayoi_swordpurple.xml" ),
+	
 	Asset( "IMAGE", "images/map_icons/izayoi_watch.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_watch.xml" ),
 	
@@ -200,9 +206,21 @@ Assets = {
 	Asset( "SOUND", "sound/izayoi.fsb" ),
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
 }
+TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_redtea = {
+	atlas = "images/inventoryimages/izayoi_redtea.xml",
+	image = "izayoi_redtea.tex",
+}
 TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_sword = {
 	atlas = "images/inventoryimages/izayoi_sword.xml",
 	image = "izayoi_sword.tex",
+}
+TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_swordred = {
+	atlas = "images/inventoryimages/izayoi_swordred.xml",
+	image = "izayoi_swordred.tex",
+}
+TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_swordpurple = {
+	atlas = "images/inventoryimages/izayoi_swordpurple.xml",
+	image = "izayoi_swordpurple.tex",
 }
 TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_watch = {
 	atlas = "images/inventoryimages/izayoi_watch.xml",
@@ -282,6 +300,8 @@ STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"
 AddMinimapAtlas("images/map_icons/izayoi.xml")
 AddMinimapAtlas("images/map_icons/izayoi_redtea.xml")
 AddMinimapAtlas("images/map_icons/izayoi_sword.xml")
+AddMinimapAtlas("images/map_icons/izayoi_swordred.xml")
+AddMinimapAtlas("images/map_icons/izayoi_swordpurple.xml")
 AddMinimapAtlas("images/map_icons/izayoi_watch.xml")
 
 local skin_modes = {
@@ -372,12 +392,12 @@ nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
 AddRecipe("izayoi_swordred",
 myrecipemap.izayoi_swordred.recipe, izayoitab, TECH.SCIENCE_TWO,
 nil, nil, nil, myrecipemap.izayoi_swordred.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+"images/inventoryimages/izayoi_swordred.xml", "izayoi_swordred.tex")
 
 AddRecipe("izayoi_swordpurple",
 myrecipemap.izayoi_swordpurple.recipe, izayoitab, TECH.SCIENCE_TWO,
 nil, nil, nil, myrecipemap.izayoi_swordpurple.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+"images/inventoryimages/izayoi_swordpurple.xml", "izayoi_swordpurple.tex")
 
 if TUNING.IZAYOI_WATCH_CRAFTABLE then
 	AddRecipe("izayoi_watch",
@@ -1576,37 +1596,44 @@ local skills = {
 	end,
 		
 	b = function(inst, vtarget)
-		if inst.forcefieldfx == nil then
-			inst.forcefieldfx = SpawnPrefab("izayoi_forcefield")
-			inst.forcefieldfx.entity:SetParent(inst.entity)
-			inst.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
-			inst.forcefieldfx.Transform:SetScale(.75, .75, .75)
-		else
-			inst.forcefieldfx:Init()
+		local function append(tgt)
+			if tgt.forcefieldfx == nil then
+				tgt.forcefieldfx = SpawnPrefab("izayoi_forcefield")
+				tgt.forcefieldfx.entity:SetParent(tgt.entity)
+				tgt.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
+				tgt.forcefieldfx.Transform:SetScale(.75, .75, .75)
+			else
+				tgt.forcefieldfx:Init()
+			end
 		end
+		-- if inst.forcefieldfx == nil then
+		-- 	inst.forcefieldfx = SpawnPrefab("izayoi_forcefield")
+		-- 	inst.forcefieldfx.entity:SetParent(inst.entity)
+		-- 	inst.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
+		-- 	inst.forcefieldfx.Transform:SetScale(.75, .75, .75)
+		-- else
+		-- 	inst.forcefieldfx:Init()
+		-- end
+		append(inst)
 		-- inst.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
 
 		for k, v in pairs(AllPlayers) do
-			if v and v:IsValid() and v:HasTag("player") and not v:HasTag("playerghost") and v ~= inst and 
+			local dist = getDistance(inst, v)
+			if v and v:IsValid() and dist ~= nil and dist <= 5 and
+				not v:HasTag("playerghost") and v ~= inst and v:HasTag("watch_equipped") and
 				v.components.health and not v.components.health:IsDead() and 
 				((TheNet:GetPVPEnabled() and (inst.components.teamworker and inst.components.teamworker:Identify(v))) or not TheNet:GetPVPEnabled()) 
 			then
-				local dist = getDistance(inst, v)
-				if dist ~= nil and dist > 0 and dist <= 5 then
-					if v.forcefieldfx == nil then
-						v.forcefieldfx = SpawnPrefab("izayoi_forcefield")
-						v.forcefieldfx.entity:SetParent(v.entity)
-						v.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
-						v.forcefieldfx.Transform:SetScale(.75, .75, .75)
-					else
-						v.forcefieldfx:Init()
-					end
-					-- v.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
+				if v.forcefieldfx == nil then
+					v.forcefieldfx = SpawnPrefab("izayoi_forcefield")
+					v.forcefieldfx.entity:SetParent(v.entity)
+					v.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
+					v.forcefieldfx.Transform:SetScale(.75, .75, .75)
+				else
+					v.forcefieldfx:Init()
 				end
+				-- v.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
 			end
-		end
-		if TUNING.IZAYOI_SE > 0 then
-			inst.SoundEmitter:PlaySound("izayoi/se/border", nil, TUNING.IZAYOI_SE)
 		end
 		inst.components.talker:Whisper(LIMBO({"Time Sign \"Private Square\"", ["zh"] = "时符「完美空间」"}), 2, true)
 		if not inst.components.rider:IsRiding() then 

@@ -8,6 +8,10 @@ local assets =
 	Asset("ANIM", "anim/izayoi_swordpurple_swap.zip"),
 	Asset( "IMAGE", "images/inventoryimages/izayoi_sword.tex" ),
 	Asset( "ATLAS", "images/inventoryimages/izayoi_sword.xml" ),
+	Asset( "IMAGE", "images/inventoryimages/izayoi_swordred.tex" ),
+	Asset( "ATLAS", "images/inventoryimages/izayoi_swordred.xml" ),
+	Asset( "IMAGE", "images/inventoryimages/izayoi_swordpurple.tex" ),
+	Asset( "ATLAS", "images/inventoryimages/izayoi_swordpurple.xml" ),
 	Asset( "SOUND", "sound/izayoi.fsb" ),
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
 }
@@ -90,7 +94,7 @@ local function commonfn(v)
 	inst.AnimState:SetBuild(inst.variant)
 	inst.AnimState:PlayAnimation("idle")
 
-	inst.MiniMapEntity:SetIcon("izayoi_sword.tex")
+	inst.MiniMapEntity:SetIcon(inst.variant..".tex")
 
 	inst:AddTag("sharp")
 	inst:AddTag("pointy")
@@ -114,8 +118,8 @@ local function commonfn(v)
 	inst:AddComponent("inspectable")
 
 	inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/izayoi_sword.xml"
-	inst.components.inventoryitem.imagename = "izayoi_sword"
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/"..inst.variant..".xml"
+	inst.components.inventoryitem.imagename = inst.variant
     if not TUNING.IZAYOI_ITEMS_FLOATABLE then 
 		inst.components.inventoryitem:SetSinks(true)
 	end
@@ -353,7 +357,7 @@ local function purplefn()
 	local ponupdatefn = inst.components.projectile.onupdatefn
 	inst.components.projectile.onupdatefn = function(self)
 		local angle = inst:GetAngleToPoint(self.target.Transform:GetWorldPosition())
-		print(angle, inst.Transform:GetRotation())
+		-- print(angle, inst.Transform:GetRotation())
 		local da = math.abs(angle - inst.Transform:GetRotation())
 		while da > 180 do
 			da = math.abs(da - 360)
@@ -370,5 +374,5 @@ local function purplefn()
 end
 
 return Prefab("izayoi_sword", fn, assets), 
-		Prefab("izayoi_swordpurple", purplefn, assets), 
-		Prefab("izayoi_swordred", redfn, assets)
+		Prefab("izayoi_swordred", redfn, assets),
+		Prefab("izayoi_swordpurple", purplefn, assets)

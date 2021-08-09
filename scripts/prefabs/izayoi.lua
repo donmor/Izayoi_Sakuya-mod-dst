@@ -17,8 +17,14 @@ TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI = {
 
 local function enablenv(inst)
 	-- print("enable")
+		-- ThePlayer.components.playervision:SetCustomCCTable({ day = "images/colour_cubes/day05_cc.tex", dusk = "images/colour_cubes/dusk03_cc.tex", night = "images/colour_cubes/lunacy_regular_cc.tex", full_moon = "images/colour_cubes/purple_moon_cc.tex", })
 	inst.components.playervision:ForceNightVision(true)
-	inst.components.playervision:SetCustomCCTable("images/colour_cubes/beaver_vision_cc.tex")
+	inst.components.playervision:SetCustomCCTable({
+		day = "images/colour_cubes/day05_cc.tex",
+		dusk = "images/colour_cubes/dusk03_cc.tex",
+		night = "images/colour_cubes/lunacy_regular_cc.tex",
+		full_moon = "images/colour_cubes/purple_moon_cc.tex",
+	})
 end
 local function disablenv(inst)
 	-- print("disable")
@@ -109,7 +115,7 @@ function(inst)
 	-- end)
 	inst:ListenForEvent("watch_swapped", checknv)
 	inst:WatchWorldState("phase", updatenv)
-	updatenv(inst)
+	-- updatenv(inst)
 	-- inst:ListenForEvent("watch_swapped", function() print("swap") checknv(inst) end)
 	-- inst:DoTaskInTime(0.1, checknv)
 	if TUNING.IZAYOI_BASEMENT_COMPATIBLE then
