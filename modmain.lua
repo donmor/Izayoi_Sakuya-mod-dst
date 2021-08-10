@@ -233,69 +233,38 @@ STRINGS.CHARACTER_NAMES.izayoi = STRINGS.NAMES.IZAYOI
 STRINGS.CHARACTER_DESCRIPTIONS.izayoi = LIMBO({"*Perfect and Elegant Servant\n*Just a Mortal Human \n*Master of Time", ["zh"] = "*完美潇洒的从者\n*只是个会死的人类\n*掌控时间的流动"})
 STRINGS.CHARACTER_QUOTES.izayoi = LIMBO({"\"We'll be together as long as I'm alive, Milady.\"", ["zh"] = "\"我一生都是会死的人类哦。\n只要活着就会一直陪着大小姐。\""})
 STRINGS.SKIN_NAMES.izayoi_none = STRINGS.NAMES.IZAYOI
-STRINGS.CHARACTERS.GENERIC.DESCRIBE.izayoi = 
-{
-	GENERIC = LIMBO({"Why does a maid here?", ["zh"] = "女仆？为什么在这里……"}),
-	ATTACKER = LIMBO({"How did her ...?!", ["zh"] = "……什么时候！"}),
-	MURDERER = LIMBO({"Was her ordered to do so?", ["zh"] = "她为什么要这样做……"}),
-	REVIVER = LIMBO({"Did the time been changed?", ["zh"] = "时间……被倒转了？"}),
-	GHOST = LIMBO({"Can no longer survive as a maid.", ["zh"] = "似乎已经没法再作为女仆生存下去。"}),
+STRINGS.IZAYOI_MISC = {
+	WATCH_REFUSED = LIMBO({"It refused me.", ["zh"] = "我被拒绝了。"}),
+	SKILL_FAILURE = {
+		CANTMOVE =	LIMBO({"I can't move...", ["zh"] = "动不了……"}),
+		NOKNIFE =	LIMBO({"I have no handy knife now.", ["zh"] = "我没有能用的刀了。"}),
+		NOMANA =	LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}),
+		NOTARGET =	LIMBO({"It makes no sense.", ["zh"] = "我不需要这么做。"}),
+		NOWATCH =	LIMBO({"I need a casting medium.", ["zh"] = "我需要一个媒介。"}),
+		COLLECTED =	LIMBO({"There's no knife to collect.", ["zh"] = "没有可以回收的刀了。"}),
+	},
+	SKILL_ANNOUNCEMENTS = {
+		Z = LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}) or LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}),
+		X = LIMBO(TUNING.IZAYOI_X_HOSTILE_ONLY and {"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"} or {"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}),
+		C = LIMBO({"Illusion \"My Knife's Recursions\"", ["zh"] = "幻术「吾刃回归」"}),
+		V = LIMBO({"Illusion World \"The World\"", ["zh"] = "幻世「The World」"}),
+		B = LIMBO({"Time Sign \"Private Square\"", ["zh"] = "时符「完美空间」"}),
+	},
+	SKILL_UI = {
+		Z = LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Clock Corpse", ["zh"] = "钟表的残骸"}) or LIMBO({"Jack the Ludo Bile", ["zh"] = "迷幻的杰克"}),
+		X = LIMBO(TUNING.IZAYOI_X_HOSTILE_ONLY and {"Killer Doll", ["zh"] = "杀人玩偶"} or {"Indiscriminate", ["zh"] = "无差别伤害"}),
+		C = LIMBO({"My Knife's Recursions", ["zh"] = "吾刃回归"}),
+		V = "The World",
+		B = LIMBO({"Perfect Square", ["zh"] = "完美空间"}),
+	},
+	MANA_UI = LIMBO({"Mana: ", ["zh"] = "魔力:"}),
 }
-STRINGS.CHARACTERS.WICKERBOTTOM.DESCRIBE.izayoi = LIMBO({"She must came from a big family.", ["zh"] = "她一定是从某个大家族那里来的。"})
-STRINGS.CHARACTERS.WAXWELL.DESCRIBE.izayoi = LIMBO({"She has some kind of power.", ["zh"] = "她身上有种说不清楚的力量。"})
-STRINGS.CHARACTERS.WILLOW.DESCRIBE.izayoi = LIMBO({"Oh, she's not so friendly to me.", ["zh"] = "我感觉她很不喜欢我。"})
-STRINGS.CHARACTERS.WENDY.DESCRIBE.izayoi = LIMBO({"Maid who come from the lair of devil.", ["zh"] = "既是女仆，又是恶魔之地的住人。"})
-STRINGS.CHARACTERS.WX78.DESCRIBE.izayoi = LIMBO({"Maid", ["zh"] = "女仆"})
-if STRINGS.CHARACTERS.REIMU then STRINGS.CHARACTERS.REIMU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.MARISA then STRINGS.CHARACTERS.MARISA.DESCRIBE.izayoi = LIMBO({"W...Wait! I'm not here to borrow books, Sakuya!", ["zh"] = "等……等等！我不是来借书的，咲夜！"}) end
-if STRINGS.CHARACTERS.YOUMU then STRINGS.CHARACTERS.YOUMU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.SANAE then STRINGS.CHARACTERS.SANAE.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.REISEN then STRINGS.CHARACTERS.REISEN.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.YUUKA then STRINGS.CHARACTERS.YUUKA.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.YUYUKO then STRINGS.CHARACTERS.YUYUKO.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.YUKARI then STRINGS.CHARACTERS.YUKARI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.REMILIA then STRINGS.CHARACTERS.REMILIA.DESCRIBE.izayoi = LIMBO({"I'd also cherish every second together, Sakuya.", ["zh"] = "我也会珍惜在一起的每一秒哦，咲夜。"}) end
-if STRINGS.CHARACTERS.FRAN then STRINGS.CHARACTERS.FRAN.DESCRIBE.izayoi = LIMBO({"Let's play together, Sakuya!", ["zh"] = "一起玩吧，咲夜！"}) end
-if STRINGS.CHARACTERS.MEIRIN then STRINGS.CHARACTERS.MEIRIN.DESCRIBE.izayoi = LIMBO({"Y...Yes! I feel fresh today!", ["zh"] = "是……是！我很精神！"}) end
-if STRINGS.CHARACTERS.PATCHOULI then STRINGS.CHARACTERS.PATCHOULI.DESCRIBE.izayoi = LIMBO({"As relyable as she used to be.", ["zh"] = "咲夜还是一如既往地可靠啊。"}) end
-if STRINGS.CHARACTERS.FUTO then STRINGS.CHARACTERS.FUTO.DESCRIBE.izayoi = LIMBO({"...I have had a specific target, so could you please stop staring at me?", ["zh"] = "不不……我有特定的目标的，所以能别盯我了吗？"}) end
-if STRINGS.CHARACTERS.SUIKA then STRINGS.CHARACTERS.SUIKA.DESCRIBE.izayoi = LIMBO({"When will the next feast in the mansion, Sakuya?", ["zh"] = "女仆长，下次宴会还在红魔馆吗？"}) end
-if STRINGS.CHARACTERS.KASEN then STRINGS.CHARACTERS.KASEN.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.MOMIJI then STRINGS.CHARACTERS.MOMIJI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.QINGWA then STRINGS.CHARACTERS.QINGWA.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.KEINE then STRINGS.CHARACTERS.KEINE.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.MOKOU then STRINGS.CHARACTERS.MOKOU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.CIRNO then STRINGS.CHARACTERS.CIRNO.DESCRIBE.izayoi = LIMBO({"Is Fran here? I want her out to play together!", ["zh"] = "芙兰在吗？我要找她一起出去玩！"}) end
-if STRINGS.CHARACTERS.DAIYOUSEI then STRINGS.CHARACTERS.DAIYOUSEI.DESCRIBE.izayoi = LIMBO({"I'm so sorry for the trouble my friends gave to you!", ["zh"] = "不好意思，我朋友给您添麻烦了！"}) end
-if STRINGS.CHARACTERS.CHEN then STRINGS.CHARACTERS.CHEN.DESCRIBE.izayoi = LIMBO({"Morning, Sakuya!", ["zh"] = "早安，咲夜！"}) end
-if STRINGS.CHARACTERS.YAKUMORAN then STRINGS.CHARACTERS.YAKUMORAN.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.LYRICA then STRINGS.CHARACTERS.LYRICA.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.KAGEROU then STRINGS.CHARACTERS.KAGEROU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.MIKO then STRINGS.CHARACTERS.MIKO.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.YOHIME then STRINGS.CHARACTERS.YOHIME.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.NUE then STRINGS.CHARACTERS.NUE.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.TENSHI then STRINGS.CHARACTERS.TENSHI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.IKU then STRINGS.CHARACTERS.IKU.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.RENKO then STRINGS.CHARACTERS.RENKO.DESCRIBE.izayoi = LIMBO({"She seems to be Merry dreamed of last time.", ["zh"] = "她好像是梅莉上次梦见的……"}) end
-if STRINGS.CHARACTERS.MERRY then STRINGS.CHARACTERS.MERRY.DESCRIBE.izayoi = LIMBO({"Last time I dreamt about her.", ["zh"] = "我上次梦见过她，她是……"}) end
-if STRINGS.CHARACTERS.RIN then STRINGS.CHARACTERS.RIN.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.PARSEE then STRINGS.CHARACTERS.PARSEE.DESCRIBE.izayoi = LIMBO({"I'm so jealous of that maid and her master.", ["zh"] = "真好啊，主仆一对……"}) end
-if STRINGS.CHARACTERS.TEWI then STRINGS.CHARACTERS.TEWI.DESCRIBE.izayoi = LIMBO({"Hello, maid of the mansion!", ["zh"] = "你好啊，红魔馆的女仆长！"}) end
-if STRINGS.CHARACTERS.CLOWNPIECE then STRINGS.CHARACTERS.CLOWNPIECE.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.AYA then STRINGS.CHARACTERS.AYA.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.UTSUHO then STRINGS.CHARACTERS.UTSUHO.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.SATSUKI then STRINGS.CHARACTERS.SATSUKI.DESCRIBE.izayoi = LIMBO({"We'd never met. That's my destiny.", ["zh"] = "我们从未谋面……这就是我的命运。"}) end
-if STRINGS.CHARACTERS.SATORI then STRINGS.CHARACTERS.SATORI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.KOISHI then STRINGS.CHARACTERS.KOISHI.DESCRIBE.izayoi = LIMBO({"Hello! I'm here!", ["zh"] = "你好！我在这里哟！"}) end
-if STRINGS.CHARACTERS.SHIKIEIKI then STRINGS.CHARACTERS.SHIKIEIKI.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.ALICE_TH then STRINGS.CHARACTERS.ALICE_TH.DESCRIBE.izayoi = LIMBO({"Glad to see you again, Sakuya.", ["zh"] = "又见面了，红魔馆的女仆长。"}) end
-if STRINGS.CHARACTERS.SUNNY then STRINGS.CHARACTERS.SUNNY.DESCRIBE.izayoi = LIMBO({"It's Sakuya in the mansion!", ["zh"] = "是红魔馆的女仆长哎！"}) end
-if STRINGS.CHARACTERS.STARSAPPHIRE then STRINGS.CHARACTERS.STARSAPPHIRE.DESCRIBE.izayoi = LIMBO({"It's Sakuya in the mansion!", ["zh"] = "是红魔馆的女仆长哎！"}) end
+require "desc"	-- 描述
 local speeches = {
 	["zh"] = function() return require "speech_zh" end,
 }
 local spf = speeches[TUNING.IZAYOI_LANGUAGE]
-STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"
+STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"	-- 对话
 
 AddMinimapAtlas("images/map_icons/izayoi.xml")
 AddMinimapAtlas("images/map_icons/izayoi_redtea.xml")
@@ -717,7 +686,6 @@ local state_whisper = State {
 		end),
 	},
 	onexit = function(inst)
-		--inst.SoundEmitter:KillSound("talk")
 	end,
 }
 
@@ -1182,7 +1150,7 @@ local skill_valid2 = {
 				end
 			end
 		end
-		local timenotstopped = not inst:HasTag("time_stopped")
+		local timestopped = inst:HasTag("time_stopped")
 		local enoughdao = num >= 1
 		local enoughmana = inst.wiliya_mana_current:value() >= 15
 		local validtgt = vtarget and vtarget:IsValid() and not vtarget:HasTag("INLIMBO") and vtarget ~= inst and 
@@ -1191,16 +1159,16 @@ local skill_valid2 = {
 			not (vtarget:HasTag("shadow") and not inst:HasTag("crazy")) and
 			not vtarget:HasTag("wall") and 
 			vtarget.replica.combat and vtarget.replica.health and not vtarget:HasTag("invisible")
-		if not timenotstopped then
-			inst.components.talker:Say(LIMBO({"I can't move...", ["zh"] = "动不了……"}))
+		if timestopped then
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.CANTMOVE)
 		elseif not enoughdao then
-			inst.components.talker:Say(LIMBO({"I have no handy knife now.", ["zh"] = "我没有能用的刀了。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOKNIFE)
 		elseif not enoughmana then
-			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOMANA)
 		elseif not validtgt then
-			inst.components.talker:Say(LIMBO({"It makes no sense.", ["zh"] = "我不需要这么做。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOTARGET)
 		end
-		return timenotstopped and enoughdao and enoughmana and validtgt and skill_valid.z.validfn(inst)
+		return not timestopped and enoughdao and enoughmana and validtgt and skill_valid.z.validfn(inst)
 	end},
 	
 	x = {validfn = function(inst, vtarget)
@@ -1220,62 +1188,62 @@ local skill_valid2 = {
 				not(TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(ent)) and ent.replica.combat and ent.replica.health and not ent.replica.health:IsDead() and
 				not (ent:HasTag("shadow") and not inst:HasTag("crazy"))
 		end
-		local timenotstopped = not inst:HasTag("time_stopped")
+		local timestopped = inst:HasTag("time_stopped")
 		local enoughdao = num >= 1
 		local validtgt = FindEntity(inst, 30, istgt, nil, { "companion", "wall", "INLIMBO", "FX", "playerghost", "invisible" })
 		local enoughmana = inst.wiliya_mana_current:value() >= 25
-		if not timenotstopped then
-			inst.components.talker:Say(LIMBO({"I can't move...", ["zh"] = "动不了……"}))
+		if timestopped then
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.CANTMOVE)
 		elseif not enoughdao then
-			inst.components.talker:Say(LIMBO({"I have no handy knife now.", ["zh"] = "我没有能用的刀了。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOKNIFE)
 		elseif not enoughmana then
-			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOMANA)
 		elseif not validtgt then
-			inst.components.talker:Say(LIMBO({"It makes no sense.", ["zh"] = "我不需要这么做。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOTARGET)
 		end
-		return timenotstopped and enoughdao and enoughmana and validtgt and skill_valid.x.validfn(inst)
+		return not timestopped and enoughdao and enoughmana and validtgt and skill_valid.x.validfn(inst)
 	end},
 	
 	c = {validfn = function(inst, vtarget)
-		local timenotstopped = not inst:HasTag("time_stopped")
+		local timestopped = inst:HasTag("time_stopped")
 		local enoughmana = inst.wiliya_mana_current:value() >= 5 
 		local havewatch = inst:HasTag("watch_equipped")
 		local validknife = FindEntity(inst, 1000, nil, {"izayoi_sword"})
-		if not timenotstopped then
-			inst.components.talker:Say(LIMBO({"I can't move...", ["zh"] = "动不了……"}))
+		if timestopped then
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.CANTMOVE)
 		elseif not havewatch then
-			inst.components.talker:Say(LIMBO({"I can't manipulate the time...", ["zh"] = "时间……无法掌握呢。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOWATCH)
 		elseif not enoughmana then
-			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOMANA)
 		elseif not validknife then
-			inst.components.talker:Say(LIMBO({"There's no knife to collect.", ["zh"] = "没有可以回收的刀了。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.COLLECTED)
 		end
-		return timenotstopped and enoughmana and havewatch and validknife and skill_valid.c.validfn(inst)
+		return not timestopped and enoughmana and havewatch and validknife and skill_valid.c.validfn(inst)
 	end},
 	
 	v = {validfn = function(inst, vtarget)
 		local enoughmana = inst.wiliya_mana_current:value() >= 50
 		local havewatch = inst:HasTag("watch_equipped")
 		if not havewatch then
-			inst.components.talker:Say(LIMBO({"I can't manipulate the time...", ["zh"] = "时间……无法掌握呢。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOWATCH)
 		elseif not enoughmana then
-			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOMANA)
 		end
 		return enoughmana and havewatch and skill_valid.v.validfn(inst)
 	end},
 	
 	b = {validfn = function(inst, vtarget)
-		local timenotstopped = not inst:HasTag("time_stopped")
+		local timestopped = inst:HasTag("time_stopped")
 		local enoughmana = inst.wiliya_mana_current:value() >= 60 
 		local havewatch = inst:HasTag("watch_equipped")
-		if not timenotstopped then
-			inst.components.talker:Say(LIMBO({"I can't move...", ["zh"] = "动不了……"}))
+		if timestopped then
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.CANTMOVE)
 		elseif not havewatch then
-			inst.components.talker:Say(LIMBO({"I can't manipulate the time...", ["zh"] = "时间……无法掌握呢。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOWATCH)
 		elseif not enoughmana then
-			inst.components.talker:Say(LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}))
+			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOMANA)
 		end
-		return timenotstopped and enoughmana and havewatch and skill_valid.b.validfn(inst)
+		return not timestopped and enoughmana and havewatch and skill_valid.b.validfn(inst)
 	end},
 }
 --技能RPC, 服务端
@@ -1391,7 +1359,7 @@ local skills = {
 						inst.SoundEmitter:PlaySound("izayoi/se/teleport", nil, TUNING.IZAYOI_SE)
 					end
 				end
-				inst.components.talker:Whisper(LIMBO({"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}), 2, true)
+				-- inst.components.talker:Whisper(LIMBO({"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}), 2, true)
 				if not inst.components.rider:IsRiding() then 
 					inst.AnimState:PlayAnimation("staff_pre")
 					inst.AnimState:PushAnimation("idle")
@@ -1408,11 +1376,12 @@ local skills = {
 						end
 					end)
 				end
-				inst.components.talker:Whisper(LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}), 2, true)
+				-- inst.components.talker:Whisper(LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}), 2, true)
 				if not inst.components.rider:IsRiding() then 
 					inst.AnimState:PlayAnimation("throw")
 				end
 			end
+			inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.Z, 2, true)
 			inst.components.wiliya_mana:DoDelta(-15)
 		end
 	end,
@@ -1463,11 +1432,12 @@ local skills = {
 				inst.x_task = nil
 			end
 		end)
-		if TUNING.IZAYOI_X_HOSTILE_ONLY then
-			inst.components.talker:Whisper(LIMBO({"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"}), 2, true)
-		else
-			inst.components.talker:Whisper(LIMBO({"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}), 2, true)
-		end
+		-- if TUNING.IZAYOI_X_HOSTILE_ONLY then
+		-- 	inst.components.talker:Whisper(LIMBO({"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"}), 2, true)
+		-- else
+		-- 	inst.components.talker:Whisper(LIMBO({"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}), 2, true)
+		-- end
+		inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.X, 2, true)
 		if TUNING.IZAYOI_VOICE > 0 then
 			inst.SoundEmitter:PlaySound("izayoi/voice/execute", nil, TUNING.IZAYOI_VOICE)
 		end
@@ -1494,7 +1464,7 @@ local skills = {
 				end)
 			end
 		end
-		inst.components.talker:Whisper(LIMBO({"Illusion \"My Knife's Recursions\"", ["zh"] = "幻术「吾刃回归」"}), 2, true)
+		inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.C, 2, true)
 		if not inst.components.rider:IsRiding() then 
 			inst.AnimState:PlayAnimation("staff")
 			inst.AnimState:PushAnimation("idle")
@@ -1635,7 +1605,7 @@ local skills = {
 				-- v.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
 			end
 		end
-		inst.components.talker:Whisper(LIMBO({"Time Sign \"Private Square\"", ["zh"] = "时符「完美空间」"}), 2, true)
+		inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.B, 2, true)
 		if not inst.components.rider:IsRiding() then 
 			inst.AnimState:PlayAnimation("staff_pre")
 			inst.AnimState:PushAnimation("idle")
@@ -1790,18 +1760,18 @@ local delta_x = 175
 local function AddSkillButton(self) 
 	if self.owner and self.owner:HasTag(characterName.."_skiller") then	
 		-- if TUNING.IZAYOI_Z_ESCAPE then
-		self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Clock Corpse", ["zh"] = "钟表的残骸"}) or LIMBO({"Jack the Ludo Bile", ["zh"] = "迷幻的杰克"}), "MP: 15") )
+		self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.Z, "MP: 15") )
 		-- else
 			-- self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, LIMBO({"", ["zh"] = "迷幻的杰克"}), "MP: 15") )
 		-- end	
 		-- if TUNING.IZAYOI_X_HOSTILE_ONLY then
-		self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, LIMBO(TUNING.IZAYOI_X_HOSTILE_ONLY and {"Killer Doll", ["zh"] = "杀人玩偶"} or {"Indiscriminate", ["zh"] = "无差别伤害"}), "MP: 25") )
+		self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.X, "MP: 25") )
 		-- else
 			-- self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, LIMBO({"Indiscriminate", ["zh"] = "无差别伤害"}), "MP: 25") )
 		-- end
-		self.skillbutton_c = self:AddChild( skillsbutton("images/izayoi_skill_c.xml", "izayoi_skill_c.tex", base_x + delta_x * 2, nil, nil, LIMBO({"My Knife's Recursions", ["zh"] = "吾刃回归"}), "MP: 5") )
-		self.skillbutton_v = self:AddChild( skillsbutton("images/izayoi_skill_v.xml", "izayoi_skill_v.tex", base_x + delta_x * 3, nil, nil, "The World", "MP: 50") )	
-		self.skillbutton_b = self:AddChild( skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, LIMBO({"Perfect Square", ["zh"] = "完美空间"}), "MP: 60") )	
+		self.skillbutton_c = self:AddChild( skillsbutton("images/izayoi_skill_c.xml", "izayoi_skill_c.tex", base_x + delta_x * 2, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.C, "MP: 5") )
+		self.skillbutton_v = self:AddChild( skillsbutton("images/izayoi_skill_v.xml", "izayoi_skill_v.tex", base_x + delta_x * 3, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.V, "MP: 50") )	
+		self.skillbutton_b = self:AddChild( skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.B, "MP: 60") )	
 		local pOnUpdate = self.OnUpdate
 		self.OnUpdate = function(self, dt)
 			local ret = pOnUpdate(self, dt)

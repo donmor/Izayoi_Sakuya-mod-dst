@@ -1,7 +1,3 @@
-local function LIMBO(tbl)
-	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
-end
-
 local assets = 
 {
 	Asset( "SOUND", "sound/izayoi.fsb" ),
@@ -95,6 +91,13 @@ local function updatestatus(inst, phase)	-- <状态变化
 
 end	-- >
 
+local function pushglobalsound(sound)
+	for k, v in pairs(AllPlayers) do
+		if v and v.globalsound then
+			v.globalsound:set(sound)
+		end
+	end
+end
 
 local MakePlayerCharacter = require "prefabs/player_common"
 return MakePlayerCharacter("izayoi", {}, {}, 
@@ -227,12 +230,13 @@ function(inst)
 				end)
 			end
 			if TUNING.IZAYOI_SE > 0 then
-				inst.SoundEmitter:PlaySound("izayoi/se/the_world", nil, TUNING.IZAYOI_SE)
+				-- inst.SoundEmitter:PlaySound("izayoi/se/the_world", nil, TUNING.IZAYOI_SE)
+				pushglobalsound("izayoi/se/the_world")
 			end
 			if TUNING.IZAYOI_VOICE > 0 then
 				inst.SoundEmitter:PlaySound("izayoi/voice/the_world", nil, TUNING.IZAYOI_VOICE)
 			end
-			inst.components.talker:Whisper(LIMBO({"Illusion World \"The World\"", ["zh"] = "幻世「The World」"}), 2, true)
+			inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.V, 2, true)
 			if not inst.components.rider:IsRiding() then 
 				inst.AnimState:PlayAnimation("staff_pre")
 				inst.AnimState:PushAnimation("idle")
@@ -241,11 +245,11 @@ function(inst)
 
 		end
 	end)
-	inst.components.timestopper:SetOnResumingFn(2, function()
-		if TUNING.IZAYOI_SE > 0 then
-			inst.SoundEmitter:PlaySound("izayoi/se/clock", nil, TUNING.IZAYOI_SE)
-		end
-	end)
+	-- inst.components.timestopper:SetOnResumingFn(2, function()
+	-- 	if TUNING.IZAYOI_SE > 0 then
+	-- 		inst.SoundEmitter:PlaySound("izayoi/se/clock", "theworldpst", TUNING.IZAYOI_SE)
+	-- 	end
+	-- end)
 	-- inst:ListenForEvent("watch_swapped", checknv)
 	-- inst:DoTaskInTime(0.1, checknv)
 	-- inst:ListenForEvent("watch_swapped", function(inst)	-- <夜视
@@ -255,23 +259,32 @@ function(inst)
 		-- 	disablenv(inst)
 		-- end
 	-- end)
-	inst:ListenForEvent("death", function(inst)	-- <音效语音
-		if TUNING.IZAYOI_SE > 0 then
+	if TUNING.IZAYOI_SE > 0 then
+		inst:ListenForEvent("death", function(inst)	-- <音效语音
 			inst.SoundEmitter:PlaySound("izayoi/se/miss", nil, TUNING.IZAYOI_SE)
+		end)
+	end
+	inst.components.timestopper:SetOnResumingFn(2, function()
+		if TUNING.IZAYOI_SE > 0 then
+			-- inst.SoundEmitter:PlaySound("izayoi/se/clock", nil, TUNING.IZAYOI_SE)
+			pushglobalsound("izayoi/se/clock")
+		end
+		if TUNING.IZAYOI_VOICE > 0 then
+			inst.SoundEmitter:PlaySound("izayoi/voice/resume", nil, TUNING.IZAYOI_SE)
 		end
 	end)
-	inst:ListenForEvent("startattack", function(inst)
-		if TUNING.IZAYOI_VOICE > 0 and not (inst.components.combat:GetWeapon() and inst.components.combat:GetWeapon():HasTag("mgun")) then
-			inst.SoundEmitter:PlaySound("izayoi/voice/attack", nil, TUNING.IZAYOI_VOICE)
-		end
-	end)
-	inst:ListenForEvent("oninspect", function(inst, data)
-			if TUNING.IZAYOI_VOICE > 0 then
-				if data.tgt and data.tgt:HasTag("player") then
-					inst.SoundEmitter:PlaySound("izayoi/voice/characters/"..data.tgt.prefab, nil, TUNING.IZAYOI_VOICE)
-				end
+	if TUNING.IZAYOI_VOICE > 0 then
+		inst:ListenForEvent("startattack", function(inst)
+			if not (inst.components.combat:GetWeapon() and inst.components.combat:GetWeapon():HasTag("nobattlecry")) then
+				inst.SoundEmitter:PlaySound("izayoi/voice/attack", nil, TUNING.IZAYOI_VOICE)
 			end
-	end)	-- >
+		end)
+		inst:ListenForEvent("oninspect", function(inst, data)
+			if data.tgt and data.tgt:HasTag("player") then
+				inst.SoundEmitter:PlaySound("izayoi/voice/characters/"..data.tgt.prefab, nil, TUNING.IZAYOI_VOICE)
+			end
+		end)	-- >
+	end
 	if TUNING.IZAYOI_STRENGTH == "op" then	-- <OP模式
 		inst:DoPeriodicTask(1, function()
 			if inst.components.health and not inst.components.health:IsDead() and not inst:HasTag("playerghost") then

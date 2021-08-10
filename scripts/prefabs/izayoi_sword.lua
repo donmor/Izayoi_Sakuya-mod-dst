@@ -36,7 +36,13 @@ end
 
 local function OnThrown(inst, owner, target)
 	if target ~= owner then
-		inst.SoundEmitter:PlaySound(inst:HasTag("sword_split") and "izayoi/se/kira" or "izayoi/se/sword")
+		if inst:HasTag("sword_split") then
+			if TUNING.IZAYOI_SE > 0 then
+				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
+			end
+		else
+			inst.SoundEmitter:PlaySound("izayoi/se/sword", nil)
+		end
 	end
 	inst.AnimState:PlayAnimation("spin_loop", true)
 	inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
@@ -298,13 +304,13 @@ local function fn()
 			inst.components.projectile.origspeed = sword_speed * 2
 		end
 	end)
-	inst:ListenForEvent("time_resumed", function()	-- <音效
-		if inst.components.projectile:IsThrown() then
-			if TUNING.IZAYOI_SE > 0 then
+	if TUNING.IZAYOI_SE > 0 then
+		inst:ListenForEvent("time_resumed", function()	-- <音效
+			if inst.components.projectile:IsThrown() then
 				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
 			end
-		end
-	end)
+		end)
+	end
 	return inst
 end
 
@@ -324,13 +330,13 @@ local function redfn()
 			inst.components.projectile.origspeed = sword_speed * 2
 		end
 	end)
-	inst:ListenForEvent("time_resumed", function()	-- <音效
-		if inst.components.projectile:IsThrown() then
-			if TUNING.IZAYOI_SE > 0 then
+	if TUNING.IZAYOI_SE > 0 then
+		inst:ListenForEvent("time_resumed", function()	-- <音效
+			if inst.components.projectile:IsThrown() then
 				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
 			end
-		end
-	end)
+		end)
+	end
 	return inst
 end
 

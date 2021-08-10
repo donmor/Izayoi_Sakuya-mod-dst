@@ -72,16 +72,17 @@ local function fn()
 		-- end
 		-- inst.AnimState:PlayAnimation("close")
 		-- inst:DoTaskInTime(FRAMES * 6, function()
-			if parent then
-				if parent.components.combat then
-					parent.components.combat.externaldamagemultipliers:RemoveModifier(inst, "izayoi_forcefield")
-					parent.components.health:SetAbsorptionAmount(0)
-				end
-				-- if parent:HasTag("canmoveintime") and not (parent.components.timestopper and parent.components.timestopper:IsStoppingTime()) then
-				-- 	parent:RemoveTag("canmoveintime")
-				-- end
-				parent.forcefieldfx = nil
+		inst.SoundEmitter:KillSound("forcefield")
+		if parent then
+			if parent.components.combat then
+				parent.components.combat.externaldamagemultipliers:RemoveModifier(inst, "izayoi_forcefield")
+				parent.components.health:SetAbsorptionAmount(0)
 			end
+			if parent:HasTag("canmoveintime") and not parent:HasTag("stoppingtime") then
+				parent:RemoveTag("canmoveintime")
+			end
+			parent.forcefieldfx = nil
+		end
 			-- inst:Remove()
 		-- end)
 	end
@@ -92,7 +93,7 @@ local function fn()
 			parent.components.combat.externaldamagemultipliers:SetModifier(inst, TUNING.IZAYOI_B_DAMAGEMULT + 1, "izayoi_forcefield")
 			parent.components.health:SetAbsorptionAmount(TUNING.IZAYOI_B_DAMAGEMULT)
 			if TUNING.IZAYOI_SE > 0 then
-				inst.SoundEmitter:PlaySound("izayoi/se/border", nil, TUNING.IZAYOI_SE)
+				inst.SoundEmitter:PlaySound("izayoi/se/clock2", "forcefield", TUNING.IZAYOI_SE)
 			end	
 			-- if inst.components.timer:TimerExists("izayoi_forcefield") then
 			-- 	inst.components.timer:SetTimeLeft("izayoi_forcefield", duration)

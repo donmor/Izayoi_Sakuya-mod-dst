@@ -1,7 +1,3 @@
-local function LIMBO(tbl)
-	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
-end
-
 local assets = 
 {
 	Asset("ANIM", "anim/izayoi_watch.zip"),
@@ -13,7 +9,7 @@ local function onequip(inst, owner)
 	if not TUNING.IZAYOI_WATCH_PLAYERS_EQUIPPABLE and owner.components.inventory and owner.prefab ~= "izayoi" then
 		inst:DoTaskInTime(0.1, function()
 			owner.components.inventory:DropItem(inst, true)
-			owner.components.talker:Say(LIMBO({"It refused me.", ["zh"] = "我被拒绝了。"}))
+			owner.components.talker:Say(STRINGS.IZAYOI_MISC.WATCH_REFUSED)
 		end)
 		return
 	end

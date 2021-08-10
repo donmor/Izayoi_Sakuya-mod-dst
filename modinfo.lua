@@ -169,7 +169,7 @@ configuration_options =
 			{description = "中", data = 0.7, hover = "启用音效/On"},
 			{description = "高", data = 1, hover = "禁用音效/Off"},
 		},
-		default = 0.4,
+		default = 1,
 	},
 		
 	{
@@ -182,6 +182,6 @@ configuration_options =
 			{description = "中", data = 0.7, hover = "启用语音/On"},
 			{description = "高", data = 1, hover = "禁用语音/Off"},
 		},
-		default = 0.4,
+		default = 1,
 	},
 }
