@@ -1,7 +1,12 @@
+local function LIMBO(tbl)
+    return ChooseTranslationTable(tbl)
+end
+
 name = "Izayoi Sakuya"
-version = "3.0-RC4 Update 1010"
-description = [[
-Izayoi Sakuya(十六夜咲夜) 3.0-RC4
+version = "4.0.0"
+description = LIMBO({
+[[
+Izayoi Sakuya(十六夜咲夜)
 ※本MOD为东方Project二次创作内容
 ※MOD制作新手, 请注意潜在的bug
 ※大量API补丁, 请注意兼容性
@@ -13,7 +18,21 @@ Izayoi Sakuya(十六夜咲夜) 3.0-RC4
 最后, 愿我东方永不过气(=·ω·=)
 
 更多信息请查看Readme.md或https://steamcommunity.com/sharedfiles/filedetails/?id=1426323391
-]]
+]], ["zh"] = [[
+Izayoi Sakuya (Izayoi Sakuya)
+* This MOD is Touhou fan-made production
+* I'm a modding starter so that there may be undiscovered bug
+* Lots of modified APIs so be attention to compatibility
+* Low-end killer, laggy time-stop
+* OOC
+* Weird SE
+* All characters and organizations that appear have entered Gensokyo
+Original(no longer exist): "_十六夜咲夜_II" mod of 大猪猪(猪哥), Thanks to their hard work
+Finally, Long lives Touhou Project (=·ω·=)
+
+For more information please see Readme.md or https://steamcommunity.com/sharedfiles/filedetails/?id=1426323391
+]]})
+	
 author = "donmor"
 forumthread = ""
 api_version_dst = 10
@@ -43,144 +62,144 @@ configuration_options =
 {
 	{
 		name = "recipes",
-		label = "制作配方/Recipes",
+		label = LIMBO({"Recipes", ["zh"] = "制作配方"}),
 		options =
 		{
-			{description = "Easy", data = "easy", hover = "较简单的制作配方/Easy Recipes"},
-			{description = "Normal", data = "normal", hover = "正常的制作配方/Normal Recipes"},
-			{description = "Hard", data = "hard", hover = "较难的制作配方/Hard Recipes"},
-			{description = "Lunatic", data = "lunatic", hover = "较难而且低效率的制作配方/Hard and Ineffective Recipes"},
+			{description = "Easy", data = "easy", hover = LIMBO({"Easy recipes", ["zh"] = "较简单的制作配方"})},
+			{description = "Normal", data = "normal", hover = LIMBO({"Normal recipes", ["zh"] = "正常的制作配方"})},
+			{description = "Hard", data = "hard", hover = LIMBO({"Hard recipes", ["zh"] = "较难的制作配方"})},
+			{description = "Lunatic", data = "lunatic", hover = LIMBO({"Hard and ineffective recipes", ["zh"] = "较难而且低效率的制作配方"})},
 		},
 		default = "normal",
 	},
 	
 	{
 		name = "strength",
-		label = "能力强度/Strength",
+		label = LIMBO({"Strength", ["zh"] = "能力强度"}),
 		options =
 		{
-			{description = "Invincible", data = "op", hover = "极强的体质和攻击力，自动回复，极短技能CD，仅供测试/Powerful, HP recovery, for test only"},
-			{description = "Easy", data = "easy", hover = "较强的体质和攻击力，较短的技能CD/Strong"},
-			{description = "Normal", data = "normal", hover = "一般的体质，攻击力，技能CD/Normal"},
-			{description = "Hard", data = "hard", hover = "较弱的体质和攻击力，较长的技能CD/Weak"},
-			{description = "Lunatic", data = "lunatic", hover = "更弱的体质和攻击力，更长技能的CD/Weaker"},
+			{description = "Invincible", data = "op", hover = LIMBO({"Powerful, no CD, HP recovery, for test only", ["zh"] = "极强的体质和攻击力，自动回复，极短技能CD，仅供测试"})},
+			{description = "Easy", data = "easy", hover = LIMBO({"Strong, short CD", ["zh"] = "较强的体质和攻击力，较短的技能CD"})},
+			{description = "Normal", data = "normal", hover = LIMBO({"Normal, fair CD", ["zh"] = "一般的体质，攻击力，技能CD"})},
+			{description = "Hard", data = "hard", hover = LIMBO({"Weak, long CD", ["zh"] = "较弱的体质和攻击力，较长的技能CD"})},
+			{description = "Lunatic", data = "lunatic", hover = LIMBO({"Weaker, longer CD", ["zh"] = "更弱的体质和攻击力，更长技能的CD"})},
 		},
 		default = "normal",
 	},
 	
 	{
 		name = "z_escape",
-		label = "Z技能模式/Z skill mode",
+		label = LIMBO({"Z skill mode", ["zh"] = "Z技能模式"}),
 		options =
 		{
-			{description = "幻在「钟表的残骸」", data = true, hover = "发射一把飞刀并瞬移脱离/Launch a knife and escape"},
-			{description = "幻幽「迷幻的杰克」", data = false, hover = "一次发射五把飞刀攻击/Launch five knives"},
+			{description = LIMBO({"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}), data = true, hover = LIMBO({"Launch a knife and teleport", ["zh"] = "发射一把飞刀并瞬移"})},
+			{description = LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}), data = false, hover = LIMBO({"Launch five knives", ["zh"] = "一次发射五把飞刀攻击"})},
 		},
 		default = true,
 	},
 	
 	{
 		name = "x_hostile_only",
-		label = "X技能模式/X Skill mode",
+		label = LIMBO({"X Skill mode", ["zh"] = "X技能模式"}),
 		options =
 		{
-			{description = "幻符「杀人玩偶」", data = true, hover = "攻击30米范围内的敌人/Attack all creatures"},
-			{description = "幻符「无差别伤害」", data = false, hover = "攻击30米范围内的一切非己方的生物/Attack hostile only"},
+			{description = LIMBO({"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"}), data = true, hover = LIMBO({"Attack hostile only", ["zh"] = "攻击一定范围内的敌人"})},
+			{description = LIMBO({"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}), data = false, hover = LIMBO({"Attack all creatures", ["zh"] = "攻击一定范围内的一切非己方的生物"})},
 		},
 		default = true,
 	},
 	
 	{
 		name = "watch_night_vision",
-		label = "怀表的夜视功能/Night Vision",
+		label = LIMBO({"Night Vision", ["zh"] = "怀表的夜视功能"}),
 		options =
 		{
-			{description = "启用", data = true, hover = "装备怀表后可以夜视/Night Vision On"},
-			{description = "禁用", data = false, hover = "装备怀表后不能夜视/Night Vision Off"},
+			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"Night vision with watch", ["zh"] = "装备怀表后可以夜视"})},
+			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"No night vision", ["zh"] = "关闭夜视功能"})},
 		},
 		default = false,
 	},
 	
 	{
 		name = "items_aura_advanced",
-		label = "道具理智增益模式/Items sanity control mode",
+		label = LIMBO({"Items sanity control mode", ["zh"] = "道具理智增益模式"}),
 		options =
 		{
-			{description = "镇定", data = true, hover = "增加理智但降低启蒙/Increase sanity but lower enlightenment"},
-			{description = "增辐", data = false, hover = "一直增加理智及启蒙/Increase either sanity or enlightenment"},
+			{description = LIMBO({"Calm", ["zh"] = "镇定"}), data = true, hover = LIMBO({"Increase sanity but lower enlightenment", ["zh"] = "增加理智但降低启蒙"})},
+			{description = LIMBO({"Increase", ["zh"] = "增辐"}), data = false, hover = LIMBO({"Increase either sanity or enlightenment", ["zh"] = "一直增加理智及启蒙"})},
 		},
 		default = false,
 	},
 	
 	{
 		name = "watch_food_spoilage",
-		label = "怀表格子防腐/Watch Food Spoilage",
+		label = LIMBO({"Watch Food Spoilage", ["zh"] = "怀表格子防腐"}),
 		options =
 		{
-			{description = "Invincible", data = 0, hover = "时间完全停止/Time Stopped"},
-			{description = "Easy", data = 0.5, hover = "时间流逝速度减半/Time Goes Slower"},
-			{description = "Normal", data = 0.75, hover = "时间流逝较慢/Time Goes Slow"},
-			{description = "Hard", data = 0.9, hover = "时间流逝稍慢/Time Goes a little Slow"},
-			{description = "Lunatic", data = 1, hover = "正常的时间流逝/Normal"},
+			{description = "Invincible", data = 0, hover = LIMBO({"Time stopped", ["zh"] = "时间完全停止"})},
+			{description = "Easy", data = 0.5, hover = LIMBO({"Time goes slower", ["zh"] = "时间流逝速度减半"})},
+			{description = "Normal", data = 0.75, hover = LIMBO({"Time goes slow", ["zh"] = "时间流逝较慢"})},
+			{description = "Hard", data = 0.9, hover = LIMBO({"Time goes a little slow", ["zh"] = "时间流逝稍慢"})},
+			{description = "Lunatic", data = 1, hover = LIMBO({"No change", ["zh"] = "正常的时间流逝"})},
 		},
 		default = 0.75,
 	},
 	
 	{
 		name = "watch_craftable",
-		label = "怀表可制作/Recipe of Watch",
+		label = LIMBO({"Recipe of Watch", ["zh"] = "怀表可制作"}),
 		options =
 		{
-			{description = "启用", data = true, hover = "怀表可以重新制作/Craftable Watch"},
-			{description = "禁用", data = false, hover = "怀表不可重新制作/Non-Craftable Watch"},
+			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"Craftable watch", ["zh"] = "怀表可以重新制作"})},
+			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Non-Craftable watch", ["zh"] = "怀表不可重新制作"})},
 		},
 		default = false,
 	},
 		
 	{
 		name = "watch_players_equippable",
-		label = "他人可否装备怀表/Watch for Others",
+		label = LIMBO({"Watch for Others", ["zh"] = "他人可否装备怀表"}),
 		options =
 		{
-			{description = "启用", data = true, hover = "其他玩家可装备怀表/No Restriction"},
-			{description = "禁用", data = false, hover = "其他玩家不可装备怀表/Sakuya-only"},
+			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"No Restriction", ["zh"] = "其他玩家可装备怀表"})},
+			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Sakuya-only", ["zh"] = "其他玩家不可装备怀表"})},
 		},
 		default = true,
 	},
 	
 	{
 		name = "items_floatable",
-		label = "专属物品浮力/Unique Items Floatable ",
+		label = LIMBO({"Unique Items Floatablility", ["zh"] = "专属物品浮力"}),
 		options =
 		{
-			{description = "启用", data = true, hover = "专属物品浮在水面/Items float on water"},
-			{description = "禁用", data = false, hover = "专属物品沉入水中/Items sink into water"},
+			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"Items float on water", ["zh"] = "专属物品浮在水面"})},
+			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Items sink into water", ["zh"] = "专属物品沉入水中"})},
 		},
 		default = false,
 	},
 	
 	{
 		name = "izayoi_se",
-		label = "专属音效/SE",
+		label = LIMBO({"SE", ["zh"] = "专属音效"}),
 		options =
 		{
-			{description = "关", data = 0, hover = "禁用音效/Off"},
-			{description = "低", data = 0.4, hover = "启用音效/On"},
-			{description = "中", data = 0.7, hover = "启用音效/On"},
-			{description = "高", data = 1, hover = "禁用音效/Off"},
+			{description = LIMBO({"Off", ["zh"] = "关闭"}), data = 0},
+			{description = LIMBO({"Low", ["zh"] = "低"}), data = 0.4},
+			{description = LIMBO({"Med", ["zh"] = "中"}), data = 0.7},
+			{description = LIMBO({"High", ["zh"] = "高"}), data = 1},
 		},
 		default = 1,
 	},
 		
 	{
 		name = "izayoi_voice",
-		label = "专属语音/Voice",
+		label = LIMBO({"Voice SE", ["zh"] = "专属语音"}),
 		options =
 		{
-			{description = "关", data = 0, hover = "禁用语音/Off"},
-			{description = "低", data = 0.4, hover = "启用语音/On"},
-			{description = "中", data = 0.7, hover = "启用语音/On"},
-			{description = "高", data = 1, hover = "禁用语音/Off"},
+			{description = LIMBO({"Off",["zh"] = "关闭"}), data = 0},
+			{description = LIMBO({"Low", ["zh"] = "低"}), data = 0.4},
+			{description = LIMBO({"Med", ["zh"] = "中"}), data = 0.7},
+			{description = LIMBO({"High", ["zh"] = "高"}), data = 1},
 		},
 		default = 1,
 	},
