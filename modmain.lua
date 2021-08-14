@@ -14,7 +14,7 @@ local function LIMBO(tbl)
 end
 
 local function IsInTable(tbl, value)
-	for k, v in ipairs(tbl) do
+	for k, v in pairs(tbl) do
 		if v == value then
 			return true;
 		end
@@ -284,7 +284,7 @@ local skin_modes = {
 }
 AddModCharacter("izayoi", "FEMALE", skin_modes)
 
-GLOBAL.FOODTYPE.BLOOD = "BLOOD"
+-- GLOBAL.FOODTYPE.BLOOD = "BLOOD"
 izayoitab = AddRecipeTab(LIMBO({"Perfect and Elegant Recipes", ["zh"] = "完美潇洒的制作配方"}), 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
 local recipemap = {
 	["easy"] = {
@@ -469,12 +469,12 @@ end
 -- 	end
 -- end
 -- if TUNING.IZAYOI_LANGUAGE == "zh" then
-	STRINGS.NAMES.IZAYOI_REDTEA = LIMBO({"Red Tea", ["zh"] = "洋馆红茶"})
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = LIMBO({"Dessert in manshion", ["zh"] = "洋馆的餐后甜点。"})
+	STRINGS.NAMES.IZAYOI_REDTEA = LIMBO({"Black Tea", ["zh"] = "洋馆红茶"})
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = LIMBO({"A cup of black tea.", ["zh"] = "飘着香气的红茶。"})
 	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = LIMBO({"+60HP/30San/10Hunger", ["zh"] = "+60HP/30San/10饥饿"})
 
 	STRINGS.NAMES.IZAYOI_SWORD = LIMBO({"Silver Knife", ["zh"] = "银质飞刀",})
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = LIMBO({"", ["zh"] = "美丽且致命。"})
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = LIMBO({"A delicate knife.", ["zh"] = "精致的小刀。"})
 	STRINGS.RECIPE_DESC.IZAYOI_SWORD = LIMBO({"Damage 50, can be shot by skills", ["zh"] = "威力 50 可由技能发射"})
 
 	STRINGS.NAMES.IZAYOI_SWORDRED = LIMBO({"Exorcist's Knife", ["zh"] = "破魔飞刀"})
@@ -487,7 +487,7 @@ end
 
 
 	STRINGS.NAMES.IZAYOI_WATCH = LIMBO({"Lunar Clock", ["zh"] = "月时计"})
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = LIMBO({"", ["zh"] = "能看到时间的运作原理。"})
+	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = LIMBO({"An old watch.", ["zh"] = "一块旧怀表。"})
 	STRINGS.RECIPE_DESC.IZAYOI_WATCH = LIMBO({"Manipulating time", ["zh"] = "掌控时间"})	-- >
 -- else
 -- 	STRINGS.NAMES.IZAYOI_REDTEA = "Red Tea"
@@ -1013,36 +1013,36 @@ end)	-- >
 -- 		end
 -- 	end
 -- end)	-- >
-AddComponentPostInit("edible", function(self)	-- <改写食品API
-	self.externalfoodtypes = {}
-	self.AddExternalFoodType = function(self, extfoodtype)
-		if extfoodtype and not IsInTable(self.externalfoodtypes, extfoodtype) then
-			table.insert(self.externalfoodtypes, extfoodtype)
-		end
-		for k, v in pairs(self.externalfoodtypes) do
-			if v ~= nil and not self.inst:HasTag("edible_"..v) then
-				self.inst:AddTag("edible_"..v)
-			end
-		end
-	end
-	self.RemoveExternalFoodType = function(self, extfoodtype)
-		if extfoodtype and self.inst:HasTag("edible_"..extfoodtype) ~= nil then
-			self.inst:RemoveTag("edible_"..extfoodtype)
-		end
-		self.externalfoodtypes = GetTableRemovedValues(self.externalfoodtypes, extfoodtype)
-	end
-	local pOnRemoveFromEntity = self.OnRemoveFromEntity
-	self.OnRemoveFromEntity = function(self)
-		local ret = pOnRemoveFromEntity()
-		for k, v in pairs(self.externalfoodtypes) do
-			if self.inst:HasTag("edible_"..v) ~= nil then
-				self.inst:RemoveTag("edible_"..v)
-			end
-		end
-		self.externalfoodtypes = {}
-		return ret
-	end
-end)
+-- AddComponentPostInit("edible", function(self)	-- <改写食品API
+-- 	self.externalfoodtypes = {}
+-- 	self.AddExternalFoodType = function(self, extfoodtype)
+-- 		if extfoodtype and not IsInTable(self.externalfoodtypes, extfoodtype) then
+-- 			table.insert(self.externalfoodtypes, extfoodtype)
+-- 		end
+-- 		for k, v in pairs(self.externalfoodtypes) do
+-- 			if v ~= nil and not self.inst:HasTag("edible_"..v) then
+-- 				self.inst:AddTag("edible_"..v)
+-- 			end
+-- 		end
+-- 	end
+-- 	self.RemoveExternalFoodType = function(self, extfoodtype)
+-- 		if extfoodtype and self.inst:HasTag("edible_"..extfoodtype) ~= nil then
+-- 			self.inst:RemoveTag("edible_"..extfoodtype)
+-- 		end
+-- 		self.externalfoodtypes = GetTableRemovedValues(self.externalfoodtypes, extfoodtype)
+-- 	end
+-- 	local pOnRemoveFromEntity = self.OnRemoveFromEntity
+-- 	self.OnRemoveFromEntity = function(self)
+-- 		local ret = pOnRemoveFromEntity()
+-- 		for k, v in pairs(self.externalfoodtypes) do
+-- 			if self.inst:HasTag("edible_"..v) ~= nil then
+-- 				self.inst:RemoveTag("edible_"..v)
+-- 			end
+-- 		end
+-- 		self.externalfoodtypes = {}
+-- 		return ret
+-- 	end
+-- end)
 
 AddComponentPostInit("container", function(self)	-- <改写容器API，附加查询函数
 	self.FindItemByName = function(self, pf)
@@ -1676,7 +1676,9 @@ end
 AddPlayerPostInit(function(inst)
 	if inst.prefab == characterName then
 		-- inst.Transform:SetScale(1.25,1.25,1.25)
-		-- inst:AddComponent("timer")
+		if not inst.components.timer then
+			inst:AddComponent("timer")
+		end
 		inst:DoTaskInTime(0, function()
 			inst:ListenForEvent("timerdone", function(inst, data)
 				if data.name == "z_skill" or data.name == "x_skill" or data.name == "c_skill" or data.name == "v_skill" or data.name == "b_skill" then

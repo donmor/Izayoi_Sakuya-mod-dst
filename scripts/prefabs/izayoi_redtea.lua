@@ -31,6 +31,8 @@ local function fn()
 
 	inst.MiniMapEntity:SetIcon("izayoi_redtea.tex")
 
+	inst:AddTag("edible_BLOOD")
+
 	if TUNING.IZAYOI_ITEMS_FLOATABLE then
 		MakeInventoryFloatable(inst, "small", 0.15, {0.75, 0.5, 0.75})
 	end
@@ -58,7 +60,7 @@ local function fn()
 	inst.components.edible.sanityvalue = 30
 	inst.components.edible.foodtype = FOODTYPE.VEGGIE
 	inst.components.edible:SetOnEatenFn(oneaten)
-	inst.components.edible:AddExternalFoodType(FOODTYPE.BLOOD)
+	-- inst.components.edible:AddExternalFoodType(FOODTYPE.BLOOD)
 	
 	inst:AddComponent("perishable")
 	inst.components.perishable:SetPerishTime( 10 * TUNING.TOTAL_DAY_TIME)

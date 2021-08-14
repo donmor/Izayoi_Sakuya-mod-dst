@@ -386,6 +386,7 @@ return {
 	ANNOUNCE_THORNS = "啊！",
 	ANNOUNCE_BURNT = "好烫！",
 	ANNOUNCE_TORCH_OUT = "我得再找一根来。",
+	ANNOUNCE_THURIBLE_OUT = "香料烧尽了。",
 	ANNOUNCE_FAN_OUT = "风扇随风而去。",
     ANNOUNCE_COMPASS_OUT = "指南针坏掉了。",
 	ANNOUNCE_TRAP_WENT_OFF = "糟了……",
@@ -400,6 +401,7 @@ return {
 	ANNOUNCE_LIGHTNING_DAMAGE_AVOIDED = "呼，好险！",
 	ANNOUNCE_TOADESCAPING = "别想跑！",
 	ANNOUNCE_TOADESCAPED = "切，被它跑了。",
+
 
 	ANNOUNCE_DAMP = "大小姐不会喜欢这种天气的。",
 	ANNOUNCE_WET = "大小姐不能在这里呆太久。",
@@ -557,6 +559,7 @@ return {
 		SPIDER = "自己滚吧！",
 		SPIDER_WARRIOR = "你最好自己从这里离开！",
 	},
+
 	DESCRIBE =
 	{
 		MULTIPLAYER_PORTAL = "还会有谁来呢……",
@@ -681,6 +684,12 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            BEAVER = "这就是他的诅咒吗？",
+            BEAVERGHOST = "连灵魂都被诅咒纠缠着。",
+            MOOSE = "这就是他的诅咒吗？",
+            MOOSEGHOST = "连灵魂都被诅咒纠缠着。",
+            GOOSE = "这就是他的诅咒吗？",
+            GOOSEGHOST = "连灵魂都被诅咒纠缠着。",
             FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},
 		WICKERBOTTOM = 
@@ -708,6 +717,7 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "精神上更加接近妖怪么……",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},
         WATHGRITHR = 
 		{
@@ -754,7 +764,8 @@ return {
 			GHOST = "%s的时间就到此为止了呢。",
             FIRESTARTER = "红魔馆并不欢迎放火魔。",
         },
-        WURT =
+
+		WURT =
         {
             GENERIC = "在这里看到一般意义上的妖怪反而令人安心。",
 			ATTACKER = "最好再重新考虑一下。",
@@ -763,7 +774,8 @@ return {
 			GHOST = "%s的时间就到此为止了呢。",
             FIRESTARTER = "红魔馆并不欢迎放火魔。",
         },
-        WALTER =
+
+		WALTER =
         {
             GENERIC = "朝气蓬勃的人类。",
 			ATTACKER = "最好再重新考虑一下。",
@@ -772,6 +784,7 @@ return {
 			GHOST = "%s的时间就到此为止了呢。",
             FIRESTARTER = "红魔馆并不欢迎放火魔。",
         },
+
 		REIMU = 
 		{
 			GENERIC = "博丽神社的巫女总是这么闲呢。",
@@ -779,7 +792,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 灵梦
+
 		MARISA = 
 		{
 			GENERIC = "怎么到哪儿都能见到这只黑白……",
@@ -787,7 +802,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 魔理莎
+
 		YOUMU = 
 		{
 			GENERIC = "白玉楼的妖梦小姐，好久不见呢。",
@@ -795,7 +812,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 妖梦
+
 		SANAE = 
 		{
 			GENERIC = "妖怪之山上新来的蓝白巫女。",
@@ -803,7 +822,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 早苗
+
 		REISEN = 
 		{
 			GENERIC = "永远亭的铃仙小姐，好久不见呢。",
@@ -811,7 +832,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 铃仙
+
 		YUUKA = 
 		{
 			GENERIC = "花田的强大妖怪……我得小心一点。",
@@ -819,7 +842,9 @@ return {
 			MURDERER = "这就是人类和妖怪之间的差距……吗……",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 幽香
+
 		YUYUKO = 
 		{
 			GENERIC = "是白玉楼的亡灵小姐呢。",
@@ -827,7 +852,9 @@ return {
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 幽幽子
+
 		YUKARI = 
 		{
 			GENERIC = "冒昧问一句，有回红魔馆的方法吗？",
@@ -835,7 +862,9 @@ return {
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 紫
+
 		REMILIA = 
 		{
 			GENERIC = "我会永远陪着你的，大小姐。",
@@ -843,7 +872,9 @@ return {
 			MURDERER = "这是为什么，大小姐？",
 			REVIVER = "万分感谢，大小姐。",
 			GHOST = "大小姐……我会一直等着你回来……",
+            FIRESTARTER = "我们得谈谈，大小姐。",
 		},	-- 大小姐
+
 		FRAN = 
 		{
 			GENERIC = "妹妹大人今天也出来玩了吗？",
@@ -851,7 +882,9 @@ return {
 			MURDERER = "妹妹大人，不要做得太过分了！",
 			REVIVER = "万分感谢，妹妹大人。",
 			GHOST = "妹妹大人，我会等你回来的。",
+            FIRESTARTER = "我们得谈谈，妹妹大人。",
 		},	-- 二小姐
+
 		MEIRIN = 
 		{
 			GENERIC = "很好，就这样打起精神来，美铃！",
@@ -859,7 +892,9 @@ return {
             MURDERER = "好，一会你等着！",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "你这个月奖金没了！",
 		},	-- 美铃
+
 		PATCHOULI = 
 		{
 			GENERIC = "早安，帕秋莉大人。",
@@ -867,7 +902,9 @@ return {
             MURDERER = "您也差不多该……",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "您做试验能不能注意安全……",
 		},	-- 帕秋莉
+
 		FUTO = 
 		{
 			GENERIC = "绝对不能让那家伙靠近红魔馆！",
@@ -875,7 +912,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 布都
+
 		SUIKA = 
 		{
 			GENERIC = "还是这样酒不离身呢。",
@@ -883,7 +922,9 @@ return {
 			MURDERER = "这就是鬼的力量吗……",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 翠香
+
 		KASEN = 
 		{
 			GENERIC = "是神社里的仙人……吗……",
@@ -891,7 +932,9 @@ return {
 			MURDERER = "这种力量……她真的是仙人吗？",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 华扇
+
 		MOMIJI = 
 		{
 			GENERIC = "是妖怪山上的白狼天狗呢。",
@@ -899,7 +942,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 犬走椛
+
 		QINGWA = 
 		{
 			GENERIC = "是妖怪山上的白狼天狗呢。",
@@ -907,7 +952,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 青蛙子（……）
+
 		KEINE = 
 		{
 			GENERIC = "上次提议送大小姐去她那儿上学，结果被果断拒绝了。",
@@ -915,7 +962,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 慧音
+
 		MOKOU = 
 		{
 			GENERIC = "是竹林里的蓬莱人呢。",
@@ -923,7 +972,9 @@ return {
 			MURDERER = "既然你如此不珍惜生命……",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎人形火炬。",
 		},	-- 妹红
+
 		CIRNO = 
 		{
 			GENERIC = "又是湖面上那只笨蛋冰精吗？",
@@ -931,7 +982,9 @@ return {
 			MURDERER = "死回家一次吧！",
 			REVIVER = "没想到有人会欠冰精一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 琪露诺
+
 		DAIYOUSEI = 
 		{
 			GENERIC = "冰精的朋友……叫什么来着？",
@@ -939,7 +992,9 @@ return {
 			MURDERER = "死回家一次吧！",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 大妖精
+
 		CHEN = 
 		{
 			GENERIC = "是八云家的黑猫吗？",
@@ -947,7 +1002,9 @@ return {
 			MURDERER = "看来我得找八云家讨个说法。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 橙喵
+
 		YAKUMORAN = 
 		{
 			GENERIC = "某贤者的式神。",
@@ -955,7 +1012,9 @@ return {
 			MURDERER = "看来我得找某贤者讨个说法。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 八云蓝
+
 		LYRICA = 
 		{
 			GENERIC = "是骚灵乐队的键盘手呢。",
@@ -963,7 +1022,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 莉莉卡
+
 		KAGEROU = 
 		{
 			GENERIC = "上次碰见过这只狼吧……",
@@ -971,7 +1032,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 今泉影狼
+
 		MIKO = 
 		{
 			GENERIC = "是那个戴耳罩的仙人呢。",
@@ -979,7 +1042,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 丰聪耳神子
+
 		YOHIME = 
 		{
 			GENERIC = "月都的大人物。",
@@ -987,7 +1052,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 依姬
+
 		NUE = 
 		{
 			GENERIC = "我好像在哪里见过她……真的有吗？",
@@ -995,7 +1062,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 封兽鵺
+
 		TENSHI = 
 		{
 			GENERIC = "是有顶天的那个不良天人呢。",
@@ -1003,7 +1072,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 天子
+
 		IKU = 
 		{
 			GENERIC = "是有顶天的龙宫使者呢。",
@@ -1011,7 +1082,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 衣玖
+
 		RENKO = 
 		{
 			GENERIC = "是外界的……不好意思认错人了。",
@@ -1019,7 +1092,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 莲子
+
 		MERRY = 
 		{
 			GENERIC = "冒昧问一句……不好意思认错人了。",
@@ -1027,7 +1102,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 梅莉
+
 		RIN = 
 		{
 			GENERIC = "附近一定是有尸体。",
@@ -1035,7 +1112,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 燐喵
+
 		PARSEE = 
 		{
 			GENERIC = "地底世界的桥姬妖怪。",
@@ -1043,7 +1122,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 帕露西
+
 		TEWI = 
 		{
 			GENERIC = "这不是永远亭里那只爱说谎的白兔吗？",
@@ -1051,7 +1132,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 因幡帝
+
 		CLOWNPIECE = 
 		{
 			GENERIC = "她是妖精吧……这种感觉真奇怪。",
@@ -1059,7 +1142,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 克劳恩皮丝
+
 		AYA = 
 		{
 			GENERIC = "啊，那个报纸小姐。",
@@ -1067,7 +1152,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 文文
+
 		UTSUHO = 
 		{
 			GENERIC = "获得了神之力量的鸟脑袋。",
@@ -1075,7 +1162,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 阿空
+
 		IZAYOI = 
 		{
 			GENERIC = "这是……我？",
@@ -1083,7 +1172,9 @@ return {
 			MURDERER = "干掉自己什么的……为什么我会这么做啊……",
 			REVIVER = "我欠咲夜一个人情……？",
 			GHOST = "这简直难以想象。",
+            FIRESTARTER = "骗人！我不可能……",
 		},	-- 咲夜（其他玩家）
+
 		SATSUKI = 
 		{
 			GENERIC = "……这谁？",
@@ -1091,7 +1182,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠了一个人情……叫什么的？",
 			GHOST = "有人的时间到此为止了……而且到最后也不知道是什么人。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 冴月麟
+
 		SATORI = 
 		{
 			GENERIC = "地灵殿的主人妖怪觉。",
@@ -1099,7 +1192,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 小五
+
 		KOISHI = 
 		{
 			GENERIC = "刚才那是什么，幻觉吗？",
@@ -1107,7 +1202,9 @@ return {
 			MURDERER = "见鬼，我居然没考虑到会是她！",
 			REVIVER = "好像有谁救了我，是谁呢？",
 			GHOST = "算了……不管了。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 恋恋
+
 		SHIKIEIKI = 
 		{
 			GENERIC = "是非曲直厅的阎魔。",
@@ -1115,7 +1212,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 四季
+
 		ALICE_TH = 
 		{
 			GENERIC = "是魔法之森里的爱丽丝呢。",
@@ -1123,7 +1222,9 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 爱丽丝
+
 		SUNNY = 
 		{
 			GENERIC = "三个淘气妖精之一。",
@@ -1132,6 +1233,7 @@ return {
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
 		},	-- 桑尼
+
 		STARSAPPHIRE = 
 		{
 			GENERIC = "三个淘气妖精之一。",
@@ -1139,8 +1241,10 @@ return {
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
+            FIRESTARTER = "红魔馆并不欢迎放火魔。",
 		},	-- 斯塔
-        MIGRATION_PORTAL =
+
+		MIGRATION_PORTAL =
         {
             GENERIC = "让人想起某个总是躲在隙间的妖怪贤者。",
             OPEN = "有点担心它的可靠性……但如果为了找到大小姐则另当别论。",
@@ -1258,14 +1362,13 @@ return {
 		NIGHTMARELIGHT = "魔力的气息。",
 		NIGHTSTICK = "这是他们用来弹幕对决的吗？",
 		GREENGEM = "大小姐会喜欢吗？",
-		RUINS_RUBBLE = "还能被修复吗？",
 		MULTITOOL_AXE_PICKAXE = "这个……真的会比较实用吗？",
 		ORANGESTAFF = "我自己也能做到。",
 		YELLOWAMULET = "闪闪发光呢。",
 		GREENAMULET = "节约一点总是好的。",
-		SLURPERPELT = "看起来像毛玉。",	
+		SLURPERPELT = "看起来像个毛玉。",	
 
-		SLURPER = "看起来像毛玉。",
+		SLURPER = "看起来像个毛玉。",
 		SLURPER_PELT = "看起来像毛玉的毛。",
 		ARMORSLURPER = "意外的暖和呢。",
 		ORANGEAMULET = "比我自己去做方便多了。",
@@ -1562,6 +1665,7 @@ return {
             PUDGY = "散发着令人安心的气息。",
             MYPARTNER = "值得信赖的大家伙。",
 		},
+
 		BEEFALOHAT = "和大小姐不怎么般配。",
 		BEEFALOWOOL = "真不好闻。",
 		BEEHAT = "这样就不容易被蜇到了。",
@@ -1615,7 +1719,8 @@ return {
 		BLOWDART_YELLOW = "蕴含闪电的力量。",
 		BLUEAMULET = "像那只冰精一样凉。",
 		BLUEGEM = "大小姐会喜欢吗？",
-		BLUEPRINT = {
+		BLUEPRINT = 
+		{
 			COMMON = "照着这个做就简单多了。",
 			RARE = "这还真是巧妙的设计。"
 		},
@@ -1867,7 +1972,7 @@ return {
 		DRAGONFRUIT_COOKED = "烤过的奇怪的水果。",
 		DRAGONFRUIT_SEEDS = "奇怪的水果的种子。",
 		DRAGONPIE = "味道不错呢。",
-		DRUMSTICK = "普通的鸟腿……希望不要被鸟看到。",
+		DRUMSTICK = "一只鸟腿……希望不要被鸟看到。",
 		DRUMSTICK_COOKED = "熟了的鸟腿……希望不要被鸟看到。",
 		DUG_BERRYBUSH = "我可以找个地方种下它。",
 		DUG_BERRYBUSH_JUICY = "我可以找个地方种下它。",
@@ -2350,12 +2455,12 @@ return {
 		},
 		RESEARCHLAB3 = 
 		{
-			GENERIC = "朝着非科学的方向去了。",
+			GENERIC = "还是有相当的水平的。",
 			BURNT = "烧得不能用了啊……",
 		},
 		RESEARCHLAB4 = 
 		{
-			GENERIC = "还是有相当的水平的。",
+			GENERIC = "朝着非科学的方向去了。",
 			BURNT = "烧得不能用了啊……",
 		},
 		RESURRECTIONSTATUE = 
@@ -2440,6 +2545,10 @@ return {
 		SCULPTURE_KNIGHTHEAD = "所以剩下的部分呢？",
 		SCULPTURE_KNIGHTBODY =
 		{
+			COVERED = "奇怪的大理石雕塑。",
+			UNCOVERED = "少了一块。",
+			FINISHED = "现在它完整了。",
+			READY = "有某种力量在涌动。",
 		},
 		SCULPTURE_BISHOPHEAD = "只剩下一个头了。",
 		SCULPTURE_BISHOPBODY =
@@ -3552,6 +3661,7 @@ return {
 		OCEANFISH_MEDIUM_6 = "希望不久能在红魔馆与大小姐重逢……！",
 		OCEANFISH_MEDIUM_7 = "希望不久能在红魔馆与大小姐重逢……！",
 		OCEANFISH_MEDIUM_8 = "差点以为那个笨蛋被它吃了。",
+        OCEANFISH_MEDIUM_9 = "还活着就已经腌入味了。",
 
 		PONDFISH = "和幻想乡的没什么不同。",
 		PONDEEL = "有点不太像，但确实是鳗鱼。",
@@ -3701,6 +3811,13 @@ return {
 			LOTS_OF_FLOWERS = "你姐姐会开心的。",
 		},
 
+		--Sakuya
+		IZAYOI_REDTEA = "洋馆的餐后甜点。",
+		IZAYOI_SWORD = "美丽且致命。",
+		IZAYOI_SWORDRED = "美丽且致命。",
+		IZAYOI_SWORDPURPLE = "美丽且致命。",
+		IZAYOI_WATCH = "能看到时间的运作原理。",
+
         PORTABLECOOKPOT_ITEM =
         {
             GENERIC = "大厨先生的得力助手。",
@@ -3770,9 +3887,9 @@ return {
         PEPPER_COOKED = "说真的，真的有人拿这个填肚子么……",
         PEPPER_SEEDS = "一些辣椒种子。",
 
-        WEREITEM_BEAVER = "某种危险的黑魔法。",
-        WEREITEM_GOOSE = "某种危险的黑魔法。",
-        WEREITEM_MOOSE = "某种危险的黑魔法。",
+        WEREITEM_BEAVER = "将诅咒化为力量吧。",
+        WEREITEM_GOOSE = "将诅咒化为力量吧。",
+        WEREITEM_MOOSE = "将诅咒化为力量吧。",
 
         MERMHAT = "混入充满敌意的族群。",
         MERMTHRONE =
@@ -4001,6 +4118,8 @@ return {
 		SWEETTEA = "芬芳的香气让人充满决心。",
 		TILLWEED = "嗯……是时候请出我的铲子了。",
 		TILLWEEDSALVE = "多少有点用处。",
+        WEED_IVY = "怎么有东西缠在我的植物上？",
+        IVY_SNARE = "可恶，我就收个菜都能……",
 
 		TROPHYSCALE_OVERSIZEDVEGGIES =
 		{
@@ -4243,6 +4362,32 @@ return {
             CONSTRUCTION1 = "似乎只是刚开始而已。",
             CONSTRUCTION2 = "渐渐成型了。",
         },
+
+        -- Waterlog
+        WATERTREE_PILLAR = "比起西行妖还是差点儿。",
+        OCEANTREE = "它们是不是长错地方了？",
+        OCEANTREENUT = "乍一看还以为是石头。",
+        WATERTREE_ROOT = "说实话正常人不会想看它的树根的。",
+
+        OCEANTREE_PILLAR = "种在水里还能成材真是不容易。",
+        
+        OCEANVINE = "长到下垂的树枝。",
+        FIG = "和我认识的那种仅仅是外表相似而已。",
+        FIG_COOKED = "水果烤一烤意外地香啊。",
+
+        SPIDER_WATER = "水黾和蜘蛛的结合体……这真的不是某种实验产物？",
+        MUTATOR_WATER = "只有妖怪才对这个感兴趣。",
+        OCEANVINE_COCOON = "越看越想甩个飞刀过去……",
+        OCEANVINE_COCOON_BURNT = "烧焦的气味。",
+
+        GRASSGATOR = "看来和陆地上那种长草的是近亲。",
+
+        TREEGROWTHSOLUTION = "昂贵的肥料，但用途蛮多的。",
+
+        FIGATONI = "意外的意大利风味。",
+        FIGKABAB = "水果的清香为烤肉锦上添花。",
+        KOALEFIG_TRUNK = "再怎么说也还是象鼻……虽然香味确实不错。",
+        FROGNEWTON = "味道挺独特，不过还不错。",
 	},
 	DESCRIBE_GENERIC = "这是什么？",
 	DESCRIBE_TOODARK = "太黑了……",

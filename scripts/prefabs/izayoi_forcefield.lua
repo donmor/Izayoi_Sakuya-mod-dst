@@ -14,6 +14,7 @@ local function fn()
 	inst:AddTag("NOCLICK")
 	inst:AddTag("FX")
 	inst:AddTag("canmoveintime")
+	inst:AddTag("timemaster")
 	
 	inst.entity:SetPristine()
 
@@ -51,7 +52,7 @@ local function fn()
 		else
 			inst.components.timer:StartTimer("izayoi_forcefield", duration)
 		end
-		if parent then
+		if parent and parent:IsValid() then
 			TheWorld.components.timestopper_world:ResumeEntity(parent, TUNING.IZAYOI_B_DURATION)
 		end
 	end
@@ -78,8 +79,10 @@ local function fn()
 				parent.components.combat.externaldamagemultipliers:RemoveModifier(inst, "izayoi_forcefield")
 				parent.components.health:SetAbsorptionAmount(0)
 			end
-			if parent:HasTag("canmoveintime") and not parent:HasTag("stoppingtime") then
-				parent:RemoveTag("canmoveintime")
+			if not parent:HasTag("stoppingtime") then
+			-- if parent:HasTag("canmoveintime") and not parent:HasTag("stoppingtime") and not parent:HasTag("timemaster") then
+				-- parent:RemoveTag("canmoveintime")
+				TheWorld.components.timestopper_world:BreakMovability(parent)
 			end
 			parent.forcefieldfx = nil
 		end

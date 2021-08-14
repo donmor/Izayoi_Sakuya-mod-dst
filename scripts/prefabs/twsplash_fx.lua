@@ -8,6 +8,7 @@ local function fn()
 	inst:AddTag("NOCLICK")
 	inst:AddTag("FX")
 	inst:AddTag("canmoveintime")
+    inst:AddTag("timemaster")
     
     inst.AnimState:SetBank("bearger_ring_fx")
 	inst.AnimState:SetBuild("bearger_ring_fx")

@@ -95,6 +95,9 @@ local function pushglobalsound(sound)
 	for k, v in pairs(AllPlayers) do
 		if v and v.globalsound then
 			v.globalsound:set(sound)
+			v:DoTaskInTime(0.1, function()
+				v.globalsound:set_local("")
+			end)
 		end
 	end
 end
@@ -213,17 +216,15 @@ function(inst)
 	inst.components.locomotor:SetExternalSpeedMultiplier(inst, "izayoi", 1.15)
 	inst:AddComponent("timestopper")
 	inst.components.timestopper:SetOnTimeStoppedFn(function(silent)
-		if not silent then
+		if not silent and not inst:HasTag("playerghost") then
 			local x0, y0, z0 = inst.Transform:GetWorldPosition()
 			local fx = SpawnPrefab("twsplash_fx")
 			if fx then
-				fx:AddTag("canmoveintime")
 				fx.Transform:SetPosition(x0, y0, z0)
 				fx.Transform:SetScale(2, 2, 2)
 				fx:DoTaskInTime(2 * FRAMES, function()
 					local fx = SpawnPrefab("twsplash_fx")
 					if fx then
-						fx:AddTag("canmoveintime")
 						fx.Transform:SetPosition(x0, y0, z0)
 						fx.Transform:SetScale(1.5, 1.5, 1.5)
 					end
