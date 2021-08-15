@@ -95,7 +95,7 @@ local function fn()
 	inst.components.equippable:SetOnEquip(onequip)
 	inst.components.equippable:SetOnUnequip(onunequip)
 	inst.components.equippable.dapperfn = function(inst, owner)
-		return TUNING.IZAYOI_ITEMS_AURA_ADVANCED and owner.components.sanity:IsLunacyMode() and -TUNING.IZAYOI_WATCH_DAPPERNESS or TUNING.IZAYOI_WATCH_DAPPERNESS
+		return TUNING.IZAYOI_WATCH_DAPPERNESS * (TUNING.IZAYOI_ITEMS_AURA_ADVANCED and owner.components.sanity:IsLunacyMode() and -1 or 1)
 	end
 	
 	inst:AddComponent("waterproofer")

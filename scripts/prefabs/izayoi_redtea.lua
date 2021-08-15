@@ -31,6 +31,10 @@ local function fn()
 
 	inst.MiniMapEntity:SetIcon("izayoi_redtea.tex")
 
+	if TUNING.IZAYOI_ITEMS_AURA_ADVANCED then
+		inst:AddTag("food_san_advanced")
+	end
+
 	if TUNING.IZAYOI_ITEMS_FLOATABLE then
 		MakeInventoryFloatable(inst, "small", 0.15, {0.75, 0.5, 0.75})
 	end
