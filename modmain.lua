@@ -236,12 +236,12 @@ STRINGS.SKIN_NAMES.izayoi_none = STRINGS.NAMES.IZAYOI
 STRINGS.IZAYOI_MISC = {
 	WATCH_REFUSED = LIMBO({"It refused me.", ["zh"] = "我被拒绝了。"}),
 	SKILL_FAILURE = {
-		CANTMOVE =	LIMBO({"I can't move...", ["zh"] = "动不了……"}),
-		NOKNIFE =	LIMBO({"I have no handy knife now.", ["zh"] = "我没有能用的刀了。"}),
-		NOMANA =	LIMBO({"I need more power.", ["zh"] = "我缺乏力量。"}),
-		NOTARGET =	LIMBO({"It makes no sense.", ["zh"] = "我不需要这么做。"}),
-		NOWATCH =	LIMBO({"I need a casting medium.", ["zh"] = "我需要一个媒介。"}),
-		COLLECTED =	LIMBO({"There's no knife to collect.", ["zh"] = "没有可以回收的刀了。"}),
+		CANTMOVE =	LIMBO({"(I can't move...)", ["zh"] = "(动不了……)"}),
+		NOKNIFE =	LIMBO({"(I have no handy knife now.)", ["zh"] = "(我没有能用的刀了。)"}),
+		NOMANA =	LIMBO({"(I need more power.)", ["zh"] = "(我缺乏力量。)"}),
+		NOTARGET =	LIMBO({"(It makes no sense.)", ["zh"] = "(我不需要这么做。)"}),
+		NOWATCH =	LIMBO({"(I need a casting medium.)", ["zh"] = "(我需要一个媒介。)"}),
+		COLLECTED =	LIMBO({"(There's no knife to collect.)", ["zh"] = "(没有可以回收的刀了。)"}),
 	},
 	SKILL_ANNOUNCEMENTS = {
 		Z = LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}) or LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}),
@@ -1229,7 +1229,7 @@ local skill_valid2 = {
 		elseif not enoughmana then
 			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.NOMANA)
 		end
-		return enoughmana and havewatch and skill_valid.v.validfn(inst)
+		return enoughmana and havewatch and not inst:HasTag("stoppingtime") and skill_valid.v.validfn(inst)
 	end},
 	
 	b = {validfn = function(inst, vtarget)
