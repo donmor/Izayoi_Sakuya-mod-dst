@@ -7,7 +7,7 @@ local function SYS_INITGLOBAL()
 		end,
 	})	
 end
-SYS_INITGLOBAL()
+SYS_INITGLOBAL()	-- <初始化GLOBAL
 
 local function LIMBO(tbl)
 	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
@@ -28,9 +28,9 @@ local function isModEnabled(mod)
 		return false
 	end
 	return IsInTable(list, mod)
-end
+end	-- <local function
 
-TUNING.IZAYOI_SE = GetModConfigData("izayoi_se")	-- <读取配置
+TUNING.IZAYOI_SE = GetModConfigData("izayoi_se")
 TUNING.IZAYOI_VOICE = GetModConfigData("izayoi_voice")
 TUNING.IZAYOI_ITEMS_AURA_ADVANCED = GetModConfigData("items_aura_advanced")
 TUNING.IZAYOI_WATCH_NIGHT_VISION = GetModConfigData("watch_night_vision")
@@ -41,11 +41,11 @@ TUNING.IZAYOI_ITEMS_FLOATABLE = GetModConfigData("items_floatable")
 TUNING.IZAYOI_Z_ESCAPE = GetModConfigData("z_escape")
 TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
 TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
-TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")
+TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")	-- <读取配置
 
 TUNING.IZAYOI_BASEMENT_COMPATIBLE = isModEnabled("workshop-1349799880")
 TUNING.IZAYOI_LANGUAGE = LOC.GetLocaleCode()
-if TUNING.IZAYOI_STRENGTH == "op" then	-- <设定强度
+if TUNING.IZAYOI_STRENGTH == "op" then
 	TUNING.IZAYOI_HUNGER = 300
 	TUNING.IZAYOI_SANITY = 300
 	TUNING.IZAYOI_HEALTH = 300
@@ -120,7 +120,7 @@ else
 	TUNING.IZAYOI_B_DURATION = 25
 	TUNING.IZAYOI_B_DAMAGEMULT = 0.75
 	STRINGS.CHARACTER_SURVIVABILITY.izayoi = LIMBO({"Normal", ["zh"] = "三日月"})
-end	-- >
+end	-- <设定强度
 
 PrefabFiles = {
 	"izayoi",
@@ -225,7 +225,7 @@ TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_swordpurple = {
 TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_watch = {
 	atlas = "images/inventoryimages/izayoi_watch.xml",
 	image = "izayoi_watch.tex",
-}
+}	-- <材质
 TUNING.IZAYOI_WATCH_DAPPERNESS = 6.8 / 60
 STRINGS.NAMES.IZAYOI = LIMBO({"Sakuya", ["zh"] = "十六夜咲夜"})
 STRINGS.CHARACTER_TITLES.izayoi = LIMBO({"Maid of the Scarlet Devil", ["zh"] = "绯红恶魔的女仆"})
@@ -259,19 +259,19 @@ STRINGS.IZAYOI_MISC = {
 	},
 	MANA_UI = LIMBO({"Mana: ", ["zh"] = "魔力:"}),
 }
-require "desc"	-- 描述
+require "desc"
 local speeches = {
 	["zh"] = function() return require "speech_zh" end,
 }
 local spf = speeches[TUNING.IZAYOI_LANGUAGE]
-STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"	-- 对话
+STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"	-- <文本
 
 AddMinimapAtlas("images/map_icons/izayoi.xml")
 AddMinimapAtlas("images/map_icons/izayoi_redtea.xml")
 AddMinimapAtlas("images/map_icons/izayoi_sword.xml")
 AddMinimapAtlas("images/map_icons/izayoi_swordred.xml")
 AddMinimapAtlas("images/map_icons/izayoi_swordpurple.xml")
-AddMinimapAtlas("images/map_icons/izayoi_watch.xml")
+AddMinimapAtlas("images/map_icons/izayoi_watch.xml")	-- <小地图
 
 local skin_modes = {
     { 
@@ -282,9 +282,9 @@ local skin_modes = {
         offset = { 0, -25 } 
     },
 }
-AddModCharacter("izayoi", "FEMALE", skin_modes)
+AddModCharacter("izayoi", "FEMALE", skin_modes)	-- <人物
 
--- GLOBAL.FOODTYPE.BLOOD = "BLOOD"
+FOODTYPE.BLOOD = "BLOOD"
 izayoitab = AddRecipeTab(LIMBO({"Perfect and Elegant Recipes", ["zh"] = "完美潇洒的制作配方"}), 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
 local recipemap = {
 	["easy"] = {
@@ -316,37 +316,6 @@ local recipemap = {
 		izayoi_watch = {recipe = {Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)}, amount = nil},
 	},
 }
--- local recipemap_izayoi_redtea = {
--- 	["easy"] = {Ingredient("spidergland", 2), Ingredient("petals", 2)},
--- 	["normal"] = {Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)},
--- 	["hard"] = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)},
--- 	["lunatic"] = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)},
--- }
--- local recipemap_izayoi_sword = {
--- 	["easy"] = {Ingredient("log", 3), Ingredient("goldnugget", 3)},
--- 	["normal"] = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)},
--- 	["hard"] = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)},
--- 	["lunatic"] = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)},
--- }
--- local recipemap_izayoi_watch = {
--- 	["easy"] = {Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)},
--- 	["normal"] = {Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)},
--- 	["hard"] = {Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)},
--- 	["lunatic"] = {Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)},
--- }
--- local recipeamountmap_izayoi_redtea = {
--- 	["easy"] = 2,
--- 	["normal"] = 2,
--- 	["hard"] = 2,
--- 	["lunatic"] = nil,
--- }
--- local recipeamountmap_izayoi_sword = {
--- 	["easy"] = 3,
--- 	["normal"] = 3,
--- 	["hard"] = 3,
--- 	["lunatic"] = nil,
--- }
--- local recipelevel = IsInTable({"easy", "normal", "hard", "lunatic"}, TUNING.IZAYOI_RECIPES) and TUNING.IZAYOI_RECIPES or "normal"
 local myrecipemap = recipemap[IsInTable({"easy", "normal", "hard", "lunatic"}, TUNING.IZAYOI_RECIPES) and TUNING.IZAYOI_RECIPES or "normal"]
 AddRecipe("izayoi_redtea",
 myrecipemap.izayoi_redtea.recipe, izayoitab, TECH.MAGIC_TWO,
@@ -373,102 +342,8 @@ if TUNING.IZAYOI_WATCH_CRAFTABLE then
 	myrecipemap.izayoi_watch.recipe, izayoitab, TECH.MAGIC_THREE,
 	nil, nil, nil, myrecipemap.izayoi_watch.amount, "izayoi_skiller",
 	"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
-end
+end	-- <配方
 
--- if TUNING.IZAYOI_RECIPES == "easy" then
--- 	AddRecipe("izayoi_redtea",
--- 	recipemap_izayoi_redtea[TUNING.IZAYOI_RECIPES], 
--- 	izayoitab, TECH.MAGIC_TWO,
--- 	nil, nil, nil, recipeamountmap_izayoi_redtea[TUNING.IZAYOI_RECIPES], "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
-
--- 	AddRecipe("izayoi_sword",
--- 	{Ingredient("log", 3), Ingredient("goldnugget", 3)}, 
--- 	izayoitab, TECH.SCIENCE_TWO,
--- 	nil, nil, nil, 3, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
-
--- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
--- 		AddRecipe("izayoi_watch",
--- 		{Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
--- 		izayoitab, TECH.MAGIC_THREE,
--- 		nil, nil, nil, nil, "izayoi_skiller",
--- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
--- 	end
--- elseif TUNING.IZAYOI_RECIPES == "normal" then
--- 	local izayoi_redtea = AddRecipe("izayoi_redtea",
--- 	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
--- 	izayoitab, TECH.MAGIC_TWO,
--- 	nil, nil, nil, 2, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
--- 	local izayoi_sword = AddRecipe("izayoi_sword",
--- 	{Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
--- 	izayoitab, TECH.SCIENCE_TWO,
--- 	nil, nil, nil, 3, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
--- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
--- 		local izayoi_watch = AddRecipe("izayoi_watch",
--- 		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
--- 		izayoitab, TECH.MAGIC_THREE,
--- 		nil, nil, nil, nil, "izayoi_skiller",
--- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
--- 	end
--- elseif TUNING.IZAYOI_RECIPES == "hard" then
--- 	local izayoi_redtea = AddRecipe("izayoi_redtea",
--- 	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
--- 	izayoitab, TECH.MAGIC_TWO,
--- 	nil, nil, nil, 2, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
--- 	local izayoi_sword = AddRecipe("izayoi_sword",
--- 	{Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
--- 	izayoitab, TECH.SCIENCE_TWO,
--- 	nil, nil, nil, 3, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
--- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
--- 		local izayoi_watch = AddRecipe("izayoi_watch",
--- 		{Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)}, 
--- 		izayoitab, TECH.MAGIC_THREE,
--- 		nil, nil, nil, nil, "izayoi_skiller",
--- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
--- 	end
--- elseif TUNING.IZAYOI_RECIPES == "lunatic" then
--- 	local izayoi_redtea = AddRecipe("izayoi_redtea",
--- 	{Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("nightmarefuel", 2)}, 
--- 	izayoitab, TECH.MAGIC_TWO,
--- 	nil, nil, nil, nil, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
--- 	local izayoi_sword = AddRecipe("izayoi_sword",
--- 	{Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
--- 	izayoitab, TECH.SCIENCE_TWO,
--- 	nil, nil, nil, nil, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
--- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
--- 		local izayoi_watch = AddRecipe("izayoi_watch",
--- 		{Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)}, 
--- 		izayoitab, TECH.MAGIC_THREE,
--- 		nil, nil, nil, nil, "izayoi_skiller",
--- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
--- 	end
--- else
--- 	local izayoi_redtea = AddRecipe("izayoi_redtea",
--- 	{Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("nightmarefuel", 2)}, 
--- 	izayoitab, TECH.MAGIC_TWO,
--- 	nil, nil, nil, 2, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
--- 	local izayoi_sword = AddRecipe("izayoi_sword",
--- 	{Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 3)}, 
--- 	izayoitab, TECH.SCIENCE_TWO,
--- 	nil, nil, nil, 3, "izayoi_skiller",
--- 	"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
--- 	if TUNING.IZAYOI_WATCH_CRAFTABLE then
--- 		local izayoi_watch = AddRecipe("izayoi_watch",
--- 		{Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, 
--- 		izayoitab, TECH.MAGIC_THREE,
--- 		nil, nil, nil, nil, "izayoi_skiller",
--- 		"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
--- 	end
--- end
--- if TUNING.IZAYOI_LANGUAGE == "zh" then
 	STRINGS.NAMES.IZAYOI_REDTEA = LIMBO({"Black Tea", ["zh"] = "洋馆红茶"})
 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = LIMBO({"A cup of black tea.", ["zh"] = "飘着香气的红茶。"})
 	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = LIMBO({"+60HP/30San/10Hunger", ["zh"] = "+60HP/30San/10饥饿"})
@@ -489,22 +364,7 @@ end
 	STRINGS.NAMES.IZAYOI_WATCH = LIMBO({"Lunar Clock", ["zh"] = "月时计"})
 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = LIMBO({"An old watch.", ["zh"] = "一块旧怀表。"})
 	STRINGS.RECIPE_DESC.IZAYOI_WATCH = LIMBO({"Manipulating time", ["zh"] = "掌控时间"})	-- >
--- else
--- 	STRINGS.NAMES.IZAYOI_REDTEA = "Red Tea"
--- 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = "Dessert in manshion."
--- 	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = "+60HP/30San/10Hunger"
-
-
--- 	STRINGS.NAMES.IZAYOI_SWORD = "Silver Knife"
--- 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = "Beautiful and deadly."
--- 	STRINGS.RECIPE_DESC.IZAYOI_SWORD = "Damage 50"
-
-
--- 	STRINGS.NAMES.IZAYOI_WATCH = "Lunar Clock"
--- 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = "Time goes through the gears."
--- 	STRINGS.RECIPE_DESC.IZAYOI_WATCH = "Manipulating time"
--- end
-local params = {}	-- <怀表储物栏
+local params = {}
 params.izayoi_watch = 
 {
 	widget = 
@@ -537,25 +397,9 @@ function containers.widgetsetup(container, prefab, data)
 	else
 		return pwidgetsetup(container, prefab, data)
 	end
-end	-- >
+end	-- <怀表储物栏
 
 local characterName = "izayoi"
-
----- <基础API更新
-local function ClearStatusAilments(inst)
-	if inst.components.freezable ~= nil and inst.components.freezable:IsFrozen() then
-		inst.components.freezable:Unfreeze()
-	end
-	if inst.components.pinnable ~= nil and inst.components.pinnable:IsStuck() then
-		inst.components.pinnable:Unstick()
-	end
-end
-
-local function ForceStopHeavyLifting(inst)
-	if inst.components.inventory:IsHeavyLifting() then
-		inst.components.inventory:DropItem(inst.components.inventory:Unequip(EQUIPSLOTS.BODY), true, true)
-	end
-end
 
 local function CancelSay(self)
 	if self.task ~= nil then
@@ -612,11 +456,11 @@ end
 local function isKramped(entity)
 	return entity and entity:IsValid() and not entity:HasTag("INLIMBO") and not entity:HasTag("wall") and 
 		not (entity:HasTag("hostile") or entity:HasTag("monster") or entity:HasTag("player"))
-end
+end	-- <local function
 
 local FollowText = require "widgets/followtext"
 
-AddStategraphPostInit("wilson", function(sg)	-- <采集制作速度是常人2倍即dolongaction半倍时间完成
+AddStategraphPostInit("wilson", function(sg)
 	local state_long = sg.states["dolongaction"]
 	local plong = state_long.onenter
 	state_long.onenter = function(inst, timeout)
@@ -647,9 +491,9 @@ AddStategraphPostInit("wilson_client", function(sg)
 			inst.sg:RemoveStateTag("busy")
 		end
 	end))
-end)	-- >
+end)	-- <采集制作速度是常人2倍即dolongaction半倍时间完成
 
-local event_whisper = EventHandler("onwhisper", function(inst, data)	-- <添加whisper函数到talker和sg中
+local event_whisper = EventHandler("onwhisper", function(inst, data)
 	if inst.sg:HasStateTag("idle") and not inst.sg:HasStateTag("notalking") then
 		if not inst:HasTag("mime") then
 			inst.sg:GoToState("whisper", data.noanim)
@@ -672,7 +516,6 @@ local state_whisper = State {
 				"dial_loop",
 				true)
 		end
-		--DoTalkSound(inst)
 		inst.sg:SetTimeout(1.5 + math.random() * .5)
 	end,
 	ontimeout = function(inst)
@@ -767,9 +610,9 @@ AddComponentPostInit("talker", function(self)
 			self.task = self.inst:StartThread(function() whisperfn(self, lines, nobroadcast, colour) end)
 		end
 	end
-end)	-- >
+end)	-- <添加whisper函数到talker和sg中
 
-ACTIONS.LOOKAT.fn = function(act)	-- <改写检查动作API
+ACTIONS.LOOKAT.fn = function(act)
 	local targ = act.target or act.invobject
 	if targ ~= nil and targ.prefab ~= nil and targ.components.inspectable ~= nil then
 		local desc = targ.components.inspectable:GetDescription(act.doer)
@@ -789,9 +632,9 @@ ACTIONS.LOOKAT.fn = function(act)	-- <改写检查动作API
 			return true
 		end
 	end
-end	-- >
+end	-- <改写检查动作API
 
-AddComponentPostInit("inventory", function(self)	-- <函数增补
+AddComponentPostInit("inventory", function(self)
 	self.FindItemByName = function(self, pf)
 		for k, v in pairs(self.itemslots) do
 			if v.prefab == pf then
@@ -809,70 +652,9 @@ AddComponentPostInit("inventory", function(self)	-- <函数增补
 		local overflow = self:GetOverflowContainer()
 		return overflow ~= nil and overflow:FindItemByName(pf) or nil
 	end
-end)	-- >
+end)	-- <函数增补
 
-AddComponentPostInit("projectile", function(self)	-- <改写投射物
--- 	self.theworldstate = nil
--- 	self.origspeed = nil
--- 	local pSetSpeed = self.SetSpeed
--- 	self.SetSpeed = function(self, speed)
--- 		self.origspeed = speed
--- 		return pSetSpeed(self, speed)
--- 	end
--- 	self.SetOnTheworldTriggeredFn = function(self, fn)
--- 		self.ontheworldtriggeredfn = fn
--- 	end
--- 	self.OnTheworldTriggered = function(self, sw)
--- 		if self.ontheworldtriggeredfn ~= nil then
--- 			self.ontheworldtriggeredfn(self.inst, sw, self.origspeed)
--- 		end
--- 		if sw then
--- 			if self.speed >= self.origspeed then
--- 				self.speed = self.origspeed / 4
--- 				self.inst.Physics:SetMotorVel(self.origspeed / 4, 0, 0)
--- 				self.inst:DoTaskInTime((120 + 30 * math.random()) * FRAMES / self.origspeed, function()
--- 					if TheWorld:HasTag("the_world") and self:IsThrown() then
--- 						self.speed = 0.1
--- 						self.inst.Physics:SetMotorVel(self.speed, 0, 0)
--- 					end
--- 				end)
--- 			end
--- 		else
--- 			if self.speed <= self.origspeed / 4 then
--- 				self.speed = self.origspeed / 4 + 1
--- 				self.inst.Physics:SetMotorVel(self.origspeed / 4 + 1, 0, 0)
--- 				self.inst:DoTaskInTime((120 + 30 * math.random()) * FRAMES / self.origspeed, function()
--- 					if self:IsThrown() then
--- 						self.speed = self.origspeed
--- 						self.inst.Physics:SetMotorVel(self.speed, 0, 0)
--- 					end
--- 				end)
--- 			end
--- 		end
--- 	end
--- 	local pStop = self.Stop
--- 	self.Stop = function(self)
--- 		local ret = pStop(self)
--- 		self.speed = self.origspeed
--- 		self.theworldstate = nil
--- 		return ret
--- 	end
-	local pOnUpdate = self.OnUpdate
-	self.OnUpdate = function(self, dt)
--- 		if self.target ~= nil then
--- 			if TheWorld:HasTag("the_world") then
--- 				self:OnTheworldTriggered(true)
--- 			elseif self.theworldstate and not TheWorld:HasTag("the_world") then
--- 				self:OnTheworldTriggered(false)
--- 			end
--- 			self.theworldstate = TheWorld:HasTag("the_world")
--- 		end
-		if self.onupdatefn then
-			self.onupdatefn(self)
-		end
-		return not self.inst:HasTag("time_stopped") and pOnUpdate(self, dt)
-	end
-
+AddComponentPostInit("projectile", function(self)
 	self.ThrowAt = function(self, owner, target, start, dest, attacker)
 		self.owner = owner
 		self.target = target
@@ -898,153 +680,9 @@ AddComponentPostInit("projectile", function(self)	-- <改写投射物
 			target.components.catcher:StartWatching(self.inst)
 		end
 	end
+end)	-- <改写投射物
 
-end)
-
--- AddComponentPostInit("burnable", function(self)	-- <改写燃烧API
--- 	self.countdown = nil
--- 	local function DoneBurning(inst, self)
--- 		inst:PushEvent("onburnt")
--- 		if self.onburnt ~= nil then
--- 			self.onburnt(inst)
--- 		end
--- 		if inst.components.explosive ~= nil then
--- 			--explosive explode
--- 			inst.components.explosive:OnBurnt()
--- 		end
--- 		if self.extinguishimmediately then
--- 			self:Extinguish()
--- 		end
--- 	end
--- 	local function vtick(inst, self)
--- 		if inst.components.explosive ~= nil and self.countdown > 0.1 or not inst:HasTag("time_stopped") then
--- 			self.countdown = self.countdown - 0.1
--- 			if self.countdown <= 0 then
--- 				self.task:Cancel()
--- 				self.task = nil
--- 				self.countdown = nil
--- 				DoneBurning(inst, self)
--- 			end
--- 		end
--- 	end
--- 	self.ExtendBurning = function(self)
--- 		if self.task ~= nil then
--- 			self.task:Cancel()
--- 		end
--- 		self.countdown = self.burntime
--- 		self.task = self.burntime ~= nil and self.inst:DoPeriodicTask(0.1, vtick, nil, self) or nil
--- 	end
--- end)
-
--- AddComponentPostInit("childspawner", function(self)	-- <改写巢穴类API
--- 	local pCanSpawn = self.CanSpawn
--- 	self.CanSpawn = function(self)
--- 		return pCanSpawn(self) and not self.inst:HasTag("time_stopped")
--- 	end
--- 	local pCanEmergencySpawn = self.CanEmergencySpawn
--- 	self.CanEmergencySpawn = function(self)
--- 		return pCanEmergencySpawn(self) and not self.inst:HasTag("time_stopped")
--- 	end
--- end)	-- >
-AddComponentPostInit("combat", function(self)	-- <改写攻击API
-	-- local pOnUpdate = self.OnUpdate
-	-- self.OnUpdate = function(self, dt)
-	-- 	if not self.inst:HasTag("time_stopped") then
-	-- 		return pOnUpdate(self, dt)
-	-- 	end
-	-- end
-	-- local pStartAttack = self.StartAttack
-	-- self.StartAttack = function(self)
-	-- 	if not self.inst:HasTag("time_stopped") then
-	-- 		local ret = pStartAttack(self)
-	-- 		self.inst:PushEvent("startattack")
-	-- 		return ret
-	-- 	end
-	-- end
-	local pCalcDamage = self.CalcDamage
-	self.CalcDamage = function(self, target, weapon, multiplier)
-		return pCalcDamage(self, target, weapon, multiplier and multiplier * (self.extradamagemultiplier or 1) or self.extradamagemultiplier)
-	end
-end)	-- >
--- AddComponentPostInit("health", function(self)	-- <改写生命API
--- 	self.twtask = nil
--- 	local function vtick(inst, data)
--- 		if not data.self.inst:HasTag("time_stopped") then
--- 			data.self.twtask:Cancel()
--- 			data.self.twtask = nil
--- 			TheWorld:PushEvent("entity_death", { inst = data.self.inst, cause = data.cause, afflicter = data.afflicter })
--- 			data.self.inst:PushEvent("death", { cause = data.cause, afflicter = data.afflicter })
--- 			if not data.self.nofadeout then
--- 				data.self.inst:AddTag("NOCLICK")
--- 				data.self.inst.persists = false
--- 				data.self.inst:DoTaskInTime(data.self.destroytime or 2, ErodeAway)
--- 			end
--- 		end
--- 	end
--- 	self.SetVal = function(self, val, cause, afflicter)
--- 		local old_health = self.currenthealth
--- 		local max_health = self:GetMaxWithPenalty()
--- 		local min_health = math.min(self.minhealth or 0, max_health)
--- 		if val > max_health then
--- 			val = max_health
--- 		end
--- 		if val <= min_health then
--- 		self.currenthealth = min_health
--- 			self.inst:PushEvent("minhealth", { cause = cause, afflicter = afflicter })
--- 		else
--- 			self.currenthealth = val
--- 		end
--- 		if old_health > 0 and self.currenthealth <= 0 then
--- 			if self.inst:HasTag("time_stopped") then
--- 				self.twtask = self.inst:DoPeriodicTask(0.5, vtick, nil, { self = self, cause = cause, afflicter = afflicter })
--- 			else
--- 				TheWorld:PushEvent("entity_death", { inst = self.inst, cause = cause, afflicter = afflicter })
--- 				self.inst:PushEvent("death", { cause = cause, afflicter = afflicter })
--- 				if not self.nofadeout then
--- 					self.inst:AddTag("NOCLICK")
--- 					self.inst.persists = false
--- 					self.inst:DoTaskInTime(self.destroytime or 2, ErodeAway)
--- 				end
--- 			end
--- 		end
--- 		if old_health <= 0 and self.currenthealth > 0 and self.twtask ~= nil then
--- 			self.twtask:Cancel()
--- 			self.twtask = nil
--- 		end
--- 	end
--- end)	-- >
--- AddComponentPostInit("edible", function(self)	-- <改写食品API
--- 	self.externalfoodtypes = {}
--- 	self.AddExternalFoodType = function(self, extfoodtype)
--- 		if extfoodtype and not IsInTable(self.externalfoodtypes, extfoodtype) then
--- 			table.insert(self.externalfoodtypes, extfoodtype)
--- 		end
--- 		for k, v in pairs(self.externalfoodtypes) do
--- 			if v ~= nil and not self.inst:HasTag("edible_"..v) then
--- 				self.inst:AddTag("edible_"..v)
--- 			end
--- 		end
--- 	end
--- 	self.RemoveExternalFoodType = function(self, extfoodtype)
--- 		if extfoodtype and self.inst:HasTag("edible_"..extfoodtype) ~= nil then
--- 			self.inst:RemoveTag("edible_"..extfoodtype)
--- 		end
--- 		self.externalfoodtypes = GetTableRemovedValues(self.externalfoodtypes, extfoodtype)
--- 	end
--- 	local pOnRemoveFromEntity = self.OnRemoveFromEntity
--- 	self.OnRemoveFromEntity = function(self)
--- 		local ret = pOnRemoveFromEntity()
--- 		for k, v in pairs(self.externalfoodtypes) do
--- 			if self.inst:HasTag("edible_"..v) ~= nil then
--- 				self.inst:RemoveTag("edible_"..v)
--- 			end
--- 		end
--- 		self.externalfoodtypes = {}
--- 		return ret
--- 	end
--- end)
-
-AddComponentPostInit("container", function(self)	-- <改写容器API，附加查询函数
+AddComponentPostInit("container", function(self)
 	self.FindItemByName = function(self, pf)
 		for k, v in pairs(self.slots) do
 			if v.prefab == pf then
@@ -1074,8 +712,7 @@ AddComponentPostInit("container", function(self)	-- <改写容器API，附加查
 		end
 		return pFindItems(self, vfn)
 	end
-end)	-- >
----- >
+end)	-- <改写容器API，附加查询函数
 
 --技能允许条件-持续检测, 所有端
 local function getteam(inst)
@@ -1247,74 +884,6 @@ local skill_valid2 = {
 	end},
 }
 --技能RPC, 服务端
--- local function twperiod()
--- 	x0, y0, z0 = TheWorld.twhost.Transform:GetWorldPosition()
--- 	for k, v in pairs(TheSim:FindEntities(x0, y0, z0, 50, nil, {"wall", "INLIMBO", "FX"})) do
--- 		if not IsInTable(v, TheWorld.twents) then
--- 			table.insert(TheWorld.twents, v)
--- 		end
--- 	end
--- 	for k, v in pairs(TheWorld.twents) do
--- 		if v and v:IsValid() and not v:HasTag("canmoveintime") and not (v:HasTag("inforcefield") and v:HasTag("watch_equipped")) then
--- 			if v.AnimState then
--- 				v.AnimState:Pause()
--- 			end
--- 			v:StopBrain()
--- 			if v.components.combat then
--- 				v.components.combat:SetTarget(nil)
--- 			end
--- 			if v.components.locomotor then
--- 				v.components.locomotor:Stop()
--- 				v.components.locomotor:StopUpdatingInternal()
--- 			end
--- 			if v.components.playercontroller then
--- 				v.components.playercontroller:Enable(false)
--- 			end
--- 			if not v:HasTag("time_stopped") then
--- 				v:AddTag("time_stopped")
--- 				v:PushEvent("time_stopped")
--- 			end
--- 		end
--- 	end
--- end
--- local function twresume()
--- 	for k, v in pairs(TheWorld.twents) do
--- 		if v:HasTag("time_stopped") then
--- 			v:RestartBrain()
--- 			if v.AnimState then
--- 				v.AnimState:Resume()
--- 			end
--- 			if v.components.locomotor then
--- 				v.components.locomotor:StartUpdatingInternal()
--- 			end
--- 			if v.components.playercontroller then
--- 				v.components.playercontroller:Enable(true)
--- 			end
--- 			v:RemoveTag("time_stopped")
--- 			v:PushEvent("time_resumed")
--- 		end
--- 	end
--- 	TheWorld.twents = {}
--- end
--- local function twtimedone(inst, data)
--- 	if data.name == "the_world" then
--- 		if TheWorld.twtask ~= nil then
--- 			TheWorld.twtask:Cancel()
--- 			TheWorld.twtask = nil
--- 		end
--- 		twresume()
--- 		TheWorld:DoTaskInTime(0.1, function()
--- 			if TheWorld:HasTag("the_world") then
--- 				TheWorld:RemoveTag("the_world")
--- 			end
--- 		end)
--- 	end
--- 	if data.name == "twreleasesound" then
--- 		if TheWorld.twhost and TheWorld.twhost.SoundEmitter then
--- 			TheWorld.twhost.SoundEmitter:PlaySound(TheWorld.twreleasese)
--- 		end
--- 	end
--- end
 local skills = {
 	z = function(inst, vtarget)
 		if vtarget and vtarget:IsValid() and not vtarget:HasTag("INLIMBO") and vtarget ~= inst then
@@ -1359,7 +928,6 @@ local skills = {
 						inst.SoundEmitter:PlaySound("izayoi/se/teleport", nil, TUNING.IZAYOI_SE)
 					end
 				end
-				-- inst.components.talker:Whisper(LIMBO({"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}), 2, true)
 				if not inst.components.rider:IsRiding() then 
 					inst.AnimState:PlayAnimation("staff_pre")
 					inst.AnimState:PushAnimation("idle")
@@ -1376,7 +944,6 @@ local skills = {
 						end
 					end)
 				end
-				-- inst.components.talker:Whisper(LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}), 2, true)
 				if not inst.components.rider:IsRiding() then 
 					inst.AnimState:PlayAnimation("throw")
 				end
@@ -1387,23 +954,11 @@ local skills = {
 	end,
 	
 	x = function(inst, vtarget)
-		-- local num_sword = 0
-		-- local task
-		-- local function period()
-		-- end
 		inst.x_task = inst:DoPeriodicTask(FRAMES * 2, function()
 			local x0, y0, z0 = inst.Transform:GetWorldPosition()
 			local ents = TheSim:FindEntities(x0, y0, z0, 30, nil, { "companion", "wall", "INLIMBO", "FX", "playerghost", "invisible" })
 			local x_break = true
-			-- local function validtgt(v)
-			-- 	return v and v:IsValid() and v ~= inst and
-			-- 		(TheNet:GetPVPEnabled() and not (inst.components.teamworker and inst.components.teamworker:Identify(v)) or not v:HasTag("player")) and 
-			-- 		not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(v)) and 
-			-- 		not (v:HasTag("shadow") and not inst:HasTag("crazy")) and
-			-- 		v.components.combat and v.components.health and not v.components.health:IsDead() or false
-			-- end
 			for k, v in pairs(ents) do
-				-- if validtgt(v) then
 				if v and v:IsValid() and v ~= inst and
 					(TheNet:GetPVPEnabled() and not (inst.components.teamworker and inst.components.teamworker:Identify(v)) or not v:HasTag("player")) and 
 					not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(v)) and 
@@ -1420,7 +975,6 @@ local skills = {
 						if TUNING.IZAYOI_X_HOSTILE_ONLY then
 							break
 						end
-						-- num_sword = num_sword + 1
 					else
 						x_break = true
 						break
@@ -1432,11 +986,6 @@ local skills = {
 				inst.x_task = nil
 			end
 		end)
-		-- if TUNING.IZAYOI_X_HOSTILE_ONLY then
-		-- 	inst.components.talker:Whisper(LIMBO({"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"}), 2, true)
-		-- else
-		-- 	inst.components.talker:Whisper(LIMBO({"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}), 2, true)
-		-- end
 		inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.X, 2, true)
 		if TUNING.IZAYOI_VOICE > 0 then
 			inst.SoundEmitter:PlaySound("izayoi/voice/execute", nil, TUNING.IZAYOI_VOICE)
@@ -1473,94 +1022,6 @@ local skills = {
 	end,
 	
 	v = function(inst, vtarget)
-		-- if not TheWorld.components.timer then
-		-- 	TheWorld:AddComponent("timer")
-		-- end
-		-- if not TheWorld.twlistener then
-		-- 	TheWorld:ListenForEvent("timerdone", twtimedone)
-		-- 	TheWorld.twlistener = true
-		-- end
-		-- if not TheWorld:HasTag("the_world") then
-			-- local x0, y0, z0 = inst.Transform:GetWorldPosition()
-			-- local fx = SpawnPrefab("groundpoundring_fx")
-			-- if fx then
-			-- 	fx.Transform:SetPosition(x0, y0, z0)
-			-- 	fx.Transform:SetScale(2, 2, 2)
-			-- 	fx:DoTaskInTime(2 * FRAMES, function()
-			-- 		local fx = SpawnPrefab("groundpoundring_fx")
-			-- 		if fx then
-			-- 			fx.Transform:SetPosition(x0, y0, z0)
-			-- 			fx.Transform:SetScale(1.5, 1.5, 1.5)
-			-- 		end
-			-- 	end)
-			-- end
-			-- if TheWorld.twents == nil then
-			-- 	TheWorld.twents = {}
-			-- end
-			-- TheWorld.twhost = inst
-			-- inst:AddTag("canmoveintime")
-			-- if not inst.components.timer:TimerExists("canmoveintime") then
-			-- 	inst.components.timer:StartTimer("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
-			-- else
-			-- 	inst.components.timer:SetTimeLeft("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
-			-- end
-			-- TheWorld.twtask = TheWorld:DoPeriodicTask(0.1, twperiod)
-			-- TheWorld:PushEvent("the_world")
-			-- if not TheWorld.components.timer:TimerExists("the_world") then
-			-- 	TheWorld.components.timer:StartTimer("the_world", TUNING.IZAYOI_V_LENGTH)
-			-- else
-			-- 	TheWorld.components.timer:SetTimeLeft("the_world", TUNING.IZAYOI_V_LENGTH)
-			-- end
-			-- TheWorld:AddTag("the_world")
-			-- if TUNING.IZAYOI_SE then
-			-- 	TheWorld.twreleasese = "izayoi/se/clock"
-			-- 	if not TheWorld.components.timer:TimerExists("twreleasesound") then
-			-- 		TheWorld.components.timer:StartTimer("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
-			-- 	end
-			-- 	inst.SoundEmitter:PlaySound("izayoi/se/the_world")
-			-- end
-			-- if TUNING.IZAYOI_VOICE then
-			-- 	inst.SoundEmitter:PlaySound("izayoi/voice/the_world")
-			-- end
-			-- inst.components.talker:Whisper(TUNING.IZAYOI_LANGUAGE == "zh" and "幻世「The World」" or "Illusion World \"The World\"", 2, true)
-			-- inst.AnimState:PlayAnimation("staff_pre")
-			-- inst.AnimState:PushAnimation("idle")
-		-- else
-			-- if TheWorld.components.timer:GetTimeLeft("the_world") < TUNING.IZAYOI_V_LENGTH then
-			-- 	TheWorld.twhost = inst
-			-- 	if TheWorld.components.timer:TimerExists("the_world") then
-			-- 		TheWorld.components.timer:SetTimeLeft("the_world", TUNING.IZAYOI_V_LENGTH)
-			-- 	else
-			-- 		TheWorld.components.timer:StartTimer("the_world", TUNING.IZAYOI_V_LENGTH)
-			-- 	end
-			-- 	if TUNING.IZAYOI_SE then
-			-- 		TheWorld.twreleasese = "izayoi/se/clock"
-			-- 		if not TheWorld.components.timer:TimerExists("twreleasesound") then
-			-- 			TheWorld.components.timer:StartTimer("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
-			-- 		else
-			-- 			TheWorld.components.timer:SetTimeLeft("twreleasesound", TUNING.IZAYOI_V_LENGTH - 2)
-			-- 		end
-			-- 	end
-			-- end
-			-- inst:AddTag("canmoveintime")
-			-- if not inst.components.timer:TimerExists("canmoveintime") then
-			-- 	inst.components.timer:StartTimer("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
-			-- else
-			-- 	inst.components.timer:SetTimeLeft("canmoveintime", TUNING.IZAYOI_V_LENGTH + 0.1)
-			-- end
-			-- if inst.AnimState then
-			-- 	inst.AnimState:Resume()
-			-- end
-			-- if inst.components.locomotor then
-			-- 	inst.components.locomotor:StartUpdatingInternal()
-			-- end
-			-- if inst.components.playercontroller then
-			-- 	inst.components.playercontroller:Enable(true)
-			-- end
-			-- if inst:HasTag("time_stopped") then
-			-- 	inst:RemoveTag("time_stopped")
-			-- end
-		-- end
 		inst.components.timestopper:DoTimeStop(TUNING.IZAYOI_V_LENGTH)
 		inst.components.wiliya_mana:DoDelta(-50)
 	end,
@@ -1576,16 +1037,7 @@ local skills = {
 				tgt.forcefieldfx:Init()
 			end
 		end
-		-- if inst.forcefieldfx == nil then
-		-- 	inst.forcefieldfx = SpawnPrefab("izayoi_forcefield")
-		-- 	inst.forcefieldfx.entity:SetParent(inst.entity)
-		-- 	inst.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
-		-- 	inst.forcefieldfx.Transform:SetScale(.75, .75, .75)
-		-- else
-		-- 	inst.forcefieldfx:Init()
-		-- end
 		append(inst)
-		-- inst.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
 
 		for k, v in pairs(AllPlayers) do
 			local dist = getDistance(inst, v)
@@ -1594,15 +1046,7 @@ local skills = {
 				v.components.health and not v.components.health:IsDead() and 
 				((TheNet:GetPVPEnabled() and (inst.components.teamworker and inst.components.teamworker:Identify(v))) or not TheNet:GetPVPEnabled()) 
 			then
-				if v.forcefieldfx == nil then
-					v.forcefieldfx = SpawnPrefab("izayoi_forcefield")
-					v.forcefieldfx.entity:SetParent(v.entity)
-					v.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
-					v.forcefieldfx.Transform:SetScale(.75, .75, .75)
-				else
-					v.forcefieldfx:Init()
-				end
-				-- v.forcefieldfx:TimerSet(TUNING.IZAYOI_B_DURATION)
+				append(v)
 			end
 		end
 		inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.B, 2, true)
@@ -1675,7 +1119,6 @@ end
 
 AddPlayerPostInit(function(inst)
 	if inst.prefab == characterName then
-		-- inst.Transform:SetScale(1.25,1.25,1.25)
 		if not inst.components.timer then
 			inst:AddComponent("timer")
 		end
@@ -1684,11 +1127,6 @@ AddPlayerPostInit(function(inst)
 				if data.name == "z_skill" or data.name == "x_skill" or data.name == "c_skill" or data.name == "v_skill" or data.name == "b_skill" then
 					inst[data.name] = true 
 				end
-				-- if data.name == "canmoveintime" then
-				-- 	if inst:HasTag("canmoveintime") then
-				-- 		inst:RemoveTag("canmoveintime")
-				-- 	end
-				-- end
 			end)
 			for key, v in pairs(skill_valid) do
 				inst[key.."_skill"] = true		-- 刚载入游戏是否允许使用技能 
@@ -1761,16 +1199,8 @@ local base_x = -750
 local delta_x = 175
 local function AddSkillButton(self) 
 	if self.owner and self.owner:HasTag(characterName.."_skiller") then	
-		-- if TUNING.IZAYOI_Z_ESCAPE then
 		self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.Z, "MP: 15") )
-		-- else
-			-- self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, LIMBO({"", ["zh"] = "迷幻的杰克"}), "MP: 15") )
-		-- end	
-		-- if TUNING.IZAYOI_X_HOSTILE_ONLY then
 		self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.X, "MP: 25") )
-		-- else
-			-- self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, LIMBO({"Indiscriminate", ["zh"] = "无差别伤害"}), "MP: 25") )
-		-- end
 		self.skillbutton_c = self:AddChild( skillsbutton("images/izayoi_skill_c.xml", "izayoi_skill_c.tex", base_x + delta_x * 2, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.C, "MP: 5") )
 		self.skillbutton_v = self:AddChild( skillsbutton("images/izayoi_skill_v.xml", "izayoi_skill_v.tex", base_x + delta_x * 3, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.V, "MP: 50") )	
 		self.skillbutton_b = self:AddChild( skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.B, "MP: 60") )	
