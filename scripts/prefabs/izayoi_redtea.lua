@@ -5,14 +5,14 @@ local assets =
 	Asset( "ATLAS", "images/inventoryimages/izayoi_redtea.xml" ),
 }
 
-local function oneaten(inst, eater)	-- <回蓝
+local function oneaten(inst, eater)
 	if eater.components.wiliya_mana then
 		eater.components.wiliya_mana:DoDelta(40)
 		if TUNING.IZAYOI_SE > 0 then
 			eater.SoundEmitter:PlaySound("izayoi/se/powerup", nil, TUNING.IZAYOI_SE)
 		end
 	end
-end	-- >
+end	-- <回蓝
 
 local function fn()
 	local inst = CreateEntity()
@@ -30,8 +30,6 @@ local function fn()
 	inst.AnimState:SetScale(1.5, 1.5, 1.5)
 
 	inst.MiniMapEntity:SetIcon("izayoi_redtea.tex")
-
-	inst:AddTag("edible_BLOOD")
 
 	if TUNING.IZAYOI_ITEMS_FLOATABLE then
 		MakeInventoryFloatable(inst, "small", 0.15, {0.75, 0.5, 0.75})
@@ -59,8 +57,8 @@ local function fn()
 	inst.components.edible.hungervalue = 10
 	inst.components.edible.sanityvalue = 30
 	inst.components.edible.foodtype = FOODTYPE.VEGGIE
+	inst.components.edible.secondaryfoodtype = FOODTYPE.BLOOD
 	inst.components.edible:SetOnEatenFn(oneaten)
-	-- inst.components.edible:AddExternalFoodType(FOODTYPE.BLOOD)
 	
 	inst:AddComponent("perishable")
 	inst.components.perishable:SetPerishTime( 10 * TUNING.TOTAL_DAY_TIME)

@@ -25,7 +25,6 @@ local function onequip(inst, owner)
 	if owner.izayoi_watch_equipped then
 		owner.izayoi_watch_equipped:set(true)
 	end
-	-- owner:PushEvent("watch_swapped")
 	if owner.components.wiliya_mana then
 		inst.tick = inst:DoPeriodicTask(3, function()
 			owner.components.wiliya_mana:DoDelta(1)
@@ -46,7 +45,6 @@ local function onunequip(inst, owner)
 	if owner.izayoi_watch_equipped then
 		owner.izayoi_watch_equipped:set(false)
 	end
-	-- owner:PushEvent("watch_swapped")
 	if inst.tick ~= nil then
 		inst.tick:Cancel()
 		inst.tick = nil

@@ -25,7 +25,6 @@ local wiliya_mana = Class(Widget, function(self, owner)
 	self.anim:GetAnimState():SetBank("wet")
 	self.anim:GetAnimState():SetBuild("wiliya_mana")
 	self.anim:GetAnimState():SetPercent("anim", self.percent * .99)
-	-- self.anim:SetClickable(false)
 	
 	self:StopUpdating()
 	self.anim:Hide()
