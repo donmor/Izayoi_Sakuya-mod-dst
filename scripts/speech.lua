@@ -258,15 +258,15 @@ return {
 		{
 			GENERIC = "I'd be careful.",
 			ATTACKER = "Better to reconsider that.",
-			MURDERER = "The gap between human and... youkai...",
+			MURDERER = "So this is the gap between human and youkai...",
             REVIVER = "It seems like someone owes me a favor, %s",
             GHOST = "Seems like %s 's time has ended.",
 		},
 		REMILIA = 
 		{
 			GENERIC = "We'll be together forever, Milady.",
-			ATTACKER = "Did I do something wrong?",
-			MURDERER = "Why is it, Milady?",
+			ATTACKER = "Milady, is it...",
+			MURDERER = "So this is Milady's order...",
 			REVIVER = "I'd appreciate it for my life.",
 			GHOST = "I'll wait for you, Milady.",
 		},

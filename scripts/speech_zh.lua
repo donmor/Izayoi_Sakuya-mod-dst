@@ -643,7 +643,7 @@ return {
 		},
 		WAXWELL = 
 		{
-			GENERIC = "似乎是个科学家……不祥的感觉。",
+			GENERIC = "这个人给我一种不祥的感觉。",
 			ATTACKER = "最好再重新考虑一下。",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -652,7 +652,7 @@ return {
 		},
 		WX78 = 
 		{
-			GENERIC = "机器人……河童在做的那种吗？",
+			GENERIC = "机器人……河童正在做的那种吗？",
 			ATTACKER = "这家伙是暴走了吗？",
 			MURDERER = "看来必须销毁你了。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -788,7 +788,7 @@ return {
 		REIMU = 
 		{
 			GENERIC = "博丽神社的巫女总是这么闲呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -798,7 +798,7 @@ return {
 		MARISA = 
 		{
 			GENERIC = "怎么到哪儿都能见到这只黑白……",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -808,7 +808,7 @@ return {
 		YOUMU = 
 		{
 			GENERIC = "白玉楼的妖梦小姐，好久不见呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -818,7 +818,7 @@ return {
 		SANAE = 
 		{
 			GENERIC = "妖怪之山上新来的蓝白巫女。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -828,7 +828,7 @@ return {
 		REISEN = 
 		{
 			GENERIC = "永远亭的铃仙小姐，好久不见呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -838,8 +838,8 @@ return {
 		YUUKA = 
 		{
 			GENERIC = "花田的强大妖怪……我得小心一点。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
-			MURDERER = "这就是人类和妖怪之间的差距……吗……",
+			ATTACKER = "突然攻击的话我就不能不管了！",
+			MURDERER = "这就是人类和妖怪之间的不同……",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
             FIRESTARTER = "红魔馆并不欢迎放火魔。",
@@ -848,7 +848,7 @@ return {
 		YUYUKO = 
 		{
 			GENERIC = "是白玉楼的亡灵小姐呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -858,7 +858,7 @@ return {
 		YUKARI = 
 		{
 			GENERIC = "冒昧问一句，有回红魔馆的方法吗？",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -868,8 +868,8 @@ return {
 		REMILIA = 
 		{
 			GENERIC = "我会永远陪着你的，大小姐。",
-			ATTACKER = "大小姐，我做错什么了吗？",
-			MURDERER = "这是为什么，大小姐？",
+			ATTACKER = "大小姐，您这是……",
+			MURDERER = "既然这是您的指示……",
 			REVIVER = "万分感谢，大小姐。",
 			GHOST = "大小姐……我会一直等着你回来……",
             FIRESTARTER = "我们得谈谈，大小姐。",
@@ -888,7 +888,7 @@ return {
 		MEIRIN = 
 		{
 			GENERIC = "很好，就这样打起精神来，美铃！",
-			ATTACKER = "你想干什么？下克上吗？",
+			ATTACKER = "你干什么？想闹事吗？",
             MURDERER = "好，一会你等着！",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -898,7 +898,7 @@ return {
 		PATCHOULI = 
 		{
 			GENERIC = "早安，帕秋莉大人。",
-			ATTACKER = "请不要拿我当试验品！",
+			ATTACKER = "请不要拿别人当试验品！",
             MURDERER = "您也差不多该……",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -908,7 +908,7 @@ return {
 		FUTO = 
 		{
 			GENERIC = "绝对不能让那家伙靠近红魔馆！",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -918,7 +918,7 @@ return {
 		SUIKA = 
 		{
 			GENERIC = "还是这样酒不离身呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "这就是鬼的力量吗……",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -928,8 +928,8 @@ return {
 		KASEN = 
 		{
 			GENERIC = "是神社里的仙人……吗……",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
-			MURDERER = "这种力量……她真的是仙人吗？",
+			ATTACKER = "突然攻击的话我就不能不管了！",
+			MURDERER = "她真的是仙人吗？",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
             FIRESTARTER = "红魔馆并不欢迎放火魔。",
@@ -938,7 +938,7 @@ return {
 		MOMIJI = 
 		{
 			GENERIC = "是妖怪山上的白狼天狗呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -948,7 +948,7 @@ return {
 		QINGWA = 
 		{
 			GENERIC = "是妖怪山上的白狼天狗呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -958,7 +958,7 @@ return {
 		KEINE = 
 		{
 			GENERIC = "上次提议送大小姐去她那儿上学，结果被果断拒绝了。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -968,7 +968,7 @@ return {
 		MOKOU = 
 		{
 			GENERIC = "是竹林里的蓬莱人呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "既然你如此不珍惜生命……",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -978,7 +978,7 @@ return {
 		CIRNO = 
 		{
 			GENERIC = "又是湖面上那只笨蛋冰精吗？",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "死回家一次吧！",
 			REVIVER = "没想到有人会欠冰精一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
@@ -988,7 +988,7 @@ return {
 		DAIYOUSEI = 
 		{
 			GENERIC = "冰精的朋友……叫什么来着？",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "死回家一次吧！",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
@@ -998,7 +998,7 @@ return {
 		CHEN = 
 		{
 			GENERIC = "是八云家的黑猫吗？",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "看来我得找八云家讨个说法。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1008,7 +1008,7 @@ return {
 		YAKUMORAN = 
 		{
 			GENERIC = "某贤者的式神。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "看来我得找某贤者讨个说法。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1018,7 +1018,7 @@ return {
 		LYRICA = 
 		{
 			GENERIC = "是骚灵乐队的键盘手呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1028,7 +1028,7 @@ return {
 		KAGEROU = 
 		{
 			GENERIC = "上次碰见过这只狼吧……",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1038,7 +1038,7 @@ return {
 		MIKO = 
 		{
 			GENERIC = "是那个戴耳罩的仙人呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1048,7 +1048,7 @@ return {
 		YOHIME = 
 		{
 			GENERIC = "月都的大人物。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1058,7 +1058,7 @@ return {
 		NUE = 
 		{
 			GENERIC = "我好像在哪里见过她……真的有吗？",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1068,7 +1068,7 @@ return {
 		TENSHI = 
 		{
 			GENERIC = "是有顶天的那个不良天人呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1078,7 +1078,7 @@ return {
 		IKU = 
 		{
 			GENERIC = "是有顶天的龙宫使者呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1088,7 +1088,7 @@ return {
 		RENKO = 
 		{
 			GENERIC = "是外界的……不好意思认错人了。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1098,7 +1098,7 @@ return {
 		MERRY = 
 		{
 			GENERIC = "冒昧问一句……不好意思认错人了。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1108,7 +1108,7 @@ return {
 		RIN = 
 		{
 			GENERIC = "附近一定是有尸体。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1118,7 +1118,7 @@ return {
 		PARSEE = 
 		{
 			GENERIC = "地底世界的桥姬妖怪。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1128,7 +1128,7 @@ return {
 		TEWI = 
 		{
 			GENERIC = "这不是永远亭里那只爱说谎的白兔吗？",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1138,7 +1138,7 @@ return {
 		CLOWNPIECE = 
 		{
 			GENERIC = "她是妖精吧……这种感觉真奇怪。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
@@ -1148,7 +1148,7 @@ return {
 		AYA = 
 		{
 			GENERIC = "啊，那个报纸小姐。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1158,7 +1158,7 @@ return {
 		UTSUHO = 
 		{
 			GENERIC = "获得了神之力量的鸟脑袋。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1168,8 +1168,8 @@ return {
 		IZAYOI = 
 		{
 			GENERIC = "这是……我？",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
-			MURDERER = "干掉自己什么的……为什么我会这么做啊……",
+			ATTACKER = "突然攻击的话我就不能不管了！",
+			MURDERER = "干掉自己什么的……为什么我非得做这种事……",
 			REVIVER = "我欠咲夜一个人情……？",
 			GHOST = "这简直难以想象。",
             FIRESTARTER = "骗人！我不可能……",
@@ -1178,7 +1178,7 @@ return {
 		SATSUKI = 
 		{
 			GENERIC = "……这谁？",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠了一个人情……叫什么的？",
 			GHOST = "有人的时间到此为止了……而且到最后也不知道是什么人。",
@@ -1188,7 +1188,7 @@ return {
 		SATORI = 
 		{
 			GENERIC = "地灵殿的主人妖怪觉。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1198,7 +1198,7 @@ return {
 		KOISHI = 
 		{
 			GENERIC = "刚才那是什么，幻觉吗？",
-			ATTACKER = "有人在攻击我！谁？",
+			ATTACKER = "有人被攻击了！谁？",
 			MURDERER = "见鬼，我居然没考虑到会是她！",
 			REVIVER = "好像有谁救了我，是谁呢？",
 			GHOST = "算了……不管了。",
@@ -1208,7 +1208,7 @@ return {
 		SHIKIEIKI = 
 		{
 			GENERIC = "是非曲直厅的阎魔。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1218,7 +1218,7 @@ return {
 		ALICE_TH = 
 		{
 			GENERIC = "是魔法之森里的爱丽丝呢。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
@@ -1228,7 +1228,7 @@ return {
 		SUNNY = 
 		{
 			GENERIC = "三个淘气妖精之一。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
@@ -1237,7 +1237,7 @@ return {
 		STARSAPPHIRE = 
 		{
 			GENERIC = "三个淘气妖精之一。",
-			ATTACKER = "突然攻击的话我就不能不还手了！",
+			ATTACKER = "突然攻击的话我就不能不管了！",
             MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "妖精会不断重生的，不是吗？",
