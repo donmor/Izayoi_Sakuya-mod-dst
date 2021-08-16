@@ -1528,11 +1528,11 @@ GRASS =
 		MOONROCKNUGGET = "I seem to have seen such a thing somewhere...",
 
 		--Sakuya
-		IZAYOI_REDTEA = "Dessert in manshion."
-		IZAYOI_SWORD = "Beautiful and deadly."
-		IZAYOI_SWORDRED = "Beautiful and deadly."
-		IZAYOI_SWORDPURPLE = "Beautiful and deadly."
-		IZAYOI_WATCH = "Time goes through the gears."
+		IZAYOI_REDTEA = "Dessert in manshion.",
+		IZAYOI_SWORD = "Beautiful and deadly.",
+		IZAYOI_SWORDRED = "Beautiful and deadly.",
+		IZAYOI_SWORDPURPLE = "Beautiful and deadly.",
+		IZAYOI_WATCH = "Time goes through the gears.",
 	},
 	DESCRIBE_GENERIC = "What is this?",
 	DESCRIBE_TOODARK = "It's too dark...",
