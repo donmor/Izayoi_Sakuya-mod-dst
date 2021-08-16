@@ -5,7 +5,7 @@ local function SYS_INITGLOBAL()
 				return GLOBAL[k] and GLOBAL[k] or nil
 			end
 		end,
-	})	
+	})
 end
 SYS_INITGLOBAL()	-- <初始化GLOBAL
 
@@ -134,75 +134,75 @@ PrefabFiles = {
 Assets = {
 	Asset( "IMAGE", "images/saveslot_portraits/izayoi.tex" ),
 	Asset( "ATLAS", "images/saveslot_portraits/izayoi.xml" ),
-	
+
 	Asset( "IMAGE", "images/selectscreen_portraits/izayoi.tex" ),
 	Asset( "ATLAS", "images/selectscreen_portraits/izayoi.xml" ),
-	
+
 	Asset( "IMAGE", "images/selectscreen_portraits/izayoi_silho.tex" ),
 	Asset( "ATLAS", "images/selectscreen_portraits/izayoi_silho.xml" ),
-	
+
 	Asset( "IMAGE", "bigportraits/izayoi.tex" ),
 	Asset( "ATLAS", "bigportraits/izayoi.xml" ),
-	
+
 	Asset( "IMAGE", "bigportraits/izayoi_none.tex" ),
 	Asset( "ATLAS", "bigportraits/izayoi_none.xml" ),
-	
+
 	Asset( "IMAGE", "images/map_icons/izayoi.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi.xml" ),
-	
+
 	Asset( "IMAGE", "images/map_icons/izayoi_redtea.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_redtea.xml" ),
-	
+
 	Asset( "IMAGE", "images/map_icons/izayoi_sword.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_sword.xml" ),
-	
+
 	Asset( "IMAGE", "images/map_icons/izayoi_swordred.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_swordred.xml" ),
-	
+
 	Asset( "IMAGE", "images/map_icons/izayoi_swordpurple.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_swordpurple.xml" ),
-	
+
 	Asset( "IMAGE", "images/map_icons/izayoi_watch.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_watch.xml" ),
-	
+
 	Asset( "IMAGE", "images/avatars/avatar_izayoi.tex" ),
 	Asset( "ATLAS", "images/avatars/avatar_izayoi.xml" ),
-	
+
 	Asset( "IMAGE", "images/avatars/avatar_ghost_izayoi.tex" ),
 	Asset( "ATLAS", "images/avatars/avatar_ghost_izayoi.xml" ),
-	
+
 	Asset( "IMAGE", "images/avatars/self_inspect_izayoi.tex" ),
 	Asset( "ATLAS", "images/avatars/self_inspect_izayoi.xml" ),
-	
+
 	Asset( "IMAGE", "images/izayoitab.tex" ),
 	Asset( "ATLAS", "images/izayoitab.xml" ),
-	
+
 	Asset( "IMAGE", "images/izayoi_skill_z.tex" ),
 	Asset( "ATLAS", "images/izayoi_skill_z.xml" ),
-	
+
 	Asset( "IMAGE", "images/izayoi_skill_x.tex" ),
 	Asset( "ATLAS", "images/izayoi_skill_x.xml" ),
-	
+
 	Asset( "IMAGE", "images/izayoi_skill_c.tex" ),
 	Asset( "ATLAS", "images/izayoi_skill_c.xml" ),
-	
+
 	Asset( "IMAGE", "images/izayoi_skill_v.tex" ),
 	Asset( "ATLAS", "images/izayoi_skill_v.xml" ),
-	
+
 	Asset( "IMAGE", "images/izayoi_skill_b.tex" ),
 	Asset( "ATLAS", "images/izayoi_skill_b.xml" ),
-	
+
 	Asset( "IMAGE", "images/names_izayoi.tex" ),
 	Asset( "ATLAS", "images/names_izayoi.xml" ),
-	
+
 	Asset( "IMAGE", "images/names_gold_izayoi.tex" ),
 	Asset( "ATLAS", "images/names_gold_izayoi.xml" ),
-	
+
 	Asset( "ANIM", "anim/izayoi.zip" ),
 	Asset( "ANIM", "anim/ghost_izayoi_build.zip" ),
 	Asset( "ANIM", "anim/wiliya_mana.zip" ),
 	Asset( "ANIM", "anim/izayoi_forcefield.zip" ),
-	
+
 	Asset( "SOUND", "sound/izayoi.fsb" ),
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
 }
@@ -274,13 +274,13 @@ AddMinimapAtlas("images/map_icons/izayoi_swordpurple.xml")
 AddMinimapAtlas("images/map_icons/izayoi_watch.xml")	-- <小地图
 
 local skin_modes = {
-    { 
-        type = "ghost_skin",
-        anim_bank = "ghost",
-        idle_anim = "idle", 
-        scale = 0.75, 
-        offset = { 0, -25 } 
-    },
+	{
+		type = "ghost_skin",
+		anim_bank = "ghost",
+		idle_anim = "idle",
+		scale = 0.75,
+		offset = { 0, -25 }
+	},
 }
 AddModCharacter("izayoi", "FEMALE", skin_modes)	-- <人物
 
@@ -365,9 +365,9 @@ end	-- <配方
 	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = LIMBO({"An old watch.", ["zh"] = "一块旧怀表。"})
 	STRINGS.RECIPE_DESC.IZAYOI_WATCH = LIMBO({"Manipulating time", ["zh"] = "掌控时间"})	-- >
 local params = {}
-params.izayoi_watch = 
+params.izayoi_watch =
 {
-	widget = 
+	widget =
 	{
 		slotpos = {},
 		animbank = "ui_piggyback_2x6",
@@ -454,7 +454,7 @@ local function GetTableRemovedValues(tbl, value)
 end
 
 local function isKramped(entity)
-	return entity and entity:IsValid() and not entity:HasTag("INLIMBO") and not entity:HasTag("wall") and 
+	return entity and entity:IsValid() and not entity:HasTag("INLIMBO") and not entity:HasTag("wall") and
 		not (entity:HasTag("hostile") or entity:HasTag("monster") or entity:HasTag("player"))
 end	-- <local function
 
@@ -505,7 +505,7 @@ local event_whisper = EventHandler("onwhisper", function(inst, data)
 end)
 
 local state_whisper = State {
-	name = "whisper", 
+	name = "whisper",
 	tags = { "idle", "talking" },
 	onenter = function(inst, noanim)
 		if not noanim then
@@ -521,9 +521,9 @@ local state_whisper = State {
 	ontimeout = function(inst)
 		inst.sg:GoToState("idle")
 	end,
-	events = 
+	events =
 	{
-		
+
 		EventHandler("donetalking", function(inst)
 			inst.sg:GoToState("idle")
 		end),
@@ -604,7 +604,7 @@ AddComponentPostInit("talker", function(self)
 			end
 		end
 		CancelSay(self)
-		
+
 		local lines = type(script) == "string" and { Line(script, noanim) } or script
 		if lines ~= nil then
 			self.task = self.inst:StartThread(function() whisperfn(self, lines, nobroadcast, colour) end)
@@ -685,8 +685,8 @@ end)	-- <改写投射物
 AddComponentPostInit("edible", function(self)
 	local pGetSanity = self.GetSanity
 	self.GetSanity = function(self, eater)
-	return pGetSanity(self, eater) * (self.inst:HasTag("food_san_advanced") and 
-			eater and eater.components.sanity and 
+	return pGetSanity(self, eater) * (self.inst:HasTag("food_san_advanced") and
+			eater and eater.components.sanity and
 			eater.components.sanity:IsLunacyMode() and
 			-1 or 1)
 	end
@@ -726,11 +726,11 @@ end)	-- <改写容器API，附加查询函数
 
 --技能允许条件-持续检测, 所有端
 local function getteam(inst)
-	return inst:HasTag("team_red") and TEAMCOLORS.RED or 
-		inst:HasTag("team_orange") and TEAMCOLORS.ORANGE or 
-		inst:HasTag("team_yellow") and TEAMCOLORS.YELLOW or 
-		inst:HasTag("team_green") and TEAMCOLORS.GREEN or 
-		inst:HasTag("team_blue") and TEAMCOLORS.BLUE or 
+	return inst:HasTag("team_red") and TEAMCOLORS.RED or
+		inst:HasTag("team_orange") and TEAMCOLORS.ORANGE or
+		inst:HasTag("team_yellow") and TEAMCOLORS.YELLOW or
+		inst:HasTag("team_green") and TEAMCOLORS.GREEN or
+		inst:HasTag("team_blue") and TEAMCOLORS.BLUE or
 		inst:HasTag("team_purple") and TEAMCOLORS.PURPLE or nil
 end
 local skill_valid = {
@@ -800,11 +800,11 @@ local skill_valid2 = {
 		local timestopped = inst:HasTag("time_stopped")
 		local enoughdao = num >= 1
 		local enoughmana = inst.wiliya_mana_current:value() >= 15
-		local validtgt = vtarget and vtarget:IsValid() and not vtarget:HasTag("INLIMBO") and vtarget ~= inst and 
-			(TheNet:GetPVPEnabled() and not (inst.replica.teamworker and inst.replica.teamworker:Identify(vtarget)) or not vtarget:HasTag("player")) and 
-			not vtarget:HasTag("companion") and not vtarget:HasTag("playerghost") and 
+		local validtgt = vtarget and vtarget:IsValid() and not vtarget:HasTag("INLIMBO") and vtarget ~= inst and
+			(TheNet:GetPVPEnabled() and not (inst.replica.teamworker and inst.replica.teamworker:Identify(vtarget)) or not vtarget:HasTag("player")) and
+			not vtarget:HasTag("companion") and not vtarget:HasTag("playerghost") and
 			not (vtarget:HasTag("shadow") and not inst:HasTag("crazy")) and
-			not vtarget:HasTag("wall") and 
+			not vtarget:HasTag("wall") and
 			vtarget.replica.combat and vtarget.replica.health and not vtarget:HasTag("invisible")
 		if timestopped then
 			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.CANTMOVE)
@@ -817,7 +817,7 @@ local skill_valid2 = {
 		end
 		return not timestopped and enoughdao and enoughmana and validtgt and skill_valid.z.validfn(inst)
 	end},
-	
+
 	x = {validfn = function(inst, vtarget)
 		local has, num = inst.replica.inventory:Has("izayoi_sword", 1)
 		for k, v in pairs( inst.replica.inventory:GetEquips()) do
@@ -830,8 +830,8 @@ local skill_valid2 = {
 			end
 		end
 		local function istgt(ent, inst)
-			return ent and ent:IsValid() and 
-				(TheNet:GetPVPEnabled() and not (inst.replica.teamworker and inst.replica.teamworker:Identify(ent)) or not ent:HasTag("player")) and 
+			return ent and ent:IsValid() and
+				(TheNet:GetPVPEnabled() and not (inst.replica.teamworker and inst.replica.teamworker:Identify(ent)) or not ent:HasTag("player")) and
 				not(TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(ent)) and ent.replica.combat and ent.replica.health and not ent.replica.health:IsDead() and
 				not (ent:HasTag("shadow") and not inst:HasTag("crazy"))
 		end
@@ -850,10 +850,10 @@ local skill_valid2 = {
 		end
 		return not timestopped and enoughdao and enoughmana and validtgt and skill_valid.x.validfn(inst)
 	end},
-	
+
 	c = {validfn = function(inst, vtarget)
 		local timestopped = inst:HasTag("time_stopped")
-		local enoughmana = inst.wiliya_mana_current:value() >= 5 
+		local enoughmana = inst.wiliya_mana_current:value() >= 5
 		local havewatch = inst:HasTag("watch_equipped")
 		local validknife = FindEntity(inst, 1000, nil, {"izayoi_sword"})
 		if timestopped then
@@ -867,7 +867,7 @@ local skill_valid2 = {
 		end
 		return not timestopped and enoughmana and havewatch and validknife and skill_valid.c.validfn(inst)
 	end},
-	
+
 	v = {validfn = function(inst, vtarget)
 		local enoughmana = inst.wiliya_mana_current:value() >= 50
 		local havewatch = inst:HasTag("watch_equipped")
@@ -878,10 +878,10 @@ local skill_valid2 = {
 		end
 		return enoughmana and havewatch and not inst:HasTag("stoppingtime") and skill_valid.v.validfn(inst)
 	end},
-	
+
 	b = {validfn = function(inst, vtarget)
 		local timestopped = inst:HasTag("time_stopped")
-		local enoughmana = inst.wiliya_mana_current:value() >= 60 
+		local enoughmana = inst.wiliya_mana_current:value() >= 60
 		local havewatch = inst:HasTag("watch_equipped")
 		if timestopped then
 			inst.components.talker:Say(STRINGS.IZAYOI_MISC.SKILL_FAILURE.CANTMOVE)
@@ -938,7 +938,7 @@ local skills = {
 						inst.SoundEmitter:PlaySound("izayoi/se/teleport", nil, TUNING.IZAYOI_SE)
 					end
 				end
-				if not inst.components.rider:IsRiding() then 
+				if not inst.components.rider:IsRiding() then
 					inst.AnimState:PlayAnimation("staff_pre")
 					inst.AnimState:PushAnimation("idle")
 				end
@@ -954,7 +954,7 @@ local skills = {
 						end
 					end)
 				end
-				if not inst.components.rider:IsRiding() then 
+				if not inst.components.rider:IsRiding() then
 					inst.AnimState:PlayAnimation("throw")
 				end
 			end
@@ -962,7 +962,7 @@ local skills = {
 			inst.components.wiliya_mana:DoDelta(-15)
 		end
 	end,
-	
+
 	x = function(inst, vtarget)
 		inst.x_task = inst:DoPeriodicTask(FRAMES * 2, function()
 			local x0, y0, z0 = inst.Transform:GetWorldPosition()
@@ -970,8 +970,8 @@ local skills = {
 			local x_break = true
 			for k, v in pairs(ents) do
 				if v and v:IsValid() and v ~= inst and
-					(TheNet:GetPVPEnabled() and not (inst.components.teamworker and inst.components.teamworker:Identify(v)) or not v:HasTag("player")) and 
-					not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(v)) and 
+					(TheNet:GetPVPEnabled() and not (inst.components.teamworker and inst.components.teamworker:Identify(v)) or not v:HasTag("player")) and
+					not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(v)) and
 					not (v:HasTag("shadow") and not inst:HasTag("crazy")) and
 					v.components.combat and v.components.health and not v.components.health:IsDead()
 				then
@@ -1000,16 +1000,16 @@ local skills = {
 		if TUNING.IZAYOI_VOICE > 0 then
 			inst.SoundEmitter:PlaySound("izayoi/voice/execute", nil, TUNING.IZAYOI_VOICE)
 		end
-		if not inst.components.rider:IsRiding() then 
+		if not inst.components.rider:IsRiding() then
 			inst.AnimState:PlayAnimation("staff_pre", false)
 			inst.AnimState:PushAnimation("idle")
 		end
 		inst.components.wiliya_mana:DoDelta(-25)
 	end,
-	
+
 	c = function(inst, vtarget)
 		local num = 0
-		local x0, y0, z0 = inst.Transform:GetWorldPosition()	
+		local x0, y0, z0 = inst.Transform:GetWorldPosition()
 		local ents = TheSim:FindEntities(x0, y0, z0, 1000, {"izayoi_sword"})
 		for k, v in pairs(ents) do
 			if v and v:IsValid() and v.components.inventoryitem and v.components.inventoryitem.owner == nil then
@@ -1024,18 +1024,18 @@ local skills = {
 			end
 		end
 		inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.C, 2, true)
-		if not inst.components.rider:IsRiding() then 
+		if not inst.components.rider:IsRiding() then
 			inst.AnimState:PlayAnimation("staff")
 			inst.AnimState:PushAnimation("idle")
 		end
 		inst.components.wiliya_mana:DoDelta(-5)
 	end,
-	
+
 	v = function(inst, vtarget)
 		inst.components.timestopper:DoTimeStop(TUNING.IZAYOI_V_LENGTH)
 		inst.components.wiliya_mana:DoDelta(-50)
 	end,
-		
+
 	b = function(inst, vtarget)
 		local function append(tgt)
 			if tgt.forcefieldfx == nil then
@@ -1053,14 +1053,14 @@ local skills = {
 			local dist = getDistance(inst, v)
 			if v and v:IsValid() and dist ~= nil and dist <= 5 and
 				not v:HasTag("playerghost") and v ~= inst and v:HasTag("watch_equipped") and
-				v.components.health and not v.components.health:IsDead() and 
-				((TheNet:GetPVPEnabled() and (inst.components.teamworker and inst.components.teamworker:Identify(v))) or not TheNet:GetPVPEnabled()) 
+				v.components.health and not v.components.health:IsDead() and
+				((TheNet:GetPVPEnabled() and (inst.components.teamworker and inst.components.teamworker:Identify(v))) or not TheNet:GetPVPEnabled())
 			then
 				append(v)
 			end
 		end
 		inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.B, 2, true)
-		if not inst.components.rider:IsRiding() then 
+		if not inst.components.rider:IsRiding() then
 			inst.AnimState:PlayAnimation("staff_pre")
 			inst.AnimState:PushAnimation("idle")
 		end
@@ -1117,7 +1117,7 @@ local function onhitother(inst, data)
 	if inst:IsValid() and IsValidVictim(victim) and not victim == inst then
 		local scale = (victim:HasTag("smallcreature") and smallScale) or (victim:HasTag("largecreature") and largeScale) or medScale
 		local damage = data.damage
-		local dist = inst:GetPosition():Dist(victim:GetPosition()) 
+		local dist = inst:GetPosition():Dist(victim:GetPosition())
 		if damage and damage > 5 and dist and dist <= 6 then
 			local fx = SpawnPrefab("wathgrithr_spirit")
 			fx.Transform:SetPosition(victim:GetPosition():Get())
@@ -1135,18 +1135,18 @@ AddPlayerPostInit(function(inst)
 		inst:DoTaskInTime(0, function()
 			inst:ListenForEvent("timerdone", function(inst, data)
 				if data.name == "z_skill" or data.name == "x_skill" or data.name == "c_skill" or data.name == "v_skill" or data.name == "b_skill" then
-					inst[data.name] = true 
+					inst[data.name] = true
 				end
 			end)
 			for key, v in pairs(skill_valid) do
-				inst[key.."_skill"] = true		-- 刚载入游戏是否允许使用技能 
+				inst[key.."_skill"] = true		-- 刚载入游戏是否允许使用技能
 				if not ( inst[key.."_skill"] or inst.components.timer:TimerExists(key.."_skill") ) then
 					inst.components.timer:StartTimer(key.."_skill", v.cd)
 				end
 			end
 			if inst == ThePlayer then
 				for key, v in pairs(skill_valid) do
-					handlers[key] = TheInput:AddKeyDownHandler(GLOBAL["KEY_"..(string.upper(key))], function() 
+					handlers[key] = TheInput:AddKeyDownHandler(GLOBAL["KEY_"..(string.upper(key))], function()
 						local vtgt = TheInput:GetWorldEntityUnderMouse()
 						local screen = TheFrontEnd:GetActiveScreen()
 						local IsHUDActive = screen and screen.name == "HUD"
@@ -1155,7 +1155,7 @@ AddPlayerPostInit(function(inst)
 							if not ( inst[key.."_skill"] or inst.components.timer:TimerExists(key.."_skill") ) then
 								inst.components.timer:StartTimer(key.."_skill", v.cd)
 							end
-							SendModRPCToServer(MOD_RPC[characterName][key.."_skill"], vtgt) 
+							SendModRPCToServer(MOD_RPC[characterName][key.."_skill"], vtgt)
 						end
 					end)
 				end
@@ -1197,23 +1197,23 @@ end)
 --技能UI,所有端
 local skillsbutton = require("widgets/"..characterName.."_skillbutton")
 local wiliya_mana = require("widgets/wiliya_mana")
-local function AddMana(self) 
+local function AddMana(self)
 	if self.owner and self.owner:HasTag(characterName.."_skiller") then
-		self.wiliya_mana = self.status:AddChild(wiliya_mana(self.owner))	
-		self.wiliya_mana:SetPosition(-80, -40, 0)	
+		self.wiliya_mana = self.status:AddChild(wiliya_mana(self.owner))
+		self.wiliya_mana:SetPosition(-80, -40, 0)
 	end
 end
 AddClassPostConstruct("widgets/controls", AddMana)
 
 local base_x = -750
 local delta_x = 175
-local function AddSkillButton(self) 
-	if self.owner and self.owner:HasTag(characterName.."_skiller") then	
+local function AddSkillButton(self)
+	if self.owner and self.owner:HasTag(characterName.."_skiller") then
 		self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.Z, "MP: 15") )
 		self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.X, "MP: 25") )
 		self.skillbutton_c = self:AddChild( skillsbutton("images/izayoi_skill_c.xml", "izayoi_skill_c.tex", base_x + delta_x * 2, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.C, "MP: 5") )
-		self.skillbutton_v = self:AddChild( skillsbutton("images/izayoi_skill_v.xml", "izayoi_skill_v.tex", base_x + delta_x * 3, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.V, "MP: 50") )	
-		self.skillbutton_b = self:AddChild( skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.B, "MP: 60") )	
+		self.skillbutton_v = self:AddChild( skillsbutton("images/izayoi_skill_v.xml", "izayoi_skill_v.tex", base_x + delta_x * 3, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.V, "MP: 50") )
+		self.skillbutton_b = self:AddChild( skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.B, "MP: 60") )
 		local pOnUpdate = self.OnUpdate
 		self.OnUpdate = function(self, dt)
 			local ret = pOnUpdate(self, dt)

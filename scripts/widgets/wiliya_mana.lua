@@ -14,36 +14,36 @@ local wiliya_mana = Class(Widget, function(self, owner)
 	self.num:SetPosition(5, -50, 0)
 	self.num:SetScale(.75, .75, .75)
 	self.num:MoveToFront()
-	
+
 	--获取数据
 	self.num.current = owner.wiliya_mana_current:value()
 	self.num.max = owner.wiliya_mana_max:value()
 	self.percent = self.num.current / self.num.max
-	
+
 	--动画
 	self.anim = self:AddChild(UIAnim())
 	self.anim:GetAnimState():SetBank("wet")
 	self.anim:GetAnimState():SetBuild("wiliya_mana")
 	self.anim:GetAnimState():SetPercent("anim", self.percent * .99)
-	
+
 	self:StopUpdating()
 	self.anim:Hide()
 	self.num:Hide()
-	
+
 	--事件
-	owner:ListenForEvent("wiliya_mana_maxdirty", function(owner, data) 		
+	owner:ListenForEvent("wiliya_mana_maxdirty", function(owner, data)
 		self.num.max = owner.wiliya_mana_max:value()
-		self.percent = self.num.current / self.num.max  
+		self.percent = self.num.current / self.num.max
 	end)
-	owner:ListenForEvent("wiliya_mana_currentdirty", function(owner, data)		
+	owner:ListenForEvent("wiliya_mana_currentdirty", function(owner, data)
 		self.num.current = owner.wiliya_mana_current:value()
-		self.percent = self.num.current / self.num.max  
+		self.percent = self.num.current / self.num.max
 	end)
-	owner:ListenForEvent("makeplayerghost", function(owner, data)	
+	owner:ListenForEvent("makeplayerghost", function(owner, data)
 		self:StopUpdating()
 		self:Deactivate()
 	end)
-	owner:ListenForEvent("respawnfromghost", function(owner, data)	
+	owner:ListenForEvent("respawnfromghost", function(owner, data)
 		self:Activate()
 		self:StartUpdating()
 	end)

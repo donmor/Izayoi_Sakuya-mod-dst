@@ -1,4 +1,4 @@
-local assets = 
+local assets =
 {
 	Asset("ANIM", "anim/izayoi_sword.zip"),
 	Asset("ANIM", "anim/izayoi_sword_swap.zip"),
@@ -73,7 +73,7 @@ local function commonfn(v)
 	inst.entity:AddNetwork()
 	inst.entity:AddSoundEmitter()
 	inst.entity:AddMiniMapEntity()
-	
+
 	MakeInventoryPhysics(inst)
 
 	inst.AnimState:SetBank(inst.variant)
@@ -84,7 +84,7 @@ local function commonfn(v)
 
 	inst:AddTag("sharp")
 	inst:AddTag("pointy")
-	inst:AddTag("waterproofer")	
+	inst:AddTag("waterproofer")
 	inst:AddTag("projectile")
 	inst:AddTag("thrown")
 	inst:AddTag("izayoi_sword")
@@ -106,7 +106,7 @@ local function commonfn(v)
 	inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.atlasname = "images/inventoryimages/"..inst.variant..".xml"
 	inst.components.inventoryitem.imagename = inst.variant
-    if not TUNING.IZAYOI_ITEMS_FLOATABLE then 
+	if not TUNING.IZAYOI_ITEMS_FLOATABLE then
 		inst.components.inventoryitem:SetSinks(true)
 	end
 	inst:AddComponent("stackable")
@@ -122,7 +122,7 @@ local function commonfn(v)
 	inst:AddComponent("weapon")
 	inst.components.weapon:SetDamage(50)
 	inst.components.weapon:SetRange(8, 10)
-	
+
 	inst:AddComponent("projectile")
 	inst.components.projectile:SetSpeed(sword_speed)
 	inst.components.projectile:SetRange(200)
@@ -189,7 +189,7 @@ local function purple_split(inst)
 	local mult = math.random(80, 110) / 100
 	for _, v in pairs(sws) do
 		local projcomp = v.components.projectile
-		projcomp:SetSpeed(0)	
+		projcomp:SetSpeed(0)
 		projcomp.origspeed = ospeed
 		if v.projspeedtask then
 			v.projspeedtask:Cancel()
@@ -286,6 +286,6 @@ local function purplefn()
 	return inst
 end
 
-return Prefab("izayoi_sword", fn, assets), 
+return Prefab("izayoi_sword", fn, assets),
 		Prefab("izayoi_swordred", redfn, assets),
 		Prefab("izayoi_swordpurple", purplefn, assets)

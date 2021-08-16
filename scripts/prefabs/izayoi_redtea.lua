@@ -1,4 +1,4 @@
-local assets = 
+local assets =
 {
 	Asset( "ANIM", "anim/izayoi_redtea.zip" ),
 	Asset( "IMAGE", "images/inventoryimages/izayoi_redtea.tex" ),
@@ -50,12 +50,12 @@ local function fn()
 	inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.atlasname = "images/inventoryimages/izayoi_redtea.xml"
 	inst.components.inventoryitem.imagename = "izayoi_redtea"
-    if not TUNING.IZAYOI_ITEMS_FLOATABLE then 
+	if not TUNING.IZAYOI_ITEMS_FLOATABLE then
 		inst.components.inventoryitem:SetSinks(true)
 	end
 	inst:AddComponent("stackable")
 	inst.components.stackable.maxsize = TUNING.STACK_SIZE_MEDITEM
-	
+
 	inst:AddComponent("edible")
 	inst.components.edible.healthvalue = 60
 	inst.components.edible.hungervalue = 10
@@ -63,7 +63,7 @@ local function fn()
 	inst.components.edible.foodtype = FOODTYPE.VEGGIE
 	inst.components.edible.secondaryfoodtype = FOODTYPE.BLOOD
 	inst.components.edible:SetOnEatenFn(oneaten)
-	
+
 	inst:AddComponent("perishable")
 	inst.components.perishable:SetPerishTime( 10 * TUNING.TOTAL_DAY_TIME)
 	inst.components.perishable:StartPerishing()

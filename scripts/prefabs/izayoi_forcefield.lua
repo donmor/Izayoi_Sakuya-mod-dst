@@ -10,24 +10,24 @@ local function fn()
 	inst.AnimState:SetBuild("izayoi_forcefield")
 	inst.AnimState:PlayAnimation("open")
 	inst.AnimState:PushAnimation("idle_loop", true)
-	
+
 	inst:AddTag("NOCLICK")
 	inst:AddTag("FX")
 	inst:AddTag("canmoveintime")
 	inst:AddTag("timemaster")
-	
+
 	inst.entity:SetPristine()
 
 	if not TheWorld.ismastersim then
 		return inst
 	end
-		
+
 	inst.persists = false
-	
+
 	inst:AddComponent("timer")
-	
+
 	local duration = TUNING.IZAYOI_B_DURATION - FRAMES * 7
-	
+
 	inst.Init = function(inst)
 		local parent = inst.entity:GetParent()
 		if inst.components.timer:TimerExists("izayoi_forcefield") then
@@ -39,7 +39,7 @@ local function fn()
 			TheWorld.components.timestopper_world:ResumeEntity(parent, TUNING.IZAYOI_B_DURATION)
 		end
 	end
-	
+
 	inst.Terminate = function(inst)
 		inst.AnimState:PlayAnimation("close")
 		inst:ListenForEvent("animover", function()
@@ -68,13 +68,13 @@ local function fn()
 			parent.components.health:SetAbsorptionAmount(TUNING.IZAYOI_B_DAMAGEMULT)
 			if TUNING.IZAYOI_SE > 0 then
 				inst.SoundEmitter:PlaySound("izayoi/se/clock2", "forcefield", TUNING.IZAYOI_SE)
-			end	
+			end
 			inst:Init()
 			inst:ListenForEvent("timerdone", function(inst, data)
 				if data.name == "izayoi_forcefield" then
 					inst:Terminate()
 				end
-			end)			
+			end)
 			inst:ListenForEvent("unequip", function(inst, data)
 				if data.item.prefab == "izayoi_watch" then
 					inst:Terminate()

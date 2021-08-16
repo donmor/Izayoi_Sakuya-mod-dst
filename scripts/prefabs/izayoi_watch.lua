@@ -1,4 +1,4 @@
-local assets = 
+local assets =
 {
 	Asset("ANIM", "anim/izayoi_watch.zip"),
 	Asset("IMAGE", "images/inventoryimages/izayoi_watch.tex"),
@@ -54,7 +54,7 @@ end
 local function fn()
 
 	local inst = CreateEntity()
-	
+
 	inst.entity:AddTransform()
 	inst.entity:AddAnimState()
 	inst.entity:AddNetwork()
@@ -70,23 +70,23 @@ local function fn()
 
 	inst:AddTag("backpack")
 	inst:AddTag("waterproofer")
-	
+
 	if TUNING.IZAYOI_ITEMS_FLOATABLE then
 		MakeInventoryFloatable(inst, "small", 0.3)
 	end
 
 	inst.entity:SetPristine()
-	
+
 	if not TheWorld.ismastersim then
 		return inst
 	end
 
 	inst:AddComponent("inspectable")
-		
+
 	inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.imagename = "izayoi_watch"
 	inst.components.inventoryitem.atlasname = "images/inventoryimages/izayoi_watch.xml"
-    if not TUNING.IZAYOI_ITEMS_FLOATABLE then 
+	if not TUNING.IZAYOI_ITEMS_FLOATABLE then
 		inst.components.inventoryitem:SetSinks(true)
 	end
 
@@ -97,15 +97,15 @@ local function fn()
 	inst.components.equippable.dapperfn = function(inst, owner)
 		return TUNING.IZAYOI_WATCH_DAPPERNESS * (TUNING.IZAYOI_ITEMS_AURA_ADVANCED and owner.components.sanity:IsLunacyMode() and -1 or 1)
 	end
-	
+
 	inst:AddComponent("waterproofer")
 	inst.components.waterproofer:SetEffectiveness(0)
-	
+
 	inst:AddComponent("container")
 	inst.components.container:WidgetSetup("izayoi_watch")
 	inst:AddComponent("preserver")
 	inst.components.preserver:SetPerishRateMultiplier(TUNING.IZAYOI_WATCH_FOOD_SPOILAGE)
-	
+
 	MakeHauntableLaunch(inst)
 
 	inst.inspectionblockfn = function(item)

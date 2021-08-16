@@ -35,7 +35,7 @@ end
 
 --存档
 function wiliya_mana:OnSave()
-	return 
+	return
 	{
 		currenttimepiont = self.currenttimepiont,
 		maxtimepiont = self.maxtimepiont,

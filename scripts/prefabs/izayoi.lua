@@ -1,4 +1,4 @@
-local assets = 
+local assets =
 {
 	Asset( "SOUND", "sound/izayoi.fsb" ),
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
@@ -8,7 +8,7 @@ TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI = {
 	"izayoi_sword",
 	"izayoi_sword",
 	"izayoi_sword",
-	"izayoi_watch", 
+	"izayoi_watch",
 }
 
 local function enablenv(inst)
@@ -71,14 +71,14 @@ local function pushglobalsound(sound)
 end
 
 local MakePlayerCharacter = require "prefabs/player_common"
-return MakePlayerCharacter("izayoi", {}, {}, 
-function(inst) 
+return MakePlayerCharacter("izayoi", {}, {},
+function(inst)
 	inst.MiniMapEntity:SetIcon( "izayoi.tex" )
 	inst:AddTag("izayoi_skiller")
 	if TUNING.IZAYOI_VOICE > 0 then	-- <语音
 		inst.hurtsoundoverride = "izayoi/voice/hurt"
 		inst.deathsoundoverride = "izayoi/voice/death_voice"
-		
+
 	end
 	inst:ListenForEvent("watch_swapped", checknv)
 	inst:WatchWorldState("phase", updatenv)
@@ -87,7 +87,7 @@ function(inst)
 			checknv(inst)
 		end)	-- >
 	end
-end, 
+end,
 function(inst)
 	inst.soundsname = "wilson"
 	inst.examineoverride = {	-- 被注释的尚未拥有语音
@@ -171,7 +171,7 @@ function(inst)
 				inst.SoundEmitter:PlaySound("izayoi/voice/the_world", nil, TUNING.IZAYOI_VOICE)
 			end
 			inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.V, 2, true)
-			if not inst.components.rider:IsRiding() then 
+			if not inst.components.rider:IsRiding() then
 				inst.AnimState:PlayAnimation("staff_pre")
 				inst.AnimState:PushAnimation("idle")
 				-- inst.AnimState:PlayAnimation("jumpout_wardrobe") inst.AnimState:Pause()

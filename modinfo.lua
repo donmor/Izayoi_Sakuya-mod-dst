@@ -1,5 +1,5 @@
 local function LIMBO(tbl)
-    return ChooseTranslationTable(tbl)
+	return ChooseTranslationTable(tbl)
 end
 
 name = "Izayoi Sakuya"
@@ -36,14 +36,14 @@ Izayoi Sakuya(十六夜咲夜)
 
 更多信息请查看Readme.md或https://steamcommunity.com/sharedfiles/filedetails/?id=1426323391
 ]]})
-	
+
 author = "donmor"
 forumthread = ""
 api_version_dst = 10
 dst_compatible = true
 dont_starve_compatible = false
 reign_of_giants_compatible = false
-all_clients_require_mod = true 
+all_clients_require_mod = true
 icon_atlas = "modicon.xml"
 icon = "modicon.tex"
 server_filter_tags = {
@@ -55,12 +55,12 @@ bugtracker_config = {
 	upload_server_log = true,
 }
 mod_dependencies = {
-    {
-        -- workshop = "workshop-1378549454",
-        ["libTimeStopper-mod-dst"] = false,
-        ["libTimeStopper"] = true,
-    },
-    
+	{
+		-- workshop = "workshop-1378549454",
+		["libTimeStopper-mod-dst"] = false,
+		["libTimeStopper"] = true,
+	},
+
 }
 configuration_options =
 {
@@ -76,7 +76,7 @@ configuration_options =
 		},
 		default = "normal",
 	},
-	
+
 	{
 		name = "strength",
 		label = LIMBO({"Strength", ["zh"] = "能力强度"}),
@@ -90,7 +90,7 @@ configuration_options =
 		},
 		default = "normal",
 	},
-	
+
 	{
 		name = "z_escape",
 		label = LIMBO({"Z skill mode", ["zh"] = "Z技能模式"}),
@@ -101,7 +101,7 @@ configuration_options =
 		},
 		default = true,
 	},
-	
+
 	{
 		name = "x_hostile_only",
 		label = LIMBO({"X Skill mode", ["zh"] = "X技能模式"}),
@@ -112,7 +112,7 @@ configuration_options =
 		},
 		default = true,
 	},
-	
+
 	{
 		name = "watch_night_vision",
 		label = LIMBO({"Night Vision", ["zh"] = "怀表的夜视功能"}),
@@ -123,7 +123,7 @@ configuration_options =
 		},
 		default = false,
 	},
-	
+
 	{
 		name = "items_aura_advanced",
 		label = LIMBO({"Items sanity control mode", ["zh"] = "道具理智增益模式"}),
@@ -134,7 +134,7 @@ configuration_options =
 		},
 		default = false,
 	},
-	
+
 	{
 		name = "watch_food_spoilage",
 		label = LIMBO({"Watch Food Spoilage", ["zh"] = "怀表格子防腐"}),
@@ -148,7 +148,7 @@ configuration_options =
 		},
 		default = 0.75,
 	},
-	
+
 	{
 		name = "watch_craftable",
 		label = LIMBO({"Recipe of Watch", ["zh"] = "怀表可制作"}),
@@ -159,7 +159,7 @@ configuration_options =
 		},
 		default = false,
 	},
-		
+
 	{
 		name = "watch_players_equippable",
 		label = LIMBO({"Watch for Others", ["zh"] = "他人可否装备怀表"}),
@@ -170,7 +170,7 @@ configuration_options =
 		},
 		default = true,
 	},
-	
+
 	{
 		name = "items_floatable",
 		label = LIMBO({"Unique Items Floatablility", ["zh"] = "专属物品浮力"}),
@@ -181,7 +181,7 @@ configuration_options =
 		},
 		default = false,
 	},
-	
+
 	{
 		name = "izayoi_se",
 		label = LIMBO({"SE", ["zh"] = "专属音效"}),
@@ -194,7 +194,7 @@ configuration_options =
 		},
 		default = 1,
 	},
-		
+
 	{
 		name = "izayoi_voice",
 		label = LIMBO({"Voice SE", ["zh"] = "专属语音"}),
