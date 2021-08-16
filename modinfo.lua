@@ -7,6 +7,7 @@ version = "4.0.0"
 description = LIMBO({
 [[
 Izayoi Sakuya(十六夜咲夜)
+
 ※本MOD为东方Project二次创作内容
 ※MOD制作新手, 请注意潜在的bug
 ※大量API补丁, 请注意兼容性
@@ -15,11 +16,13 @@ Izayoi Sakuya(十六夜咲夜)
 ※谜之音效
 ※相关人物及团体均已进入幻想
 本MOD在大猪猪(猪哥)的" _十六夜咲夜_II"mod(已经作古)基础上修改而成, 在此感谢原作者的辛勤创作
+此MOD依赖libTimeStopper, 请务必一同开启
 最后, 愿我东方永不过气(=·ω·=)
 
 更多信息请查看Readme.md或https://steamcommunity.com/sharedfiles/filedetails/?id=1426323391
 ]], ["zh"] = [[
-Izayoi Sakuya (Izayoi Sakuya)
+Izayoi Sakuya (十六夜咲夜)
+
 * This MOD is Touhou fan-made production
 * I'm a modding starter so that there may be undiscovered bug
 * Lots of modified APIs so be attention to compatibility
@@ -28,6 +31,7 @@ Izayoi Sakuya (Izayoi Sakuya)
 * Weird SE
 * All characters and organizations that appear have entered Gensokyo
 Original(no longer exist): "_十六夜咲夜_II" mod of 大猪猪(猪哥), Thanks to their hard work
+Requires libTimeStopper as a dependency, please enable it as well
 Finally, Long lives Touhou Project (=·ω·=)
 
 For more information please see Readme.md or https://steamcommunity.com/sharedfiles/filedetails/?id=1426323391

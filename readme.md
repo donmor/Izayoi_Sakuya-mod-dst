@@ -6,8 +6,9 @@
 - 渣机杀手, 时停卡服
 - 角色崩坏
 - 谜之音效
+- 相关人物及团体均已进入幻想
 
-相关人物及团体均已进入幻想
+本MOD依赖[libTimeStopper](https://github.com/donmor/libTimeStopper-mod-dst), 请务必一同开启
 
 ### 人物特性
 
