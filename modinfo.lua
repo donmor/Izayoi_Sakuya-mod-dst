@@ -56,7 +56,7 @@ bugtracker_config = {
 }
 mod_dependencies = {
 	{
-		-- workshop = "workshop-1378549454",
+		workshop = "workshop-2576514266",
 		["libTimeStopper-mod-dst"] = false,
 		["libTimeStopper"] = true,
 	},

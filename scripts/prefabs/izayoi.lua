@@ -174,7 +174,6 @@ function(inst)
 			if not inst.components.rider:IsRiding() then
 				inst.AnimState:PlayAnimation("staff_pre")
 				inst.AnimState:PushAnimation("idle")
-				-- inst.AnimState:PlayAnimation("jumpout_wardrobe") inst.AnimState:Pause()
 			end
 
 		end
