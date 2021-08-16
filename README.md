@@ -1,5 +1,7 @@
 # 十六夜咲夜Mod说明文件
 
+中文 | [English](README.en.md)
+
 - 本MOD为东方Project二次创作内容
 - MOD制作新手, 请注意潜在的bug
 - 大量API补丁, 请注意兼容性

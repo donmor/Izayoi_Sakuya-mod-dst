@@ -1,5 +1,7 @@
 # Izayoi Sakuya Mod Manual
 
+[中文](README.md) | English
+
 - Fan-made MOD of Touhou Project, may be different from the original
 - Beginner in MOD crafting so there may be undiscovered bug
 - Lots of modified APIs so be attention to compatibility
