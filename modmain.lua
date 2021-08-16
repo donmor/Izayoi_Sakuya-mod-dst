@@ -228,7 +228,7 @@ TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_watch = {
 }	-- <材质
 TUNING.IZAYOI_WATCH_DAPPERNESS = 6.8 / 60
 STRINGS.NAMES.IZAYOI = LIMBO({"Sakuya", ["zh"] = "十六夜咲夜"})
-STRINGS.CHARACTER_TITLES.izayoi = LIMBO({"Maid of the Scarlet Devil", ["zh"] = "绯红恶魔的女仆"})
+STRINGS.CHARACTER_TITLES.izayoi = LIMBO({"Maid of the Mansion", ["zh"] = "洋馆的女仆"})
 STRINGS.CHARACTER_NAMES.izayoi = STRINGS.NAMES.IZAYOI
 STRINGS.CHARACTER_DESCRIPTIONS.izayoi = LIMBO({"*Perfect and Elegant Servant\n*Just a Mortal Human \n*Master of Time", ["zh"] = "*完美潇洒的从者\n*只是个会死的人类\n*掌控时间的流动"})
 STRINGS.CHARACTER_QUOTES.izayoi = LIMBO({"\"We'll be together as long as I'm alive, Milady.\"", ["zh"] = "\"我一生都是会死的人类哦。\n只要活着就会一直陪着大小姐。\""})
