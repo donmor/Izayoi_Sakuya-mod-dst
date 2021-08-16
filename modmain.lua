@@ -654,16 +654,6 @@ AddComponentPostInit("inventory", function(self)
 	end
 end)	-- <函数增补
 
-AddComponentPostInit("edible", function(self)
-	local pGetSanity = self.GetSanity
-	self.GetSanity = function(self, eater)
-	return pGetSanity(self, eater) * (self.inst:HasTag("food_san_advanced") and 
-			eater and eater.components.sanity and 
-			eater.components.sanity:IsLunacyMode() and
-			-1 or 1)
-	end
-end)
-
 AddComponentPostInit("projectile", function(self)
 	self.ThrowAt = function(self, owner, target, start, dest, attacker)
 		self.owner = owner
@@ -691,6 +681,16 @@ AddComponentPostInit("projectile", function(self)
 		end
 	end
 end)	-- <改写投射物
+
+AddComponentPostInit("edible", function(self)
+	local pGetSanity = self.GetSanity
+	self.GetSanity = function(self, eater)
+	return pGetSanity(self, eater) * (self.inst:HasTag("food_san_advanced") and 
+			eater and eater.components.sanity and 
+			eater.components.sanity:IsLunacyMode() and
+			-1 or 1)
+	end
+end)
 
 AddComponentPostInit("container", function(self)
 	self.FindItemByName = function(self, pf)

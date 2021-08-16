@@ -85,10 +85,10 @@ local function fn()
 		
 	inst:AddComponent("inventoryitem")
 	inst.components.inventoryitem.imagename = "izayoi_watch"
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/izayoi_watch.xml"
     if not TUNING.IZAYOI_ITEMS_FLOATABLE then 
 		inst.components.inventoryitem:SetSinks(true)
 	end
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/izayoi_watch.xml"
 
 	inst:AddComponent("equippable")
 	inst.components.equippable.equipslot = EQUIPSLOTS.BACK or EQUIPSLOTS.BODY
