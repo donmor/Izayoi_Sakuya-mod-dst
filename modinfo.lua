@@ -59,7 +59,7 @@ mod_dependencies = {
 		workshop = "workshop-2576514266",
 		["libTimeStopper-mod-dst"] = false,
 		["libTimeStopper"] = true,
-	},
+	}
 }
 configuration_options =
 {
