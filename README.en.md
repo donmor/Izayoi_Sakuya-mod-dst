@@ -84,4 +84,4 @@ Requires [libTimeStopper](https://github.com/donmor/libTimeStopper-mod-dst) as a
 </table>
 *Knife throwing skills' mode can be changed in options<br/>
 *Teammates include all players when PVP disabled, or players in the same team (for example, equipping same team flags) when PVP enabled. This requires Teamworker MOD and maybe also Team Flags MOD and so on.<br/>
-*All skills require movement prediction enabled
+*All skills require lag compensation enabled
