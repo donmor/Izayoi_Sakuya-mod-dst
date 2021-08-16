@@ -6,6 +6,21 @@ name = "Izayoi Sakuya"
 version = "4.0.0"
 description = LIMBO({
 [[
+Izayoi Sakuya (十六夜咲夜)
+
+* Fan-made MOD of Touhou Project, may be different from the original
+* Beginner in MOD crafting so there may be undiscovered bug
+* Lots of modified APIs so be attention to compatibility
+* Low-end killer, laggy time-stop
+* OOC
+* Weird SE
+* All characters and organizations that appear have entered Gensokyo
+Original(no longer exist): "_十六夜咲夜_II" mod of 大猪猪(猪哥), Thanks to their hard work
+Requires libTimeStopper as a dependency, please enable it as well
+Finally, Long lives Touhou Project (=·ω·=)
+
+For more information please see Readme.md or https://steamcommunity.com/sharedfiles/filedetails/?id=1426323391
+]], ["zh"] = [[
 Izayoi Sakuya(十六夜咲夜)
 
 ※本MOD为东方Project二次创作内容
@@ -20,21 +35,6 @@ Izayoi Sakuya(十六夜咲夜)
 最后, 愿我东方永不过气(=·ω·=)
 
 更多信息请查看Readme.md或https://steamcommunity.com/sharedfiles/filedetails/?id=1426323391
-]], ["zh"] = [[
-Izayoi Sakuya (十六夜咲夜)
-
-* This MOD is Touhou fan-made production
-* I'm a modding starter so that there may be undiscovered bug
-* Lots of modified APIs so be attention to compatibility
-* Low-end killer, laggy time-stop
-* OOC
-* Weird SE
-* All characters and organizations that appear have entered Gensokyo
-Original(no longer exist): "_十六夜咲夜_II" mod of 大猪猪(猪哥), Thanks to their hard work
-Requires libTimeStopper as a dependency, please enable it as well
-Finally, Long lives Touhou Project (=·ω·=)
-
-For more information please see Readme.md or https://steamcommunity.com/sharedfiles/filedetails/?id=1426323391
 ]]})
 	
 author = "donmor"
