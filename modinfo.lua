@@ -60,7 +60,6 @@ mod_dependencies = {
 		["libTimeStopper-mod-dst"] = false,
 		["libTimeStopper"] = true,
 	},
-
 }
 configuration_options =
 {

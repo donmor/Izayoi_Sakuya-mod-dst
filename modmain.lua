@@ -1008,6 +1008,10 @@ local skills = {
 	end,
 
 	c = function(inst, vtarget)
+		if inst.x_task then
+			inst.x_task:Cancel()
+			inst.x_task = nil
+		end
 		local num = 0
 		local x0, y0, z0 = inst.Transform:GetWorldPosition()
 		local ents = TheSim:FindEntities(x0, y0, z0, 1000, {"izayoi_sword"})
