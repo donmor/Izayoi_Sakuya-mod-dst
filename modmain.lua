@@ -244,14 +244,14 @@ STRINGS.IZAYOI_MISC = {
 		COLLECTED =	LIMBO({"(There's no knife to collect.)", ["zh"] = "(没有可以回收的刀了。)"}),
 	},
 	SKILL_ANNOUNCEMENTS = {
-		Z = LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}) or LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}),
+		Z = LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"} or {"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}),
 		X = LIMBO(TUNING.IZAYOI_X_HOSTILE_ONLY and {"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"} or {"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}),
 		C = LIMBO({"Illusion \"My Knife's Recursions\"", ["zh"] = "幻术「吾刃回归」"}),
 		V = LIMBO({"Illusion World \"The World\"", ["zh"] = "幻世「The World」"}),
 		B = LIMBO({"Time Sign \"Private Square\"", ["zh"] = "时符「完美空间」"}),
 	},
 	SKILL_UI = {
-		Z = LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Clock Corpse", ["zh"] = "钟表的残骸"}) or LIMBO({"Jack the Ludo Bile", ["zh"] = "迷幻的杰克"}),
+		Z = LIMBO(TUNING.IZAYOI_Z_ESCAPE and {"Clock Corpse", ["zh"] = "钟表的残骸"} or {"Jack the Ludo Bile", ["zh"] = "迷幻的杰克"}),
 		X = LIMBO(TUNING.IZAYOI_X_HOSTILE_ONLY and {"Killer Doll", ["zh"] = "杀人玩偶"} or {"Indiscriminate", ["zh"] = "无差别伤害"}),
 		C = LIMBO({"My Knife's Recursions", ["zh"] = "吾刃回归"}),
 		V = "The World",
