@@ -54,20 +54,20 @@ Requires [libTimeStopper](https://github.com/donmor/libTimeStopper-mod-dst) as a
 <tr><td>Hard</td><td>Spider Gland *2</td><td>Foliage *2</td><td>Charcoal *2</td><td>Black Tea *2</td></tr>
 <tr><td>Lunatic</td><td>Spider Gland *2</td><td>Foliage *2</td><td>Charcoal *2</td><td>Black Tea *1</td></tr>
 <tr><th rowspan="5">Silver Knife</th><td rowspan="5">Throwable weapon, Damage: 50, Reusable and stackable, Can be launched using knife throwing skills</td></tr>
-<tr><td>Easy</td><td>Log *2</td><td>Gold Nugget *2</td><td></td><td rowspan="4">⇢</td><td>Silver Knife *3</td><td rowspan="5">Requires Alchemy Engine</td></tr>
-<tr><td>Normal</td><td>Log *2</td><td>Gold Nugget *2</td><td>Blue Gem *1</td><td>Silver Knife *3</td></tr>
-<tr><td>Hard</td><td>Living Log*2</td><td>Gold Nugget *2</td><td>Blue Gem *1</td><td>Silver Knife *3</td></tr>
-<tr><td>Lunatic</td><td>Living Log*2</td><td>Gold Nugget *2</td><td>Blue Gem *1</td><td>Silver Knife *1</td></tr>
+<tr><td>Easy</td><td>Log *3</td><td>Gold Nugget *3</td><td></td><td rowspan="4">⇢</td><td>Silver Knife *3</td><td rowspan="5">Requires Alchemy Engine</td></tr>
+<tr><td>Normal</td><td>Log *3</td><td>Gold Nugget *3</td><td>Blue Gem *1</td><td>Silver Knife *3</td></tr>
+<tr><td>Hard</td><td>Living Log *3</td><td>Gold Nugget *3</td><td>Blue Gem *1</td><td>Silver Knife *3</td></tr>
+<tr><td>Lunatic</td><td>Living Log *3</td><td>Gold Nugget *3</td><td>Blue Gem *1</td><td>Silver Knife *1</td></tr>
 <tr><th rowspan="5">Exorcist's Knife</th><td rowspan="5">Throwable weapon, Damage: 100, Reusable and stackable</td></tr>
-<tr><td>Easy</td><td>Log *2</td><td>Gold Nugget *2</td><td></td><td rowspan="4">⇢</td><td>Exorcist's Knife*3</td><td rowspan="5">Requires Alchemy Engine</td></tr>
-<tr><td>Normal</td><td>Log *2</td><td>Gold Nugget *2</td><td>Red Gem *1</td><td>Exorcist's Knife*3</td></tr>
-<tr><td>Hard</td><td>Living Log*2</td><td>Gold Nugget *2</td><td>Red Gem *1</td><td>Exorcist's Knife*3</td></tr>
-<tr><td>Lunatic</td><td>Living Log*2</td><td>Gold Nugget *2</td><td>Red Gem *1</td><td>Exorcist's Knife*1</td></tr>
+<tr><td>Easy</td><td>Log *3</td><td>Gold Nugget *3</td><td></td><td rowspan="4">⇢</td><td>Exorcist's Knife *3</td><td rowspan="5">Requires Alchemy Engine</td></tr>
+<tr><td>Normal</td><td>Log *3</td><td>Gold Nugget *3</td><td>Red Gem *1</td><td>Exorcist's Knife *3</td></tr>
+<tr><td>Hard</td><td>Living Log *3</td><td>Gold Nugget *3</td><td>Red Gem *1</td><td>Exorcist's Knife *3</td></tr>
+<tr><td>Lunatic</td><td>Living Log *3</td><td>Gold Nugget *3</td><td>Red Gem *1</td><td>Exorcist's Knife *1</td></tr>
 <tr><th rowspan="5">Mirage Knife</th><td rowspan="5">Throwable weapon, Damage: 50, Reusable and stackable, turns into an Exorcist's Knife and two Silver Knives if resumed from time-stop or target is leaving its track</td></tr>
-<tr><td>Easy</td><td>Log *2</td><td>Gold Nugget *2</td><td></td><td rowspan="4">⇢</td><td>Mirage Knife *3</td><td rowspan="5">Requires Alchemy Engine</td></tr>
-<tr><td>Normal</td><td>Log *2</td><td>Gold Nugget *2</td><td>Purple Gem *1</td><td>Mirage Knife *3</td></tr>
-<tr><td>Hard</td><td>Living Log*2</td><td>Gold Nugget *2</td><td>Purple Gem *1</td><td>Mirage Knife *3</td></tr>
-<tr><td>Lunatic</td><td>Living Log*2</td><td>Gold Nugget *2</td><td>Purple Gem *1</td><td>Mirage Knife *1</td></tr>
+<tr><td>Easy</td><td>Log *3</td><td>Gold Nugget *3</td><td></td><td rowspan="4">⇢</td><td>Mirage Knife *3</td><td rowspan="5">Requires Alchemy Engine</td></tr>
+<tr><td>Normal</td><td>Log *3</td><td>Gold Nugget *3</td><td>Purple Gem *1</td><td>Mirage Knife *3</td></tr>
+<tr><td>Hard</td><td>Living Log *3</td><td>Gold Nugget *3</td><td>Purple Gem *1</td><td>Mirage Knife *3</td></tr>
+<tr><td>Lunatic</td><td>Living Log *3</td><td>Gold Nugget *3</td><td>Purple Gem *1</td><td>Mirage Knife *1</td></tr>
 <tr><th rowspan="5">Lunar Clock</th><td rowspan="5">Important item to manipulating the time, required by time magic skills;<br>12 slots in shrinked space; Lowered inner time elapse, low perishing speed (configurable); Isolated when panel closed, preventing items from being detected by mobs;<br>Restores 6.8 Sanity (can be configured to lower enlightenment) and 20 Mana per minute</td></tr>
 <tr><td>Easy</td><td>Gold Nugget *3</td><td>Nightmare Fuel *12</td><td>Gears *4</td><td rowspan="4">⇢</td><td>Lunar Clock</td><td rowspan="5"><br>Requires Shadow Manipulator<br>Crafting disabled by default</td></tr>
 <tr><td>Normal</td><td>Orange Gem *3</td><td>Nightmare Fuel *12</td><td>Gears *4</td><td>Lunar Clock</td></tr>

@@ -54,20 +54,20 @@
 <tr><td>Hard</td><td>蜘蛛腺*2</td><td>蕨叶*2</td><td>木炭*2</td><td>洋馆红茶*2</td></tr>
 <tr><td>Lunatic</td><td>蜘蛛腺*2</td><td>蕨叶*2</td><td>木炭*2</td><td>洋馆红茶*1</td></tr>
 <tr><th rowspan="5">银质飞刀</th><td rowspan="5">远程武器, 基础伤害: 50, 可拾取/堆叠, 可用飞刀系技能发射</td></tr>
-<tr><td>Easy</td><td>原木*2</td><td>金块*2</td><td></td><td rowspan="4">⇢</td><td>银质飞刀*3</td><td rowspan="5">开局带3把<br>需要炼金引擎</td></tr>
-<tr><td>Normal</td><td>原木*2</td><td>金块*2</td><td>蓝宝石*1</td><td>银质飞刀*3</td></tr>
-<tr><td>Hard</td><td>活木*2</td><td>金块*2</td><td>蓝宝石*1</td><td>银质飞刀*3</td></tr>
-<tr><td>Lunatic</td><td>活木*2</td><td>金块*2</td><td>蓝宝石*1</td><td>银质飞刀*1</td></tr>
+<tr><td>Easy</td><td>原木*3</td><td>金块*3</td><td></td><td rowspan="4">⇢</td><td>银质飞刀*3</td><td rowspan="5">开局带3把<br>需要炼金引擎</td></tr>
+<tr><td>Normal</td><td>原木*3</td><td>金块*3</td><td>蓝宝石*1</td><td>银质飞刀*3</td></tr>
+<tr><td>Hard</td><td>活木*3</td><td>金块*3</td><td>蓝宝石*1</td><td>银质飞刀*3</td></tr>
+<tr><td>Lunatic</td><td>活木*3</td><td>金块*3</td><td>蓝宝石*1</td><td>银质飞刀*1</td></tr>
 <tr><th rowspan="5">破魔飞刀</th><td rowspan="5">远程武器, 基础伤害: 100, 可拾取/堆叠</td></tr>
-<tr><td>Easy</td><td>原木*2</td><td>金块*2</td><td></td><td rowspan="4">⇢</td><td>破魔飞刀*3</td><td rowspan="5">需要炼金引擎</td></tr>
-<tr><td>Normal</td><td>原木*2</td><td>金块*2</td><td>红宝石*1</td><td>破魔飞刀*3</td></tr>
-<tr><td>Hard</td><td>活木*2</td><td>金块*2</td><td>红宝石*1</td><td>破魔飞刀*3</td></tr>
-<tr><td>Lunatic</td><td>活木*2</td><td>金块*2</td><td>红宝石*1</td><td>破魔飞刀*1</td></tr>
+<tr><td>Easy</td><td>原木*3</td><td>金块*3</td><td></td><td rowspan="4">⇢</td><td>破魔飞刀*3</td><td rowspan="5">需要炼金引擎</td></tr>
+<tr><td>Normal</td><td>原木*3</td><td>金块*3</td><td>红宝石*1</td><td>破魔飞刀*3</td></tr>
+<tr><td>Hard</td><td>活木*3</td><td>金块*3</td><td>红宝石*1</td><td>破魔飞刀*3</td></tr>
+<tr><td>Lunatic</td><td>活木*3</td><td>金块*3</td><td>红宝石*1</td><td>破魔飞刀*1</td></tr>
 <tr><th rowspan="5">幻影飞刀</th><td rowspan="5">远程武器, 基础伤害: 50, 可拾取/堆叠, 当从时停中恢复或目标偏离路径一定角度时转化为一把破魔飞刀和两侧的一对银质飞刀</td></tr>
-<tr><td>Easy</td><td>原木*2</td><td>金块*2</td><td></td><td rowspan="4">⇢</td><td>幻影飞刀*3</td><td rowspan="5">需要炼金引擎</td></tr>
-<tr><td>Normal</td><td>原木*2</td><td>金块*2</td><td>紫宝石*1</td><td>幻影飞刀*3</td></tr>
-<tr><td>Hard</td><td>活木*2</td><td>金块*2</td><td>紫宝石*1</td><td>幻影飞刀*3</td></tr>
-<tr><td>Lunatic</td><td>活木*2</td><td>金块*2</td><td>紫宝石*1</td><td>幻影飞刀*1</td></tr>
+<tr><td>Easy</td><td>原木*3</td><td>金块*3</td><td></td><td rowspan="4">⇢</td><td>幻影飞刀*3</td><td rowspan="5">需要炼金引擎</td></tr>
+<tr><td>Normal</td><td>原木*3</td><td>金块*3</td><td>紫宝石*1</td><td>幻影飞刀*3</td></tr>
+<tr><td>Hard</td><td>活木*3</td><td>金块*3</td><td>紫宝石*1</td><td>幻影飞刀*3</td></tr>
+<tr><td>Lunatic</td><td>活木*3</td><td>金块*3</td><td>紫宝石*1</td><td>幻影飞刀*1</td></tr>
 <tr><th rowspan="5">月时计</th><td rowspan="5">掌控时间的重要道具, 发动时空系技能的前提;<br>提供12格异空间储物栏, 内部时间流逝变慢, 物品腐坏速度降低(速度可设置), 面板关闭时内部与外界隔离, 可防生物嗅探;<br>装备时每分钟恢复3.3精神(可设置月岛降低启蒙)和20魔力</td></tr>
 <tr><td>Easy</td><td>金块*3</td><td>噩梦燃料*12</td><td>齿轮*4</td><td rowspan="4">⇢</td><td>月时计</td><td rowspan="5">开局带1个<br>需要暗影操作仪<br>默认关闭制作，可在设置中开启</td></tr>
 <tr><td>Normal</td><td>橙宝石*3</td><td>噩梦燃料*12</td><td>齿轮*4</td><td>月时计</td></tr>
