@@ -54,7 +54,7 @@ bugtracker_config = {
 	upload_client_log = true,
 	upload_server_log = true,
 }
-local platform = folder_name and ((folder_name == "workshop-2576573801" and "STEAM") or (folder_name == "xxx" and "TGP" )) or nil
+local platform = folder_name and ((folder_name == "workshop-2576573801" and "STEAM") or (folder_name == "workshop-2199027653598532077" and "TGP" )) or nil
 local platformshop = {
 	["STEAM"] = "workshop-2576514266",
 	["TGP"] = "workshop-2199027653598532076",
