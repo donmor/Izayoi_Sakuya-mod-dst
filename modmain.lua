@@ -44,7 +44,8 @@ TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
 TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")	-- <读取配置
 
 TUNING.IZAYOI_BASEMENT_COMPATIBLE = isModEnabled("workshop-1349799880")
-TUNING.IZAYOI_LANGUAGE = LOC.GetLocaleCode()
+local systemlocale = LOC.GetLocaleCode()
+TUNING.IZAYOI_LANGUAGE = systemlocale == "zhr" and "zh" or systemlocale
 if TUNING.IZAYOI_STRENGTH == "op" then
 	TUNING.IZAYOI_HUNGER = 300
 	TUNING.IZAYOI_SANITY = 300
