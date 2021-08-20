@@ -75,7 +75,7 @@ local function fn()
 					inst:Terminate()
 				end
 			end)
-			inst:ListenForEvent("unequip", function(inst, data)
+			inst:ListenForEvent("unequip", function(parent, data)
 				if data.item.prefab == "izayoi_watch" then
 					inst:Terminate()
 				end
