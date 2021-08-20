@@ -1,4 +1,5 @@
 local function LIMBO(tbl)
+	tbl["zhr"] = tbl["zh"]
 	return ChooseTranslationTable(tbl)
 end
 

@@ -1,4 +1,5 @@
 local function LIMBO(tbl)
+	tbl["zhr"] = tbl["zh"]
 	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
 end
 

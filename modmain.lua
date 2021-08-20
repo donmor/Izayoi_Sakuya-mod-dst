@@ -10,6 +10,7 @@ end
 SYS_INITGLOBAL()	-- <初始化GLOBAL
 
 local function LIMBO(tbl)
+	tbl["zhr"] = tbl["zh"]
 	return tbl[TUNING.IZAYOI_LANGUAGE] or tbl[1]
 end
 
@@ -44,8 +45,7 @@ TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
 TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")	-- <读取配置
 
 TUNING.IZAYOI_BASEMENT_COMPATIBLE = isModEnabled("workshop-1349799880")
-local systemlocale = LOC.GetLocaleCode()
-TUNING.IZAYOI_LANGUAGE = systemlocale == "zhr" and "zh" or systemlocale
+TUNING.IZAYOI_LANGUAGE = LOC.GetLocaleCode()
 if TUNING.IZAYOI_STRENGTH == "op" then
 	TUNING.IZAYOI_HUNGER = 300
 	TUNING.IZAYOI_SANITY = 300
