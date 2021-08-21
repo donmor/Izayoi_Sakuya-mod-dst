@@ -4,7 +4,7 @@ local function LIMBO(tbl)
 end
 
 name = "Izayoi Sakuya"
-version = "4.0.2"
+version = "4.0.3"
 description = LIMBO({
 [[
 Izayoi Sakuya (十六夜咲夜)
@@ -99,6 +99,17 @@ configuration_options =
 			{description = "Lunatic", data = "lunatic", hover = LIMBO({"Weaker, longer CD", ["zh"] = "更弱的体质和攻击力，更长技能的CD"})},
 		},
 		default = "normal",
+	},
+
+	{
+		name = "fast_construction",
+		label = LIMBO({"Fast construction", ["zh"] = "快速建造"}),
+		options =
+		{
+			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"2x construction speed", ["zh"] = "2倍采集与建造速度"})},
+			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Normal construction speed", ["zh"] = "普通的采集与建造速度"})},
+		},
+		default = true,
 	},
 
 	{

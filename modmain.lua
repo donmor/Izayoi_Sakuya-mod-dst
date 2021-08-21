@@ -1,13 +1,6 @@
-local function SYS_INITGLOBAL()
-	GLOBAL.setmetatable(env, {
-		__index = function(t, k)
-			if k ~= "PrefabFiles" and k ~= "Assets" and k ~= "clothing_exclude" then
-				return GLOBAL[k] and GLOBAL[k] or nil
-			end
-		end,
-	})
-end
-SYS_INITGLOBAL()	-- <初始化GLOBAL
+GLOBAL.setmetatable(env,{__index = function(_, k)
+	return GLOBAL.rawget(GLOBAL,k)
+end})	-- <初始化GLOBAL
 
 local function LIMBO(tbl)
 	tbl["zhr"] = tbl["zh"]
@@ -41,6 +34,7 @@ TUNING.IZAYOI_WATCH_PLAYERS_EQUIPPABLE = GetModConfigData("watch_players_equippa
 TUNING.IZAYOI_ITEMS_FLOATABLE = GetModConfigData("items_floatable")
 TUNING.IZAYOI_Z_ESCAPE = GetModConfigData("z_escape")
 TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
+TUNING.IZAYOI_FAST_CONSTRUCTION = GetModConfigData("fast_construction")
 TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
 TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")	-- <读取配置
 
@@ -461,38 +455,40 @@ end	-- <local function
 
 local FollowText = require "widgets/followtext"
 
-AddStategraphPostInit("wilson", function(sg)
-	local state_long = sg.states["dolongaction"]
-	local plong = state_long.onenter
-	state_long.onenter = function(inst, timeout)
-		if inst.prefab == characterName then
-			local targ = inst:GetBufferedAction() and inst:GetBufferedAction().target or nil
-			if targ then targ:PushEvent("startlongaction") end
-			inst.sg.statemem.action = inst.bufferedaction
-			inst.sg:SetTimeout( (timeout or 1) / 2 )
-			inst.components.locomotor:Stop()
-			inst.SoundEmitter:PlaySound("dontstarve/wilson/make_trap", "make")
-			inst.AnimState:PlayAnimation("build_pre")
-			inst.AnimState:PushAnimation("build_loop", true)
-		else
-			return plong(inst, timeout)
+if TUNING.IZAYOI_FAST_CONSTRUCTION then
+	AddStategraphPostInit("wilson", function(sg)
+		local state_long = sg.states["dolongaction"]
+		local plong = state_long.onenter
+		state_long.onenter = function(inst, timeout)
+			if inst.prefab == characterName then
+				local targ = inst:GetBufferedAction() and inst:GetBufferedAction().target or nil
+				if targ then targ:PushEvent("startlongaction") end
+				inst.sg.statemem.action = inst.bufferedaction
+				inst.sg:SetTimeout( (timeout or 1) / 2 )
+				inst.components.locomotor:Stop()
+				inst.SoundEmitter:PlaySound("dontstarve/wilson/make_trap", "make")
+				inst.AnimState:PlayAnimation("build_pre")
+				inst.AnimState:PushAnimation("build_loop", true)
+			else
+				return plong(inst, timeout)
+			end
 		end
-	end
-	table.insert(state_long.timeline, TimeEvent(2 * FRAMES, function(inst)
-		if inst.prefab == characterName then
-			inst.sg:RemoveStateTag("busy")
-		end
-	end))
-end)
+		table.insert(state_long.timeline, TimeEvent(2 * FRAMES, function(inst)
+			if inst.prefab == characterName then
+				inst.sg:RemoveStateTag("busy")
+			end
+		end))
+	end)
 
-AddStategraphPostInit("wilson_client", function(sg)
-	local state_long = sg.states["dolongaction"]
-	table.insert(state_long.timeline, TimeEvent(2 * FRAMES, function(inst)
-		if inst.prefab == characterName then
-			inst.sg:RemoveStateTag("busy")
-		end
-	end))
-end)	-- <采集制作速度是常人2倍即dolongaction半倍时间完成
+	AddStategraphPostInit("wilson_client", function(sg)
+		local state_long = sg.states["dolongaction"]
+		table.insert(state_long.timeline, TimeEvent(2 * FRAMES, function(inst)
+			if inst.prefab == characterName then
+				inst.sg:RemoveStateTag("busy")
+			end
+		end))
+	end)
+end	-- <采集制作速度是常人2倍即dolongaction半倍时间完成
 
 local event_whisper = EventHandler("onwhisper", function(inst, data)
 	if inst.sg:HasStateTag("idle") and not inst.sg:HasStateTag("notalking") then

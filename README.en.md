@@ -14,7 +14,7 @@ Requires [libTimeStopper](https://github.com/donmor/libTimeStopper-mod-dst) as a
 
 ### Character perks
 
-- Collects/crafts 2x faster, and also runs 1.15x faster
+- Collects/crafts 2x faster (can be disabled), and also runs 1.15x faster
 - No sanity drain when confronted with monsters
 - Hunger drops 20% slower
 - 1.25x powerful at night, and runs 1.3x faster
