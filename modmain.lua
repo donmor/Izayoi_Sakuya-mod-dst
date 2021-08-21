@@ -257,6 +257,7 @@ STRINGS.IZAYOI_MISC = {
 require "desc"
 local speeches = {
 	["zh"] = function() return require "speech_zh" end,
+	["zhr"] = function() return require "speech_zh" end,
 }
 local spf = speeches[TUNING.IZAYOI_LANGUAGE]
 STRINGS.CHARACTERS.IZAYOI = spf and spf() or require "speech"	-- <文本
