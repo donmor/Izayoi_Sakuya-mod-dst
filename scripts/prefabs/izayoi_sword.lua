@@ -161,9 +161,15 @@ local function purple_split(inst)
 	local function getdist(ent1, ent2)
 		local x1, y1, z1 = ent1.Transform:GetWorldPosition()
 		local x2, y2, z2 = ent2.Transform:GetWorldPosition()
+		if not (x1 and z1 and x2 and z2) then
+			return 0
+		end
 		return math.sqrt((x1 - x2) ^ 2 + (z1 - z2) ^ 2)
 	end
 	local dist = getdist(inst, tgt)
+	if dist == 0 then
+		return
+	end
 	inst:Remove()
 	local csw = SpawnPrefab("izayoi_swordred")-- <中间
 	csw.Transform:SetPosition(x, y, z)
