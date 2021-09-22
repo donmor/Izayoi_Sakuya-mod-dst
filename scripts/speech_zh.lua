@@ -508,6 +508,8 @@ return {
 	ANNOUNCE_CARRAT_ERROR_WALKING = "现在还不是休息的时候！",
 	ANNOUNCE_CARRAT_ERROR_STUNNED = "跑啊！给我跑！",
 
+	ANNOUNCE_POCKETWATCH_PORTAL = "呕……至少比隙间里好受点。",
+
 	ANNOUNCE_ARCHIVE_NEW_KNOWLEDGE = "有用的知识增加了。",
 	ANNOUNCE_ARCHIVE_OLD_KNOWLEDGE = "我早就知道这个了。",
 	ANNOUNCE_ARCHIVE_NO_POWER = "我得给这玩意补充些能量。",
@@ -616,7 +618,7 @@ return {
 
 		PLAYER =
 		{
-			GENERIC = "是%s呢。",
+			GENERIC = "你好，%s。",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -625,7 +627,7 @@ return {
 		},
 		WILSON =
 		{
-			GENERIC = "似乎是个科学家呢。",
+			GENERIC = "科学家先生，最近进展如何？",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -634,7 +636,7 @@ return {
 		},
 		WOLFGANG =
 		{
-			GENERIC = "这是个大力士吗？",
+			GENERIC = "最近怎么样，大力士？",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -643,7 +645,7 @@ return {
 		},
 		WAXWELL =
 		{
-			GENERIC = "这个人给我一种不祥的感觉。",
+			GENERIC = "……你给我一种不祥的感觉，先生。",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -670,7 +672,7 @@ return {
 		},
 		WENDY =
 		{
-			GENERIC = "她也是魂魄一族的吗？",
+			GENERIC = "你好，%s小姐。",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -679,7 +681,7 @@ return {
 		},
 		WOODIE =
 		{
-			GENERIC = "是个人类……也许吧。",
+			GENERIC = "你好，伐木工先生。",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -694,7 +696,7 @@ return {
 		},
 		WICKERBOTTOM =
 		{
-			GENERIC = "无数的时间之后，人就会变成这个样子吗？",
+			GENERIC = "你好，%s女士。",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -703,7 +705,7 @@ return {
 		},
 		WES =
 		{
-			GENERIC = "事实证明即使不会说话也不妨碍成为搞笑艺人。",
+			GENERIC = "你好，艺人先生。",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -712,7 +714,7 @@ return {
 		},
 		WEBBER =
 		{
-			GENERIC = "这是妖怪还是……人类？",
+			GENERIC = "你好，小妖怪……或者说……人类小孩？",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -721,7 +723,7 @@ return {
 		},
 		WATHGRITHR =
 		{
-			GENERIC = "不简单的家伙呢。",
+			GENERIC = "你好，武士小姐。",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -777,12 +779,22 @@ return {
 
 		WALTER =
 		{
-			GENERIC = "朝气蓬勃的人类。",
+			GENERIC = "你好，朝气蓬勃的人类。",
 			ATTACKER = "最好再重新考虑一下。",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
 			GHOST = "%s的时间就到此为止了呢。",
 			FIRESTARTER = "红魔馆并不欢迎放火魔。",
+		},
+
+		WANDA =
+		{
+			GENERIC = "你好，女士……等等，你难道……！",
+			ATTACKER = "哦？看来你想比比谁才是时间的专家？",
+			MURDERER = "你的时间到此为止了！最终回合了！",
+			REVIVER = "真没想到我也有被从时间中拯救的一天。",
+			GHOST = "……冷静，咲夜！总之先去找怀表来……",
+			FIRESTARTER = "……你不是也会时间魔法吗，自己想办法！",
 		},
 
 		REIMU =
@@ -817,7 +829,7 @@ return {
 
 		SANAE =
 		{
-			GENERIC = "妖怪之山上新来的蓝白巫女。",
+			GENERIC = "好久不见，蓝白巫女小姐。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -837,7 +849,7 @@ return {
 
 		YUUKA =
 		{
-			GENERIC = "花田的强大妖怪……我得小心一点。",
+			GENERIC = "你好，花田的女主人。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "这就是人类和妖怪之间的不同……",
 			REVIVER = "我欠%s一个人情呢。",
@@ -847,7 +859,7 @@ return {
 
 		YUYUKO =
 		{
-			GENERIC = "是白玉楼的亡灵小姐呢。",
+			GENERIC = "你好，白玉楼的亡灵小姐呢。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -927,7 +939,7 @@ return {
 
 		KASEN =
 		{
-			GENERIC = "是神社里的仙人……吗……",
+			GENERIC = "你好，神社的仙人。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "她真的是仙人吗？",
 			REVIVER = "我欠%s一个人情呢。",
@@ -937,7 +949,7 @@ return {
 
 		MOMIJI =
 		{
-			GENERIC = "是妖怪山上的白狼天狗呢。",
+			GENERIC = "你好，妖怪山上的白狼天狗小姐。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -947,7 +959,7 @@ return {
 
 		QINGWA =
 		{
-			GENERIC = "是妖怪山上的白狼天狗呢。",
+			GENERIC = "你好，小小的神明大人。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -957,7 +969,7 @@ return {
 
 		KEINE =
 		{
-			GENERIC = "上次提议送大小姐去她那儿上学，结果被果断拒绝了。",
+			GENERIC = "你好，人里的老师。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -967,7 +979,7 @@ return {
 
 		MOKOU =
 		{
-			GENERIC = "是竹林里的蓬莱人呢。",
+			GENERIC = "你好，竹林里的蓬莱人小姐。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "既然你如此不珍惜生命……",
 			REVIVER = "我欠%s一个人情呢。",
@@ -977,7 +989,7 @@ return {
 
 		CIRNO =
 		{
-			GENERIC = "又是湖面上那只笨蛋冰精吗？",
+			GENERIC = "又是你啊，笨蛋冰精……",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "死回家一次吧！",
 			REVIVER = "没想到有人会欠冰精一个人情呢。",
@@ -987,7 +999,7 @@ return {
 
 		DAIYOUSEI =
 		{
-			GENERIC = "冰精的朋友……叫什么来着？",
+			GENERIC = "冰精的朋友……叫什么来着……总之你好。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "死回家一次吧！",
 			REVIVER = "我欠%s一个人情呢。",
@@ -997,7 +1009,7 @@ return {
 
 		CHEN =
 		{
-			GENERIC = "是八云家的黑猫吗？",
+			GENERIC = "你好，八云家的黑猫小妹妹。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "看来我得找八云家讨个说法。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1007,7 +1019,7 @@ return {
 
 		YAKUMORAN =
 		{
-			GENERIC = "某贤者的式神。",
+			GENERIC = "又见面了，某贤者的式神小姐。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "看来我得找某贤者讨个说法。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1017,7 +1029,7 @@ return {
 
 		LYRICA =
 		{
-			GENERIC = "是骚灵乐队的键盘手呢。",
+			GENERIC = "你好，骚灵乐队的键盘手小姐。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1027,7 +1039,7 @@ return {
 
 		KAGEROU =
 		{
-			GENERIC = "上次碰见过这只狼吧……",
+			GENERIC = "你好，狼小姐……我们上次是不是见过？",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1037,7 +1049,7 @@ return {
 
 		MIKO =
 		{
-			GENERIC = "是那个戴耳罩的仙人呢。",
+			GENERIC = "你好，戴耳罩的仙人。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1047,7 +1059,7 @@ return {
 
 		YOHIME =
 		{
-			GENERIC = "月都的大人物。",
+			GENERIC = "又见面了，月都的大人物。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1067,7 +1079,7 @@ return {
 
 		TENSHI =
 		{
-			GENERIC = "是有顶天的那个不良天人呢。",
+			GENERIC = "又见面了，有顶天的那个不良天人。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1077,7 +1089,7 @@ return {
 
 		IKU =
 		{
-			GENERIC = "是有顶天的龙宫使者呢。",
+			GENERIC = "又见面了，有顶天的龙宫使者小姐。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1107,7 +1119,7 @@ return {
 
 		RIN =
 		{
-			GENERIC = "附近一定是有尸体。",
+			GENERIC = "你好，又在找尸体吗？",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1117,7 +1129,7 @@ return {
 
 		PARSEE =
 		{
-			GENERIC = "地底世界的桥姬妖怪。",
+			GENERIC = "你好，地底世界的桥姬妖怪。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1137,7 +1149,7 @@ return {
 
 		CLOWNPIECE =
 		{
-			GENERIC = "她是妖精吧……这种感觉真奇怪。",
+			GENERIC = "你好，小妖精……嗯？",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1157,7 +1169,7 @@ return {
 
 		UTSUHO =
 		{
-			GENERIC = "获得了神之力量的鸟脑袋。",
+			GENERIC = "你好……不不爆炸性结局就免了。。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1167,7 +1179,7 @@ return {
 
 		IZAYOI =
 		{
-			GENERIC = "这是……我？",
+			GENERIC = "你是……我？",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "干掉自己什么的……为什么我非得做这种事……",
 			REVIVER = "我欠咲夜一个人情……？",
@@ -1187,7 +1199,7 @@ return {
 
 		SATORI =
 		{
-			GENERIC = "地灵殿的主人妖怪觉。",
+			GENERIC = "你好，地灵殿的主人。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1197,7 +1209,7 @@ return {
 
 		KOISHI =
 		{
-			GENERIC = "刚才那是什么，幻觉吗？",
+			GENERIC = "……刚才那是什么，幻觉吗？",
 			ATTACKER = "有人被攻击了！谁？",
 			MURDERER = "见鬼，我居然没考虑到会是她！",
 			REVIVER = "好像有谁救了我，是谁呢？",
@@ -1207,7 +1219,7 @@ return {
 
 		SHIKIEIKI =
 		{
-			GENERIC = "是非曲直厅的阎魔。",
+			GENERIC = "你好，是非曲直厅的阎魔小姐。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1217,7 +1229,7 @@ return {
 
 		ALICE_TH =
 		{
-			GENERIC = "是魔法之森里的爱丽丝呢。",
+			GENERIC = "你好，魔法之森的爱丽丝小姐。",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1227,7 +1239,7 @@ return {
 
 		SUNNY =
 		{
-			GENERIC = "三个淘气妖精之一。",
+			GENERIC = "又是你们这些淘气妖精……",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -1236,7 +1248,7 @@ return {
 
 		STARSAPPHIRE =
 		{
-			GENERIC = "三个淘气妖精之一。",
+			GENERIC = "又是你们这些淘气妖精……",
 			ATTACKER = "突然攻击的话我就不能不管了！",
 			MURDERER = "我会让你付出代价的。",
 			REVIVER = "我欠%s一个人情呢。",
@@ -4363,6 +4375,46 @@ return {
 			CONSTRUCTION2 = "渐渐成型了。",
 		},
 
+		-- Wanda
+		POCKETWATCH_HEAL = {
+			GENERIC = "好久没有见到像我那块一样精巧的表了。",
+			RECHARGING = "某种机械结构正在运作，……又或是魔法？",
+		},
+
+		POCKETWATCH_REVIVE = {
+			GENERIC = "好久没有见到像我那块一样精巧的表了。",
+			RECHARGING = "某种机械结构正在运作，……又或是魔法？",
+		},
+
+		POCKETWATCH_WARP = {
+			GENERIC = "好久没有见到像我那块一样精巧的表了。",
+			RECHARGING = "某种机械结构正在运作，……又或是魔法？",
+		},
+
+		POCKETWATCH_RECALL = {
+			GENERIC = "好久没有见到像我那块一样精巧的表了。",
+			RECHARGING = "某种机械结构正在运作，……又或是魔法？",
+		},
+
+		POCKETWATCH_PORTAL = {
+			GENERIC = "好久没有见到像我那块一样精巧的表了。",
+			RECHARGING = "某种机械结构正在运作，……又或是魔法？",
+		},
+
+		POCKETWATCH_WEAPON = {
+			GENERIC = "仿佛能吸取对手的时间。",
+		},
+
+		POCKETWATCH_PARTS = "和我的表核心大同小异。",
+		POCKETWATCH_DISMANTLER = "不要想着拿这个靠近的的表。",
+
+		POCKETWATCH_PORTAL_ENTRANCE =
+		{
+			GENERIC = "差点以为又是隙间这种玩意儿。",
+			DIFFERENTSHARD = "差点以为又是隙间这种玩意儿。",
+		},
+		POCKETWATCH_PORTAL_EXIT = "这种放法根本不安全！",
+
 		-- Waterlog
 		WATERTREE_PILLAR = "比起西行妖还是差点儿。",
 		OCEANTREE = "它们是不是长错地方了？",
@@ -4389,6 +4441,7 @@ return {
 		KOALEFIG_TRUNK = "再怎么说也还是象鼻……虽然香味确实不错。",
 		FROGNEWTON = "味道挺独特，不过还不错。",
 	},
+
 	DESCRIBE_GENERIC = "这是什么？",
 	DESCRIBE_TOODARK = "太黑了……",
 	DESCRIBE_SMOLDERING = "那个快要着火了。",

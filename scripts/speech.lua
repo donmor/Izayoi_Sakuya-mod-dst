@@ -122,6 +122,8 @@ return {
 	ANNOUNCE_BECOMEGHOST = "…………",
 	ANNOUNCE_GHOSTDRAIN = "Have you been where you shouldn't be?",
 
+	ANNOUNCE_POCKETWATCH_PORTAL = "Urrr... At least better than in the gap.",
+
 	DESCRIBE_SAMECHARACTER = "It seems that we are not all the same.",
 
 	BATTLECRY =
@@ -160,7 +162,7 @@ return {
 		},
 		WOLFGANG =
 		{
-			GENERIC = "Is this a strong man?",
+			GENERIC = "Hello there, strong man。",
 			ATTACKER = "Better to reconsider that.",
 			MURDERER = "It seems you have to die, you murderer!",
 			REVIVER = "It seems like someone owes me a favor, %s",
@@ -237,6 +239,15 @@ return {
 			MURDERER = "It seems you have to die, you murderer!",
 			REVIVER = "It seems like someone owes me a favor, %s",
 			GHOST = "Seems like %s 's time has ended.",
+		},
+		WANDA =
+		{
+			GENERIC = "Greetings, madam... Hey wait! You're...!",
+			ATTACKER = "So you want to fight me to prove you master the time?",
+			MURDERER = "Your time is over! This is the final round!",
+			REVIVER = "I'd never thought one day somebody saved me from the time.",
+			GHOST = "D-don’t worry... A-all we have to do is find a s-s-stopwatch.",
+			FIRESTARTER = "... You have your time magic, right? So clean up the mess yourself!",
 		},
 		REIMU =
 		{

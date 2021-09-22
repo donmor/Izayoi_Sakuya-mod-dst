@@ -4,7 +4,7 @@ local function LIMBO(tbl)
 end
 
 name = "Izayoi Sakuya"
-version = "4.0.4"
+version = "4.1.0"
 description = LIMBO({
 [[
 Izayoi Sakuya (十六夜咲夜)
@@ -190,6 +190,17 @@ configuration_options =
 			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Sakuya-only", ["zh"] = "其他玩家不可装备怀表"})},
 		},
 		default = true,
+	},
+
+	{
+		name = "wanda_collab",
+		label = LIMBO({"Collab with Wanda", ["zh"] = "与旺达联动"}),
+		options =
+		{
+			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"Wanda treats the watch differently", ["zh"] = "旺达与众不同地对待怀表"})},
+			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Just as normal", ["zh"] = "和平常一样"})},
+		},
+		default = false,
 	},
 
 	{

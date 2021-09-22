@@ -31,6 +31,7 @@ TUNING.IZAYOI_WATCH_NIGHT_VISION = GetModConfigData("watch_night_vision")
 TUNING.IZAYOI_WATCH_FOOD_SPOILAGE = GetModConfigData("watch_food_spoilage")
 TUNING.IZAYOI_WATCH_CRAFTABLE = GetModConfigData("watch_craftable")
 TUNING.IZAYOI_WATCH_PLAYERS_EQUIPPABLE = GetModConfigData("watch_players_equippable")
+TUNING.IZAYOI_WANDA_COLLAB = GetModConfigData("wanda_collab")
 TUNING.IZAYOI_ITEMS_FLOATABLE = GetModConfigData("items_floatable")
 TUNING.IZAYOI_Z_ESCAPE = GetModConfigData("z_escape")
 TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
@@ -289,6 +290,7 @@ local recipemap = {
 		izayoi_swordred = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 1)}, amount = 3},
 		izayoi_swordpurple = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 1)}, amount = 3},
 		izayoi_watch = {recipe = {Ingredient("goldnugget", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, amount = nil},
+		izayoi_watch_wanda = {recipe = {Ingredient("orangegem", 1), Ingredient("pocketwatch_parts", 3), Ingredient("gears", 2)}, amount = nil},
 	},
 	["normal"] = {
 		izayoi_redtea = {recipe = {Ingredient("spidergland", 2), Ingredient("petals", 2), Ingredient("charcoal", 2)}, amount = 2},
@@ -296,6 +298,7 @@ local recipemap = {
 		izayoi_swordred = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)}, amount = 3},
 		izayoi_swordpurple = {recipe = {Ingredient("log", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)}, amount = 3},
 		izayoi_watch = {recipe = {Ingredient("orangegem", 3), Ingredient("nightmarefuel", 12), Ingredient("gears", 4)}, amount = nil},
+		izayoi_watch_wanda = {recipe = {Ingredient("orangegem", 3), Ingredient("pocketwatch_parts", 3), Ingredient("gears", 2)}, amount = nil},
 	},
 	["hard"] = {
 		izayoi_redtea = {recipe = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("charcoal", 2)}, amount = 2},
@@ -303,6 +306,7 @@ local recipemap = {
 		izayoi_swordred = {recipe = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)}, amount = 3},
 		izayoi_swordpurple = {recipe = {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)}, amount = 3},
 		izayoi_watch = {recipe = {Ingredient("orangegem", 4), Ingredient("nightmarefuel", 12), Ingredient("gears", 6)}, amount = nil},
+		izayoi_watch_wanda = {recipe = {Ingredient("orangegem", 4), Ingredient("pocketwatch_parts", 4), Ingredient("gears", 3)}, amount = nil},
 	},
 	["lunatic"] = {
 		izayoi_redtea = {recipe = {Ingredient("spidergland", 2), Ingredient("foliage", 2), Ingredient("charcoal", 2)}, amount = nil},
@@ -310,6 +314,7 @@ local recipemap = {
 		izayoi_swordred = {recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("redgem", 2)}, amount = nil},
 		izayoi_swordpurple = {recipe =  {Ingredient("livinglog", 3), Ingredient("goldnugget", 3), Ingredient("purplegem", 2)}, amount = nil},
 		izayoi_watch = {recipe = {Ingredient("orangegem", 6), Ingredient("nightmarefuel", 12), Ingredient("gears", 8)}, amount = nil},
+		izayoi_watch_wanda = {recipe = {Ingredient("orangegem", 6), Ingredient("pocketwatch_parts", 6), Ingredient("gears", 4)}, amount = nil},
 	},
 }
 local myrecipemap = recipemap[IsInTable({"easy", "normal", "hard", "lunatic"}, TUNING.IZAYOI_RECIPES) and TUNING.IZAYOI_RECIPES or "normal"]
@@ -338,28 +343,42 @@ if TUNING.IZAYOI_WATCH_CRAFTABLE then
 	myrecipemap.izayoi_watch.recipe, izayoitab, TECH.MAGIC_THREE,
 	nil, nil, nil, myrecipemap.izayoi_watch.amount, "izayoi_skiller",
 	"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
+end
+if TUNING.IZAYOI_WANDA_COLLAB then
+	AddRecipe("izayoi_watch_wanda",
+	myrecipemap.izayoi_watch_wanda.recipe, CUSTOM_RECIPETABS.CLOCKMAKER, TECH.LOST,
+	{description = "izayoi_watch_wanda", no_deconstruction = function(inst) return not inst:HasTag("pocketwatch_inactive") end}, nil, nil, myrecipemap.izayoi_watch.amount, "clockmaker",
+	"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex", nil, "izayoi_watch")
 end	-- <配方
 
-	STRINGS.NAMES.IZAYOI_REDTEA = LIMBO({"Black Tea", ["zh"] = "洋馆红茶"})
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = LIMBO({"A cup of black tea.", ["zh"] = "飘着香气的红茶。"})
-	STRINGS.RECIPE_DESC.IZAYOI_REDTEA = LIMBO({"+60HP/30San/10Hunger", ["zh"] = "+60HP/30San/10饥饿"})
+STRINGS.NAMES.IZAYOI_REDTEA = LIMBO({"Black Tea", ["zh"] = "洋馆红茶"})
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = LIMBO({"A cup of black tea.", ["zh"] = "飘着香气的红茶。"})
+STRINGS.RECIPE_DESC.IZAYOI_REDTEA = LIMBO({"+60HP/30San/10Hunger", ["zh"] = "+60HP/30San/10饥饿"})
 
-	STRINGS.NAMES.IZAYOI_SWORD = LIMBO({"Silver Knife", ["zh"] = "银质飞刀",})
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = LIMBO({"A delicate knife.", ["zh"] = "精致的小刀。"})
-	STRINGS.RECIPE_DESC.IZAYOI_SWORD = LIMBO({"Damage 50, can be shot by skills", ["zh"] = "威力 50 可由技能发射"})
+STRINGS.NAMES.IZAYOI_SWORD = LIMBO({"Silver Knife", ["zh"] = "银质飞刀",})
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = LIMBO({"A delicate knife.", ["zh"] = "精致的小刀。"})
+STRINGS.RECIPE_DESC.IZAYOI_SWORD = LIMBO({"Damage 50, can be shot by skills", ["zh"] = "威力 50 可由技能发射"})
 
-	STRINGS.NAMES.IZAYOI_SWORDRED = LIMBO({"Exorcist's Knife", ["zh"] = "破魔飞刀"})
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDRED = STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD
-	STRINGS.RECIPE_DESC.IZAYOI_SWORDRED = LIMBO({"Damage 50, but 100 to monsters", ["zh"] = "威力 50 对怪物伤害加倍"})
+STRINGS.NAMES.IZAYOI_SWORDRED = LIMBO({"Exorcist's Knife", ["zh"] = "破魔飞刀"})
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDRED = STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD
+STRINGS.RECIPE_DESC.IZAYOI_SWORDRED = LIMBO({"Damage 50, but 100 to monsters", ["zh"] = "威力 50 对怪物伤害加倍"})
 
-	STRINGS.NAMES.IZAYOI_SWORDPURPLE = LIMBO({"Mirage Knife", ["zh"] = "幻影飞刀"})
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDPURPLE = STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD
-	STRINGS.RECIPE_DESC.IZAYOI_SWORDPURPLE = LIMBO({"Damage 50, can turn into three knives", ["zh"] = "威力 50 可以变化成三把"})
+STRINGS.NAMES.IZAYOI_SWORDPURPLE = LIMBO({"Mirage Knife", ["zh"] = "幻影飞刀"})
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDPURPLE = STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD
+STRINGS.RECIPE_DESC.IZAYOI_SWORDPURPLE = LIMBO({"Damage 50, can turn into three knives", ["zh"] = "威力 50 可以变化成三把"})
 
 
-	STRINGS.NAMES.IZAYOI_WATCH = LIMBO({"Lunar Clock", ["zh"] = "月时计"})
-	STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = LIMBO({"An old watch.", ["zh"] = "一块旧怀表。"})
-	STRINGS.RECIPE_DESC.IZAYOI_WATCH = LIMBO({"Manipulating time", ["zh"] = "掌控时间"})	-- >
+STRINGS.NAMES.IZAYOI_WATCH = LIMBO({"Lunar Clock", ["zh"] = "月时计"})
+STRINGS.NAMES.IZAYOI_WATCH_WANDA = LIMBO({"Another \"Lunar Clock\"", ["zh"] = "叫做月时计的表"})
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_WATCH = LIMBO({"An old watch.", ["zh"] = "一块旧怀表。"})
+STRINGS.CHARACTERS.WANDA.DESCRIBE.IZAYOI_WATCH = {
+	GENERIC = LIMBO({"Time goes through the gears.", ["zh"] = "能看到时间的运作原理。"}),
+	ACTIVED = LIMBO({"Now I know more about the time!", ["zh"] = "现在我又更加了解时间了！"})
+}
+STRINGS.CHARACTERS.WANDA.ANNOUNCE_LEARN_NEW_CLOCK = LIMBO({"I think I figured out how it was assembled.", ["zh"] = "我想我搞明白它的结构了。"})
+STRINGS.CHARACTERS.WANDA.ACTIONFAIL.CAST_POCKETWATCH.LOW_SANITY = LIMBO({"I've got so exhausted.", ["zh"] = "我搞得自己太累了。"})
+STRINGS.RECIPE_DESC.IZAYOI_WATCH = LIMBO({"Manipulating time", ["zh"] = "掌控时间"})
+STRINGS.RECIPE_DESC.IZAYOI_WATCH_WANDA = LIMBO({"Perfect replica of a mysterious pocket watch", ["zh"] = "神秘怀表的完美复制品"})
 local params = {}
 params.izayoi_watch =
 {
@@ -479,6 +498,15 @@ if TUNING.IZAYOI_FAST_CONSTRUCTION then
 				inst.sg:RemoveStateTag("busy")
 			end
 		end))
+		local state_wanda_cast = sg.states["pocketwatch_cast"]
+		local ponenter = state_wanda_cast.onenter
+		state_wanda_cast.onenter = function(inst)
+			ponenter(inst)
+			local buffaction = inst:GetBufferedAction()
+			if inst:HasTag("time_stopped") and buffaction and buffaction.invobject and buffaction.invobject.prefab == "izayoi_watch" then
+				inst:PerformBufferedAction()
+			end
+		end
 	end)
 
 	AddStategraphPostInit("wilson_client", function(sg)
@@ -830,7 +858,7 @@ local skill_valid2 = {
 		local function istgt(ent, inst)
 			return ent and ent:IsValid() and
 				(TheNet:GetPVPEnabled() and not (inst.replica.teamworker and inst.replica.teamworker:Identify(ent)) or not ent:HasTag("player")) and
-				not(TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(ent)) and ent.replica.combat and ent.replica.health and not ent.replica.health:IsDead() and
+				not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(ent)) and ent.replica.combat and ent.replica.health and not ent.replica.health:IsDead() and
 				not (ent:HasTag("shadow") and not inst:HasTag("crazy"))
 		end
 		local timestopped = inst:HasTag("time_stopped")
@@ -1211,27 +1239,30 @@ local base_x = -750
 local delta_x = 175
 local function AddSkillButton(self)
 	if self.owner and self.owner:HasTag(characterName.."_skiller") then
-		self.skillbutton_z = self:AddChild( skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.Z, "MP: 15") )
-		self.skillbutton_x = self:AddChild( skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.X, "MP: 25") )
-		self.skillbutton_c = self:AddChild( skillsbutton("images/izayoi_skill_c.xml", "izayoi_skill_c.tex", base_x + delta_x * 2, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.C, "MP: 5") )
-		self.skillbutton_v = self:AddChild( skillsbutton("images/izayoi_skill_v.xml", "izayoi_skill_v.tex", base_x + delta_x * 3, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.V, "MP: 50") )
-		self.skillbutton_b = self:AddChild( skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.B, "MP: 60") )
+		self.skillbutton_z = self:AddChild(skillsbutton("images/izayoi_skill_z.xml", "izayoi_skill_z.tex", base_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.Z, "MP: 15") )
+		self.skillbutton_x = self:AddChild(skillsbutton("images/izayoi_skill_x.xml", "izayoi_skill_x.tex", base_x + delta_x, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.X, "MP: 25") )
+		self.skillbutton_c = self:AddChild(skillsbutton("images/izayoi_skill_c.xml", "izayoi_skill_c.tex", base_x + delta_x * 2, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.C, "MP: 5") )
+		self.skillbutton_v = self:AddChild(skillsbutton("images/izayoi_skill_v.xml", "izayoi_skill_v.tex", base_x + delta_x * 3, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.V, "MP: 50") )
+		self.skillbutton_b = self:AddChild(skillsbutton("images/izayoi_skill_b.xml", "izayoi_skill_b.tex", base_x + delta_x * 4, nil, nil, STRINGS.IZAYOI_MISC.SKILL_UI.B, "MP: 60") )
 		local pOnUpdate = self.OnUpdate
 		self.OnUpdate = function(self, dt)
 			local ret = pOnUpdate(self, dt)
 			for key in pairs(skills) do
-				if self.owner[key.."_skill"] ~= true then
-					self["skillbutton_"..key]:SetTint(0.2, 0.2, 0.2, 1)
-					self["skillbutton_"..key]:SetColour(1, 0, 0, 1)
-					self["skillbutton_"..key]:SetString( math.ceil( self.owner.components.timer:GetTimeLeft(key.."_skill") or 0) )
-				elseif skill_valid[key].validfn(self.owner) ~= true then
-					self["skillbutton_"..key]:SetTint(0.2, 0.2, 0.2, 1)
-					self["skillbutton_"..key]:SetColour(1, 0, 0, 1)
-					self["skillbutton_"..key]:SetString(string.upper(key))
-				else
-					self["skillbutton_"..key]:SetTint(1, 1, 1, 1)
-					self["skillbutton_"..key]:SetColour(0, 1, 0, 1)
-					self["skillbutton_"..key]:SetString(string.upper(key))
+				local indicator = self["skillbutton_"..key]
+				if indicator then
+					if self.owner[key.."_skill"] ~= true then
+						indicator:SetTint(0.2, 0.2, 0.2, 1)
+						indicator:SetColour(1, 0, 0, 1)
+						indicator:SetString( math.ceil( self.owner.components.timer:GetTimeLeft(key.."_skill") or 0) )
+					elseif skill_valid[key].validfn(self.owner) ~= true then
+						indicator:SetTint(0.2, 0.2, 0.2, 1)
+						indicator:SetColour(1, 0, 0, 1)
+						indicator:SetString(string.upper(key))
+					else
+						indicator:SetTint(1, 1, 1, 1)
+						indicator:SetColour(0, 1, 0, 1)
+						indicator:SetString(string.upper(key))
+					end
 				end
 			end
 			return ret

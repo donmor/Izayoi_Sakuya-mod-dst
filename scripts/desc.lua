@@ -143,6 +143,15 @@ STRINGS.CHARACTERS.WALTER.DESCRIBE.IZAYOI =
 	GHOST = LIMBO({"Don't worry Ms. maid! Woby and I will get a heart for you in no time.", ["zh"] = "别担心，女仆小姐！ 我和沃比很快就会为你找到一颗心。"}),
 	FIRESTARTER = LIMBO({"Ms. maid, wait! The fire pit is over THERE!", ["zh"] = "女仆小姐，等等！营火在那边！"}),
 }
+STRINGS.CHARACTERS.WANDA.DESCRIBE.IZAYOI =
+{
+	GENERIC = LIMBO({"Greetings, %s!", ["zh"] = "你好，%s！"}),
+	ATTACKER = LIMBO({"That makes no good sense, %s!", ["zh"] = "这样做没有任何意义，%s！"}),
+	MURDERER = LIMBO({"I saw what you've done in your so-called \"private time\", murder!", ["zh"] = "我看到你在你所谓的“私人空间”里干的好事了，你这凶手！"}),
+	REVIVER = LIMBO({"So we ARE bosom friends in all of the timelines, %s!", ["zh"] = "我们果然是时光中的挚友啊，%s！"}),
+	GHOST = LIMBO({"I'll save you in a minute, %s. You know I can do it.", ["zh"] = "我马上救你，%s。你知道我做得到。"}),
+	FIRESTARTER = LIMBO({"I thought you can make it safe all the time...", ["zh"] = "我以为你做事每时每刻都是周全的……"}),
+}
 
 -- Mod characters
 if STRINGS.CHARACTERS.REIMU then STRINGS.CHARACTERS.REIMU.DESCRIBE.IZAYOI = {
