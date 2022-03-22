@@ -1,26 +1,36 @@
 local assets =
 {
-	Asset("ANIM", "anim/izayoi_sword.zip"),
-	Asset("ANIM", "anim/izayoi_sword_swap.zip"),
-	Asset("ANIM", "anim/izayoi_swordred.zip"),
-	Asset("ANIM", "anim/izayoi_swordred_swap.zip"),
-	Asset("ANIM", "anim/izayoi_swordpurple.zip"),
-	Asset("ANIM", "anim/izayoi_swordpurple_swap.zip"),
+	Asset( "ANIM", "anim/izayoi_sword.zip" ),
+	Asset( "ANIM", "anim/izayoi_sword_swap.zip" ),
 	Asset( "IMAGE", "images/inventoryimages/izayoi_sword.tex" ),
 	Asset( "ATLAS", "images/inventoryimages/izayoi_sword.xml" ),
+	Asset( "IMAGE", "images/inventoryimages/izayoi_sword_padio.tex" ),
+	Asset( "ATLAS", "images/inventoryimages/izayoi_sword_padio.xml" ),
+}
+local assetsR =
+{
+	Asset( "ANIM", "anim/izayoi_swordred.zip" ),
+	Asset( "ANIM", "anim/izayoi_swordred_swap.zip" ),
 	Asset( "IMAGE", "images/inventoryimages/izayoi_swordred.tex" ),
 	Asset( "ATLAS", "images/inventoryimages/izayoi_swordred.xml" ),
+	Asset( "IMAGE", "images/inventoryimages/izayoi_swordred_padio.tex" ),
+	Asset( "ATLAS", "images/inventoryimages/izayoi_swordred_padio.xml" ),
+}
+local assetsP =
+{
+	Asset( "ANIM", "anim/izayoi_swordpurple.zip" ),
+	Asset( "ANIM", "anim/izayoi_swordpurple_swap.zip" ),
 	Asset( "IMAGE", "images/inventoryimages/izayoi_swordpurple.tex" ),
 	Asset( "ATLAS", "images/inventoryimages/izayoi_swordpurple.xml" ),
-	Asset( "SOUND", "sound/izayoi.fsb" ),
-	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
+	Asset( "IMAGE", "images/inventoryimages/izayoi_swordpurple_padio.tex" ),
+	Asset( "ATLAS", "images/inventoryimages/izayoi_swordpurple_padio.xml" ),
 }
 
 local sword_speed = 30
 local sword_split_angle = 20
 
 local function OnDropped(inst)
-	inst.AnimState:PlayAnimation("idle")
+	inst.AnimState:PlayAnimation("idle"..inst.CurrentModdedSkin)
 	inst:RemoveTag("sword_split")
 	inst.AnimState:SetOrientation(ANIM_ORIENTATION.Default)
 	inst.components.projectile:SetSpeed(sword_speed)
@@ -30,13 +40,13 @@ local function OnThrown(inst, owner, target)
 	if target ~= owner then
 		if inst:HasTag("sword_split") then
 			if TUNING.IZAYOI_SE > 0 then
-				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
+				inst.SoundEmitter:PlaySound(inst.CurrentModdedSoundBank.."/se/kira", nil, TUNING.IZAYOI_SE)
 			end
 		else
-			inst.SoundEmitter:PlaySound("izayoi/se/sword", nil)
+			inst.SoundEmitter:PlaySound(inst.CurrentModdedSoundBank.."/se/sword", nil)
 		end
 	end
-	inst.AnimState:PlayAnimation("spin_loop", true)
+	inst.AnimState:PlayAnimation("spin_loop"..inst.CurrentModdedSkin, true)
 	inst.AnimState:SetOrientation(ANIM_ORIENTATION.OnGround)
 end
 
@@ -53,7 +63,7 @@ local function OnMiss(inst, owner, target)
 end
 
 local function onequip(inst, owner)
-	owner.AnimState:OverrideSymbol("swap_object", inst.variant.."_swap", inst.variant.."_swap")
+	owner.AnimState:OverrideSymbol("swap_object", inst.variant.."_swap", inst.variant..inst.CurrentModdedSkin.."_swap")
 	owner.AnimState:Show("ARM_carry")
 	owner.AnimState:Hide("ARM_normal")
 end
@@ -63,7 +73,7 @@ local function onunequip(inst, owner)
 	owner.AnimState:Show("ARM_normal")
 end
 
-local function commonfn(v)
+local function commonfn(v, s)
 	local inst = CreateEntity()
 
 	inst.variant = v
@@ -76,11 +86,14 @@ local function commonfn(v)
 
 	MakeInventoryPhysics(inst)
 
+	inst.CurrentModdedSkin = s ~= nil and type(s) == "string" and s ~= "" and "_"..s or ""
+	inst.CurrentModdedSoundBank = s ~= nil and type(s) == "string" and s or "izayoi"
+
 	inst.AnimState:SetBank(inst.variant)
 	inst.AnimState:SetBuild(inst.variant)
-	inst.AnimState:PlayAnimation("idle")
+	inst.AnimState:PlayAnimation("idle"..inst.CurrentModdedSkin)
 
-	inst.MiniMapEntity:SetIcon(inst.variant..".tex")
+	inst.MiniMapEntity:SetIcon(inst.variant..inst.CurrentModdedSkin..".tex")
 
 	inst:AddTag("sharp")
 	inst:AddTag("pointy")
@@ -104,8 +117,8 @@ local function commonfn(v)
 	inst:AddComponent("inspectable")
 
 	inst:AddComponent("inventoryitem")
-	inst.components.inventoryitem.atlasname = "images/inventoryimages/"..inst.variant..".xml"
-	inst.components.inventoryitem.imagename = inst.variant
+	inst.components.inventoryitem.atlasname = "images/inventoryimages/"..inst.variant..inst.CurrentModdedSkin..".xml"
+	inst.components.inventoryitem.imagename = inst.variant..inst.CurrentModdedSkin
 	if not TUNING.IZAYOI_ITEMS_FLOATABLE then
 		inst.components.inventoryitem:SetSinks(true)
 	end
@@ -154,6 +167,7 @@ local function purple_split(inst)
 	local attacker = inst.components.projectile.attacker
 	local x, y, z = inst.Transform:GetWorldPosition()
 	local d = inst.Transform:GetRotation()
+	local sk = inst.CurrentModdedSkin
 	local ospeed = inst.components.projectile.origspeed
 	if not(tgt and tgt.Transform) then
 		return
@@ -171,19 +185,19 @@ local function purple_split(inst)
 		return
 	end
 	inst:Remove()
-	local csw = SpawnPrefab("izayoi_swordred")-- <中间
+	local csw = SpawnPrefab("izayoi_swordred"..sk)-- <中间
 	csw.Transform:SetPosition(x, y, z)
 	csw.Transform:SetRotation(d)
 	local r0 = 0.1
 	local vdl = (d - 120) * DEGREES
 	local xl = x + r0 * math.cos(vdl)
 	local zl = z - r0 * math.sin(vdl)
-	local lsw = SpawnPrefab("izayoi_sword")-- <左侧
+	local lsw = SpawnPrefab("izayoi_sword"..sk)-- <左侧
 	lsw.Transform:SetPosition(xl, y, zl)
 	local vdr = (d + 120) * DEGREES
 	local xr = x + r0 * math.cos(vdr)
 	local zr = z + r0 * math.sin(vdr)
-	local rsw = SpawnPrefab("izayoi_sword")-- <右侧
+	local rsw = SpawnPrefab("izayoi_sword"..sk)-- <右侧
 	rsw.Transform:SetPosition(xr, y, zr)
 	local vx = x + math.cos(d * DEGREES) * dist
 	local vz = z - math.sin(d * DEGREES) * dist
@@ -219,8 +233,9 @@ local function purple_split(inst)
 	rsw.components.projectile:ThrowAt(owner, tgt, Point(x, y, z), Point(vxr, y, vzr), attacker)
 end
 
-local function fn()
-	local inst = commonfn("izayoi_sword")
+local function fn(s)
+	local inst = commonfn("izayoi_sword", s)
+	inst:AddTag("izayoi_sword_skill")
 	if not TheWorld.ismastersim then
 		return inst
 	end
@@ -232,15 +247,15 @@ local function fn()
 	if TUNING.IZAYOI_SE > 0 then
 		inst:ListenForEvent("time_resumed", function()	-- <音效
 			if inst.components.projectile:IsThrown() then
-				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
+				inst.SoundEmitter:PlaySound(inst.CurrentModdedSoundBank.."/se/kira", nil, TUNING.IZAYOI_SE)
 			end
 		end)
 	end
 	return inst
 end
 
-local function redfn()
-	local inst = commonfn("izayoi_swordred")
+local function redfn(s)
+	local inst = commonfn("izayoi_swordred", s)
 	if not TheWorld.ismastersim then
 		return inst
 	end
@@ -255,15 +270,15 @@ local function redfn()
 	if TUNING.IZAYOI_SE > 0 then
 		inst:ListenForEvent("time_resumed", function()	-- <音效
 			if inst.components.projectile:IsThrown() then
-				inst.SoundEmitter:PlaySound("izayoi/se/kira", nil, TUNING.IZAYOI_SE)
+				inst.SoundEmitter:PlaySound(inst.CurrentModdedSoundBank.."/se/kira", nil, TUNING.IZAYOI_SE)
 			end
 		end)
 	end
 	return inst
 end
 
-local function purplefn()
-	local inst = commonfn("izayoi_swordpurple")
+local function purplefn(s)
+	local inst = commonfn("izayoi_swordpurple", s)
 	if not TheWorld.ismastersim then
 		return inst
 	end
@@ -292,6 +307,16 @@ local function purplefn()
 	return inst
 end
 
-return Prefab("izayoi_sword", fn, assets),
-		Prefab("izayoi_swordred", redfn, assets),
-		Prefab("izayoi_swordpurple", purplefn, assets)
+local function psk_none() return fn() end
+local function psk_r_none() return redfn() end
+local function psk_p_none() return purplefn() end
+local function psk_padio() return fn("padio") end
+local function psk_r_padio() return redfn("padio") end
+local function psk_p_padio() return purplefn("padio") end
+
+return Prefab("izayoi_sword", psk_none, assets),
+		Prefab("izayoi_swordred", psk_r_none, assetsR),
+		Prefab("izayoi_swordpurple", psk_p_none, assetsP),
+		Prefab("izayoi_sword_padio", psk_padio),
+		Prefab("izayoi_swordred_padio", psk_r_padio),
+		Prefab("izayoi_swordpurple_padio", psk_p_padio)

@@ -1,15 +1,16 @@
-local assets =
-{
-	Asset( "SOUND", "sound/izayoi.fsb" ),
-	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
-}
-
 TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.IZAYOI = {
 	"izayoi_sword",
 	"izayoi_sword",
 	"izayoi_sword",
 	"izayoi_watch",
 }
+
+local function getSoundBank(inst)
+	return inst and TUNING.SKIN_SOUNDBANK
+		and TUNING.SKIN_SOUNDBANK[inst.prefab]
+		and TUNING.SKIN_SOUNDBANK[inst.prefab][inst.components.skinner:GetClothing().base]
+		or "izayoi"
+end
 
 local function enablenv(inst)
 	inst.components.playervision:ForceNightVision(true)
@@ -70,16 +71,24 @@ local function pushglobalsound(sound)
 	end
 end
 
+local function onskinned(inst)
+	if inst then
+		inst.skin_soundbank = getSoundBank(inst)
+		if TUNING.IZAYOI_VOICE > 0 then
+			inst.hurtsoundoverride = inst.skin_soundbank.."/voice/hurt"
+			inst.deathsoundoverride = inst.skin_soundbank.."/voice/death_voice"
+			if inst.SoundEmitter and TheWorld.ismastersim then
+				inst.SoundEmitter:PlaySound(inst.skin_soundbank.."/voice/announce")
+			end
+		end
+	end
+end
+
 local MakePlayerCharacter = require "prefabs/player_common"
 return MakePlayerCharacter("izayoi", {}, {},
 function(inst)
 	inst.MiniMapEntity:SetIcon( "izayoi.tex" )
 	inst:AddTag("izayoi_skiller")
-	if TUNING.IZAYOI_VOICE > 0 then	-- <语音
-		inst.hurtsoundoverride = "izayoi/voice/hurt"
-		inst.deathsoundoverride = "izayoi/voice/death_voice"
-
-	end
 	inst:ListenForEvent("watch_swapped", checknv)
 	inst:WatchWorldState("phase", updatenv)
 	if TUNING.IZAYOI_BASEMENT_COMPATIBLE then
@@ -89,7 +98,12 @@ function(inst)
 	end
 end,
 function(inst)
-	inst.soundsname = "wilson"
+	inst.soundsname = "wilson"	-- <语音
+	inst.skin_soundbank = getSoundBank(inst)
+	if TUNING.IZAYOI_VOICE > 0 then
+		inst.hurtsoundoverride = inst.skin_soundbank.."/voice/hurt"
+		inst.deathsoundoverride = inst.skin_soundbank.."/voice/death_voice"
+	end
 	if TUNING.IZAYOI_VOICE > 0 then
 		inst.examineoverride = {	-- 被注释的尚未添加对应语音
 			-- "reimu",
@@ -141,6 +155,7 @@ function(inst)
 		}	-- >
 	end
 
+	inst.components.skinner:SetOnSetSkinFn(onskinned)
 	inst.components.health:SetMaxHealth(TUNING.IZAYOI_HEALTH)	-- <三围
 	inst.components.hunger:SetMax(TUNING.IZAYOI_HUNGER)
 	inst.components.sanity:SetMax(TUNING.IZAYOI_SANITY)	-- >
@@ -167,10 +182,10 @@ function(inst)
 				end)
 			end
 			if TUNING.IZAYOI_SE > 0 then
-				pushglobalsound("izayoi/se/the_world")
+				pushglobalsound(inst.skin_soundbank.."/se/the_world")
 			end
 			if TUNING.IZAYOI_VOICE > 0 then
-				inst.SoundEmitter:PlaySound("izayoi/voice/the_world", nil, TUNING.IZAYOI_VOICE)
+				inst.SoundEmitter:PlaySound(inst.skin_soundbank.."/voice/the_world", nil, TUNING.IZAYOI_VOICE)
 			end
 			inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.V, 2, true)
 			if not inst.components.rider:IsRiding() then
@@ -182,26 +197,26 @@ function(inst)
 	end)
 	if TUNING.IZAYOI_SE > 0 then
 		inst:ListenForEvent("death", function(inst)	-- <音效语音
-			inst.SoundEmitter:PlaySound("izayoi/se/miss", nil, TUNING.IZAYOI_SE)
+			inst.SoundEmitter:PlaySound(inst.skin_soundbank.."/se/miss", nil, TUNING.IZAYOI_SE)
 		end)
 	end
 	inst.components.timestopper:SetOnResumingFn(2, function()
 		if TUNING.IZAYOI_SE > 0 then
-			pushglobalsound("izayoi/se/clock")
+			pushglobalsound(inst.skin_soundbank.."/se/clock")
 		end
 		if TUNING.IZAYOI_VOICE > 0 then
-			inst.SoundEmitter:PlaySound("izayoi/voice/resume", nil, TUNING.IZAYOI_SE)
+			inst.SoundEmitter:PlaySound(inst.skin_soundbank.."/voice/resume", nil, TUNING.IZAYOI_SE)
 		end
 	end)
 	if TUNING.IZAYOI_VOICE > 0 then
 		inst:ListenForEvent("startattack", function(inst)
 			if not (inst.components.combat:GetWeapon() and inst.components.combat:GetWeapon():HasTag("nobattlecry")) then
-				inst.SoundEmitter:PlaySound("izayoi/voice/attack", nil, TUNING.IZAYOI_VOICE)
+				inst.SoundEmitter:PlaySound(inst.skin_soundbank.."/voice/attack", nil, TUNING.IZAYOI_VOICE)
 			end
 		end)
 		inst:ListenForEvent("oninspect", function(inst, data)
 			if data.tgt and data.tgt:HasTag("player") then
-				inst.SoundEmitter:PlaySound("izayoi/voice/characters/"..data.tgt.prefab, nil, TUNING.IZAYOI_VOICE)
+				inst.SoundEmitter:PlaySound(inst.skin_soundbank.."/voice/characters/"..data.tgt.prefab, nil, TUNING.IZAYOI_VOICE)
 			end
 		end)	-- >
 	end

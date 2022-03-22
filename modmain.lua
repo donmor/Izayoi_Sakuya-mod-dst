@@ -33,6 +33,7 @@ TUNING.IZAYOI_WATCH_CRAFTABLE = GetModConfigData("watch_craftable")
 TUNING.IZAYOI_WATCH_PLAYERS_EQUIPPABLE = GetModConfigData("watch_players_equippable")
 TUNING.IZAYOI_WANDA_COLLAB = GetModConfigData("wanda_collab")
 TUNING.IZAYOI_ITEMS_FLOATABLE = GetModConfigData("items_floatable")
+TUNING.IZAYOI_MANA_RESTORE_SLEEPINGBAGS = GetModConfigData("mana_restore_by_sleepbags")
 TUNING.IZAYOI_Z_ESCAPE = GetModConfigData("z_escape")
 TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
 TUNING.IZAYOI_FAST_CONSTRUCTION = GetModConfigData("fast_construction")
@@ -143,6 +144,15 @@ Assets = {
 	Asset( "IMAGE", "bigportraits/izayoi_none.tex" ),
 	Asset( "ATLAS", "bigportraits/izayoi_none.xml" ),
 
+	Asset( "IMAGE", "bigportraits/izayoi_v3.tex" ),
+	Asset( "ATLAS", "bigportraits/izayoi_v3.xml" ),
+
+	Asset( "IMAGE", "bigportraits/izayoi_v31.tex" ),
+	Asset( "ATLAS", "bigportraits/izayoi_v31.xml" ),
+
+	Asset( "IMAGE", "bigportraits/izayoi_padio.tex" ),
+	Asset( "ATLAS", "bigportraits/izayoi_padio.xml" ),
+
 	Asset( "IMAGE", "images/map_icons/izayoi.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi.xml" ),
 
@@ -151,12 +161,18 @@ Assets = {
 
 	Asset( "IMAGE", "images/map_icons/izayoi_sword.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_sword.xml" ),
+	Asset( "IMAGE", "images/map_icons/izayoi_sword_padio.tex" ),
+	Asset( "ATLAS", "images/map_icons/izayoi_sword_padio.xml" ),
 
 	Asset( "IMAGE", "images/map_icons/izayoi_swordred.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_swordred.xml" ),
+	Asset( "IMAGE", "images/map_icons/izayoi_swordred_padio.tex" ),
+	Asset( "ATLAS", "images/map_icons/izayoi_swordred_padio.xml" ),
 
 	Asset( "IMAGE", "images/map_icons/izayoi_swordpurple.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_swordpurple.xml" ),
+	Asset( "IMAGE", "images/map_icons/izayoi_swordpurple_padio.tex" ),
+	Asset( "ATLAS", "images/map_icons/izayoi_swordpurple_padio.xml" ),
 
 	Asset( "IMAGE", "images/map_icons/izayoi_watch.tex" ),
 	Asset( "ATLAS", "images/map_icons/izayoi_watch.xml" ),
@@ -201,6 +217,8 @@ Assets = {
 
 	Asset( "SOUND", "sound/izayoi.fsb" ),
 	Asset( "SOUNDPACKAGE", "sound/izayoi.fev" ),
+	Asset( "SOUND", "sound/padio.fsb" ),
+	Asset( "SOUNDPACKAGE", "sound/padio.fev" ),
 }
 TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_redtea = {
 	atlas = "images/inventoryimages/izayoi_redtea.xml",
@@ -223,12 +241,26 @@ TUNING.STARTING_ITEM_IMAGE_OVERRIDE.izayoi_watch = {
 	image = "izayoi_watch.tex",
 }	-- <材质
 TUNING.IZAYOI_WATCH_DAPPERNESS = 6.8 / 60
+
+local characterName = "izayoi"
+
 STRINGS.NAMES.IZAYOI = LIMBO({"Sakuya", ["zh"] = "十六夜咲夜"})
 STRINGS.CHARACTER_TITLES.izayoi = LIMBO({"Maid of the Mansion", ["zh"] = "洋馆的女仆"})
 STRINGS.CHARACTER_NAMES.izayoi = STRINGS.NAMES.IZAYOI
-STRINGS.CHARACTER_DESCRIPTIONS.izayoi = LIMBO({"*Perfect and Elegant Servant\n*Just a Mortal Human \n*Master of Time", ["zh"] = "*完美潇洒的从者\n*只是个会死的人类\n*掌控时间的流动"})
+STRINGS.CHARACTER_DESCRIPTIONS.izayoi = LIMBO({"*Perfect and Elegant Servant\n*Just a Mortal Human\n*Master of Time", ["zh"] = "*完美潇洒的从者\n*只是个会死的人类\n*掌控时间的流动"})
 STRINGS.CHARACTER_QUOTES.izayoi = LIMBO({"\"We'll be together as long as I'm alive, Milady.\"", ["zh"] = "\"我一生都是会死的人类哦。\n只要活着就会一直陪着大小姐。\""})
 STRINGS.SKIN_NAMES.izayoi_none = STRINGS.NAMES.IZAYOI
+STRINGS.SKIN_QUOTES.izayoi_none = STRINGS.CHARACTER_QUOTES.izayoi
+STRINGS.SKIN_DESCRIPTIONS.izayoi_none = STRINGS.CHARACTER_DESCRIPTIONS.izayoi
+STRINGS.SKIN_NAMES.izayoi_v3 = STRINGS.NAMES.IZAYOI.." V3"
+STRINGS.SKIN_QUOTES.izayoi_v3 = STRINGS.CHARACTER_QUOTES.izayoi
+STRINGS.SKIN_DESCRIPTIONS.izayoi_v3 = STRINGS.CHARACTER_DESCRIPTIONS.izayoi
+STRINGS.SKIN_NAMES.izayoi_v31 = STRINGS.NAMES.IZAYOI.." ALPHA"
+STRINGS.SKIN_QUOTES.izayoi_v31 = STRINGS.CHARACTER_QUOTES.izayoi
+STRINGS.SKIN_DESCRIPTIONS.izayoi_v31 = STRINGS.CHARACTER_DESCRIPTIONS.izayoi
+STRINGS.SKIN_NAMES.izayoi_padio = "PADIO"
+STRINGS.SKIN_QUOTES.izayoi_padio = LIMBO({"\"I reject my humanity! Milady!\"", ["zh"] = "我不做人了，大小姐！"})
+STRINGS.SKIN_DESCRIPTIONS.izayoi_padio = LIMBO({"*Dressed Like a Famous Vampire \n*Nothing Special Beyond That\n*Still Mastering Time", ["zh"] = "*打扮得像某个著名的吸血鬼\n*除此之外没什么不同\n*依然掌控时间的流动"})
 STRINGS.IZAYOI_MISC = {
 	WATCH_REFUSED = LIMBO({"It refused me.", ["zh"] = "我被拒绝了。"}),
 	SKILL_FAILURE = {
@@ -255,6 +287,17 @@ STRINGS.IZAYOI_MISC = {
 	},
 	MANA_UI = LIMBO({"Mana: ", ["zh"] = "魔力:"}),
 }
+
+if not TUNING.SKIN_SOUNDBANK then
+	TUNING.SKIN_SOUNDBANK = {}
+end
+TUNING.SKIN_SOUNDBANK[characterName] = {
+	["izayoi_none"] = "izayoi",
+	["izayoi_v3"] = "izayoi",
+	["izayoi_v31"] = "izayoi",
+	["izayoi_padio"] = "padio",
+}
+
 require "desc"
 local speeches = {
 	["zh"] = function() return require "speech_zh" end,
@@ -268,6 +311,9 @@ AddMinimapAtlas("images/map_icons/izayoi_redtea.xml")
 AddMinimapAtlas("images/map_icons/izayoi_sword.xml")
 AddMinimapAtlas("images/map_icons/izayoi_swordred.xml")
 AddMinimapAtlas("images/map_icons/izayoi_swordpurple.xml")
+AddMinimapAtlas("images/map_icons/izayoi_sword_padio.xml")
+AddMinimapAtlas("images/map_icons/izayoi_swordred_padio.xml")
+AddMinimapAtlas("images/map_icons/izayoi_swordpurple_padio.xml")
 AddMinimapAtlas("images/map_icons/izayoi_watch.xml")	-- <小地图
 
 local skin_modes = {
@@ -279,7 +325,49 @@ local skin_modes = {
 		offset = { 0, -25 }
 	},
 }
-AddModCharacter("izayoi", "FEMALE", skin_modes)	-- <人物
+AddModCharacter(characterName, "FEMALE", skin_modes)	-- <人物
+
+modimport("scripts/skin_items_api.lua")	-- <物品皮肤组件，来自Ysovuka/Kzisor君（小改），此文件版权归以上人员所有
+
+PREFAB_SKINS["izayoi_sword"] =
+{
+	"izayoi_sword_padio",
+}
+PREFAB_SKINS["izayoi_swordred"] =
+{
+	"izayoi_swordred_padio",
+}
+PREFAB_SKINS["izayoi_swordpurple"] =
+{
+	"izayoi_swordpurple_padio",
+}
+
+local SKIN_AFFINITY_INFO = require("skin_affinity_info")
+
+modimport("scripts/skins_api")	-- <皮肤组件，来自Hornet君（Twichy Tristan君小改版），此文件版权归以上人员所有
+
+SKIN_AFFINITY_INFO.izayoi = {
+	"izayoi_v3",
+	"izayoi_v31",
+	"izayoi_padio",
+}
+
+PREFAB_SKINS[characterName] = {
+	"izayoi_none",
+	"izayoi_v3",
+	"izayoi_v31",
+	"izayoi_padio",
+}
+
+PREFAB_SKINS_IDS = {}
+for prefab,skins in pairs(PREFAB_SKINS) do
+    PREFAB_SKINS_IDS[prefab] = {}
+    for k,v in pairs(skins) do
+		PREFAB_SKINS_IDS[prefab][v] = k
+    end
+end
+
+AddSkinnableCharacter(characterName)
 
 FOODTYPE.BLOOD = "BLOOD"
 izayoitab = AddRecipeTab(LIMBO({"Perfect and Elegant Recipes", ["zh"] = "完美潇洒的制作配方"}), 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
@@ -323,20 +411,38 @@ myrecipemap.izayoi_redtea.recipe, izayoitab, TECH.MAGIC_TWO,
 nil, nil, nil, myrecipemap.izayoi_redtea.amount, "izayoi_skiller",
 "images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
 
-AddRecipe("izayoi_sword",
+MakeSkinnableRecipe(AddRecipe("izayoi_sword",
 myrecipemap.izayoi_sword.recipe, izayoitab, TECH.SCIENCE_TWO,
 nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex")
+"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex"),
+{
+	["izayoi_sword_padio"] = {
+		atlas = "images/inventoryimages/izayoi_sword_padio.xml",
+		image = "izayoi_sword_padio.tex"
+	}
+})
 
-AddRecipe("izayoi_swordred",
+MakeSkinnableRecipe(AddRecipe("izayoi_swordred",
 myrecipemap.izayoi_swordred.recipe, izayoitab, TECH.SCIENCE_TWO,
 nil, nil, nil, myrecipemap.izayoi_swordred.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_swordred.xml", "izayoi_swordred.tex")
+"images/inventoryimages/izayoi_swordred.xml", "izayoi_swordred.tex"),
+{
+	["izayoi_swordred_padio"] = {
+		atlas = "images/inventoryimages/izayoi_swordred_padio.xml",
+		image = "izayoi_swordred_padio.tex"
+	}
+})
 
-AddRecipe("izayoi_swordpurple",
+MakeSkinnableRecipe(AddRecipe("izayoi_swordpurple",
 myrecipemap.izayoi_swordpurple.recipe, izayoitab, TECH.SCIENCE_TWO,
 nil, nil, nil, myrecipemap.izayoi_swordpurple.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_swordpurple.xml", "izayoi_swordpurple.tex")
+"images/inventoryimages/izayoi_swordpurple.xml", "izayoi_swordpurple.tex"),
+{
+	["izayoi_swordpurple_padio"] = {
+		atlas = "images/inventoryimages/izayoi_swordpurple_padio.xml",
+		image = "izayoi_swordpurple_padio.tex"
+	}
+})
 
 if TUNING.IZAYOI_WATCH_CRAFTABLE then
 	AddRecipe("izayoi_watch",
@@ -356,16 +462,34 @@ STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_REDTEA = LIMBO({"A cup of black tea."
 STRINGS.RECIPE_DESC.IZAYOI_REDTEA = LIMBO({"+60HP/30San/10Hunger", ["zh"] = "+60HP/30San/10饥饿"})
 
 STRINGS.NAMES.IZAYOI_SWORD = LIMBO({"Silver Knife", ["zh"] = "银质飞刀",})
+STRINGS.SKIN_NAMES.izayoi_sword = STRINGS.NAMES.IZAYOI_SWORD
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD = LIMBO({"A delicate knife.", ["zh"] = "精致的小刀。"})
 STRINGS.RECIPE_DESC.IZAYOI_SWORD = LIMBO({"Damage 50, can be shot by skills", ["zh"] = "威力 50 可由技能发射"})
 
 STRINGS.NAMES.IZAYOI_SWORDRED = LIMBO({"Exorcist's Knife", ["zh"] = "破魔飞刀"})
+STRINGS.SKIN_NAMES.izayoi_swordred = STRINGS.NAMES.IZAYOI_SWORDRED
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDRED = STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD
 STRINGS.RECIPE_DESC.IZAYOI_SWORDRED = LIMBO({"Damage 50, but 100 to monsters", ["zh"] = "威力 50 对怪物伤害加倍"})
 
 STRINGS.NAMES.IZAYOI_SWORDPURPLE = LIMBO({"Mirage Knife", ["zh"] = "幻影飞刀"})
+STRINGS.SKIN_NAMES.izayoi_swordpurple = STRINGS.NAMES.IZAYOI_SWORDPURPLE
 STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDPURPLE = STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD
 STRINGS.RECIPE_DESC.IZAYOI_SWORDPURPLE = LIMBO({"Damage 50, can turn into three knives", ["zh"] = "威力 50 可以变化成三把"})
+
+STRINGS.SKIN_NAMES.izayoi_sword_padio = LIMBO({"PADIO's Knife", ["zh"] = "PADIO的飞刀",})
+STRINGS.NAMES.IZAYOI_SWORD_PADIO = STRINGS.SKIN_NAMES.izayoi_sword_padio
+STRINGS.RECIPE_DESC.IZAYOI_SWORD_PADIO = STRINGS.RECIPE_DESC.IZAYOI_SWORD
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORD_PADIO = LIMBO({"A sharp murder weapon.", ["zh"] = "锋利的凶器。"})
+
+STRINGS.SKIN_NAMES.izayoi_swordred_padio = LIMBO({"Knife of Bloodthirsty", ["zh"] = "嗜血的飞刀",})
+STRINGS.NAMES.IZAYOI_SWORDRED_PADIO = STRINGS.SKIN_NAMES.izayoi_swordred_padio
+STRINGS.RECIPE_DESC.IZAYOI_SWORDRED_PADIO = STRINGS.RECIPE_DESC.IZAYOI_SWORDRED
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDRED_PADIO = LIMBO({"A blade eagering for blood.", ["zh"] = "嗜血的凶器。"})
+
+STRINGS.SKIN_NAMES.izayoi_swordpurple_padio = LIMBO({"Knife of Creepiest", ["zh"] = "诡异的飞刀",})
+STRINGS.NAMES.IZAYOI_SWORDPURPLE_PADIO = STRINGS.SKIN_NAMES.izayoi_swordpurple_padio
+STRINGS.RECIPE_DESC.IZAYOI_SWORDPURPLE_PADIO = STRINGS.RECIPE_DESC.IZAYOI_SWORDPURPLE
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.IZAYOI_SWORDPURPLE_PADIO = LIMBO({"A creepy murder weapon.", ["zh"] = "诡异的凶器。"})
 
 
 STRINGS.NAMES.IZAYOI_WATCH = LIMBO({"Lunar Clock", ["zh"] = "月时计"})
@@ -413,8 +537,6 @@ function containers.widgetsetup(container, prefab, data)
 		return pwidgetsetup(container, prefab, data)
 	end
 end	-- <怀表储物栏
-
-local characterName = "izayoi"
 
 local function CancelSay(self)
 	if self.task ~= nil then
@@ -661,22 +783,22 @@ ACTIONS.LOOKAT.fn = function(act)
 end	-- <改写检查动作API
 
 AddComponentPostInit("inventory", function(self)
-	self.FindItemByName = function(self, pf)
+	self.FindItemAll = function(self, fn)
 		for k, v in pairs(self.itemslots) do
-			if v.prefab == pf then
+			if fn(v) then
 				return v
 			end
 		end
 		for k, v in pairs(self.equipslots) do
-			if v.prefab == pf then
-				return v
+			if fn(v) then
+				return(v)
 			end
 		end
-		if self.activeitem and self.activeitem.prefab == pf then
+		if self.activeitem and fn(self.activeitem) then
 			return self.activeitem
 		end
 		local overflow = self:GetOverflowContainer()
-		return overflow ~= nil and overflow:FindItemByName(pf) or nil
+		return overflow ~= nil and overflow:FindItem(fn) or nil
 	end
 end)	-- <函数增补
 
@@ -707,11 +829,23 @@ AddComponentPostInit("projectile", function(self)
 		end
 	end
 end)	-- <改写投射物
+if TUNING.IZAYOI_MANA_RESTORE_SLEEPINGBAGS then
+	AddComponentPostInit("sleepingbaguser", function(self)
+		local pSleepTick = self.SleepTick
+		self.SleepTick = function(self)
+			pSleepTick(self)
+			local mana_tick = self.bed.components.sleepingbag.sanity_tick * self.sanity_bonus_mult
+			if not isstarving and self.inst.components.wiliya_mana then
+				self.inst.components.wiliya_mana:DoDelta(mana_tick)
+			end
+		end
+	end)
+end	-- <改写睡袋类
 
 AddComponentPostInit("edible", function(self)
 	local pGetSanity = self.GetSanity
 	self.GetSanity = function(self, eater)
-	return pGetSanity(self, eater) * (self.inst:HasTag("food_san_advanced") and
+		return pGetSanity(self, eater) * (self.inst:HasTag("food_san_advanced") and
 			eater and eater.components.sanity and
 			eater.components.sanity:IsLunacyMode() and
 			-1 or 1)
@@ -719,13 +853,6 @@ AddComponentPostInit("edible", function(self)
 end)
 
 AddComponentPostInit("container", function(self)
-	self.FindItemByName = function(self, pf)
-		for k, v in pairs(self.slots) do
-			if v.prefab == pf then
-				return v
-			end
-		end
-	end
 
 	local pFindItem = self.FindItem
 	self.FindItem = function(self, fn)
@@ -748,7 +875,7 @@ AddComponentPostInit("container", function(self)
 		end
 		return pFindItems(self, vfn)
 	end
-end)	-- <改写容器API，附加查询函数
+end)	-- <改写容器API
 
 --技能允许条件-持续检测, 所有端
 local function getteam(inst)
@@ -759,12 +886,15 @@ local function getteam(inst)
 		inst:HasTag("team_blue") and TEAMCOLORS.BLUE or
 		inst:HasTag("team_purple") and TEAMCOLORS.PURPLE or nil
 end
+local function isSkillSword(v)
+	return v and v:HasTag("izayoi_sword_skill")
+end
 local skill_valid = {
 	z = {validfn = function(inst)
 		if inst.sg and not inst.sg:HasStateTag("busy") and not ThePlayer:HasTag("playerghost") then
-			local has, num = inst.replica.inventory:Has("izayoi_sword", 1)
+			local _, num = inst.replica.inventory:HasItemWithTag("izayoi_sword_skill", 1)
 			for k, v in pairs( inst.replica.inventory:GetEquips()) do
-				if v and v.prefab == "izayoi_sword" then
+				if v and v:HasTag("izayoi_sword_skill") then
 					if v.replica.stackable then
 						num = num + v.replica.stackable:StackSize()
 					else
@@ -779,9 +909,9 @@ local skill_valid = {
 	end, cd = TUNING.IZAYOI_Z_CD},
 	x = {validfn = function(inst)
 		if inst.sg and not inst.sg:HasStateTag("busy") and not ThePlayer:HasTag("playerghost") then
-			local has, num = inst.replica.inventory:Has("izayoi_sword", 1)
+			local _, num = inst.replica.inventory:HasItemWithTag("izayoi_sword_skill", 1)
 			for k, v in pairs( inst.replica.inventory:GetEquips()) do
-				if v and v.prefab == "izayoi_sword" then
+				if v and v:HasTag("izayoi_sword_skill") then
 					if v.replica.stackable then
 						num = num + v.replica.stackable:StackSize()
 					else
@@ -813,9 +943,9 @@ local skill_valid = {
 --技能允许条件-按键检测, 所有端
 local skill_valid2 = {
 	z = {validfn = function(inst, vtarget)
-	local has, num = inst.replica.inventory:Has("izayoi_sword", 1)
+	local _, num = inst.replica.inventory:HasItemWithTag("izayoi_sword_skill", 1)
 		for k, v in pairs(inst.replica.inventory:GetEquips()) do
-			if v and v.prefab == "izayoi_sword" then
+			if v and v:HasTag("izayoi_sword_skill") then
 				if v.replica.stackable then
 					num = num + v.replica.stackable:StackSize()
 				else
@@ -845,9 +975,9 @@ local skill_valid2 = {
 	end},
 
 	x = {validfn = function(inst, vtarget)
-		local has, num = inst.replica.inventory:Has("izayoi_sword", 1)
+		local _, num = inst.replica.inventory:HasItemWithTag("izayoi_sword_skill", 1)
 		for k, v in pairs( inst.replica.inventory:GetEquips()) do
-			if v and v.prefab == "izayoi_sword" then
+			if v and v:HasTag("izayoi_sword_skill") then
 				if v.replica.stackable then
 					num = num + v.replica.stackable:StackSize()
 				else
@@ -925,7 +1055,7 @@ local skills = {
 		if vtarget and vtarget:IsValid() and not vtarget:HasTag("INLIMBO") and vtarget ~= inst then
 			inst:ForceFacePoint(vtarget:GetPosition())
 			if TUNING.IZAYOI_Z_ESCAPE then
-				local sw = inst.components.inventory:FindItemByName("izayoi_sword")
+				local sw = inst.components.inventory:FindItemAll(isSkillSword)
 				if sw and sw:IsValid() then
 					local fsword = inst.components.inventory:DropItem(sw, false)
 					if fsword and fsword:IsValid() and vtarget and vtarget:IsValid() then
@@ -961,7 +1091,7 @@ local skills = {
 				if tp then
 					inst.Physics:Teleport(x2, y2, z2)
 					if TUNING.IZAYOI_SE > 0 then
-						inst.SoundEmitter:PlaySound("izayoi/se/teleport", nil, TUNING.IZAYOI_SE)
+						inst.SoundEmitter:PlaySound(inst.skin_soundbank.."/se/teleport", nil, TUNING.IZAYOI_SE)
 					end
 				end
 				if not inst.components.rider:IsRiding() then
@@ -971,7 +1101,7 @@ local skills = {
 			else
 				for i = 1, 5 do
 					inst:DoTaskInTime( i * FRAMES * 2, function()
-						local sw = inst.components.inventory:FindItemByName("izayoi_sword")
+						local sw = inst.components.inventory:FindItemAll(isSkillSword)
 						if sw and sw:IsValid() then
 							local fsword = inst.components.inventory:DropItem(sw, false)
 							if fsword and fsword:IsValid() and vtarget and vtarget:IsValid() then
@@ -1002,8 +1132,8 @@ local skills = {
 					v.components.combat and v.components.health and not v.components.health:IsDead()
 				then
 					x_break = false
-					local sw = inst.components.inventory:FindItemByName("izayoi_sword")
-					if sw ~= nil and sw.prefab == "izayoi_sword" then
+					local sw = inst.components.inventory:FindItemAll(isSkillSword)
+					if sw ~= nil and sw:HasTag("izayoi_sword_skill") then
 						local fsword = inst.components.inventory:DropItem(sw, false)
 						if fsword and fsword:IsValid() and v and v:IsValid() then
 							fsword.components.projectile:Throw(inst, v, inst)
@@ -1024,7 +1154,7 @@ local skills = {
 		end)
 		inst.components.talker:Whisper(STRINGS.IZAYOI_MISC.SKILL_ANNOUNCEMENTS.X, 2, true)
 		if TUNING.IZAYOI_VOICE > 0 then
-			inst.SoundEmitter:PlaySound("izayoi/voice/execute", nil, TUNING.IZAYOI_VOICE)
+			inst.SoundEmitter:PlaySound(inst.skin_soundbank.."/voice/execute", nil, TUNING.IZAYOI_VOICE)
 		end
 		if not inst.components.rider:IsRiding() then
 			inst.AnimState:PlayAnimation("staff_pre", false)
@@ -1073,6 +1203,7 @@ local skills = {
 				tgt.forcefieldfx.entity:SetParent(tgt.entity)
 				tgt.forcefieldfx.Transform:SetPosition(0, 0.2, 0)
 				tgt.forcefieldfx.Transform:SetScale(.75, .75, .75)
+				tgt.forcefieldfx.caster = inst
 			else
 				tgt.forcefieldfx:Init()
 			end

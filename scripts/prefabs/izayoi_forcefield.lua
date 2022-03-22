@@ -67,7 +67,7 @@ local function fn()
 			parent.components.combat.externaldamagemultipliers:SetModifier(inst, TUNING.IZAYOI_B_DAMAGEMULT + 1, "izayoi_forcefield")
 			parent.components.health:SetAbsorptionAmount(TUNING.IZAYOI_B_DAMAGEMULT)
 			if TUNING.IZAYOI_SE > 0 then
-				inst.SoundEmitter:PlaySound("izayoi/se/clock2", "forcefield", TUNING.IZAYOI_SE)
+				inst.SoundEmitter:PlaySound((inst.caster and inst.caster.skin_soundbank or "izayoi").."/se/clock2", "forcefield", TUNING.IZAYOI_SE)
 			end
 			inst:Init()
 			inst:ListenForEvent("timerdone", function(inst, data)

@@ -3828,6 +3828,9 @@ return {
 		IZAYOI_SWORD = "美丽且致命。",
 		IZAYOI_SWORDRED = "美丽且致命。",
 		IZAYOI_SWORDPURPLE = "美丽且致命。",
+		IZAYOI_SWORD_PADIO = "美丽且致命。",
+		IZAYOI_SWORDRED_PADIO = "美丽且致命。",
+		IZAYOI_SWORDPURPLE_PADIO = "美丽且致命。",
 		IZAYOI_WATCH = "能看到时间的运作原理。",
 
 		PORTABLECOOKPOT_ITEM =

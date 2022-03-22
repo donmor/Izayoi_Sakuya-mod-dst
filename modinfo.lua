@@ -4,7 +4,7 @@ local function LIMBO(tbl)
 end
 
 name = "Izayoi Sakuya"
-version = "4.1.0"
+version = "4.2.0"
 description = LIMBO({
 [[
 Izayoi Sakuya (十六夜咲夜)
@@ -55,10 +55,10 @@ bugtracker_config = {
 	upload_client_log = true,
 	upload_server_log = true,
 }
-local platform = folder_name and ((folder_name == "workshop-2576573801" and "STEAM") or (folder_name == "workshop-2199027653598532077" and "TGP" )) or nil
+local platform = folder_name and ((folder_name == "workshop-2576573801" and "STEAM") or (folder_name == "workshop-2199027653598533767" and "TGP" )) or nil
 local platformshop = {
 	["STEAM"] = "workshop-2576514266",
-	["TGP"] = "workshop-2199027653598532076",
+	["TGP"] = "workshop-2199027653598533766",
 }
 mod_dependencies = platform and {
 	{
@@ -130,6 +130,17 @@ configuration_options =
 		{
 			{description = LIMBO({"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"}), data = true, hover = LIMBO({"Attack hostile only", ["zh"] = "攻击一定范围内的敌人"})},
 			{description = LIMBO({"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}), data = false, hover = LIMBO({"Attack all creatures", ["zh"] = "攻击一定范围内的一切非己方的生物"})},
+		},
+		default = true,
+	},
+
+	{
+		name = "mana_restore_by_sleepbags",
+		label = LIMBO({"Restore MP When Sleeping", ["zh"] = "睡眠恢复魔力"}),
+		options =
+		{
+			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"Restore MP when in sleeping bags", ["zh"] = "在睡袋睡觉可回复魔力"})},
+			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Only restored by Black Tea", ["zh"] = "只通过红茶回复"})},
 		},
 		default = true,
 	},

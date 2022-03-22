@@ -9,7 +9,7 @@ local function oneaten(inst, eater)
 	if eater.components.wiliya_mana then
 		eater.components.wiliya_mana:DoDelta(40)
 		if TUNING.IZAYOI_SE > 0 then
-			eater.SoundEmitter:PlaySound("izayoi/se/powerup", nil, TUNING.IZAYOI_SE)
+			eater.SoundEmitter:PlaySound((eater.skin_soundbank or "izayoi").."/se/powerup", nil, TUNING.IZAYOI_SE)
 		end
 	end
 end	-- <回蓝

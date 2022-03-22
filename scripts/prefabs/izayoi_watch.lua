@@ -1,8 +1,8 @@
 local assets =
 {
-	Asset("ANIM", "anim/izayoi_watch.zip"),
-	Asset("IMAGE", "images/inventoryimages/izayoi_watch.tex"),
-	Asset("ATLAS", "images/inventoryimages/izayoi_watch.xml" ),
+	Asset( "ANIM", "anim/izayoi_watch.zip" ),
+	Asset( "IMAGE", "images/inventoryimages/izayoi_watch.tex" ),
+	Asset( "ATLAS", "images/inventoryimages/izayoi_watch.xml" ),
 }
 
 local eslot = EQUIPSLOTS.BACK or EQUIPSLOTS.BODY
