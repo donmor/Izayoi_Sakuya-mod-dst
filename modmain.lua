@@ -38,7 +38,14 @@ TUNING.IZAYOI_Z_ESCAPE = GetModConfigData("z_escape")
 TUNING.IZAYOI_X_HOSTILE_ONLY = GetModConfigData("x_hostile_only")
 TUNING.IZAYOI_FAST_CONSTRUCTION = GetModConfigData("fast_construction")
 TUNING.IZAYOI_RECIPES = GetModConfigData("recipes")
-TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")	-- <读取配置
+TUNING.IZAYOI_STRENGTH = GetModConfigData("strength")
+TUNING.IZAYOI_CONTROLS = {
+	z = GetModConfigData("izayoi_z_control"),
+	x = GetModConfigData("izayoi_x_control"),
+	c = GetModConfigData("izayoi_c_control"),
+	v = GetModConfigData("izayoi_v_control"),
+	b = GetModConfigData("izayoi_b_control"),
+}	-- <读取配置
 
 TUNING.IZAYOI_BASEMENT_COMPATIBLE = isModEnabled("workshop-1349799880")
 TUNING.IZAYOI_LANGUAGE = LOC.GetLocaleCode()
@@ -370,7 +377,6 @@ end
 AddSkinnableCharacter(characterName)
 
 FOODTYPE.BLOOD = "BLOOD"
-izayoitab = AddRecipeTab(LIMBO({"Perfect and Elegant Recipes", ["zh"] = "完美潇洒的制作配方"}), 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
 local recipemap = {
 	["easy"] = {
 		izayoi_redtea = {recipe = {Ingredient("spidergland", 2), Ingredient("petals", 2)}, amount = 2},
@@ -406,37 +412,56 @@ local recipemap = {
 	},
 }
 local myrecipemap = recipemap[IsInTable({"easy", "normal", "hard", "lunatic"}, TUNING.IZAYOI_RECIPES) and TUNING.IZAYOI_RECIPES or "normal"]
-AddRecipe("izayoi_redtea",
-myrecipemap.izayoi_redtea.recipe, izayoitab, TECH.MAGIC_TWO,
-nil, nil, nil, myrecipemap.izayoi_redtea.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_redtea.xml", "izayoi_redtea.tex")
+-- local has_recipe2 = AddRecipe2 ~= nil
+local AddRecipeX = AddRecipe2 ~= nil and AddRecipe2 or function(name, ingredients, tech, config, filters)
+	return AddRecipe(name, ingredients, config.tab, tech, config, config.min_spacing, config.nounlock, config.numtogive, config.builder_tag, config.atlas, config.image, config.testfn, config.product, config.build_mode, config.build_distance)
+end	-- <配方兼容模式
+local izayoitab = AddRecipeTab(LIMBO({"Perfect and Elegant Recipes", ["zh"] = "完美潇洒的制作配方"}), 666, "images/izayoitab.xml", "izayoitab.tex", "izayoi_skiller")	-- <专属道具
+AddRecipeX("izayoi_redtea", myrecipemap.izayoi_redtea.recipe, TECH.MAGIC_TWO,
+{
+	tab = izayoitab,
+	numtogive = myrecipemap.izayoi_redtea.amount,
+	builder_tag = "izayoi_skiller",
+	atlas = "images/inventoryimages/izayoi_redtea.xml",
+	image = "izayoi_redtea.tex"
+}, {"CHARACTER", "RESTORATION"})
 
-MakeSkinnableRecipe(AddRecipe("izayoi_sword",
-myrecipemap.izayoi_sword.recipe, izayoitab, TECH.SCIENCE_TWO,
-nil, nil, nil, myrecipemap.izayoi_sword.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_sword.xml", "izayoi_sword.tex"),
+MakeSkinnableRecipe(AddRecipeX("izayoi_sword", myrecipemap.izayoi_sword.recipe, TECH.SCIENCE_TWO,
+{
+	tab = izayoitab,
+	numtogive = myrecipemap.izayoi_sword.amount,
+	builder_tag = "izayoi_skiller",
+	atlas = "images/inventoryimages/izayoi_sword.xml",
+	image = "izayoi_sword.tex"
+}, {"CHARACTER", "WEAPONS"}),
 {
 	["izayoi_sword_padio"] = {
 		atlas = "images/inventoryimages/izayoi_sword_padio.xml",
 		image = "izayoi_sword_padio.tex"
 	}
 })
-
-MakeSkinnableRecipe(AddRecipe("izayoi_swordred",
-myrecipemap.izayoi_swordred.recipe, izayoitab, TECH.SCIENCE_TWO,
-nil, nil, nil, myrecipemap.izayoi_swordred.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_swordred.xml", "izayoi_swordred.tex"),
+MakeSkinnableRecipe(AddRecipeX("izayoi_swordred", myrecipemap.izayoi_swordred.recipe, TECH.SCIENCE_TWO,
+{
+	tab = izayoitab,
+	numtogive = myrecipemap.izayoi_swordred.amount,
+	builder_tag = "izayoi_skiller",
+	atlas = "images/inventoryimages/izayoi_swordred.xml",
+	image = "izayoi_swordred.tex"
+}, {"CHARACTER", "WEAPONS"}),
 {
 	["izayoi_swordred_padio"] = {
 		atlas = "images/inventoryimages/izayoi_swordred_padio.xml",
 		image = "izayoi_swordred_padio.tex"
 	}
 })
-
-MakeSkinnableRecipe(AddRecipe("izayoi_swordpurple",
-myrecipemap.izayoi_swordpurple.recipe, izayoitab, TECH.SCIENCE_TWO,
-nil, nil, nil, myrecipemap.izayoi_swordpurple.amount, "izayoi_skiller",
-"images/inventoryimages/izayoi_swordpurple.xml", "izayoi_swordpurple.tex"),
+MakeSkinnableRecipe(AddRecipeX("izayoi_swordpurple", myrecipemap.izayoi_swordpurple.recipe, TECH.SCIENCE_TWO,
+{
+	tab = izayoitab,
+	numtogive = myrecipemap.izayoi_swordpurple.amount,
+	builder_tag = "izayoi_skiller",
+	atlas = "images/inventoryimages/izayoi_swordpurple.xml",
+	image = "izayoi_swordpurple.tex"
+}, {"CHARACTER", "WEAPONS"}),
 {
 	["izayoi_swordpurple_padio"] = {
 		atlas = "images/inventoryimages/izayoi_swordpurple_padio.xml",
@@ -445,16 +470,29 @@ nil, nil, nil, myrecipemap.izayoi_swordpurple.amount, "izayoi_skiller",
 })
 
 if TUNING.IZAYOI_WATCH_CRAFTABLE then
-	AddRecipe("izayoi_watch",
-	myrecipemap.izayoi_watch.recipe, izayoitab, TECH.MAGIC_THREE,
-	nil, nil, nil, myrecipemap.izayoi_watch.amount, "izayoi_skiller",
-	"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex")
+	AddRecipeX("izayoi_watch", myrecipemap.izayoi_watch.recipe, TECH.MAGIC_THREE,
+	{
+		tab = izayoitab,
+		numtogive = myrecipemap.izayoi_watch.amount,
+		builder_tag = "izayoi_skiller",
+		atlas = "images/inventoryimages/izayoi_watch.xml",
+		image = "izayoi_watch.tex"
+	}, {"CHARACTER", "MAGIC"})
 end
 if TUNING.IZAYOI_WANDA_COLLAB then
-	AddRecipe("izayoi_watch_wanda",
-	myrecipemap.izayoi_watch_wanda.recipe, CUSTOM_RECIPETABS.CLOCKMAKER, TECH.LOST,
-	{description = "izayoi_watch_wanda", no_deconstruction = function(inst) return not inst:HasTag("pocketwatch_inactive") end}, nil, nil, myrecipemap.izayoi_watch.amount, "clockmaker",
-	"images/inventoryimages/izayoi_watch.xml", "izayoi_watch.tex", nil, "izayoi_watch")
+	AddRecipeX("izayoi_watch_wanda", myrecipemap.izayoi_watch_wanda.recipe, TECH.LOST,
+	{
+		tab = CUSTOM_RECIPETABS.CLOCKMAKER,
+		numtogive = myrecipemap.izayoi_watch.amount,
+		builder_tag = "clockmaker",
+		atlas = "images/inventoryimages/izayoi_watch.xml",
+		image = "izayoi_watch.tex",
+		product = "izayoi_watch",
+		description = "izayoi_watch_wanda",
+		no_deconstruction = function(inst)
+			return not inst:HasTag("pocketwatch_inactive")
+		end
+	}, {"CHARACTER", "MAGIC"})
 end	-- <配方
 
 STRINGS.NAMES.IZAYOI_REDTEA = LIMBO({"Black Tea", ["zh"] = "洋馆红茶"})
@@ -1307,7 +1345,8 @@ AddPlayerPostInit(function(inst)
 			end
 			if inst == ThePlayer then
 				for key, v in pairs(skill_valid) do
-					handlers[key] = TheInput:AddKeyDownHandler(GLOBAL["KEY_"..(string.upper(key))], function()
+					-- handlers[key] = TheInput:AddKeyDownHandler(GLOBAL["KEY_"..(string.upper(key))], function()
+					handlers[key] = TheInput:AddKeyDownHandler(GLOBAL["KEY_"..TUNING.IZAYOI_CONTROLS[key]], function()
 						local vtgt = TheInput:GetWorldEntityUnderMouse()
 						local screen = TheFrontEnd:GetActiveScreen()
 						local IsHUDActive = screen and screen.name == "HUD"
@@ -1388,11 +1427,11 @@ local function AddSkillButton(self)
 					elseif skill_valid[key].validfn(self.owner) ~= true then
 						indicator:SetTint(0.2, 0.2, 0.2, 1)
 						indicator:SetColour(1, 0, 0, 1)
-						indicator:SetString(string.upper(key))
+						indicator:SetString(TUNING.IZAYOI_CONTROLS[key])
 					else
 						indicator:SetTint(1, 1, 1, 1)
 						indicator:SetColour(0, 1, 0, 1)
-						indicator:SetString(string.upper(key))
+						indicator:SetString(TUNING.IZAYOI_CONTROLS[key])
 					end
 				end
 			end

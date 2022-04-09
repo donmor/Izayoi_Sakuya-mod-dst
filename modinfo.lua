@@ -72,8 +72,118 @@ mod_dependencies = platform and {
 		["libTimeStopper"] = true,
 	}
 }
+local control_keys = {
+	{description = "Tab", data = "TAB"},
+	{description = "Numpad 0", data = "KP_0"},
+	{description = "Numpad 1", data = "KP_1"},
+	{description = "Numpad 2", data = "KP_2"},
+	{description = "Numpad 3", data = "KP_3"},
+	{description = "Numpad 4", data = "KP_4"},
+	{description = "Numpad 5", data = "KP_5"},
+	{description = "Numpad 6", data = "KP_6"},
+	{description = "Numpad 7", data = "KP_7"},
+	{description = "Numpad 8", data = "KP_8"},
+	{description = "Numpad 9", data = "KP_9"},
+	{description = "Numpad .", data = "KP_PERIOD"},
+	{description = "Numpad /", data = "KP_DIVIDE"},
+	{description = "Numpad *", data = "KP_MULTIPLY"},
+	{description = "Numpad -", data = "KP_MINUS"},
+	{description = "Numpad +", data = "KP_PLUS"},
+	{description = "Numpad Enter", data = "KP_ENTER"},
+	{description = "Numpad =", data = "KP_EQUALS"},
+	{description = "- _", data = "MINUS"},
+	{description = "= +", data = "EQUALS"},
+	{description = "Space", data = "SPACE"},
+	{description = "Enter", data = "ENTER"},
+	{description = "Esc", data = "ESCAPE"},
+	{description = "Home", data = "HOME"},
+	{description = "Ins", data = "INSERT"},
+	{description = "Delete", data = "DELETE"},
+	{description = "End", data = "END"},
+	{description = "Pause|Break", data = "PAUSE"},
+	{description = "Prt Sc|SysRq", data = "PRINT"},
+	{description = "Caps Lock", data = "CAPSLOCK"},
+	{description = "Scroll Lock", data = "SCROLLLOCK"},
+	{description = "Right Shift", data = "RSHIFT"},
+	{description = "Left Shift", data = "LSHIFT"},
+	{description = "Right Ctrl", data = "RCTRL"},
+	{description = "Left Ctrl", data = "LCTRL"},
+	{description = "Right Alt", data = "RALT"},
+	{description = "Left Alt", data = "LALT"},
+	{description = "Left Super", data = "LSUPER"},
+	{description = "Right Super", data = "RSUPER"},
+	{description = "Alt", data = "ALT"},
+	{description = "Ctrl", data = "CTRL"},
+	{description = "Shift", data = "SHIFT"},
+	{description = "Backspace", data = "BACKSPACE"},
+	{description = ". >", data = "PERIOD"},
+	{description = "/ ?", data = "SLASH"},
+	{description = "; :", data = "SEMICOLON"},
+	{description = "[ {", data = "LEFTBRACKET"},
+	{description = "\ |", data = "BACKSLASH"},
+	{description = "] }", data = "RIGHTBRACKET"},
+	{description = "` ~", data = "TILDE"},
+	{description = "A", data = "A"},
+	{description = "B", data = "B"},
+	{description = "C", data = "C"},
+	{description = "D", data = "D"},
+	{description = "E", data = "E"},
+	{description = "F", data = "F"},
+	{description = "G", data = "G"},
+	{description = "H", data = "H"},
+	{description = "I", data = "I"},
+	{description = "J", data = "J"},
+	{description = "K", data = "K"},
+	{description = "L", data = "L"},
+	{description = "M", data = "M"},
+	{description = "N", data = "N"},
+	{description = "O", data = "O"},
+	{description = "P", data = "P"},
+	{description = "Q", data = "Q"},
+	{description = "R", data = "R"},
+	{description = "S", data = "S"},
+	{description = "T", data = "T"},
+	{description = "U", data = "U"},
+	{description = "V", data = "V"},
+	{description = "W", data = "W"},
+	{description = "X", data = "X"},
+	{description = "Y", data = "Y"},
+	{description = "Z", data = "Z"},
+	{description = "F1", data = "F1"},
+	{description = "F2", data = "F2"},
+	{description = "F3", data = "F3"},
+	{description = "F4", data = "F4"},
+	{description = "F5", data = "F5"},
+	{description = "F6", data = "F6"},
+	{description = "F7", data = "F7"},
+	{description = "F8", data = "F8"},
+	{description = "F9", data = "F9"},
+	{description = "F10", data = "F10"},
+	{description = "F11", data = "F11"},
+	{description = "F12", data = "F12"},
+
+	{description = "Up", data = "UP"},
+	{description = "Down", data = "DOWN"},
+	{description = "Right", data = "RIGHT"},
+	{description = "Left", data = "LEFT"},
+	{description = "Page Up", data = "PAGEUP"},
+	{description = "Page Down", data = "PAGEDOWN"},
+
+	{description = "0", data = "0"},
+	{description = "1", data = "1"},
+	{description = "2", data = "2"},
+	{description = "3", data = "3"},
+	{description = "4", data = "4"},
+	{description = "5", data = "5"},
+	{description = "6", data = "6"},
+	{description = "7", data = "7"},
+	{description = "8", data = "8"},
+	{description = "9", data = "9"},
+}
 configuration_options =
 {
+	{name = "lbl1", label = LIMBO({"Difficulties", ["zh"] = "难度"}), options = {{description = "", data = ""}}, default = ""},
+
 	{
 		name = "recipes",
 		label = LIMBO({"Recipes", ["zh"] = "制作配方"}),
@@ -108,28 +218,6 @@ configuration_options =
 		{
 			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"2x construction speed", ["zh"] = "2倍采集与建造速度"})},
 			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Normal construction speed", ["zh"] = "普通的采集与建造速度"})},
-		},
-		default = true,
-	},
-
-	{
-		name = "z_escape",
-		label = LIMBO({"Z skill mode", ["zh"] = "Z技能模式"}),
-		options =
-		{
-			{description = LIMBO({"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}), data = true, hover = LIMBO({"Launch a knife and teleport", ["zh"] = "发射一把飞刀并瞬移"})},
-			{description = LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}), data = false, hover = LIMBO({"Launch five knives", ["zh"] = "一次发射五把飞刀攻击"})},
-		},
-		default = true,
-	},
-
-	{
-		name = "x_hostile_only",
-		label = LIMBO({"X Skill mode", ["zh"] = "X技能模式"}),
-		options =
-		{
-			{description = LIMBO({"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"}), data = true, hover = LIMBO({"Attack hostile only", ["zh"] = "攻击一定范围内的敌人"})},
-			{description = LIMBO({"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}), data = false, hover = LIMBO({"Attack all creatures", ["zh"] = "攻击一定范围内的一切非己方的生物"})},
 		},
 		default = true,
 	},
@@ -204,23 +292,47 @@ configuration_options =
 	},
 
 	{
-		name = "wanda_collab",
-		label = LIMBO({"Collab with Wanda", ["zh"] = "与旺达联动"}),
-		options =
-		{
-			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"Wanda treats the watch differently", ["zh"] = "旺达与众不同地对待怀表"})},
-			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Just as normal", ["zh"] = "和平常一样"})},
-		},
-		default = false,
-	},
-
-	{
 		name = "items_floatable",
 		label = LIMBO({"Unique Items Floatablility", ["zh"] = "专属物品浮力"}),
 		options =
 		{
 			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"Items float on water", ["zh"] = "专属物品浮在水面"})},
 			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Items sink into water", ["zh"] = "专属物品沉入水中"})},
+		},
+		default = false,
+	},
+
+	{name = "lbl2", label = LIMBO({"Gameplay", ["zh"] = "玩法"}), options = {{description = "", data = ""}}, default = ""},
+
+	{
+		name = "z_escape",
+		label = LIMBO({"Z skill mode", ["zh"] = "Z技能模式"}),
+		options =
+		{
+			{description = LIMBO({"Illusion Existence \"Clock Corpse\"", ["zh"] = "幻在「钟表的残骸」"}), data = true, hover = LIMBO({"Launch a knife and teleport", ["zh"] = "发射一把飞刀并瞬移"})},
+			{description = LIMBO({"Illusion Phantom \"Jack the Ludo Bile\"", ["zh"] = "幻幽「迷幻的杰克」"}), data = false, hover = LIMBO({"Launch five knives", ["zh"] = "一次发射五把飞刀攻击"})},
+		},
+		default = true,
+	},
+
+	{
+		name = "x_hostile_only",
+		label = LIMBO({"X Skill mode", ["zh"] = "X技能模式"}),
+		options =
+		{
+			{description = LIMBO({"Illusion Sign \"Killer Doll\"", ["zh"] = "幻符「杀人玩偶」"}), data = true, hover = LIMBO({"Attack hostile only", ["zh"] = "攻击一定范围内的敌人"})},
+			{description = LIMBO({"Illusion Sign \"Indiscriminate\"", ["zh"] = "幻符「无差别伤害」"}), data = false, hover = LIMBO({"Attack all creatures", ["zh"] = "攻击一定范围内的一切非己方的生物"})},
+		},
+		default = true,
+	},
+
+	{
+		name = "wanda_collab",
+		label = LIMBO({"Collab with Wanda", ["zh"] = "与旺达联动"}),
+		options =
+		{
+			{description = LIMBO({"Enable", ["zh"] = "开启"}), data = true, hover = LIMBO({"Wanda treats the watch differently", ["zh"] = "旺达与众不同地对待怀表"})},
+			{description = LIMBO({"Disable", ["zh"] = "关闭"}), data = false, hover = LIMBO({"Just as normal", ["zh"] = "和平常一样"})},
 		},
 		default = false,
 	},
@@ -240,7 +352,7 @@ configuration_options =
 
 	{
 		name = "izayoi_voice",
-		label = LIMBO({"Voice SE", ["zh"] = "专属语音"}),
+		label = LIMBO({"Voice", ["zh"] = "专属语音"}),
 		options =
 		{
 			{description = LIMBO({"Off",["zh"] = "关闭"}), data = 0},
@@ -249,5 +361,42 @@ configuration_options =
 			{description = LIMBO({"High", ["zh"] = "高"}), data = 1},
 		},
 		default = 1,
+	},
+
+	{name = "lbl3", label = LIMBO({"Control", ["zh"] = "控制"}), options = {{description = "", data = ""}}, default = ""},
+
+	{
+		name = "izayoi_z_control",
+		label = LIMBO({"Skill 1 ", ["zh"] = "技能1"}),
+		options = control_keys,
+		default = "Z",
+	},
+
+	{
+		name = "izayoi_x_control",
+		label = LIMBO({"Skill 2 ", ["zh"] = "技能2"}),
+		options = control_keys,
+		default = "X",
+	},
+
+	{
+		name = "izayoi_c_control",
+		label = LIMBO({"Skill 3 ", ["zh"] = "技能3"}),
+		options = control_keys,
+		default = "C",
+	},
+
+	{
+		name = "izayoi_v_control",
+		label = LIMBO({"Skill 4 ", ["zh"] = "技能4"}),
+		options = control_keys,
+		default = "V",
+	},
+
+	{
+		name = "izayoi_b_control",
+		label = LIMBO({"Skill 5 ", ["zh"] = "技能5"}),
+		options = control_keys,
+		default = "B",
 	},
 }
