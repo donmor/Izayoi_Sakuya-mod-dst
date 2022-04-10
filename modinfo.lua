@@ -4,7 +4,7 @@ local function LIMBO(tbl)
 end
 
 name = "Izayoi Sakuya"
-version = "4.2.0"
+version = "4.3.0"
 description = LIMBO({
 [[
 Izayoi Sakuya (十六夜咲夜)
