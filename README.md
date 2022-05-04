@@ -12,6 +12,10 @@
 
 本MOD依赖[libTimeStopper](https://github.com/donmor/libTimeStopper-mod-dst), 请务必一同开启
 
+作者已参与饥荒联机版模组开发联盟(https://github.com/CN-DST-DEVELOPER)
+
+欢迎开发模组的大佬或萌新加入我们的开发交流群：738207764
+
 ### 人物特性
 
 - 采集和制作动作时间减半(可关闭), 移动速度1.15倍
