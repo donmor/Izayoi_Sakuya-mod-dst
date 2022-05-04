@@ -147,7 +147,7 @@ local function commonfn(v, s)
 		if self and self:IsThrown() then
 			local function validtgt(vtarget, inst)
 				return vtarget and vtarget:IsValid() and vtarget ~= self.owner and
-						vtarget.components.combat and vtarget.components.health and true
+						vtarget.components.combat and vtarget.components.health and not vtarget.components.health:IsDead() and true
 			end
 			local newtgt = FindEntity(inst, 200, validtgt, nil, {"INLIMBO", "invisible", "playerghost"})
 			if newtgt then
