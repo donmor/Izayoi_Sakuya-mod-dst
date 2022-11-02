@@ -915,6 +915,12 @@ AddComponentPostInit("container", function(self)
 	end
 end)	-- <改写容器API
 
+AddClassPostConstruct("components/combat_replica", function(self)
+	self.TargetIs = function(self, target)
+		return target ~= nil and self:GetTarget() == target
+	end
+end)
+
 --技能允许条件-持续检测, 所有端
 local function getteam(inst)
 	return inst:HasTag("team_red") and TEAMCOLORS.RED or
@@ -1026,8 +1032,9 @@ local skill_valid2 = {
 		local function istgt(ent, inst)
 			return ent and ent:IsValid() and
 				(TheNet:GetPVPEnabled() and not (inst.replica.teamworker and inst.replica.teamworker:Identify(ent)) or not ent:HasTag("player")) and
-				not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(ent)) and ent.replica.combat and ent.replica.health and not ent.replica.health:IsDead() and
-				not (ent:HasTag("shadow") and not inst:HasTag("crazy"))
+				ent.replica.combat and ent.replica.health and
+				not (TUNING.IZAYOI_X_HOSTILE_ONLY and not inst.replica.combat:TargetIs(ent) and not ent.replica.combat:TargetIs(inst) and isKramped(ent)) and
+				not ent.replica.health:IsDead() and not (ent:HasTag("shadow") and not inst:HasTag("crazy"))
 		end
 		local timestopped = inst:HasTag("time_stopped")
 		local enoughdao = num >= 1
@@ -1165,9 +1172,10 @@ local skills = {
 			for k, v in pairs(ents) do
 				if v and v:IsValid() and v ~= inst and
 					(TheNet:GetPVPEnabled() and not (inst.components.teamworker and inst.components.teamworker:Identify(v)) or not v:HasTag("player")) and
-					not (TUNING.IZAYOI_X_HOSTILE_ONLY and isKramped(v)) and
+					v.components.combat and v.components.health and 
+					not (TUNING.IZAYOI_X_HOSTILE_ONLY and not inst.components.combat:TargetIs(v) and not v.components.combat:TargetIs(inst) and isKramped(v)) and
 					not (v:HasTag("shadow") and not inst:HasTag("crazy")) and
-					v.components.combat and v.components.health and not v.components.health:IsDead()
+					not v.components.health:IsDead()
 				then
 					x_break = false
 					local sw = inst.components.inventory:FindItemAll(isSkillSword)
@@ -1277,7 +1285,6 @@ function SetNetvar(inst, nettab)
 		net_tinybyte = net_tinybyte,
 		net_smallbyte = net_smallbyte,
 		net_byte = net_byte,
-		net_shortint = net_shortint,
 		net_ushortint = net_ushortint,
 		net_int = net_int,
 		net_uint = net_uint,

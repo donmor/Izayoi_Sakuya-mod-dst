@@ -2587,7 +2587,7 @@ return {
 		SILK = "真不想用这个做东西。",
 		SKELETON = "这个本应该被那只猫带走的。",
 		SCORCHED_SKELETON = "真令人不快。",
-		SKELETON_PLAYER = "真令人不快。",
+		-- SKELETON_PLAYER = "真令人不快。",
 		SKULLCHEST = "不怎么想打开这个。",
 		SMALLBIRD =
 		{
