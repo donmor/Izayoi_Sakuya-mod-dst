@@ -336,15 +336,15 @@ AddModCharacter(characterName, "FEMALE", skin_modes)	-- <人物
 
 modimport("scripts/skin_items_api.lua")	-- <物品皮肤组件，来自Ysovuka/Kzisor君（小改），此文件版权归以上人员所有
 
-PREFAB_SKINS["izayoi_sword"] =
+GLOBAL.PREFAB_SKINS["izayoi_sword"] =
 {
 	"izayoi_sword_padio",
 }
-PREFAB_SKINS["izayoi_swordred"] =
+GLOBAL.PREFAB_SKINS["izayoi_swordred"] =
 {
 	"izayoi_swordred_padio",
 }
-PREFAB_SKINS["izayoi_swordpurple"] =
+GLOBAL.PREFAB_SKINS["izayoi_swordpurple"] =
 {
 	"izayoi_swordpurple_padio",
 }
@@ -359,18 +359,18 @@ SKIN_AFFINITY_INFO.izayoi = {
 	"izayoi_padio",
 }
 
-PREFAB_SKINS[characterName] = {
+GLOBAL.PREFAB_SKINS[characterName] = {
 	"izayoi_none",
 	"izayoi_v3",
 	"izayoi_v31",
 	"izayoi_padio",
 }
 
-PREFAB_SKINS_IDS = {}
-for prefab,skins in pairs(PREFAB_SKINS) do
-    PREFAB_SKINS_IDS[prefab] = {}
+GLOBAL.PREFAB_SKINS_IDS = {}
+for prefab,skins in pairs(GLOBAL.PREFAB_SKINS) do
+    GLOBAL.PREFAB_SKINS_IDS[prefab] = {}
     for k,v in pairs(skins) do
-		PREFAB_SKINS_IDS[prefab][v] = k
+		GLOBAL.PREFAB_SKINS_IDS[prefab][v] = k
     end
 end
 
